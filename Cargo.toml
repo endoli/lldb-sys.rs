@@ -1,10 +1,10 @@
 [package]
 name = "lldb-sys"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["Bruce Mitchener <bruce.mitchener@gmail.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
-description = ""
+description = "Raw bindings to the LLDB C++ API. LLDB is the debugger that is part of the LLVM project and is the default system debugger on Mac OS X. Building and using this is currently slightly tricky, so be sure to see the README.md in the repository."
 keywords = ["lldb", "debugger"]
 homepage = "https://github.com/endoli/lldb-sys.rs"
 repository = "https://github.com/endoli/lldb-sys.rs"
