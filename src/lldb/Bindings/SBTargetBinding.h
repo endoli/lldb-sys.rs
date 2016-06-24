@@ -1,0 +1,269 @@
+//===-- SBTargetBinding.h ---------------------------------------*- C++ -*-===//
+//
+//                     The LLVM Compiler Infrastructure
+//
+// This file is distributed under the University of Illinois Open Source
+// License. See LICENSE.TXT for details.
+//
+//===----------------------------------------------------------------------===//
+
+#ifndef LLDB_SBTargetBinding_h_
+#define LLDB_SBTargetBinding_h_
+
+#include "lldb/Bindings/SBBindingDefines.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+LLDB_API SBTargetRef CreateSBTarget();
+
+LLDB_API void DisposeSBTarget(SBTargetRef instance);
+
+LLDB_API bool SBTargetIsValid(SBTargetRef instance);
+
+LLDB_API bool SBTargetEventIsTargetEvent(SBEventRef event);
+
+LLDB_API SBTargetRef SBTargetGetTargetFromEvent(SBEventRef event);
+
+LLDB_API unsigned int SBTargetGetNumModulesFromEvent(SBEventRef event);
+
+LLDB_API SBModuleRef SBTargetGetModuleAtIndexFromEvent(const uint32_t idx, SBEventRef event);
+
+LLDB_API const char *SBTargetGetBroadcasterClassName();
+
+LLDB_API SBProcessRef SBTargetGetProcess(SBTargetRef instance);
+
+LLDB_API SBPlatformRef SBTargetGetPlatform(SBTargetRef instance);
+
+LLDB_API SBErrorRef SBTargetInstall(SBTargetRef instance);
+
+LLDB_API SBProcessRef SBTargetLaunch(SBTargetRef instance, SBListenerRef listener, const char **argv,
+                                             const char **envp, const char *stdin_path, const char *stdout_path,
+                                             const char *stderr_path, const char *working_directory,
+                                             uint32_t launch_flags, bool stop_at_entry, SBErrorRef error);
+
+LLDB_API SBProcessRef
+SBTargetLaunchSimple(SBTargetRef instance, const char **argv, const char **envp, const char *working_directory);
+
+LLDB_API SBProcessRef
+SBTargetLaunch2(SBTargetRef instance, SBLaunchInfoRef launch_info, SBErrorRef error);
+
+LLDB_API SBProcessRef SBTargetLoadCore(SBTargetRef instance, const char *core_file);
+
+LLDB_API SBProcessRef
+SBTargetAttach(SBTargetRef instance, SBAttachInfoRef attach_info, SBErrorRef error);
+
+LLDB_API SBProcessRef SBTargetAttachToProcessWithID(SBTargetRef instance, SBListenerRef listener,
+                                                            lldb_pid_t pid, SBErrorRef error);
+
+LLDB_API SBProcessRef SBTargetAttachToProcessWithName(SBTargetRef instance, SBListenerRef listener,
+                                                              const char *name, bool wait_for, SBErrorRef error);
+
+LLDB_API SBProcessRef SBTargetConnectRemote(SBTargetRef instance, SBListenerRef listener,
+                                                    const char *url, const char *plugin_name, SBErrorRef error);
+
+LLDB_API SBFileSpecRef SBTargetGetExecutable(SBTargetRef instance);
+
+LLDB_API bool SBTargetAddModule(SBTargetRef instance, SBModuleRef module);
+
+LLDB_API SBModuleRef
+SBTargetAddModule2(SBTargetRef instance, const char *path, const char *triple, const char *uuid);
+
+LLDB_API SBModuleRef SBTargetAddModule3(SBTargetRef instance, const char *path, const char *triple,
+                                                const char *uuid_cstr, const char *symfile);
+
+LLDB_API SBModuleRef SBTargetAddModule4(SBTargetRef instance, SBModuleSpecRef module_spec);
+
+LLDB_API unsigned int SBTargetGetNumModules(SBTargetRef instance);
+
+LLDB_API SBModuleRef SBTargetGetModuleAtIndex(SBTargetRef instance, uint32_t idx);
+
+LLDB_API bool SBTargetRemoveModule(SBTargetRef instance, SBModuleRef module);
+
+LLDB_API SBDebuggerRef SBTargetGetDebugger(SBTargetRef instance);
+
+LLDB_API SBModuleRef SBTargetFindModule(SBTargetRef instance, SBFileSpecRef file_spec);
+
+LLDB_API LLDBByteOrder SBTargetGetByteOrder(SBTargetRef instance);
+
+LLDB_API unsigned int SBTargetGetAddressByteSize(SBTargetRef instance);
+
+LLDB_API const char *SBTargetGetTriple(SBTargetRef instance);
+
+LLDB_API unsigned int SBTargetGetDataByteSize(SBTargetRef instance);
+
+LLDB_API unsigned int SBTargetGetCodeByteSize(SBTargetRef instance);
+
+LLDB_API SBErrorRef
+SBTargetSetSectionLoadAddress(SBTargetRef instance, SBSectionRef section, lldb_addr_t section_base_addr);
+
+LLDB_API SBErrorRef SBTargetClearSectionLoadAddress(SBTargetRef instance, SBSectionRef section);
+
+LLDB_API SBErrorRef
+SBTargetSetModuleLoadAddress(SBTargetRef instance, SBModuleRef module, int64_t sections_offset);
+
+LLDB_API SBErrorRef SBTargetClearModuleLoadAddress(SBTargetRef instance, SBModuleRef module);
+
+LLDB_API SBSymbolContextListRef
+SBTargetFindFunctions(SBTargetRef instance, const char *name, uint32_t name_type_mask);
+
+LLDB_API SBValueListRef
+SBTargetFindGlobalVariables(SBTargetRef instance, const char *name, uint32_t max_matches);
+
+LLDB_API SBValueRef SBTargetFindFirstGlobalVariable(SBTargetRef instance, const char *name);
+
+LLDB_API SBValueListRef SBTargetFindGlobalVariables2(SBTargetRef instance, const char *name,
+                                                             uint32_t max_matches, LLDBMatchType matchtype);
+
+LLDB_API SBSymbolContextListRef SBTargetFindGlobalFunctions(SBTargetRef instance, const char *name,
+                                                                    uint32_t max_matches, LLDBMatchType matchtype);
+
+LLDB_API void SBTargetClear(SBTargetRef instance);
+
+LLDB_API SBAddressRef SBTargetResolveFileAddress(SBTargetRef instance, lldb_addr_t file_addr);
+
+LLDB_API SBAddressRef SBTargetResolveLoadAddress(SBTargetRef instance, lldb_addr_t vm_addr);
+
+LLDB_API SBAddressRef
+SBTargetResolvePastLoadAddress(SBTargetRef instance, uint32_t stop_id, lldb_addr_t vm_addr);
+
+LLDB_API SBSymbolContextRef
+SBTargetResolveSymbolContextForAddress(SBTargetRef instance, SBAddressRef addr, uint32_t resolve_scope);
+
+LLDB_API unsigned int SBTargetReadMemory(SBTargetRef instance, SBAddressRef addr, void *buf, size_t size,
+                                             SBErrorRef error);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByLocation(SBTargetRef instance, const char *file, uint32_t line);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByLocation2(SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByName(SBTargetRef instance, const char *symbol_name, const char *module_name);
+
+LLDB_API SBBreakpointRef SBTargetBreakpointCreateByName2(SBTargetRef instance, const char *symbol_name,
+                                                                 SBFileSpecListRef module_list,
+                                                                 SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByName3(SBTargetRef instance, const char *symbol_name, uint32_t name_type_mask,
+                                    SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef SBTargetBreakpointCreateByNames(SBTargetRef instance, const char **symbol_name,
+                                                                 uint32_t num_names, uint32_t name_type_mask,
+                                                                 SBFileSpecListRef module_list,
+                                                                 SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByRegex(SBTargetRef instance, const char *symbol_name_regex, const char *module_name);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByRegex2(SBTargetRef instance, const char *symbol_name_regex,
+                                     SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateBySourceRegex(SBTargetRef instance, const char *source_regex,
+                                          SBFileSpecRef source_file, const char *module_name);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateBySourceRegex2(SBTargetRef instance, const char *source_regex,
+                                           SBFileSpecListRef module_list, SBFileSpecListRef source_file);
+
+LLDB_API SBBreakpointRef SBTargetBreakpointCreateForException(SBTargetRef instance,
+                                                                      LLDBLanguageType language, bool catch_bp,
+                                                                      bool throw_bp);
+
+LLDB_API SBBreakpointRef SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address);
+
+LLDB_API unsigned int SBTargetGetNumBreakpoints(SBTargetRef instance);
+
+LLDB_API SBBreakpointRef SBTargetGetBreakpointAtIndex(SBTargetRef instance, uint32_t idx);
+
+LLDB_API bool SBTargetBreakpointDelete(SBTargetRef instance, int break_id);
+
+LLDB_API SBBreakpointRef SBTargetFindBreakpointByID(SBTargetRef instance, int break_id);
+
+LLDB_API bool SBTargetEnableAllBreakpoints(SBTargetRef instance);
+
+LLDB_API bool SBTargetDisableAllBreakpoints(SBTargetRef instance);
+
+LLDB_API bool SBTargetDeleteAllBreakpoints(SBTargetRef instance);
+
+LLDB_API unsigned int SBTargetGetNumWatchpoints(SBTargetRef instance);
+
+LLDB_API SBWatchpointRef SBTargetGetWatchpointAtIndex(SBTargetRef instance, uint32_t idx);
+
+LLDB_API bool SBTargetDeleteWatchpoint(SBTargetRef instance, int watch_id);
+
+LLDB_API SBWatchpointRef SBTargetFindWatchpointByID(SBTargetRef instance, int watch_id);
+
+LLDB_API SBWatchpointRef SBTargetWatchAddress(SBTargetRef instance, lldb_addr_t addr, size_t size,
+                                                      bool read, bool write, SBErrorRef error);
+
+LLDB_API bool SBTargetEnableAllWatchpoints(SBTargetRef instance);
+
+LLDB_API bool SBTargetDisableAllWatchpoints(SBTargetRef instance);
+
+LLDB_API bool SBTargetDeleteAllWatchpoints(SBTargetRef instance);
+
+LLDB_API SBBroadcasterRef SBTargetGetBroadcaster(SBTargetRef instance);
+
+LLDB_API SBTypeRef SBTargetFindFirstType(SBTargetRef instance, const char *type);
+
+LLDB_API SBTypeListRef SBTargetFindTypes(SBTargetRef instance, const char *type);
+
+LLDB_API SBTypeRef SBTargetGetBasicType(SBTargetRef instance, LLDBBasicType type);
+
+LLDB_API SBValueRef SBTargetCreateValueFromAddress(SBTargetRef instance, const char *name,
+                                                           SBAddressRef addr, SBTypeRef type);
+
+LLDB_API SBValueRef
+SBTargetCreateValueFromData(SBTargetRef instance, const char *name, SBDataRef data, SBTypeRef type);
+
+LLDB_API SBValueRef
+SBTargetCreateValueFromExpression(SBTargetRef instance, const char *name, const char *expr);
+
+LLDB_API SBSourceManagerRef SBTargetGetSourceManager(SBTargetRef instance);
+
+LLDB_API SBInstructionListRef
+SBTargetReadInstructions(SBTargetRef instance, SBAddressRef base_addr, uint32_t count);
+
+LLDB_API SBInstructionListRef SBTargetReadInstructions2(SBTargetRef instance, SBAddressRef base_addr,
+                                                                uint32_t count, const char *flavor_string);
+
+LLDB_API SBInstructionListRef
+SBTargetGetInstructions(SBTargetRef instance, SBAddressRef base_addr, void *buf, size_t size);
+
+LLDB_API SBInstructionListRef
+SBTargetGetInstructionsWithFlavor(SBTargetRef instance, SBAddressRef base_addr, const char *flavor_string,
+                                      void *buf, size_t size);
+
+LLDB_API SBInstructionListRef
+SBTargetGetInstructions2(SBTargetRef instance, lldb_addr_t base_addr, void *buf, size_t size);
+
+LLDB_API SBInstructionListRef
+SBTargetGetInstructionsWithFlavor2(SBTargetRef instance, lldb_addr_t base_addr, const char *flavor_string,
+                                       void *buf, size_t size);
+
+LLDB_API SBSymbolContextListRef
+SBTargetFindSymbols(SBTargetRef instance, const char *name, LLDBSymbolType type);
+
+LLDB_API bool SBTargetGetDescription(SBTargetRef instance, SBStreamRef description,
+                                         LLDBDescriptionLevel description_level);
+
+LLDB_API SBValueRef
+SBTargetEvaluateExpression(SBTargetRef instance, const char *expr, SBExpressionOptionsRef options);
+
+LLDB_API unsigned long long SBTargetGetStackRedZoneSize(SBTargetRef instance);
+
+LLDB_API SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance);
+
+LLDB_API void SBTargetSetLaunchInfo(SBTargetRef instance, SBLaunchInfoRef launch_info);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // LLDB_SBTargetBinding_h_

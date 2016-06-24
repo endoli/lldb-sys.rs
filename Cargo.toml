@@ -1,0 +1,20 @@
+[package]
+name = "lldb-sys"
+version = "0.1.0"
+authors = ["Bruce Mitchener <bruce.mitchener@gmail.com>"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+description = ""
+keywords = ["lldb", "debugger"]
+homepage = "https://github.com/endoli/lldb-sys.rs"
+repository = "https://github.com/endoli/lldb-sys.rs"
+build = "build.rs"
+
+[[example]]
+name = "barebones"
+path = "examples/barebones/main.rs"
+
+[dependencies]
+
+[build-dependencies]
+gcc = "0.3"
