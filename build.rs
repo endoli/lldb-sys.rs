@@ -1,8 +1,8 @@
 extern crate gcc;
 
 fn main() {
-    println!("cargo:rustc-flags = -l \
-              framework=/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework");
+    println!("cargo:rustc-flags=-l framework=LLDB");
+    println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
     gcc::Config::new()
         .cpp(true)
         .flag("-std=c++14")

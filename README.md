@@ -16,6 +16,19 @@ Add it to your `Cargo.toml` like so:
 lldb-sys = "0.0.1"
 ```
 
+You will need to have 2 environment variables set to do the build:
+
+* `LLVM_ROOT` - This points to the root of the LLVM source tree.
+* `LLVM_BUILD_ROOT` - This points to the root of an LLVM build directory. This may be the same as the LLVM source tree, especially if you're working from a binary install.
+
+For now, you will have to set an `@rpath` manually on your executables so
+that they can find the `LLDB.framework` at runtime. This can be done with
+`install_name_tool`:
+
+```shell
+install_name_tool -add_rpath /Applications/Xcode.app/Contents/SharedFrameworks target/debug/examples/barebones
+```
+
 ## Status of Implementation
 
 Things are under active development. This project is not quite
@@ -34,5 +47,5 @@ If something happens where the Rust bindings need to be re-generated,
 they were generated from this set of files with `bindgen`:
 
 ```shell
-bindgen --match SB --output src/lldb-sys.rs src/lldb/Bindings/LLDBBinding.h -- -Isrc -DBINDGEN
+bindgen --match SB --output src/lldb_sys.rs src/lldb/Bindings/LLDBBinding.h -- -Isrc -DBINDGEN
 ```

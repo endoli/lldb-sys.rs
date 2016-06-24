@@ -1,6 +1,10 @@
 extern crate lldb_sys as lldb;
 
 fn main() {
-    let dbg = lldb::SBDebuggerCreate();
-    println!("{:?}", dbg);
+    unsafe {
+        lldb::SBDebuggerInitialize();
+        let dbg = lldb::SBDebuggerCreate();
+        println!("{:?}", dbg);
+        lldb::SBDebuggerTerminate();
+    }
 }
