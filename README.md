@@ -29,6 +29,13 @@ that they can find the `LLDB.framework` at runtime. This can be done with
 install_name_tool -add_rpath /Applications/Xcode.app/Contents/SharedFrameworks target/debug/examples/barebones
 ```
 
+Alternatively, for testing and local work, you can set the
+`DYLD_FRAMEWORK_PATH`:
+
+```shell
+export DYLD_FRAMEWORK_PATH=/Applications/Xcode.app/Contents/SharedFrameworks
+```
+
 ## Status of Implementation
 
 Things are under active development. This project is not quite
