@@ -4,6 +4,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+extern crate libc;
+
 mod lldb_sys;
 
 pub use lldb_sys::*;

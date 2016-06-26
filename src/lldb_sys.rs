@@ -5,16 +5,8 @@
          non_upper_case_globals,
          non_snake_case)]
 
-pub type int8_t = i8;
-pub type int16_t = i16;
-pub type int32_t = i32;
-pub type int64_t = i64;
-pub type uint8_t = u8;
-pub type uint16_t = u16;
-pub type uint32_t = u32;
-pub type uint64_t = u64;
-pub type size_t = ::std::os::raw::c_ulong;
-pub enum FILE { }
+use libc::{FILE, int32_t, int64_t, size_t, uint8_t, uint32_t, uint64_t};
+
 pub type lldb_addr_t = uint64_t;
 pub type lldb_user_id_t = uint64_t;
 pub type lldb_pid_t = uint64_t;
