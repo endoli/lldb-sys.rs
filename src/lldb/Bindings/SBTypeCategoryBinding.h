@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeCategoryRef CreateSBTypeCategory();
+LLDB_API SBTypeCategoryRef CreateSBTypeCategory(void);
 
 LLDB_API void DisposeSBTypeCategory(SBTypeCategoryRef instance);
 

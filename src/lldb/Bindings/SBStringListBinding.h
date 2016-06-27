@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBStringListRef CreateSBStringList();
+LLDB_API SBStringListRef CreateSBStringList(void);
 
 LLDB_API void DisposeSBStringList(SBStringListRef instance);
 

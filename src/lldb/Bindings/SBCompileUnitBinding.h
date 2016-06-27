@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBCompileUnitRef CreateSBCompileUnit();
+LLDB_API SBCompileUnitRef CreateSBCompileUnit(void);
 
 LLDB_API void DisposeSBCompileUnit(SBCompileUnitRef instance);
 

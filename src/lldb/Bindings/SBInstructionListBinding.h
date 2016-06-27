@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBInstructionListRef CreateSBInstructionList();
+LLDB_API SBInstructionListRef CreateSBInstructionList(void);
 
 LLDB_API void DisposeSBInstructionList(SBInstructionListRef instance);
 

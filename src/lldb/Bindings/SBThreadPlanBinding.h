@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBThreadPlanRef CreateSBThreadPlan();
+LLDB_API SBThreadPlanRef CreateSBThreadPlan(void);
 
 LLDB_API SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread, const char *class_name);
 

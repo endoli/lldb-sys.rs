@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBFunctionRef CreateSBFunction();
+LLDB_API SBFunctionRef CreateSBFunction(void);
 
 LLDB_API void DisposeSBFunction(SBFunctionRef instance);
 

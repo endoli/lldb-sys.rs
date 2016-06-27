@@ -17,7 +17,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBExpressionOptionsRef CreateSBExpressionOptions();
+LLDB_API SBExpressionOptionsRef CreateSBExpressionOptions(void);
 
 LLDB_API void DisposeSBExpressionOptions(SBExpressionOptionsRef instance);
 

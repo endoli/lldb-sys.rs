@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBQueueRef CreateSBQueue();
+LLDB_API SBQueueRef CreateSBQueue(void);
 
 LLDB_API void DisposeSBQueue(SBQueueRef instance);
 

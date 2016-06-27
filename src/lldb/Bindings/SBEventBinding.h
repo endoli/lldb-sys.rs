@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBEventRef CreateSBEvent();
+LLDB_API SBEventRef CreateSBEvent(void);
 
 LLDB_API SBEventRef CreateSBEvent2(uint32_t event, const char *cstr, uint32_t cstr_len);
 

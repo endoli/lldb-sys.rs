@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBSymbolRef CreateSBSymbol();
+LLDB_API SBSymbolRef CreateSBSymbol(void);
 
 LLDB_API void DisposeSBSymbol(SBSymbolRef instance);
 

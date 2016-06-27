@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeEnumMemberRef CreateSBTypeEnumMember();
+LLDB_API SBTypeEnumMemberRef CreateSBTypeEnumMember(void);
 
 LLDB_API void DisposeSBTypeEnumMember(SBTypeEnumMemberRef instance);
 
@@ -33,7 +33,7 @@ LLDB_API SBTypeRef SBTypeEnumMemberGetType(SBTypeEnumMemberRef instance);
 LLDB_API bool SBTypeEnumMemberGetDescription(SBTypeEnumMemberRef instance, SBStreamRef description,
                                                  LLDBDescriptionLevel description_level);
 
-LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList();
+LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList(void);
 
 LLDB_API void DisposeSBTypeEnumMemberList(SBTypeEnumMemberListRef instance);
 

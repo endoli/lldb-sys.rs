@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTargetRef CreateSBTarget();
+LLDB_API SBTargetRef CreateSBTarget(void);
 
 LLDB_API void DisposeSBTarget(SBTargetRef instance);
 
@@ -30,7 +30,7 @@ LLDB_API unsigned int SBTargetGetNumModulesFromEvent(SBEventRef event);
 
 LLDB_API SBModuleRef SBTargetGetModuleAtIndexFromEvent(const uint32_t idx, SBEventRef event);
 
-LLDB_API const char *SBTargetGetBroadcasterClassName();
+LLDB_API const char *SBTargetGetBroadcasterClassName(void);
 
 LLDB_API SBProcessRef SBTargetGetProcess(SBTargetRef instance);
 

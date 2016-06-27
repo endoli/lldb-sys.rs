@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBCommandReturnObjectRef CreateSBCommandReturnObject();
+LLDB_API SBCommandReturnObjectRef CreateSBCommandReturnObject(void);
 
 LLDB_API void *SBCommandReturnObjectRelease(SBCommandReturnObjectRef instance);
 

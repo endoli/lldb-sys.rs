@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBFileSpecRef CreateSBFileSpec();
+LLDB_API SBFileSpecRef CreateSBFileSpec(void);
 
 LLDB_API SBFileSpecRef CreateSBFileSpec2(const char *path);
 

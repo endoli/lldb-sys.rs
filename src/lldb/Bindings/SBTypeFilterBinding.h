@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeFilterRef CreateSBTypeFilter();
+LLDB_API SBTypeFilterRef CreateSBTypeFilter(void);
 
 LLDB_API SBTypeFilterRef CreateSBTypeFilter2(uint32_t options);
 

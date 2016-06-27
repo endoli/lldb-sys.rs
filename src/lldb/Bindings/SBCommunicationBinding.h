@@ -18,7 +18,7 @@ typedef void (*ReadThreadBytesReceived)(void *baton, const void *src, size_t src
 extern "C" {
 #endif
 
-LLDB_API SBCommunicationRef CreateSBCommunication();
+LLDB_API SBCommunicationRef CreateSBCommunication(void);
 
 LLDB_API SBCommunicationRef CreateSBCommunication2(const char *broadcaster_name);
 
@@ -28,7 +28,7 @@ LLDB_API bool SBCommunicationIsValid(SBCommunicationRef instance);
 
 LLDB_API SBBroadcasterRef SBCommunicationGetBroadcaster(SBCommunicationRef instance);
 
-LLDB_API const char *SBCommunicationGetBroadcasterClass();
+LLDB_API const char *SBCommunicationGetBroadcasterClass(void);
 
 LLDB_API LLDBConnectionStatus
 SBCommunicationAdoptFileDesriptor(SBCommunicationRef instance, int fd, bool owns_fd);

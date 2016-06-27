@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBDeclarationRef CreateSBDeclaration();
+LLDB_API SBDeclarationRef CreateSBDeclaration(void);
 
 LLDB_API void DisposeSBDeclaration(SBDeclarationRef instance);
 

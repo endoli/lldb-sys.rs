@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBValueListRef CreateSBValueList();
+LLDB_API SBValueListRef CreateSBValueList(void);
 
 LLDB_API void DisposeSBValueList(SBValueListRef instance);
 

@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBFrameRef CreateSBFrame();
+LLDB_API SBFrameRef CreateSBFrame(void);
 
 LLDB_API void DisposeSBFrame(SBFrameRef instance);
 

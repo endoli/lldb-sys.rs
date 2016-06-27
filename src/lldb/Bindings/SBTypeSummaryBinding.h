@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeSummaryOptionsRef CreateSBTypeSummaryOptions();
+LLDB_API SBTypeSummaryOptionsRef CreateSBTypeSummaryOptions(void);
 
 LLDB_API void DisposeSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance);
 
@@ -30,7 +30,7 @@ LLDB_API void SBTypeSummaryOptionsSetLanguage(SBTypeSummaryOptionsRef instance, 
 
 LLDB_API void SBTypeSummaryOptionsSetCapping(SBTypeSummaryOptionsRef instance, LLDBTypeSummaryCapping);
 
-LLDB_API SBTypeSummaryRef CreateSBTypeSummary();
+LLDB_API SBTypeSummaryRef CreateSBTypeSummary(void);
 
 LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithSummaryString(const char *data, uint32_t options);
 

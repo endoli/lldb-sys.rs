@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBBreakpointLocationRef CreateSBBreakpointLocation();
+LLDB_API SBBreakpointLocationRef CreateSBBreakpointLocation(void);
 
 LLDB_API void DisposeSBBreakpointLocation(SBBreakpointLocationRef instance);
 

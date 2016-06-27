@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBAddressRef CreateSBAddress();
+LLDB_API SBAddressRef CreateSBAddress(void);
 
 LLDB_API SBAddressRef CreateSBAddress2(SBSectionRef section, lldb_addr_t offset);
 

@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBWatchpointRef CreateSBWatchpoint();
+LLDB_API SBWatchpointRef CreateSBWatchpoint(void);
 
 LLDB_API void DisposeSBWatchpoint(SBWatchpointRef instance);
 

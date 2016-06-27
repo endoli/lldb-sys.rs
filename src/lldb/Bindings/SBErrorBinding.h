@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBErrorRef CreateSBError();
+LLDB_API SBErrorRef CreateSBError(void);
 
 LLDB_API void DisposeSBError(SBErrorRef instance);
 

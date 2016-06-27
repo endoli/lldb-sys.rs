@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBLineEntryRef CreateSBLineEntry();
+LLDB_API SBLineEntryRef CreateSBLineEntry(void);
 
 LLDB_API void DisposeSBLineEntry(SBLineEntryRef instance);
 

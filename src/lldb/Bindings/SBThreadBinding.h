@@ -16,9 +16,9 @@
 extern "C" {
 #endif
 
-LLDB_API const char *SBThreadGetBroadcasterClassName();
+LLDB_API const char *SBThreadGetBroadcasterClassName(void);
 
-LLDB_API SBThreadRef CreateSBThread();
+LLDB_API SBThreadRef CreateSBThread(void);
 
 LLDB_API void DisposeSBThread(SBThreadRef instance);
 

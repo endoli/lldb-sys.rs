@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBStreamRef CreateSBStream();
+LLDB_API SBStreamRef CreateSBStream(void);
 
 LLDB_API bool SBStreamIsValid(SBStreamRef instance);
 

@@ -16,11 +16,11 @@
 extern "C" {
 #endif
 
-LLDB_API SBProcessRef CreateSBProcess();
+LLDB_API SBProcessRef CreateSBProcess(void);
 
 LLDB_API void DisposeSBProcess(SBProcessRef instance);
 
-LLDB_API const char *SBProcessGetBroadcasterClassName();
+LLDB_API const char *SBProcessGetBroadcasterClassName(void);
 
 LLDB_API const char *SBProcessGetPluginName(SBProcessRef instance);
 
@@ -139,7 +139,7 @@ LLDB_API bool SBProcessEventIsProcessEvent(SBEventRef event);
 
 LLDB_API SBBroadcasterRef SBProcessGetBroadcaster(SBProcessRef instance);
 
-LLDB_API const char *SBProcessGetBroadcasterClass();
+LLDB_API const char *SBProcessGetBroadcasterClass(void);
 
 LLDB_API bool SBProcessGetDescription(SBProcessRef instance, SBStreamRef description);
 

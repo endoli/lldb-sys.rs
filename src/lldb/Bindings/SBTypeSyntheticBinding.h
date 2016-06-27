@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeSyntheticRef CreateSBTypeSynthetic();
+LLDB_API SBTypeSyntheticRef CreateSBTypeSynthetic(void);
 
 LLDB_API SBTypeSyntheticRef SBTypeSyntheticCreateWithClassName(const char *data, uint32_t options);
 

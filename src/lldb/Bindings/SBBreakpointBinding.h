@@ -20,7 +20,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBBreakpointRef CreateSBBreakpoint();
+LLDB_API SBBreakpointRef CreateSBBreakpoint(void);
 
 LLDB_API void DisposeSBBreakpoint(SBBreakpointRef instance);
 

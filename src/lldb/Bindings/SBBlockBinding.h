@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBBlockRef CreateSBBlock();
+LLDB_API SBBlockRef CreateSBBlock(void);
 
 LLDB_API void DisposeSBBlock(SBBlockRef instance);
 

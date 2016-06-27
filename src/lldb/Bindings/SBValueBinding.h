@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBValueRef CreateSBValue();
+LLDB_API SBValueRef CreateSBValue(void);
 
 LLDB_API void DisposeSBValue(SBValueRef instance);
 

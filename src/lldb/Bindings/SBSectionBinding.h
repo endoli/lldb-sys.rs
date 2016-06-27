@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBSectionRef CreateSBSection();
+LLDB_API SBSectionRef CreateSBSection(void);
 
 LLDB_API void DisposeSBSection(SBSectionRef instance);
 

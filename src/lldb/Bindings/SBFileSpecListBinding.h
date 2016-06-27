@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBFileSpecListRef CreateSBFileSpecList();
+LLDB_API SBFileSpecListRef CreateSBFileSpecList(void);
 
 LLDB_API void DisposeSBFileSpecList(SBFileSpecListRef instance);
 

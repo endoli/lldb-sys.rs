@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBVariablesOptionsRef CreateSBVariablesOptions();
+LLDB_API SBVariablesOptionsRef CreateSBVariablesOptions(void);
 
 LLDB_API SBVariablesOptionsRef CreateSBVariablesOptions2(SBVariablesOptionsRef options);
 

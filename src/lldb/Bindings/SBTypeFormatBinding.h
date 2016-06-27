@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeFormatRef CreateSBTypeFormat();
+LLDB_API SBTypeFormatRef CreateSBTypeFormat(void);
 
 LLDB_API SBTypeFormatRef CreateSBTypeFormat2(LLDBFormat format, uint32_t options);
 

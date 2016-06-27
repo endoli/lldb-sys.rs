@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBBroadcasterRef CreateSBBroadcaster();
+LLDB_API SBBroadcasterRef CreateSBBroadcaster(void);
 
 LLDB_API SBBroadcasterRef CreateSBBroadcaster2(const char *name);
 

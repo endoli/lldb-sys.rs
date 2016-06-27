@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBModuleRef CreateSBModule();
+LLDB_API SBModuleRef CreateSBModule(void);
 
 LLDB_API SBModuleRef CreateSBModule2(SBModuleSpecRef module_spec);
 

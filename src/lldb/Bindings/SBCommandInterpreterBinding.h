@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBCommandInterpreterRunOptionsRef CreateSBCommandInterpreterRunOptions();
+LLDB_API SBCommandInterpreterRunOptionsRef CreateSBCommandInterpreterRunOptions(void);
 
 LLDB_API void DisposeSBCommandInterpreterRunOptions(SBCommandInterpreterRunOptionsRef instance);
 
@@ -63,7 +63,7 @@ LLDB_API bool SBCommandInterpreterAliasExists(SBCommandInterpreterRef instance, 
 
 LLDB_API SBBroadcasterRef SBCommandInterpreterGetBroadcaster(SBCommandInterpreterRef instance);
 
-LLDB_API const char *SBCommandInterpreterGetBroadcasterClass();
+LLDB_API const char *SBCommandInterpreterGetBroadcasterClass(void);
 
 LLDB_API bool SBCommandInterpreterHasCommands(SBCommandInterpreterRef instance);
 
@@ -129,7 +129,7 @@ LLDB_API bool SBCommandPluginInterfaceDoExecute(SBCommandPluginInterfaceRef inst
 
 LLDB_API void DisposeSBCommandPluginInterface(SBCommandPluginInterfaceRef instance);
 
-LLDB_API SBCommandRef CreateSBCommand();
+LLDB_API SBCommandRef CreateSBCommand(void);
 
 LLDB_API bool SBCommandIsValid(SBCommandRef instance);
 

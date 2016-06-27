@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeMemberRef CreateSBTypeMember();
+LLDB_API SBTypeMemberRef CreateSBTypeMember(void);
 
 LLDB_API void DisposeSBTypeMember(SBTypeMemberRef instance);
 
@@ -37,7 +37,7 @@ LLDB_API unsigned int SBTypeMemberGetBitfieldSizeInBits(SBTypeMemberRef instance
 LLDB_API bool SBTypeMemberGetDescription(SBTypeMemberRef instance, SBStreamRef description,
                                              LLDBDescriptionLevel description_level);
 
-LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction();
+LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction(void);
 
 LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction2(SBTypeMemberFunctionRef rhs);
 
@@ -60,7 +60,7 @@ LLDB_API LLDBMemberFunctionKind SBTypeMemberFunctionGetKind(SBTypeMemberFunction
 LLDB_API bool SBTypeMemberFunctionGetDescription(SBTypeMemberFunctionRef instance, SBStreamRef description,
                                                      LLDBDescriptionLevel description_level);
 
-LLDB_API SBTypeRef CreateSBType();
+LLDB_API SBTypeRef CreateSBType(void);
 
 LLDB_API void DisposeSBType(SBTypeRef instance);
 
@@ -145,7 +145,7 @@ LLDB_API unsigned int SBTypeGetTypeFlags(SBTypeRef instance);
 LLDB_API bool SBTypeGetDescription(SBTypeRef instance, SBStreamRef description,
                                        LLDBDescriptionLevel description_level);
 
-LLDB_API SBTypeListRef CreateSBTypeList();
+LLDB_API SBTypeListRef CreateSBTypeList(void);
 
 LLDB_API void DisposeSBTypeList(SBTypeListRef instance);
 

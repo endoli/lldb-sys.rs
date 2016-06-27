@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBExecutionContextRef CreateSBExecutionContext();
+LLDB_API SBExecutionContextRef CreateSBExecutionContext(void);
 
 LLDB_API SBExecutionContextRef CreateSBExecutionContext2(SBTargetRef target);
 

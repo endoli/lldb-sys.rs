@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBListenerRef CreateSBListener();
+LLDB_API SBListenerRef CreateSBListener(void);
 
 LLDB_API SBListenerRef CreateSBListener2(const char *name);
 

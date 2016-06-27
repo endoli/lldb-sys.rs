@@ -60,7 +60,7 @@ LLDB_API int SBPlatformShellCommandGetStatus(SBPlatformShellCommandRef instance)
 
 LLDB_API const char *SBPlatformShellCommandGetOutput(SBPlatformShellCommandRef instance);
 
-LLDB_API SBPlatformRef CreateSBPlatform();
+LLDB_API SBPlatformRef CreateSBPlatform(void);
 
 LLDB_API SBPlatformRef CreateSBPlatform2(const char *platform_name);
 

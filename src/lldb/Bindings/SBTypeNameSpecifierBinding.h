@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier();
+LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier(void);
 
 LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name, bool is_regex);
 

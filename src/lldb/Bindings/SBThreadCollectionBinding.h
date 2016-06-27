@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBThreadCollectionRef CreateSBThreadCollection();
+LLDB_API SBThreadCollectionRef CreateSBThreadCollection(void);
 
 LLDB_API void DisposeSBThreadCollection(SBThreadCollectionRef instance);
 

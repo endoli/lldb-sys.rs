@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBUnixSignalsRef CreateSBUnixSignals();
+LLDB_API SBUnixSignalsRef CreateSBUnixSignals(void);
 
 LLDB_API void DisposeSBUnixSignals(SBUnixSignalsRef instance);
 

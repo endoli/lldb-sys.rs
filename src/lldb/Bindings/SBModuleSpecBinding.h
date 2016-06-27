@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBModuleSpecRef CreateSBModuleSpec();
+LLDB_API SBModuleSpecRef CreateSBModuleSpec(void);
 
 LLDB_API void DisposeSBModuleSpec(SBModuleSpecRef instance);
 
@@ -52,7 +52,7 @@ LLDB_API bool SBModuleSpecSetUUIDBytes(SBModuleSpecRef instance, const uint8_t *
 
 LLDB_API bool SBModuleSpecGetDescription(SBModuleSpecRef instance, SBStreamRef description);
 
-LLDB_API SBModuleSpecListRef CreateSBModuleSpecList();
+LLDB_API SBModuleSpecListRef CreateSBModuleSpecList(void);
 
 LLDB_API void DisposeSBModuleSpecList(SBModuleSpecListRef instance);
 

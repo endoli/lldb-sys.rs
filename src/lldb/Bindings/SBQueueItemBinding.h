@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBQueueItemRef CreateSBQueueItem();
+LLDB_API SBQueueItemRef CreateSBQueueItem(void);
 
 LLDB_API void DisposeSBQueueItem(SBQueueItemRef instance);
 

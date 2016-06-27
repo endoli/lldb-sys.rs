@@ -24,7 +24,7 @@ typedef unsigned long (*Callback)(void *baton, lldb::SBInputReader *reader, lldb
 extern "C" {
 #endif
 
-LLDB_API SBInputReaderRef CreateSBInputReader();
+LLDB_API SBInputReaderRef CreateSBInputReader(void);
 
 LLDB_API void DisposeSBInputReader(SBInputReaderRef instance);
 
@@ -38,11 +38,11 @@ LLDB_API void SBInputReaderSetIsDone(SBInputReaderRef instance, bool);
 
 LLDB_API bool SBInputReaderIsActive(SBInputReaderRef instance);
 
-LLDB_API void SBDebuggerInitialize();
+LLDB_API void SBDebuggerInitialize(void);
 
-LLDB_API void SBDebuggerTerminate();
+LLDB_API void SBDebuggerTerminate(void);
 
-LLDB_API SBDebuggerRef SBDebuggerCreate();
+LLDB_API SBDebuggerRef SBDebuggerCreate(void);
 
 LLDB_API SBDebuggerRef SBDebuggerCreate2(bool source_init_files);
 
@@ -52,9 +52,9 @@ LLDB_API SBDebuggerRef SBDebuggerCreate3(bool source_init_files, lldb::LogOutput
 
 LLDB_API void SBDebuggerDestroy(SBDebuggerRef debugger);
 
-LLDB_API void SBDebuggerMemoryPressureDetected();
+LLDB_API void SBDebuggerMemoryPressureDetected(void);
 
-LLDB_API SBDebuggerRef CreateSBDebugger();
+LLDB_API SBDebuggerRef CreateSBDebugger(void);
 
 LLDB_API void DisposeSBDebugger(SBDebuggerRef instance);
 
@@ -150,7 +150,7 @@ LLDB_API bool SBDebuggerSetDefaultArchitecture(const char *arch_name);
 LLDB_API LLDBScriptLanguage
 SBDebuggerGetScriptingLanguage(SBDebuggerRef instance, const char *script_language_name);
 
-LLDB_API const char *SBDebuggerGetVersionString();
+LLDB_API const char *SBDebuggerGetVersionString(void);
 
 LLDB_API const char *SBDebuggerStateAsCString(LLDBStateType state);
 

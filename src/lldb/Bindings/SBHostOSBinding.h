@@ -16,9 +16,9 @@
 extern "C" {
 #endif
 
-LLDB_API SBFileSpecRef SBHostOSGetProgramFileSpec();
+LLDB_API SBFileSpecRef SBHostOSGetProgramFileSpec(void);
 
-LLDB_API SBFileSpecRef SBHostOSGetLLDBPythonPath();
+LLDB_API SBFileSpecRef SBHostOSGetLLDBPythonPath(void);
 
 LLDB_API SBFileSpecRef SBHostOSGetLLDBPath(LLDBPathType path_type);
 

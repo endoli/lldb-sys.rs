@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-LLDB_API SBAttachInfoRef CreateSBAttachInfo();
+LLDB_API SBAttachInfoRef CreateSBAttachInfo(void);
 
 LLDB_API SBAttachInfoRef CreateSBAttachInfo2(lldb_pid_t pid);
 
