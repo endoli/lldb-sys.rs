@@ -61,8 +61,10 @@ LLDB_API void SBExpressionOptionsSetTrapExceptions(SBExpressionOptionsRef instan
 
 LLDB_API void SBExpressionOptionsSetLanguage(SBExpressionOptionsRef instance, LLDBLanguageType language);
 
+#ifndef BINDGEN
 LLDB_API void SBExpressionOptionsSetCancelCallback(SBExpressionOptionsRef instance,
                                                        lldb::ExpressionCancelCallback callback, void *baton);
+#endif
 
 LLDB_API bool SBExpressionOptionsGetGenerateDebugInfo(SBExpressionOptionsRef instance);
 

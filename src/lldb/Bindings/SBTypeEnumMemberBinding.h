@@ -35,8 +35,6 @@ LLDB_API bool SBTypeEnumMemberGetDescription(SBTypeEnumMemberRef instance, SBStr
 
 LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList();
 
-LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList(SBTypeEnumMemberListRef rhs);
-
 LLDB_API void DisposeSBTypeEnumMemberList(SBTypeEnumMemberListRef instance);
 
 LLDB_API bool SBTypeEnumMemberListIsValid(SBTypeEnumMemberListRef instance);

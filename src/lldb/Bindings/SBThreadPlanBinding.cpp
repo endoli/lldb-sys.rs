@@ -24,13 +24,7 @@ CreateSBThreadPlan()
 }
 
 SBThreadPlanRef
-CreateSBThreadPlan2(SBThreadPlanRef threadPlan)
-{
-    return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan(*reinterpret_cast<SBThreadPlan *>(threadPlan)));
-}
-
-SBThreadPlanRef
-CreateSBThreadPlan3(SBThreadRef thread, const char *class_name)
+CreateSBThreadPlan2(SBThreadRef thread, const char *class_name)
 {
     return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan(*reinterpret_cast<SBThread *>(thread), class_name));
 }

@@ -54,8 +54,6 @@ LLDB_API bool SBModuleSpecGetDescription(SBModuleSpecRef instance, SBStreamRef d
 
 LLDB_API SBModuleSpecListRef CreateSBModuleSpecList();
 
-LLDB_API SBModuleSpecListRef CreateSBModuleSpecList(SBModuleSpecListRef rhs);
-
 LLDB_API void DisposeSBModuleSpecList(SBModuleSpecListRef instance);
 
 LLDB_API SBModuleSpecListRef SBModuleSpecListGetModuleSpecifications(const char *path);

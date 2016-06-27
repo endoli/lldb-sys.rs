@@ -18,8 +18,6 @@ extern "C" {
 
 LLDB_API SBTypeCategoryRef CreateSBTypeCategory();
 
-LLDB_API SBTypeCategoryRef CreateSBTypeCategory(SBTypeCategoryRef rhs);
-
 LLDB_API void DisposeSBTypeCategory(SBTypeCategoryRef instance);
 
 LLDB_API bool SBTypeCategoryIsValid(SBTypeCategoryRef instance);

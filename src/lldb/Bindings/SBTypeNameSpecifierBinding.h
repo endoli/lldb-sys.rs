@@ -18,11 +18,9 @@ extern "C" {
 
 LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier();
 
-LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier(const char *name, bool is_regex);
+LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name, bool is_regex);
 
-LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier(SBTypeRef type);
-
-LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier(SBTypeNameSpecifierRef rhs);
+LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier3(SBTypeRef type);
 
 LLDB_API void DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
 

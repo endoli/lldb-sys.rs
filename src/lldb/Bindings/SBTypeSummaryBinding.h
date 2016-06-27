@@ -38,8 +38,6 @@ LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithFunctionName(const char *data, 
 
 LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithScriptCode(const char *data, uint32_t options);
 
-LLDB_API SBTypeSummaryRef CreateSBTypeSummary(SBTypeSummaryRef rhs);
-
 LLDB_API void DisposeSBTypeSummary(SBTypeSummaryRef instance);
 
 LLDB_API bool SBTypeSummaryIsValid(SBTypeSummaryRef instance);
