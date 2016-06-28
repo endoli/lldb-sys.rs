@@ -24,6 +24,8 @@ LLDB_API bool SBSymbolIsValid(SBSymbolRef instance);
 
 LLDB_API const char *SBSymbolGetName(SBSymbolRef instance);
 
+LLDB_API const char *SBSymbolGetDisplayName(SBSymbolRef instance);
+
 LLDB_API const char *SBSymbolGetMangledName(SBSymbolRef instance);
 
 LLDB_API SBInstructionListRef SBSymbolGetInstructions(SBSymbolRef instance, SBTargetRef target);

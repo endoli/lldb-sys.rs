@@ -26,6 +26,8 @@ LLDB_API bool SBFrameIsValid(SBFrameRef instance);
 
 LLDB_API unsigned int SBFrameGetFrameID(SBFrameRef instance);
 
+LLDB_API unsigned long long SBFrameGetCFA(SBFrameRef instance);
+
 LLDB_API unsigned long long SBFrameGetPC(SBFrameRef instance);
 
 LLDB_API bool SBFrameSetPC(SBFrameRef instance, lldb_addr_t new_pc);
@@ -49,6 +51,8 @@ LLDB_API SBSymbolRef SBFrameGetSymbol(SBFrameRef instance);
 LLDB_API SBBlockRef SBFrameGetBlock(SBFrameRef instance);
 
 LLDB_API const char *SBFrameGetFunctionName(SBFrameRef instance);
+
+LLDB_API const char *SBFrameGetDisplayFunctionName(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 

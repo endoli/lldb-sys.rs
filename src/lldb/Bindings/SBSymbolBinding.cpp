@@ -43,6 +43,13 @@ SBSymbolGetName(SBSymbolRef instance)
 }
 
 const char *
+SBSymbolGetDisplayName(SBSymbolRef instance)
+{
+    SBSymbol *unwrapped = reinterpret_cast<SBSymbol *>(instance);
+    return unwrapped->GetDisplayName();
+}
+
+const char *
 SBSymbolGetMangledName(SBSymbolRef instance)
 {
     SBSymbol *unwrapped = reinterpret_cast<SBSymbol *>(instance);

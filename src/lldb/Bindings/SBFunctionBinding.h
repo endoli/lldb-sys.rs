@@ -24,6 +24,8 @@ LLDB_API bool SBFunctionIsValid(SBFunctionRef instance);
 
 LLDB_API const char *SBFunctionGetName(SBFunctionRef instance);
 
+LLDB_API const char *SBFunctionGetDisplayName(SBFunctionRef instance);
+
 LLDB_API const char *SBFunctionGetMangledName(SBFunctionRef instance);
 
 LLDB_API SBInstructionListRef SBFunctionGetInstructions(SBFunctionRef instance, SBTargetRef target);
@@ -42,6 +44,8 @@ LLDB_API SBTypeRef SBFunctionGetType(SBFunctionRef instance);
 LLDB_API SBBlockRef SBFunctionGetBlock(SBFunctionRef instance);
 
 LLDB_API LLDBLanguageType SBFunctionGetLanguage(SBFunctionRef instance);
+
+LLDB_API bool SBFunctionGetIsOptimized(SBFunctionRef instance);
 
 LLDB_API bool SBFunctionGetDescription(SBFunctionRef instance, SBStreamRef description);
 

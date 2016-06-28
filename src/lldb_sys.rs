@@ -2136,6 +2136,7 @@ extern "C" {
     pub fn SBFrameIsEqual(instance: SBFrameRef, that: SBFrameRef) -> u8;
     pub fn SBFrameIsValid(instance: SBFrameRef) -> u8;
     pub fn SBFrameGetFrameID(instance: SBFrameRef) -> ::std::os::raw::c_uint;
+    pub fn SBFrameGetCFA(instance: SBFrameRef) -> ::std::os::raw::c_ulonglong;
     pub fn SBFrameGetPC(instance: SBFrameRef) -> ::std::os::raw::c_ulonglong;
     pub fn SBFrameSetPC(instance: SBFrameRef, new_pc: lldb_addr_t) -> u8;
     pub fn SBFrameGetSP(instance: SBFrameRef) -> ::std::os::raw::c_ulonglong;
@@ -2150,6 +2151,8 @@ extern "C" {
     pub fn SBFrameGetSymbol(instance: SBFrameRef) -> SBSymbolRef;
     pub fn SBFrameGetBlock(instance: SBFrameRef) -> SBBlockRef;
     pub fn SBFrameGetFunctionName(instance: SBFrameRef)
+     -> *const ::std::os::raw::c_char;
+    pub fn SBFrameGetDisplayFunctionName(instance: SBFrameRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBFrameIsInlined(instance: SBFrameRef) -> u8;
     pub fn SBFrameEvaluateExpression(instance: SBFrameRef,
@@ -2217,6 +2220,8 @@ extern "C" {
     pub fn SBFunctionIsValid(instance: SBFunctionRef) -> u8;
     pub fn SBFunctionGetName(instance: SBFunctionRef)
      -> *const ::std::os::raw::c_char;
+    pub fn SBFunctionGetDisplayName(instance: SBFunctionRef)
+     -> *const ::std::os::raw::c_char;
     pub fn SBFunctionGetMangledName(instance: SBFunctionRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBFunctionGetInstructions(instance: SBFunctionRef,
@@ -2233,6 +2238,7 @@ extern "C" {
     pub fn SBFunctionGetType(instance: SBFunctionRef) -> SBTypeRef;
     pub fn SBFunctionGetBlock(instance: SBFunctionRef) -> SBBlockRef;
     pub fn SBFunctionGetLanguage(instance: SBFunctionRef) -> LLDBLanguageType;
+    pub fn SBFunctionGetIsOptimized(instance: SBFunctionRef) -> u8;
     pub fn SBFunctionGetDescription(instance: SBFunctionRef,
                                     description: SBStreamRef) -> u8;
     pub fn SBHostOSGetProgramFileSpec() -> SBFileSpecRef;
@@ -2998,6 +3004,8 @@ extern "C" {
     pub fn DisposeSBSymbol(instance: SBSymbolRef);
     pub fn SBSymbolIsValid(instance: SBSymbolRef) -> u8;
     pub fn SBSymbolGetName(instance: SBSymbolRef)
+     -> *const ::std::os::raw::c_char;
+    pub fn SBSymbolGetDisplayName(instance: SBSymbolRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBSymbolGetMangledName(instance: SBSymbolRef)
      -> *const ::std::os::raw::c_char;

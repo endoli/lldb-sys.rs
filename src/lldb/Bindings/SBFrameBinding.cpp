@@ -50,6 +50,13 @@ SBFrameGetFrameID(SBFrameRef instance)
 }
 
 unsigned long long
+SBFrameGetCFA(SBFrameRef instance)
+{
+    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
+    return unwrapped->GetCFA();
+}
+
+unsigned long long
 SBFrameGetPC(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
@@ -131,6 +138,13 @@ SBFrameGetFunctionName(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
     return unwrapped->GetFunctionName();
+}
+
+const char *
+SBFrameGetDisplayFunctionName(SBFrameRef instance)
+{
+    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
+    return unwrapped->GetDisplayFunctionName();
 }
 
 bool

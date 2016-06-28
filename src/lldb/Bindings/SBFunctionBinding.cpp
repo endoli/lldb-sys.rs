@@ -43,6 +43,13 @@ SBFunctionGetName(SBFunctionRef instance)
 }
 
 const char *
+SBFunctionGetDisplayName(SBFunctionRef instance)
+{
+    SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);
+    return unwrapped->GetDisplayName();
+}
+
+const char *
 SBFunctionGetMangledName(SBFunctionRef instance)
 {
     SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);
@@ -105,6 +112,13 @@ SBFunctionGetLanguage(SBFunctionRef instance)
 {
     SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);
     return unwrapped->GetLanguage();
+}
+
+bool
+SBFunctionGetIsOptimized(SBFunctionRef instance)
+{
+    SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);
+    return unwrapped->GetIsOptimized();
 }
 
 bool
