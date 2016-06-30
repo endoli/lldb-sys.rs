@@ -51,8 +51,14 @@ as above, without any additional terms or conditions.
 ## Binding Re-generation
 
 If something happens where the Rust bindings need to be re-generated,
-they were generated from this set of files with `bindgen`:
+they were generated from this set of files with `bindgen`. We have a
+script to automate some of the processing that is needed:
 
 ```shell
-bindgen --match SB --output src/lldb_sys.rs src/lldb/Bindings/LLDBBinding.h -- -Isrc -DBINDGEN
+bin/generate_bindings.sh
 ```
+
+After running that, you will want to selectively merge the changes
+with what was previously there as the output of this process is
+hand-edited to add usage of `libc` as well as doc comments in critical
+places.
