@@ -31,7 +31,7 @@ LLDB_API const char *SBTypeEnumMemberGetName(SBTypeEnumMemberRef instance);
 LLDB_API SBTypeRef SBTypeEnumMemberGetType(SBTypeEnumMemberRef instance);
 
 LLDB_API bool SBTypeEnumMemberGetDescription(SBTypeEnumMemberRef instance, SBStreamRef description,
-                                                 LLDBDescriptionLevel description_level);
+                                             ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList(void);
 

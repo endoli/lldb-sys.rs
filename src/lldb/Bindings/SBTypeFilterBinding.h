@@ -39,7 +39,7 @@ LLDB_API unsigned int SBTypeFilterGetOptions(SBTypeFilterRef instance);
 LLDB_API void SBTypeFilterSetOptions(SBTypeFilterRef instance, uint32_t);
 
 LLDB_API bool SBTypeFilterGetDescription(SBTypeFilterRef instance, SBStreamRef description,
-                                             LLDBDescriptionLevel description_level);
+                                         ENUM(DescriptionLevel) description_level);
 
 LLDB_API bool SBTypeFilterIsEqualTo(SBTypeFilterRef instance, SBTypeFilterRef rhs);
 

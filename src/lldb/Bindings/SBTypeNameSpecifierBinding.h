@@ -33,7 +33,7 @@ LLDB_API SBTypeRef SBTypeNameSpecifierGetType(SBTypeNameSpecifierRef instance);
 LLDB_API bool SBTypeNameSpecifierIsRegex(SBTypeNameSpecifierRef instance);
 
 LLDB_API bool SBTypeNameSpecifierGetDescription(SBTypeNameSpecifierRef instance, SBStreamRef description,
-                                                    LLDBDescriptionLevel description_level);
+                                                ENUM(DescriptionLevel) description_level);
 
 LLDB_API bool SBTypeNameSpecifierIsEqualTo(SBTypeNameSpecifierRef instance, SBTypeNameSpecifierRef rhs);
 

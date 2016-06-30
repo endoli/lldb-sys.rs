@@ -129,77 +129,11 @@ LLDB_API typedef struct SBWatchpointOpaque *SBWatchpointRef;
 LLDB_API typedef struct SBUnixSignalsOpaque *SBUnixSignalsRef;
 
 #ifdef BINDGEN
+#define ENUM(name) enum name
 #include "lldb/Bindings/SBBindingEnumerations.h"
-
-LLDB_API typedef enum LLDBAddressClass LLDBAddressClass;
-LLDB_API typedef enum LLDBDynamicValueType LLDBDynamicValueType;
-LLDB_API typedef enum LLDBBreakpointEventType LLDBBreakpointEventType;
-LLDB_API typedef enum LLDBDescriptionLevel LLDBDescriptionLevel;
-LLDB_API typedef enum LLDBCommandArgumentType LLDBCommandArgumentType;
-LLDB_API typedef enum LLDBReturnStatus LLDBReturnStatus;
-LLDB_API typedef enum LLDBConnectionStatus LLDBConnectionStatus;
-LLDB_API typedef enum LLDBLanguageType LLDBLanguageType;
-LLDB_API typedef enum LLDBByteOrder LLDBByteOrder;
-LLDB_API typedef enum LLDBWatchpointEventType LLDBWatchpointEventType;
-LLDB_API typedef enum LLDBFormat LLDBFormat;
-LLDB_API typedef enum LLDBValueType LLDBValueType;
-LLDB_API typedef enum LLDBTypeSummaryCapping LLDBTypeSummaryCapping;
-LLDB_API typedef enum LLDBMemberFunctionKind LLDBMemberFunctionKind;
-LLDB_API typedef enum LLDBTemplateArgumentKind LLDBTemplateArgumentKind;
-LLDB_API typedef enum LLDBTypeClass LLDBTypeClass;
-LLDB_API typedef enum LLDBBasicType LLDBBasicType;
-LLDB_API typedef enum LLDBStopReason LLDBStopReason;
-LLDB_API typedef enum LLDBRunMode LLDBRunMode;
-LLDB_API typedef enum LLDBMatchType LLDBMatchType;
-LLDB_API typedef enum LLDBSymbolType LLDBSymbolType;
-LLDB_API typedef enum LLDBSectionType LLDBSectionType;
-LLDB_API typedef enum LLDBQueueItemKind LLDBQueueItemKind;
-LLDB_API typedef enum LLDBStateType LLDBStateType;
-LLDB_API typedef enum LLDBInstrumentationRuntimeType LLDBInstrumentationRuntimeType;
-LLDB_API typedef enum LLDBPathType LLDBPathType;
-LLDB_API typedef enum LLDBExpressionEvaluationPhase LLDBExpressionEvaluationPhase;
-LLDB_API typedef enum LLDBErrorType LLDBErrorType;
-LLDB_API typedef enum LLDBScriptLanguage LLDBScriptLanguage;
-LLDB_API typedef enum LLDBAddressClass LLDBAddressClass;
-LLDB_API typedef enum LLDBQueueKind LLDBQueueKind;
-LLDB_API typedef enum LLDBInputReaderGranularity LLDBInputReaderGranularity;
-LLDB_API typedef enum LLDBInputReaderAction LLDBInputReaderAction;
 #else
+#define ENUM(name) enum lldb::name
 #include "lldb/lldb-enumerations.h"
-
-LLDB_API typedef enum lldb::AddressClass LLDBAddressClass;
-LLDB_API typedef enum lldb::DynamicValueType LLDBDynamicValueType;
-LLDB_API typedef enum lldb::BreakpointEventType LLDBBreakpointEventType;
-LLDB_API typedef enum lldb::DescriptionLevel LLDBDescriptionLevel;
-LLDB_API typedef enum lldb::CommandArgumentType LLDBCommandArgumentType;
-LLDB_API typedef enum lldb::ReturnStatus LLDBReturnStatus;
-LLDB_API typedef enum lldb::ConnectionStatus LLDBConnectionStatus;
-LLDB_API typedef enum lldb::LanguageType LLDBLanguageType;
-LLDB_API typedef enum lldb::ByteOrder LLDBByteOrder;
-LLDB_API typedef enum lldb::WatchpointEventType LLDBWatchpointEventType;
-LLDB_API typedef enum lldb::Format LLDBFormat;
-LLDB_API typedef enum lldb::ValueType LLDBValueType;
-LLDB_API typedef enum lldb::TypeSummaryCapping LLDBTypeSummaryCapping;
-LLDB_API typedef enum lldb::MemberFunctionKind LLDBMemberFunctionKind;
-LLDB_API typedef enum lldb::TemplateArgumentKind LLDBTemplateArgumentKind;
-LLDB_API typedef enum lldb::TypeClass LLDBTypeClass;
-LLDB_API typedef enum lldb::BasicType LLDBBasicType;
-LLDB_API typedef enum lldb::StopReason LLDBStopReason;
-LLDB_API typedef enum lldb::RunMode LLDBRunMode;
-LLDB_API typedef enum lldb::MatchType LLDBMatchType;
-LLDB_API typedef enum lldb::SymbolType LLDBSymbolType;
-LLDB_API typedef enum lldb::SectionType LLDBSectionType;
-LLDB_API typedef enum lldb::QueueItemKind LLDBQueueItemKind;
-LLDB_API typedef enum lldb::StateType LLDBStateType;
-LLDB_API typedef enum lldb::InstrumentationRuntimeType LLDBInstrumentationRuntimeType;
-LLDB_API typedef enum lldb::PathType LLDBPathType;
-LLDB_API typedef enum lldb::ExpressionEvaluationPhase LLDBExpressionEvaluationPhase;
-LLDB_API typedef enum lldb::ErrorType LLDBErrorType;
-LLDB_API typedef enum lldb::ScriptLanguage LLDBScriptLanguage;
-LLDB_API typedef enum lldb::AddressClass LLDBAddressClass;
-LLDB_API typedef enum lldb::QueueKind LLDBQueueKind;
-LLDB_API typedef enum lldb::InputReaderGranularity LLDBInputReaderGranularity;
-LLDB_API typedef enum lldb::InputReaderAction LLDBInputReaderAction;
 #endif // !BINDGEN
 
 #endif // LLDB_SBBindingDefines_h_

@@ -107,7 +107,7 @@ SBFunctionGetBlock(SBFunctionRef instance)
     return reinterpret_cast<SBBlockRef>(new SBBlock(unwrapped->GetBlock()));
 }
 
-LLDBLanguageType
+lldb::LanguageType
 SBFunctionGetLanguage(SBFunctionRef instance)
 {
     SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);

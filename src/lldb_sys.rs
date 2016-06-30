@@ -156,832 +156,824 @@ pub type SBUnixSignalsRef = *mut SBUnixSignalsOpaque;
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBStateType {
-    eStateInvalid = 0,
-    eStateUnloaded = 1,
-    eStateConnected = 2,
-    eStateAttaching = 3,
-    eStateLaunching = 4,
-    eStateStopped = 5,
-    eStateRunning = 6,
-    eStateStepping = 7,
-    eStateCrashed = 8,
-    eStateDetached = 9,
-    eStateExited = 10,
-    eStateSuspended = 11,
+pub enum StateType {
+    Invalid = 0,
+    Unloaded = 1,
+    Connected = 2,
+    Attaching = 3,
+    Launching = 4,
+    Stopped = 5,
+    Running = 6,
+    Stepping = 7,
+    Crashed = 8,
+    Detached = 9,
+    Exited = 10,
+    Suspended = 11,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBLaunchFlags {
-    eLaunchFlagNone = 0,
-    eLaunchFlagExec = 1,
-    eLaunchFlagDebug = 2,
-    eLaunchFlagStopAtEntry = 4,
-    eLaunchFlagDisableASLR = 8,
-    eLaunchFlagDisableSTDIO = 16,
-    eLaunchFlagLaunchInTTY = 32,
-    eLaunchFlagLaunchInShell = 64,
-    eLaunchFlagLaunchInSeparateProcessGroup = 128,
-    eLaunchFlagDontSetExitStatus = 256,
-    eLaunchFlagDetachOnError = 512,
-    eLaunchFlagShellExpandArguments = 1024,
-    eLaunchFlagCloseTTYOnExit = 2048,
+pub enum LaunchFlags {
+    None = 0,
+    Exec = 1,
+    Debug = 2,
+    StopAtEntry = 4,
+    DisableASLR = 8,
+    DisableSTDIO = 16,
+    LaunchInTTY = 32,
+    LaunchInShell = 64,
+    LaunchInSeparateProcessGroup = 128,
+    DontSetExitStatus = 256,
+    DetachOnError = 512,
+    ShellExpandArguments = 1024,
+    CloseTTYOnExit = 2048,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBRunMode {
-    eOnlyThisThread = 0,
-    eAllThreads = 1,
-    eOnlyDuringStepping = 2,
+pub enum RunMode {
+    OnlyThisThread = 0,
+    AllThreads = 1,
+    OnlyDuringStepping = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBByteOrder {
-    eByteOrderInvalid = 0,
-    eByteOrderBig = 1,
-    eByteOrderPDP = 2,
-    eByteOrderLittle = 4,
+pub enum ByteOrder {
+    Invalid = 0,
+    Big = 1,
+    PDP = 2,
+    Little = 4,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBEncoding {
-    eEncodingInvalid = 0,
-    eEncodingUint = 1,
-    eEncodingSint = 2,
-    eEncodingIEEE754 = 3,
-    eEncodingVector = 4,
+pub enum Encoding {
+    Invalid = 0,
+    Uint = 1,
+    Sint = 2,
+    IEEE754 = 3,
+    Vector = 4,
 }
-pub const eFormatInvalid: LLDBFormat = LLDBFormat::eFormatDefault;
-pub const eFormatComplexFloat: LLDBFormat = LLDBFormat::eFormatComplex;
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBFormat {
-    eFormatDefault = 0,
-    eFormatBoolean = 1,
-    eFormatBinary = 2,
-    eFormatBytes = 3,
-    eFormatBytesWithASCII = 4,
-    eFormatChar = 5,
-    eFormatCharPrintable = 6,
-    eFormatComplex = 7,
-    eFormatCString = 8,
-    eFormatDecimal = 9,
-    eFormatEnum = 10,
-    eFormatHex = 11,
-    eFormatHexUppercase = 12,
-    eFormatFloat = 13,
-    eFormatOctal = 14,
-    eFormatOSType = 15,
-    eFormatUnicode16 = 16,
-    eFormatUnicode32 = 17,
-    eFormatUnsigned = 18,
-    eFormatPointer = 19,
-    eFormatVectorOfChar = 20,
-    eFormatVectorOfSInt8 = 21,
-    eFormatVectorOfUInt8 = 22,
-    eFormatVectorOfSInt16 = 23,
-    eFormatVectorOfUInt16 = 24,
-    eFormatVectorOfSInt32 = 25,
-    eFormatVectorOfUInt32 = 26,
-    eFormatVectorOfSInt64 = 27,
-    eFormatVectorOfUInt64 = 28,
-    eFormatVectorOfFloat16 = 29,
-    eFormatVectorOfFloat32 = 30,
-    eFormatVectorOfFloat64 = 31,
-    eFormatVectorOfUInt128 = 32,
-    eFormatComplexInteger = 33,
-    eFormatCharArray = 34,
-    eFormatAddressInfo = 35,
-    eFormatHexFloat = 36,
-    eFormatInstruction = 37,
-    eFormatVoid = 38,
+pub enum Format {
+    Default = 0,
+    Boolean = 1,
+    Binary = 2,
+    Bytes = 3,
+    BytesWithASCII = 4,
+    Char = 5,
+    CharPrintable = 6,
+    Complex = 7,
+    CString = 8,
+    Decimal = 9,
+    Enum = 10,
+    Hex = 11,
+    HexUppercase = 12,
+    Float = 13,
+    Octal = 14,
+    OSType = 15,
+    Unicode16 = 16,
+    Unicode32 = 17,
+    Unsigned = 18,
+    Pointer = 19,
+    VectorOfChar = 20,
+    VectorOfSInt8 = 21,
+    VectorOfUInt8 = 22,
+    VectorOfSInt16 = 23,
+    VectorOfUInt16 = 24,
+    VectorOfSInt32 = 25,
+    VectorOfUInt32 = 26,
+    VectorOfSInt64 = 27,
+    VectorOfUInt64 = 28,
+    VectorOfFloat16 = 29,
+    VectorOfFloat32 = 30,
+    VectorOfFloat64 = 31,
+    VectorOfUInt128 = 32,
+    ComplexInteger = 33,
+    CharArray = 34,
+    AddressInfo = 35,
+    HexFloat = 36,
+    Instruction = 37,
+    Void = 38,
     kNumFormats = 39,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBDescriptionLevel {
-    eDescriptionLevelBrief = 0,
-    eDescriptionLevelFull = 1,
-    eDescriptionLevelVerbose = 2,
-    eDescriptionLevelInitial = 3,
+pub enum DescriptionLevel {
+    Brief = 0,
+    Full = 1,
+    Verbose = 2,
+    Initial = 3,
     kNumDescriptionLevels = 4,
 }
-pub const eScriptLanguageDefault: LLDBScriptLanguage =
-    LLDBScriptLanguage::eScriptLanguagePython;
+pub const eScriptLanguageDefault: ScriptLanguage =
+    ScriptLanguage::Python;
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBScriptLanguage {
-    eScriptLanguageNone = 0,
-    eScriptLanguagePython = 1,
+pub enum ScriptLanguage {
+    None = 0,
+    Python = 1,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBRegisterKind {
-    eRegisterKindEHFrame = 0,
-    eRegisterKindDWARF = 1,
-    eRegisterKindGeneric = 2,
-    eRegisterKindProcessPlugin = 3,
-    eRegisterKindLLDB = 4,
+pub enum RegisterKind {
+    EHFrame = 0,
+    DWARF = 1,
+    Generic = 2,
+    ProcessPlugin = 3,
+    LLDB = 4,
     kNumRegisterKinds = 5,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBStopReason {
-    eStopReasonInvalid = 0,
-    eStopReasonNone = 1,
-    eStopReasonTrace = 2,
-    eStopReasonBreakpoint = 3,
-    eStopReasonWatchpoint = 4,
-    eStopReasonSignal = 5,
-    eStopReasonException = 6,
-    eStopReasonExec = 7,
-    eStopReasonPlanComplete = 8,
-    eStopReasonThreadExiting = 9,
-    eStopReasonInstrumentation = 10,
+pub enum StopReason {
+    Invalid = 0,
+    None = 1,
+    Trace = 2,
+    Breakpoint = 3,
+    Watchpoint = 4,
+    Signal = 5,
+    Exception = 6,
+    Exec = 7,
+    PlanComplete = 8,
+    ThreadExiting = 9,
+    Instrumentation = 10,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBReturnStatus {
-    eReturnStatusInvalid = 0,
-    eReturnStatusSuccessFinishNoResult = 1,
-    eReturnStatusSuccessFinishResult = 2,
-    eReturnStatusSuccessContinuingNoResult = 3,
-    eReturnStatusSuccessContinuingResult = 4,
-    eReturnStatusStarted = 5,
-    eReturnStatusFailed = 6,
-    eReturnStatusQuit = 7,
+pub enum ReturnStatus {
+    Invalid = 0,
+    SuccessFinishNoResult = 1,
+    SuccessFinishResult = 2,
+    SuccessContinuingNoResult = 3,
+    SuccessContinuingResult = 4,
+    Started = 5,
+    Failed = 6,
+    Quit = 7,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBExpressionResults {
-    eExpressionCompleted = 0,
-    eExpressionSetupError = 1,
-    eExpressionParseError = 2,
-    eExpressionDiscarded = 3,
-    eExpressionInterrupted = 4,
-    eExpressionHitBreakpoint = 5,
-    eExpressionTimedOut = 6,
-    eExpressionResultUnavailable = 7,
-    eExpressionStoppedForDebug = 8,
+pub enum ExpressionResults {
+    Completed = 0,
+    SetupError = 1,
+    ParseError = 2,
+    Discarded = 3,
+    Interrupted = 4,
+    HitBreakpoint = 5,
+    TimedOut = 6,
+    ResultUnavailable = 7,
+    StoppedForDebug = 8,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBConnectionStatus {
-    eConnectionStatusSuccess = 0,
-    eConnectionStatusEndOfFile = 1,
-    eConnectionStatusError = 2,
-    eConnectionStatusTimedOut = 3,
-    eConnectionStatusNoConnection = 4,
-    eConnectionStatusLostConnection = 5,
-    eConnectionStatusInterrupted = 6,
+pub enum ConnectionStatus {
+    ConnectionStatusSuccess = 0,
+    ConnectionStatusEndOfFile = 1,
+    ConnectionStatusError = 2,
+    ConnectionStatusTimedOut = 3,
+    ConnectionStatusNoConnection = 4,
+    ConnectionStatusLostConnection = 5,
+    ConnectionStatusInterrupted = 6,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBErrorType {
-    eErrorTypeInvalid = 0,
-    eErrorTypeGeneric = 1,
-    eErrorTypeMachKernel = 2,
-    eErrorTypePOSIX = 3,
-    eErrorTypeExpression = 4,
-    eErrorTypeWin32 = 5,
+pub enum ErrorType {
+    Invalid = 0,
+    Generic = 1,
+    MachKernel = 2,
+    POSIX = 3,
+    Expression = 4,
+    Win32 = 5,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBValueType {
-    eValueTypeInvalid = 0,
-    eValueTypeVariableGlobal = 1,
-    eValueTypeVariableStatic = 2,
-    eValueTypeVariableArgument = 3,
-    eValueTypeVariableLocal = 4,
-    eValueTypeRegister = 5,
-    eValueTypeRegisterSet = 6,
-    eValueTypeConstResult = 7,
+pub enum ValueType {
+    Invalid = 0,
+    VariableGlobal = 1,
+    VariableStatic = 2,
+    VariableArgument = 3,
+    VariableLocal = 4,
+    Register = 5,
+    RegisterSet = 6,
+    ConstResult = 7,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBInputReaderGranularity {
-    eInputReaderGranularityInvalid = 0,
-    eInputReaderGranularityByte = 1,
-    eInputReaderGranularityWord = 2,
-    eInputReaderGranularityLine = 3,
-    eInputReaderGranularityAll = 4,
+pub enum InputReaderGranularity {
+    Invalid = 0,
+    Byte = 1,
+    Word = 2,
+    Line = 3,
+    All = 4,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBSymbolContextItem {
-    eSymbolContextTarget = 1,
-    eSymbolContextModule = 2,
-    eSymbolContextCompUnit = 4,
-    eSymbolContextFunction = 8,
-    eSymbolContextBlock = 16,
-    eSymbolContextLineEntry = 32,
-    eSymbolContextSymbol = 64,
-    eSymbolContextEverything = 127,
-    eSymbolContextVariable = 128,
+pub enum SymbolContextItem {
+    Target = 1,
+    Module = 2,
+    CompUnit = 4,
+    Function = 8,
+    Block = 16,
+    LineEntry = 32,
+    Symbol = 64,
+    Everything = 127,
+    Variable = 128,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBPermissions {
-    ePermissionsWritable = 1,
-    ePermissionsReadable = 2,
-    ePermissionsExecutable = 4,
+pub enum Permissions {
+    Writable = 1,
+    Readable = 2,
+    Executable = 4,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBInputReaderAction {
-    eInputReaderActivate = 0,
-    eInputReaderAsynchronousOutputWritten = 1,
-    eInputReaderReactivate = 2,
-    eInputReaderDeactivate = 3,
-    eInputReaderGotToken = 4,
-    eInputReaderInterrupt = 5,
-    eInputReaderEndOfFile = 6,
-    eInputReaderDone = 7,
+pub enum InputReaderAction {
+    Activate = 0,
+    AsynchronousOutputWritten = 1,
+    Reactivate = 2,
+    Deactivate = 3,
+    GotToken = 4,
+    Interrupt = 5,
+    EndOfFile = 6,
+    Done = 7,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBBreakpointEventType {
-    eBreakpointEventTypeInvalidType = 1,
-    eBreakpointEventTypeAdded = 2,
-    eBreakpointEventTypeRemoved = 4,
-    eBreakpointEventTypeLocationsAdded = 8,
-    eBreakpointEventTypeLocationsRemoved = 16,
-    eBreakpointEventTypeLocationsResolved = 32,
-    eBreakpointEventTypeEnabled = 64,
-    eBreakpointEventTypeDisabled = 128,
-    eBreakpointEventTypeCommandChanged = 256,
-    eBreakpointEventTypeConditionChanged = 512,
-    eBreakpointEventTypeIgnoreChanged = 1024,
-    eBreakpointEventTypeThreadChanged = 2048,
+pub enum BreakpointEventType {
+    InvalidType = 1,
+    Added = 2,
+    Removed = 4,
+    LocationsAdded = 8,
+    LocationsRemoved = 16,
+    LocationsResolved = 32,
+    Enabled = 64,
+    Disabled = 128,
+    CommandChanged = 256,
+    ConditionChanged = 512,
+    IgnoreChanged = 1024,
+    ThreadChanged = 2048,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBWatchpointEventType {
-    eWatchpointEventTypeInvalidType = 1,
-    eWatchpointEventTypeAdded = 2,
-    eWatchpointEventTypeRemoved = 4,
-    eWatchpointEventTypeEnabled = 64,
-    eWatchpointEventTypeDisabled = 128,
-    eWatchpointEventTypeCommandChanged = 256,
-    eWatchpointEventTypeConditionChanged = 512,
-    eWatchpointEventTypeIgnoreChanged = 1024,
-    eWatchpointEventTypeThreadChanged = 2048,
-    eWatchpointEventTypeTypeChanged = 4096,
+pub enum WatchpointEventType {
+    WatchpointEventTypeInvalidType = 1,
+    WatchpointEventTypeAdded = 2,
+    WatchpointEventTypeRemoved = 4,
+    WatchpointEventTypeEnabled = 64,
+    WatchpointEventTypeDisabled = 128,
+    WatchpointEventTypeCommandChanged = 256,
+    WatchpointEventTypeConditionChanged = 512,
+    WatchpointEventTypeIgnoreChanged = 1024,
+    WatchpointEventTypeThreadChanged = 2048,
+    WatchpointEventTypeTypeChanged = 4096,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBLanguageType {
-    eLanguageTypeUnknown = 0,
-    eLanguageTypeC89 = 1,
-    eLanguageTypeC = 2,
-    eLanguageTypeAda83 = 3,
-    eLanguageTypeC_plus_plus = 4,
-    eLanguageTypeCobol74 = 5,
-    eLanguageTypeCobol85 = 6,
-    eLanguageTypeFortran77 = 7,
-    eLanguageTypeFortran90 = 8,
-    eLanguageTypePascal83 = 9,
-    eLanguageTypeModula2 = 10,
-    eLanguageTypeJava = 11,
-    eLanguageTypeC99 = 12,
-    eLanguageTypeAda95 = 13,
-    eLanguageTypeFortran95 = 14,
-    eLanguageTypePLI = 15,
-    eLanguageTypeObjC = 16,
-    eLanguageTypeObjC_plus_plus = 17,
-    eLanguageTypeUPC = 18,
-    eLanguageTypeD = 19,
-    eLanguageTypePython = 20,
-    eLanguageTypeOpenCL = 21,
-    eLanguageTypeGo = 22,
-    eLanguageTypeModula3 = 23,
-    eLanguageTypeHaskell = 24,
-    eLanguageTypeC_plus_plus_03 = 25,
-    eLanguageTypeC_plus_plus_11 = 26,
-    eLanguageTypeOCaml = 27,
-    eLanguageTypeRust = 28,
-    eLanguageTypeC11 = 29,
-    eLanguageTypeSwift = 30,
-    eLanguageTypeJulia = 31,
-    eLanguageTypeDylan = 32,
-    eLanguageTypeC_plus_plus_14 = 33,
-    eLanguageTypeFortran03 = 34,
-    eLanguageTypeFortran08 = 35,
-    eLanguageTypeMipsAssembler = 36,
-    eLanguageTypeExtRenderScript = 37,
-    eNumLanguageTypes = 38,
+pub enum LanguageType {
+    Unknown = 0,
+    C89 = 1,
+    C = 2,
+    Ada83 = 3,
+    C_plus_plus = 4,
+    Cobol74 = 5,
+    Cobol85 = 6,
+    Fortran77 = 7,
+    Fortran90 = 8,
+    Pascal83 = 9,
+    Modula2 = 10,
+    Java = 11,
+    C99 = 12,
+    Ada95 = 13,
+    Fortran95 = 14,
+    PLI = 15,
+    ObjC = 16,
+    ObjC_plus_plus = 17,
+    UPC = 18,
+    D = 19,
+    Python = 20,
+    OpenCL = 21,
+    Go = 22,
+    Modula3 = 23,
+    Haskell = 24,
+    C_plus_plus_03 = 25,
+    C_plus_plus_11 = 26,
+    OCaml = 27,
+    Rust = 28,
+    C11 = 29,
+    Swift = 30,
+    Julia = 31,
+    Dylan = 32,
+    C_plus_plus_14 = 33,
+    Fortran03 = 34,
+    Fortran08 = 35,
+    MipsAssembler = 36,
+    ExtRenderScript = 37,
+    NumLanguageTypes = 38,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBInstrumentationRuntimeType {
-    eInstrumentationRuntimeTypeAddressSanitizer = 0,
-    eInstrumentationRuntimeTypeThreadSanitizer = 1,
-    eNumInstrumentationRuntimeTypes = 2,
+pub enum InstrumentationRuntimeType {
+    AddressSanitizer = 0,
+    ThreadSanitizer = 1,
+    NumInstrumentationRuntimeTypes = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBDynamicValueType {
-    eNoDynamicValues = 0,
-    eDynamicCanRunTarget = 1,
-    eDynamicDontRunTarget = 2,
+pub enum DynamicValueType {
+    NoDynamicValues = 0,
+    DynamicCanRunTarget = 1,
+    DynamicDontRunTarget = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBAccessType {
-    eAccessNone = 0,
-    eAccessPublic = 1,
-    eAccessPrivate = 2,
-    eAccessProtected = 3,
-    eAccessPackage = 4,
+pub enum AccessType {
+    None = 0,
+    Public = 1,
+    Private = 2,
+    Protected = 3,
+    Package = 4,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBCommandArgumentType {
-    eArgTypeAddress = 0,
-    eArgTypeAddressOrExpression = 1,
-    eArgTypeAliasName = 2,
-    eArgTypeAliasOptions = 3,
-    eArgTypeArchitecture = 4,
-    eArgTypeBoolean = 5,
-    eArgTypeBreakpointID = 6,
-    eArgTypeBreakpointIDRange = 7,
-    eArgTypeBreakpointName = 8,
-    eArgTypeByteSize = 9,
-    eArgTypeClassName = 10,
-    eArgTypeCommandName = 11,
-    eArgTypeCount = 12,
-    eArgTypeDescriptionVerbosity = 13,
-    eArgTypeDirectoryName = 14,
-    eArgTypeDisassemblyFlavor = 15,
-    eArgTypeEndAddress = 16,
-    eArgTypeExpression = 17,
-    eArgTypeExpressionPath = 18,
-    eArgTypeExprFormat = 19,
-    eArgTypeFilename = 20,
-    eArgTypeFormat = 21,
-    eArgTypeFrameIndex = 22,
-    eArgTypeFullName = 23,
-    eArgTypeFunctionName = 24,
-    eArgTypeFunctionOrSymbol = 25,
-    eArgTypeGDBFormat = 26,
-    eArgTypeHelpText = 27,
-    eArgTypeIndex = 28,
-    eArgTypeLanguage = 29,
-    eArgTypeLineNum = 30,
-    eArgTypeLogCategory = 31,
-    eArgTypeLogChannel = 32,
-    eArgTypeMethod = 33,
-    eArgTypeName = 34,
-    eArgTypeNewPathPrefix = 35,
-    eArgTypeNumLines = 36,
-    eArgTypeNumberPerLine = 37,
-    eArgTypeOffset = 38,
-    eArgTypeOldPathPrefix = 39,
-    eArgTypeOneLiner = 40,
-    eArgTypePath = 41,
-    eArgTypePermissionsNumber = 42,
-    eArgTypePermissionsString = 43,
-    eArgTypePid = 44,
-    eArgTypePlugin = 45,
-    eArgTypeProcessName = 46,
-    eArgTypePythonClass = 47,
-    eArgTypePythonFunction = 48,
-    eArgTypePythonScript = 49,
-    eArgTypeQueueName = 50,
-    eArgTypeRegisterName = 51,
-    eArgTypeRegularExpression = 52,
-    eArgTypeRunArgs = 53,
-    eArgTypeRunMode = 54,
-    eArgTypeScriptedCommandSynchronicity = 55,
-    eArgTypeScriptLang = 56,
-    eArgTypeSearchWord = 57,
-    eArgTypeSelector = 58,
-    eArgTypeSettingIndex = 59,
-    eArgTypeSettingKey = 60,
-    eArgTypeSettingPrefix = 61,
-    eArgTypeSettingVariableName = 62,
-    eArgTypeShlibName = 63,
-    eArgTypeSourceFile = 64,
-    eArgTypeSortOrder = 65,
-    eArgTypeStartAddress = 66,
-    eArgTypeSummaryString = 67,
-    eArgTypeSymbol = 68,
-    eArgTypeThreadID = 69,
-    eArgTypeThreadIndex = 70,
-    eArgTypeThreadName = 71,
-    eArgTypeTypeName = 72,
-    eArgTypeUnsignedInteger = 73,
-    eArgTypeUnixSignal = 74,
-    eArgTypeVarName = 75,
-    eArgTypeValue = 76,
-    eArgTypeWidth = 77,
-    eArgTypeNone = 78,
-    eArgTypePlatform = 79,
-    eArgTypeWatchpointID = 80,
-    eArgTypeWatchpointIDRange = 81,
-    eArgTypeWatchType = 82,
-    eArgTypeLastArg = 83,
-}
-pub const eSymbolTypeInvalid: LLDBSymbolType = LLDBSymbolType::eSymbolTypeAny;
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum LLDBSymbolType {
-    eSymbolTypeAny = 0,
-    eSymbolTypeAbsolute = 1,
-    eSymbolTypeCode = 2,
-    eSymbolTypeResolver = 3,
-    eSymbolTypeData = 4,
-    eSymbolTypeTrampoline = 5,
-    eSymbolTypeRuntime = 6,
-    eSymbolTypeException = 7,
-    eSymbolTypeSourceFile = 8,
-    eSymbolTypeHeaderFile = 9,
-    eSymbolTypeObjectFile = 10,
-    eSymbolTypeCommonBlock = 11,
-    eSymbolTypeBlock = 12,
-    eSymbolTypeLocal = 13,
-    eSymbolTypeParam = 14,
-    eSymbolTypeVariable = 15,
-    eSymbolTypeVariableType = 16,
-    eSymbolTypeLineEntry = 17,
-    eSymbolTypeLineHeader = 18,
-    eSymbolTypeScopeBegin = 19,
-    eSymbolTypeScopeEnd = 20,
-    eSymbolTypeAdditional = 21,
-    eSymbolTypeCompiler = 22,
-    eSymbolTypeInstrumentation = 23,
-    eSymbolTypeUndefined = 24,
-    eSymbolTypeObjCClass = 25,
-    eSymbolTypeObjCMetaClass = 26,
-    eSymbolTypeObjCIVar = 27,
-    eSymbolTypeReExported = 28,
+pub enum CommandArgumentType {
+    Address = 0,
+    AddressOrExpression = 1,
+    AliasName = 2,
+    AliasOptions = 3,
+    Architecture = 4,
+    Boolean = 5,
+    BreakpointID = 6,
+    BreakpointIDRange = 7,
+    BreakpointName = 8,
+    ByteSize = 9,
+    ClassName = 10,
+    CommandName = 11,
+    Count = 12,
+    DescriptionVerbosity = 13,
+    DirectoryName = 14,
+    DisassemblyFlavor = 15,
+    EndAddress = 16,
+    Expression = 17,
+    ExpressionPath = 18,
+    ExprFormat = 19,
+    Filename = 20,
+    Format = 21,
+    FrameIndex = 22,
+    FullName = 23,
+    FunctionName = 24,
+    FunctionOrSymbol = 25,
+    GDBFormat = 26,
+    HelpText = 27,
+    Index = 28,
+    Language = 29,
+    LineNum = 30,
+    LogCategory = 31,
+    LogChannel = 32,
+    Method = 33,
+    Name = 34,
+    NewPathPrefix = 35,
+    NumLines = 36,
+    NumberPerLine = 37,
+    Offset = 38,
+    OldPathPrefix = 39,
+    OneLiner = 40,
+    Path = 41,
+    PermissionsNumber = 42,
+    PermissionsString = 43,
+    Pid = 44,
+    Plugin = 45,
+    ProcessName = 46,
+    PythonClass = 47,
+    PythonFunction = 48,
+    PythonScript = 49,
+    QueueName = 50,
+    RegisterName = 51,
+    RegularExpression = 52,
+    RunArgs = 53,
+    RunMode = 54,
+    ScriptedCommandSynchronicity = 55,
+    ScriptLang = 56,
+    SearchWord = 57,
+    Selector = 58,
+    SettingIndex = 59,
+    SettingKey = 60,
+    SettingPrefix = 61,
+    SettingVariableName = 62,
+    ShlibName = 63,
+    SourceFile = 64,
+    SortOrder = 65,
+    StartAddress = 66,
+    SummaryString = 67,
+    Symbol = 68,
+    ThreadID = 69,
+    ThreadIndex = 70,
+    ThreadName = 71,
+    TypeName = 72,
+    UnsignedInteger = 73,
+    UnixSignal = 74,
+    VarName = 75,
+    Value = 76,
+    Width = 77,
+    None = 78,
+    Platform = 79,
+    WatchpointID = 80,
+    WatchpointIDRange = 81,
+    WatchType = 82,
+    LastArg = 83,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBSectionType {
-    eSectionTypeInvalid = 0,
-    eSectionTypeCode = 1,
-    eSectionTypeContainer = 2,
-    eSectionTypeData = 3,
-    eSectionTypeDataCString = 4,
-    eSectionTypeDataCStringPointers = 5,
-    eSectionTypeDataSymbolAddress = 6,
-    eSectionTypeData4 = 7,
-    eSectionTypeData8 = 8,
-    eSectionTypeData16 = 9,
-    eSectionTypeDataPointers = 10,
-    eSectionTypeDebug = 11,
-    eSectionTypeZeroFill = 12,
-    eSectionTypeDataObjCMessageRefs = 13,
-    eSectionTypeDataObjCCFStrings = 14,
-    eSectionTypeDWARFDebugAbbrev = 15,
-    eSectionTypeDWARFDebugAddr = 16,
-    eSectionTypeDWARFDebugAranges = 17,
-    eSectionTypeDWARFDebugFrame = 18,
-    eSectionTypeDWARFDebugInfo = 19,
-    eSectionTypeDWARFDebugLine = 20,
-    eSectionTypeDWARFDebugLoc = 21,
-    eSectionTypeDWARFDebugMacInfo = 22,
-    eSectionTypeDWARFDebugMacro = 23,
-    eSectionTypeDWARFDebugPubNames = 24,
-    eSectionTypeDWARFDebugPubTypes = 25,
-    eSectionTypeDWARFDebugRanges = 26,
-    eSectionTypeDWARFDebugStr = 27,
-    eSectionTypeDWARFDebugStrOffsets = 28,
-    eSectionTypeDWARFAppleNames = 29,
-    eSectionTypeDWARFAppleTypes = 30,
-    eSectionTypeDWARFAppleNamespaces = 31,
-    eSectionTypeDWARFAppleObjC = 32,
-    eSectionTypeELFSymbolTable = 33,
-    eSectionTypeELFDynamicSymbols = 34,
-    eSectionTypeELFRelocationEntries = 35,
-    eSectionTypeELFDynamicLinkInfo = 36,
-    eSectionTypeEHFrame = 37,
-    eSectionTypeARMexidx = 38,
-    eSectionTypeARMextab = 39,
-    eSectionTypeCompactUnwind = 40,
-    eSectionTypeGoSymtab = 41,
-    eSectionTypeAbsoluteAddress = 42,
-    eSectionTypeOther = 43,
+pub enum SymbolType {
+    Any = 0,
+    Absolute = 1,
+    Code = 2,
+    Resolver = 3,
+    Data = 4,
+    Trampoline = 5,
+    Runtime = 6,
+    Exception = 7,
+    SourceFile = 8,
+    HeaderFile = 9,
+    ObjectFile = 10,
+    CommonBlock = 11,
+    Block = 12,
+    Local = 13,
+    Param = 14,
+    Variable = 15,
+    VariableType = 16,
+    LineEntry = 17,
+    LineHeader = 18,
+    ScopeBegin = 19,
+    ScopeEnd = 20,
+    Additional = 21,
+    Compiler = 22,
+    Instrumentation = 23,
+    Undefined = 24,
+    ObjCClass = 25,
+    ObjCMetaClass = 26,
+    ObjCIVar = 27,
+    ReExported = 28,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBEmulateInstructionOptions {
-    eEmulateInstructionOptionNone = 0,
-    eEmulateInstructionOptionAutoAdvancePC = 1,
-    eEmulateInstructionOptionIgnoreConditions = 2,
-}
-pub const eFunctionNameTypeAny: LLDBFunctionNameType =
-    LLDBFunctionNameType::eFunctionNameTypeAuto;
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum LLDBFunctionNameType {
-    eFunctionNameTypeNone = 0,
-    eFunctionNameTypeAuto = 2,
-    eFunctionNameTypeFull = 4,
-    eFunctionNameTypeBase = 8,
-    eFunctionNameTypeMethod = 16,
-    eFunctionNameTypeSelector = 32,
-}
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum LLDBBasicType {
-    eBasicTypeInvalid = 0,
-    eBasicTypeVoid = 1,
-    eBasicTypeChar = 2,
-    eBasicTypeSignedChar = 3,
-    eBasicTypeUnsignedChar = 4,
-    eBasicTypeWChar = 5,
-    eBasicTypeSignedWChar = 6,
-    eBasicTypeUnsignedWChar = 7,
-    eBasicTypeChar16 = 8,
-    eBasicTypeChar32 = 9,
-    eBasicTypeShort = 10,
-    eBasicTypeUnsignedShort = 11,
-    eBasicTypeInt = 12,
-    eBasicTypeUnsignedInt = 13,
-    eBasicTypeLong = 14,
-    eBasicTypeUnsignedLong = 15,
-    eBasicTypeLongLong = 16,
-    eBasicTypeUnsignedLongLong = 17,
-    eBasicTypeInt128 = 18,
-    eBasicTypeUnsignedInt128 = 19,
-    eBasicTypeBool = 20,
-    eBasicTypeHalf = 21,
-    eBasicTypeFloat = 22,
-    eBasicTypeDouble = 23,
-    eBasicTypeLongDouble = 24,
-    eBasicTypeFloatComplex = 25,
-    eBasicTypeDoubleComplex = 26,
-    eBasicTypeLongDoubleComplex = 27,
-    eBasicTypeObjCID = 28,
-    eBasicTypeObjCClass = 29,
-    eBasicTypeObjCSel = 30,
-    eBasicTypeNullPtr = 31,
-    eBasicTypeOther = 32,
+pub enum SectionType {
+    Invalid = 0,
+    Code = 1,
+    Container = 2,
+    Data = 3,
+    DataCString = 4,
+    DataCStringPointers = 5,
+    DataSymbolAddress = 6,
+    Data4 = 7,
+    Data8 = 8,
+    Data16 = 9,
+    DataPointers = 10,
+    Debug = 11,
+    ZeroFill = 12,
+    DataObjCMessageRefs = 13,
+    DataObjCCFStrings = 14,
+    DWARFDebugAbbrev = 15,
+    DWARFDebugAddr = 16,
+    DWARFDebugAranges = 17,
+    DWARFDebugFrame = 18,
+    DWARFDebugInfo = 19,
+    DWARFDebugLine = 20,
+    DWARFDebugLoc = 21,
+    DWARFDebugMacInfo = 22,
+    DWARFDebugMacro = 23,
+    DWARFDebugPubNames = 24,
+    DWARFDebugPubTypes = 25,
+    DWARFDebugRanges = 26,
+    DWARFDebugStr = 27,
+    DWARFDebugStrOffsets = 28,
+    DWARFAppleNames = 29,
+    DWARFAppleTypes = 30,
+    DWARFAppleNamespaces = 31,
+    DWARFAppleObjC = 32,
+    ELFSymbolTable = 33,
+    ELFDynamicSymbols = 34,
+    ELFRelocationEntries = 35,
+    ELFDynamicLinkInfo = 36,
+    EHFrame = 37,
+    ARMexidx = 38,
+    ARMextab = 39,
+    CompactUnwind = 40,
+    GoSymtab = 41,
+    AbsoluteAddress = 42,
+    Other = 43,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBTypeClass {
-    eTypeClassInvalid = 0,
-    eTypeClassArray = 1,
-    eTypeClassBlockPointer = 2,
-    eTypeClassBuiltin = 4,
-    eTypeClassClass = 8,
-    eTypeClassComplexFloat = 16,
-    eTypeClassComplexInteger = 32,
-    eTypeClassEnumeration = 64,
-    eTypeClassFunction = 128,
-    eTypeClassMemberPointer = 256,
-    eTypeClassObjCObject = 512,
-    eTypeClassObjCInterface = 1024,
-    eTypeClassObjCObjectPointer = 2048,
-    eTypeClassPointer = 4096,
-    eTypeClassReference = 8192,
-    eTypeClassStruct = 16384,
-    eTypeClassTypedef = 32768,
-    eTypeClassUnion = 65536,
-    eTypeClassVector = 131072,
-    eTypeClassOther = 2147483648,
-    eTypeClassAny = 4294967295,
+pub enum EmulateInstructionOptions {
+    None = 0,
+    AutoAdvancePC = 1,
+    IgnoreConditions = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBTemplateArgumentKind {
-    eTemplateArgumentKindNull = 0,
-    eTemplateArgumentKindType = 1,
-    eTemplateArgumentKindDeclaration = 2,
-    eTemplateArgumentKindIntegral = 3,
-    eTemplateArgumentKindTemplate = 4,
-    eTemplateArgumentKindTemplateExpansion = 5,
-    eTemplateArgumentKindExpression = 6,
-    eTemplateArgumentKindPack = 7,
+pub enum FunctionNameType {
+    None = 0,
+    Auto = 2,
+    Full = 4,
+    Base = 8,
+    Method = 16,
+    Selector = 32,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBTypeOptions {
-    eTypeOptionNone = 0,
-    eTypeOptionCascade = 1,
-    eTypeOptionSkipPointers = 2,
-    eTypeOptionSkipReferences = 4,
-    eTypeOptionHideChildren = 8,
-    eTypeOptionHideValue = 16,
-    eTypeOptionShowOneLiner = 32,
-    eTypeOptionHideNames = 64,
-    eTypeOptionNonCacheable = 128,
-    eTypeOptionHideEmptyAggregates = 256,
+pub enum BasicType {
+    Invalid = 0,
+    Void = 1,
+    Char = 2,
+    SignedChar = 3,
+    UnsignedChar = 4,
+    WChar = 5,
+    SignedWChar = 6,
+    UnsignedWChar = 7,
+    Char16 = 8,
+    Char32 = 9,
+    Short = 10,
+    UnsignedShort = 11,
+    Int = 12,
+    UnsignedInt = 13,
+    Long = 14,
+    UnsignedLong = 15,
+    LongLong = 16,
+    UnsignedLongLong = 17,
+    Int128 = 18,
+    UnsignedInt128 = 19,
+    Bool = 20,
+    Half = 21,
+    Float = 22,
+    Double = 23,
+    LongDouble = 24,
+    FloatComplex = 25,
+    DoubleComplex = 26,
+    LongDoubleComplex = 27,
+    ObjCID = 28,
+    ObjCClass = 29,
+    ObjCSel = 30,
+    NullPtr = 31,
+    Other = 32,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBFrameComparison {
-    eFrameCompareInvalid = 0,
-    eFrameCompareUnknown = 1,
-    eFrameCompareEqual = 2,
-    eFrameCompareSameParent = 3,
-    eFrameCompareYounger = 4,
-    eFrameCompareOlder = 5,
+pub enum TypeClass {
+    Invalid = 0,
+    Array = 1,
+    BlockPointer = 2,
+    Builtin = 4,
+    Class = 8,
+    ComplexFloat = 16,
+    ComplexInteger = 32,
+    Enumeration = 64,
+    Function = 128,
+    MemberPointer = 256,
+    ObjCObject = 512,
+    ObjCInterface = 1024,
+    ObjCObjectPointer = 2048,
+    Pointer = 4096,
+    Reference = 8192,
+    Struct = 16384,
+    Typedef = 32768,
+    Union = 65536,
+    Vector = 131072,
+    Other = 2147483648,
+    Any = 4294967295,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBAddressClass {
-    eAddressClassInvalid = 0,
-    eAddressClassUnknown = 1,
-    eAddressClassCode = 2,
-    eAddressClassCodeAlternateISA = 3,
-    eAddressClassData = 4,
-    eAddressClassDebug = 5,
-    eAddressClassRuntime = 6,
-}
-pub const eFilePermissionsFileDefault: LLDBFilePermissions =
-    LLDBFilePermissions::eFilePermissionsUserRW;
-pub const eFilePermissionsDirectoryDefault: LLDBFilePermissions =
-    LLDBFilePermissions::eFilePermissionsUserRWX;
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum LLDBFilePermissions {
-    eFilePermissionsUserRead = 256,
-    eFilePermissionsUserWrite = 128,
-    eFilePermissionsUserExecute = 64,
-    eFilePermissionsGroupRead = 32,
-    eFilePermissionsGroupWrite = 16,
-    eFilePermissionsGroupExecute = 8,
-    eFilePermissionsWorldRead = 4,
-    eFilePermissionsWorldWrite = 2,
-    eFilePermissionsWorldExecute = 1,
-    eFilePermissionsUserRW = 384,
-    eFileFilePermissionsUserRX = 320,
-    eFilePermissionsUserRWX = 448,
-    eFilePermissionsGroupRW = 48,
-    eFilePermissionsGroupRX = 40,
-    eFilePermissionsGroupRWX = 56,
-    eFilePermissionsWorldRW = 6,
-    eFilePermissionsWorldRX = 5,
-    eFilePermissionsWorldRWX = 7,
-    eFilePermissionsEveryoneR = 292,
-    eFilePermissionsEveryoneW = 146,
-    eFilePermissionsEveryoneX = 73,
-    eFilePermissionsEveryoneRW = 438,
-    eFilePermissionsEveryoneRX = 365,
-    eFilePermissionsEveryoneRWX = 511,
+pub enum TemplateArgumentKind {
+    Null = 0,
+    Type = 1,
+    Declaration = 2,
+    Integral = 3,
+    Template = 4,
+    TemplateExpansion = 5,
+    Expression = 6,
+    Pack = 7,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBQueueItemKind {
-    eQueueItemKindUnknown = 0,
-    eQueueItemKindFunction = 1,
-    eQueueItemKindBlock = 2,
+pub enum TypeOptions {
+    None = 0,
+    Cascade = 1,
+    SkipPointers = 2,
+    SkipReferences = 4,
+    HideChildren = 8,
+    HideValue = 16,
+    ShowOneLiner = 32,
+    HideNames = 64,
+    NonCacheable = 128,
+    HideEmptyAggregates = 256,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBQueueKind {
-    eQueueKindUnknown = 0,
-    eQueueKindSerial = 1,
-    eQueueKindConcurrent = 2,
+pub enum FrameComparison {
+    Invalid = 0,
+    Unknown = 1,
+    Equal = 2,
+    SameParent = 3,
+    Younger = 4,
+    Older = 5,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBExpressionEvaluationPhase {
-    eExpressionEvaluationParse = 0,
-    eExpressionEvaluationIRGen = 1,
-    eExpressionEvaluationExecution = 2,
-    eExpressionEvaluationComplete = 3,
+pub enum AddressClass {
+    Invalid = 0,
+    Unknown = 1,
+    Code = 2,
+    CodeAlternateISA = 3,
+    Data = 4,
+    Debug = 5,
+    Runtime = 6,
+}
+pub const eFilePermissionsFileDefault: FilePermissions =
+    FilePermissions::UserRW;
+pub const eFilePermissionsDirectoryDefault: FilePermissions =
+    FilePermissions::UserRWX;
+#[derive(Copy, Clone)]
+#[repr(u32)]
+#[derive(Debug)]
+pub enum FilePermissions {
+    UserRead = 256,
+    UserWrite = 128,
+    UserExecute = 64,
+    GroupRead = 32,
+    GroupWrite = 16,
+    GroupExecute = 8,
+    WorldRead = 4,
+    WorldWrite = 2,
+    WorldExecute = 1,
+    UserRW = 384,
+    FileFilePermissionsUserRX = 320,
+    UserRWX = 448,
+    GroupRW = 48,
+    GroupRX = 40,
+    GroupRWX = 56,
+    WorldRW = 6,
+    WorldRX = 5,
+    WorldRWX = 7,
+    EveryoneR = 292,
+    EveryoneW = 146,
+    EveryoneX = 73,
+    EveryoneRW = 438,
+    EveryoneRX = 365,
+    EveryoneRWX = 511,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBWatchpointKind {
-    eWatchpointKindRead = 1,
-    eWatchpointKindWrite = 2,
+pub enum QueueItemKind {
+    Unknown = 0,
+    Function = 1,
+    Block = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBGdbSignal {
-    eGdbSignalBadAccess = 145,
-    eGdbSignalBadInstruction = 146,
-    eGdbSignalArithmetic = 147,
-    eGdbSignalEmulation = 148,
-    eGdbSignalSoftware = 149,
-    eGdbSignalBreakpoint = 150,
+pub enum QueueKind {
+    Unknown = 0,
+    Serial = 1,
+    Concurrent = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBPathType {
-    ePathTypeLLDBShlibDir = 0,
-    ePathTypeSupportExecutableDir = 1,
-    ePathTypeHeaderDir = 2,
-    ePathTypePythonDir = 3,
-    ePathTypeLLDBSystemPlugins = 4,
-    ePathTypeLLDBUserPlugins = 5,
-    ePathTypeLLDBTempSystemDir = 6,
-    ePathTypeGlobalLLDBTempSystemDir = 7,
-    ePathTypeClangDir = 8,
+pub enum ExpressionEvaluationPhase {
+    EvaluationParse = 0,
+    EvaluationIRGen = 1,
+    EvaluationExecution = 2,
+    EvaluationComplete = 3,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBMemberFunctionKind {
-    eMemberFunctionKindUnknown = 0,
-    eMemberFunctionKindConstructor = 1,
-    eMemberFunctionKindDestructor = 2,
-    eMemberFunctionKindInstanceMethod = 3,
-    eMemberFunctionKindStaticMethod = 4,
+pub enum WatchpointKind { eWatchpointKindRead = 1, eWatchpointKindWrite = 2, }
+#[derive(Copy, Clone)]
+#[repr(u32)]
+#[derive(Debug)]
+pub enum GdbSignal {
+    BadAccess = 145,
+    BadInstruction = 146,
+    Arithmetic = 147,
+    Emulation = 148,
+    Software = 149,
+    Breakpoint = 150,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBMatchType {
-    eMatchTypeNormal = 0,
-    eMatchTypeRegex = 1,
-    eMatchTypeStartsWith = 2,
+pub enum PathType {
+    LLDBShlibDir = 0,
+    SupportExecutableDir = 1,
+    HeaderDir = 2,
+    PythonDir = 3,
+    LLDBSystemPlugins = 4,
+    LLDBUserPlugins = 5,
+    LLDBTempSystemDir = 6,
+    GlobalLLDBTempSystemDir = 7,
+    ClangDir = 8,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBTypeFlags {
-    eTypeHasChildren = 1,
-    eTypeHasValue = 2,
-    eTypeIsArray = 4,
-    eTypeIsBlock = 8,
-    eTypeIsBuiltIn = 16,
-    eTypeIsClass = 32,
-    eTypeIsCPlusPlus = 64,
-    eTypeIsEnumeration = 128,
-    eTypeIsFuncPrototype = 256,
-    eTypeIsMember = 512,
-    eTypeIsObjC = 1024,
-    eTypeIsPointer = 2048,
-    eTypeIsReference = 4096,
-    eTypeIsStructUnion = 8192,
-    eTypeIsTemplate = 16384,
-    eTypeIsTypedef = 32768,
-    eTypeIsVector = 65536,
-    eTypeIsScalar = 131072,
-    eTypeIsInteger = 262144,
-    eTypeIsFloat = 524288,
-    eTypeIsComplex = 1048576,
-    eTypeIsSigned = 2097152,
-    eTypeInstanceIsPointer = 4194304,
+pub enum MemberFunctionKind {
+    Unknown = 0,
+    Constructor = 1,
+    Destructor = 2,
+    InstanceMethod = 3,
+    StaticMethod = 4,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBCommandFlags {
-    eCommandRequiresTarget = 1,
-    eCommandRequiresProcess = 2,
-    eCommandRequiresThread = 4,
-    eCommandRequiresFrame = 8,
-    eCommandRequiresRegContext = 16,
-    eCommandTryTargetAPILock = 32,
-    eCommandProcessMustBeLaunched = 64,
-    eCommandProcessMustBePaused = 128,
+pub enum MatchType {
+    Normal = 0,
+    Regex = 1,
+    StartsWith = 2,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
-pub enum LLDBTypeSummaryCapping {
-    eTypeSummaryCapped = 1,
-    eTypeSummaryUncapped = 0,
+pub enum TypeFlags {
+    HasChildren = 1,
+    HasValue = 2,
+    IsArray = 4,
+    IsBlock = 8,
+    IsBuiltIn = 16,
+    IsClass = 32,
+    IsCPlusPlus = 64,
+    IsEnumeration = 128,
+    IsFuncPrototype = 256,
+    IsMember = 512,
+    IsObjC = 1024,
+    IsPointer = 2048,
+    IsReference = 4096,
+    IsStructUnion = 8192,
+    IsTemplate = 16384,
+    IsTypedef = 32768,
+    IsVector = 65536,
+    IsScalar = 131072,
+    IsInteger = 262144,
+    IsFloat = 524288,
+    IsComplex = 1048576,
+    IsSigned = 2097152,
+    InstanceIsPointer = 4194304,
+}
+#[derive(Copy, Clone)]
+#[repr(u32)]
+#[derive(Debug)]
+pub enum CommandFlags {
+    RequiresTarget = 1,
+    RequiresProcess = 2,
+    RequiresThread = 4,
+    RequiresFrame = 8,
+    RequiresRegContext = 16,
+    TryTargetAPILock = 32,
+    ProcessMustBeLaunched = 64,
+    ProcessMustBePaused = 128,
+}
+#[derive(Copy, Clone)]
+#[repr(u32)]
+#[derive(Debug)]
+pub enum TypeSummaryCapping {
+    SummaryCapped = 1,
+    SummaryUncapped = 0,
 }
 pub type ReadThreadBytesReceived =
     ::std::option::Option<unsafe extern "C" fn(baton:
@@ -1025,8 +1017,7 @@ extern "C" {
     pub fn SBAddressGetBlock(instance: SBAddressRef) -> SBBlockRef;
     pub fn SBAddressGetSymbol(instance: SBAddressRef) -> SBSymbolRef;
     pub fn SBAddressGetLineEntry(instance: SBAddressRef) -> SBLineEntryRef;
-    pub fn SBAddressGetAddressClass(instance: SBAddressRef)
-     -> LLDBAddressClass;
+    pub fn SBAddressGetAddressClass(instance: SBAddressRef) -> AddressClass;
     pub fn CreateSBAttachInfo() -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo2(pid: lldb_pid_t) -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo3(path: *const ::std::os::raw::c_char,
@@ -1108,7 +1099,7 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBBlockGetVariables(instance: SBBlockRef, frame: SBFrameRef,
                                arguments: u8, locals: u8, statics: u8,
-                               use_dynamic: LLDBDynamicValueType)
+                               use_dynamic: DynamicValueType)
      -> SBValueListRef;
     pub fn SBBlockGetVariables2(instance: SBBlockRef, target: SBTargetRef,
                                 arguments: u8, locals: u8, statics: u8)
@@ -1192,7 +1183,7 @@ extern "C" {
                                       description: SBStreamRef) -> u8;
     pub fn SBBreakpointEventIsBreakpointEvent(event: SBEventRef) -> u8;
     pub fn SBBreakpointGetBreakpointEventTypeFromEvent(event: SBEventRef)
-     -> LLDBBreakpointEventType;
+     -> BreakpointEventType;
     pub fn SBBreakpointGetBreakpointFromEvent(event: SBEventRef)
      -> SBBreakpointRef;
     pub fn SBBreakpointGetBreakpointLocationAtIndexFromEvent(event:
@@ -1265,8 +1256,7 @@ extern "C" {
     pub fn SBBreakpointLocationGetDescription(instance:
                                                   SBBreakpointLocationRef,
                                               description: SBStreamRef,
-                                              level: LLDBDescriptionLevel)
-     -> u8;
+                                              level: DescriptionLevel) -> u8;
     pub fn SBBreakpointLocationGetBreakpoint(instance:
                                                  SBBreakpointLocationRef)
      -> SBBreakpointRef;
@@ -1341,10 +1331,10 @@ extern "C" {
      -> SBCommandInterpreterRunOptionsRef;
     pub fn DisposeSBCommandInterpreter(instance: SBCommandInterpreterRef);
     pub fn SBCommandInterpreterGetArgumentTypeAsCString(arg_type:
-                                                            LLDBCommandArgumentType)
+                                                            CommandArgumentType)
      -> *const ::std::os::raw::c_char;
     pub fn SBCommandInterpreterGetArgumentDescriptionAsCString(arg_type:
-                                                                   LLDBCommandArgumentType)
+                                                                   CommandArgumentType)
      -> *const ::std::os::raw::c_char;
     pub fn SBCommandInterpreterEventIsCommandInterpreterEvent(event:
                                                                   SBEventRef)
@@ -1401,7 +1391,7 @@ extern "C" {
                                                  *const ::std::os::raw::c_char,
                                              result: SBCommandReturnObjectRef,
                                              add_to_history: u8)
-     -> LLDBReturnStatus;
+     -> ReturnStatus;
     pub fn SBCommandInterpreterHandleCommand2(instance:
                                                   SBCommandInterpreterRef,
                                               command_line:
@@ -1410,7 +1400,7 @@ extern "C" {
                                               result:
                                                   SBCommandReturnObjectRef,
                                               add_to_history: u8)
-     -> LLDBReturnStatus;
+     -> ReturnStatus;
     pub fn SBCommandInterpreterHandleCommandsFromFile(instance:
                                                           SBCommandInterpreterRef,
                                                       file: SBFileSpecRef,
@@ -1513,9 +1503,9 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBCommandReturnObjectClear(instance: SBCommandReturnObjectRef);
     pub fn SBCommandReturnObjectGetStatus(instance: SBCommandReturnObjectRef)
-     -> LLDBReturnStatus;
+     -> ReturnStatus;
     pub fn SBCommandReturnObjectSetStatus(instance: SBCommandReturnObjectRef,
-                                          status: LLDBReturnStatus);
+                                          status: ReturnStatus);
     pub fn SBCommandReturnObjectSucceeded(instance: SBCommandReturnObjectRef)
      -> u8;
     pub fn SBCommandReturnObjectHasResult(instance: SBCommandReturnObjectRef)
@@ -1571,24 +1561,23 @@ extern "C" {
      -> *const ::std::os::raw::c_char;
     pub fn SBCommunicationAdoptFileDesriptor(instance: SBCommunicationRef,
                                              fd: ::std::os::raw::c_int,
-                                             owns_fd: u8)
-     -> LLDBConnectionStatus;
+                                             owns_fd: u8) -> ConnectionStatus;
     pub fn SBCommunicationConnect(instance: SBCommunicationRef,
                                   url: *const ::std::os::raw::c_char)
-     -> LLDBConnectionStatus;
+     -> ConnectionStatus;
     pub fn SBCommunicationDisconnect(instance: SBCommunicationRef)
-     -> LLDBConnectionStatus;
+     -> ConnectionStatus;
     pub fn SBCommunicationIsConnected(instance: SBCommunicationRef) -> u8;
     pub fn SBCommunicationGetCloseOnEOF(instance: SBCommunicationRef) -> u8;
     pub fn SBCommunicationSetCloseOnEOF(instance: SBCommunicationRef, b: u8);
     pub fn SBCommunicationRead(instance: SBCommunicationRef,
                                dst: *mut ::std::os::raw::c_void,
                                dst_len: size_t, timeout_usec: uint32_t,
-                               status: LLDBConnectionStatus)
+                               status: ConnectionStatus)
      -> ::std::os::raw::c_uint;
     pub fn SBCommunicationWrite(instance: SBCommunicationRef,
                                 src: *mut ::std::os::raw::c_void,
-                                src_len: size_t, status: LLDBConnectionStatus)
+                                src_len: size_t, status: ConnectionStatus)
      -> ::std::os::raw::c_uint;
     pub fn SBCommunicationReadThreadStart(instance: SBCommunicationRef) -> u8;
     pub fn SBCommunicationReadThreadStop(instance: SBCommunicationRef) -> u8;
@@ -1632,7 +1621,7 @@ extern "C" {
     pub fn SBCompileUnitGetTypes(instance: SBCompileUnitRef,
                                  type_mask: uint32_t) -> SBTypeListRef;
     pub fn SBCompileUnitGetLanguage(instance: SBCompileUnitRef)
-     -> LLDBLanguageType;
+     -> LanguageType;
     pub fn SBCompileUnitGetDescription(instance: SBCompileUnitRef,
                                        description: SBStreamRef) -> u8;
     pub fn CreateSBData() -> SBDataRef;
@@ -1644,8 +1633,8 @@ extern "C" {
     pub fn SBDataClear(instance: SBDataRef);
     pub fn SBDataIsValid(instance: SBDataRef) -> u8;
     pub fn SBDataGetByteSize(instance: SBDataRef) -> ::std::os::raw::c_uint;
-    pub fn SBDataGetByteOrder(instance: SBDataRef) -> LLDBByteOrder;
-    pub fn SBDataSetByteOrder(instance: SBDataRef, endian: LLDBByteOrder);
+    pub fn SBDataGetByteOrder(instance: SBDataRef) -> ByteOrder;
+    pub fn SBDataSetByteOrder(instance: SBDataRef, endian: ByteOrder);
     pub fn SBDataGetFloat(instance: SBDataRef, error: SBErrorRef,
                           offset: lldb_offset_t) -> ::std::os::raw::c_float;
     pub fn SBDataGetDouble(instance: SBDataRef, error: SBErrorRef,
@@ -1691,29 +1680,29 @@ extern "C" {
                                 base_addr: lldb_addr_t) -> u8;
     pub fn SBDataSetData(instance: SBDataRef, error: SBErrorRef,
                          buf: *mut ::std::os::raw::c_void, size: size_t,
-                         endian: LLDBByteOrder, addr_size: uint8_t);
+                         endian: ByteOrder, addr_size: uint8_t);
     pub fn SBDataAppend(instance: SBDataRef, rhs: SBDataRef) -> u8;
-    pub fn SBDataCreateDataFromCString(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromCString(endian: ByteOrder,
                                        addr_byte_size: uint32_t,
                                        data: *const ::std::os::raw::c_char)
      -> SBDataRef;
-    pub fn SBDataCreateDataFromUInt64Array(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromUInt64Array(endian: ByteOrder,
                                            addr_byte_size: uint32_t,
                                            array: *mut uint64_t,
                                            array_len: size_t) -> SBDataRef;
-    pub fn SBDataCreateDataFromUInt32Array(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromUInt32Array(endian: ByteOrder,
                                            addr_byte_size: uint32_t,
                                            array: *mut uint32_t,
                                            array_len: size_t) -> SBDataRef;
-    pub fn SBDataCreateDataFromSInt64Array(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromSInt64Array(endian: ByteOrder,
                                            addr_byte_size: uint32_t,
                                            array: *mut int64_t,
                                            array_len: size_t) -> SBDataRef;
-    pub fn SBDataCreateDataFromSInt32Array(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromSInt32Array(endian: ByteOrder,
                                            addr_byte_size: uint32_t,
                                            array: *mut int32_t,
                                            array_len: size_t) -> SBDataRef;
-    pub fn SBDataCreateDataFromDoubleArray(endian: LLDBByteOrder,
+    pub fn SBDataCreateDataFromDoubleArray(endian: ByteOrder,
                                            addr_byte_size: uint32_t,
                                            array:
                                                *mut ::std::os::raw::c_double,
@@ -1850,12 +1839,12 @@ extern "C" {
     pub fn SBDebuggerGetScriptingLanguage(instance: SBDebuggerRef,
                                           script_language_name:
                                               *const ::std::os::raw::c_char)
-     -> LLDBScriptLanguage;
+     -> ScriptLanguage;
     pub fn SBDebuggerGetVersionString() -> *const ::std::os::raw::c_char;
-    pub fn SBDebuggerStateAsCString(state: LLDBStateType)
+    pub fn SBDebuggerStateAsCString(state: StateType)
      -> *const ::std::os::raw::c_char;
-    pub fn SBDebuggerStateIsRunningState(state: LLDBStateType) -> u8;
-    pub fn SBDebuggerStateIsStoppedState(state: LLDBStateType) -> u8;
+    pub fn SBDebuggerStateIsRunningState(state: StateType) -> u8;
+    pub fn SBDebuggerStateIsStoppedState(state: StateType) -> u8;
     pub fn SBDebuggerEnableLog(instance: SBDebuggerRef,
                                channel: *const ::std::os::raw::c_char,
                                categories: *mut *const ::std::os::raw::c_char)
@@ -1899,9 +1888,9 @@ extern "C" {
     pub fn SBDebuggerSetPrompt(instance: SBDebuggerRef,
                                prompt: *const ::std::os::raw::c_char);
     pub fn SBDebuggerGetScriptLanguage(instance: SBDebuggerRef)
-     -> LLDBScriptLanguage;
+     -> ScriptLanguage;
     pub fn SBDebuggerSetScriptLanguage(instance: SBDebuggerRef,
-                                       script_lang: LLDBScriptLanguage);
+                                       script_lang: ScriptLanguage);
     pub fn SBDebuggerGetCloseInputOnEOF(instance: SBDebuggerRef) -> u8;
     pub fn SBDebuggerSetCloseInputOnEOF(instance: SBDebuggerRef, b: u8);
     pub fn SBDebuggerGetCategory(instance: SBDebuggerRef,
@@ -1967,9 +1956,9 @@ extern "C" {
     pub fn SBErrorFail(instance: SBErrorRef) -> u8;
     pub fn SBErrorSuccess(instance: SBErrorRef) -> u8;
     pub fn SBErrorGetError(instance: SBErrorRef) -> ::std::os::raw::c_uint;
-    pub fn SBErrorGetType(instance: SBErrorRef) -> LLDBErrorType;
+    pub fn SBErrorGetType(instance: SBErrorRef) -> ErrorType;
     pub fn SBErrorSetError(instance: SBErrorRef, err: uint32_t,
-                           type_: LLDBErrorType);
+                           type_: ErrorType);
     pub fn SBErrorSetErrorToErrno(instance: SBErrorRef);
     pub fn SBErrorSetErrorToGenericError(instance: SBErrorRef);
     pub fn SBErrorSetErrorString(instance: SBErrorRef,
@@ -2042,11 +2031,10 @@ extern "C" {
                                                    ignore: u8);
     pub fn SBExpressionOptionsGetFetchDynamicValue(instance:
                                                        SBExpressionOptionsRef)
-     -> LLDBDynamicValueType;
+     -> DynamicValueType;
     pub fn SBExpressionOptionsSetFetchDynamicValue(instance:
                                                        SBExpressionOptionsRef,
-                                                   dynamic:
-                                                       LLDBDynamicValueType);
+                                                   dynamic: DynamicValueType);
     pub fn SBExpressionOptionsGetTimeoutInMicroSeconds(instance:
                                                            SBExpressionOptionsRef)
      -> ::std::os::raw::c_uint;
@@ -2077,7 +2065,7 @@ extern "C" {
                                                     SBExpressionOptionsRef,
                                                 trap_exceptions: u8);
     pub fn SBExpressionOptionsSetLanguage(instance: SBExpressionOptionsRef,
-                                          language: LLDBLanguageType);
+                                          language: LanguageType);
     pub fn SBExpressionOptionsGetGenerateDebugInfo(instance:
                                                        SBExpressionOptionsRef)
      -> u8;
@@ -2160,11 +2148,11 @@ extern "C" {
      -> SBValueRef;
     pub fn SBFrameEvaluateExpression2(instance: SBFrameRef,
                                       expr: *const ::std::os::raw::c_char,
-                                      use_dynamic: LLDBDynamicValueType)
+                                      use_dynamic: DynamicValueType)
      -> SBValueRef;
     pub fn SBFrameEvaluateExpression3(instance: SBFrameRef,
                                       expr: *const ::std::os::raw::c_char,
-                                      use_dynamic: LLDBDynamicValueType,
+                                      use_dynamic: DynamicValueType,
                                       unwind_on_error: u8) -> SBValueRef;
     pub fn SBFrameEvaluateExpression4(instance: SBFrameRef,
                                       expr: *const ::std::os::raw::c_char,
@@ -2181,7 +2169,7 @@ extern "C" {
      -> SBValueListRef;
     pub fn SBFrameGetVariables2(instance: SBFrameRef, arguments: u8,
                                 locals: u8, statics: u8, in_scope_only: u8,
-                                use_dynamic: LLDBDynamicValueType)
+                                use_dynamic: DynamicValueType)
      -> SBValueListRef;
     pub fn SBFrameGetVariables3(instance: SBFrameRef,
                                 options: SBVariablesOptionsRef)
@@ -2195,12 +2183,11 @@ extern "C" {
      -> SBValueRef;
     pub fn SBFrameFindVariable2(instance: SBFrameRef,
                                 var_name: *const ::std::os::raw::c_char,
-                                use_dynamic: LLDBDynamicValueType)
-     -> SBValueRef;
+                                use_dynamic: DynamicValueType) -> SBValueRef;
     pub fn SBFrameGetValueForVariablePath(instance: SBFrameRef,
                                           var_expr_cstr:
                                               *const ::std::os::raw::c_char,
-                                          use_dynamic: LLDBDynamicValueType)
+                                          use_dynamic: DynamicValueType)
      -> SBValueRef;
     pub fn SBFrameGetValueForVariablePath2(instance: SBFrameRef,
                                            var_path:
@@ -2208,11 +2195,11 @@ extern "C" {
      -> SBValueRef;
     pub fn SBFrameFindValue(instance: SBFrameRef,
                             name: *const ::std::os::raw::c_char,
-                            value_type: LLDBValueType) -> SBValueRef;
+                            value_type: ValueType) -> SBValueRef;
     pub fn SBFrameFindValue2(instance: SBFrameRef,
                              name: *const ::std::os::raw::c_char,
-                             value_type: LLDBValueType,
-                             use_dynamic: LLDBDynamicValueType) -> SBValueRef;
+                             value_type: ValueType,
+                             use_dynamic: DynamicValueType) -> SBValueRef;
     pub fn SBFrameGetDescription(instance: SBFrameRef,
                                  description: SBStreamRef) -> u8;
     pub fn CreateSBFunction() -> SBFunctionRef;
@@ -2237,20 +2224,20 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBFunctionGetType(instance: SBFunctionRef) -> SBTypeRef;
     pub fn SBFunctionGetBlock(instance: SBFunctionRef) -> SBBlockRef;
-    pub fn SBFunctionGetLanguage(instance: SBFunctionRef) -> LLDBLanguageType;
+    pub fn SBFunctionGetLanguage(instance: SBFunctionRef) -> LanguageType;
     pub fn SBFunctionGetIsOptimized(instance: SBFunctionRef) -> u8;
     pub fn SBFunctionGetDescription(instance: SBFunctionRef,
                                     description: SBStreamRef) -> u8;
     pub fn SBHostOSGetProgramFileSpec() -> SBFileSpecRef;
     pub fn SBHostOSGetLLDBPythonPath() -> SBFileSpecRef;
-    pub fn SBHostOSGetLLDBPath(path_type: LLDBPathType) -> SBFileSpecRef;
+    pub fn SBHostOSGetLLDBPath(path_type: PathType) -> SBFileSpecRef;
     pub fn CreateSBInstruction() -> SBInstructionRef;
     pub fn DisposeSBInstruction(instance: SBInstructionRef);
     pub fn SBInstructionIsValid(instance: SBInstructionRef) -> u8;
     pub fn SBInstructionGetAddress(instance: SBInstructionRef)
      -> SBAddressRef;
     pub fn SBInstructionGetAddressClass(instance: SBInstructionRef)
-     -> LLDBAddressClass;
+     -> AddressClass;
     pub fn SBInstructionGetMnemonic(instance: SBInstructionRef,
                                     target: SBTargetRef)
      -> *const ::std::os::raw::c_char;
@@ -2491,7 +2478,7 @@ extern "C" {
      -> SBFileSpecRef;
     pub fn SBModuleSetRemoteInstallFileSpec(instance: SBModuleRef,
                                             file: SBFileSpecRef) -> u8;
-    pub fn SBModuleGetByteOrder(instance: SBModuleRef) -> LLDBByteOrder;
+    pub fn SBModuleGetByteOrder(instance: SBModuleRef) -> ByteOrder;
     pub fn SBModuleGetAddressByteSize(instance: SBModuleRef)
      -> ::std::os::raw::c_uint;
     pub fn SBModuleGetTriple(instance: SBModuleRef)
@@ -2520,11 +2507,10 @@ extern "C" {
      -> SBSymbolRef;
     pub fn SBModuleFindSymbol(instance: SBModuleRef,
                               name: *const ::std::os::raw::c_char,
-                              type_: LLDBSymbolType) -> SBSymbolRef;
+                              type_: SymbolType) -> SBSymbolRef;
     pub fn SBModuleFindSymbols(instance: SBModuleRef,
                                name: *const ::std::os::raw::c_char,
-                               type_: LLDBSymbolType)
-     -> SBSymbolContextListRef;
+                               type_: SymbolType) -> SBSymbolContextListRef;
     pub fn SBModuleGetNumSections(instance: SBModuleRef)
      -> ::std::os::raw::c_uint;
     pub fn SBModuleGetSectionAtIndex(instance: SBModuleRef, idx: size_t)
@@ -2551,7 +2537,7 @@ extern "C" {
      -> SBTypeListRef;
     pub fn SBModuleGetTypeByID(instance: SBModuleRef, uid: lldb_user_id_t)
      -> SBTypeRef;
-    pub fn SBModuleGetBasicType(instance: SBModuleRef, type_: LLDBBasicType)
+    pub fn SBModuleGetBasicType(instance: SBModuleRef, type_: BasicType)
      -> SBTypeRef;
     pub fn SBModuleGetTypes(instance: SBModuleRef, type_mask: uint32_t)
      -> SBTypeListRef;
@@ -2746,7 +2732,7 @@ extern "C" {
     pub fn SBProcessClear(instance: SBProcessRef);
     pub fn SBProcessIsValid(instance: SBProcessRef) -> u8;
     pub fn SBProcessGetTarget(instance: SBProcessRef) -> SBTargetRef;
-    pub fn SBProcessGetByteOrder(instance: SBProcessRef) -> LLDBByteOrder;
+    pub fn SBProcessGetByteOrder(instance: SBProcessRef) -> ByteOrder;
     pub fn SBProcessPutSTDIN(instance: SBProcessRef,
                              src: *const ::std::os::raw::c_char,
                              src_len: size_t) -> ::std::os::raw::c_uint;
@@ -2800,7 +2786,7 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBProcessGetQueueAtIndex(instance: SBProcessRef, index: size_t)
      -> SBQueueRef;
-    pub fn SBProcessGetState(instance: SBProcessRef) -> LLDBStateType;
+    pub fn SBProcessGetState(instance: SBProcessRef) -> StateType;
     pub fn SBProcessGetExitStatus(instance: SBProcessRef)
      -> ::std::os::raw::c_int;
     pub fn SBProcessGetExitDescription(instance: SBProcessRef)
@@ -2847,7 +2833,7 @@ extern "C" {
                                           addr: lldb_addr_t,
                                           error: SBErrorRef)
      -> ::std::os::raw::c_ulonglong;
-    pub fn SBProcessGetStateFromEvent(event: SBEventRef) -> LLDBStateType;
+    pub fn SBProcessGetStateFromEvent(event: SBEventRef) -> StateType;
     pub fn SBProcessGetRestartedFromEvent(event: SBEventRef) -> u8;
     pub fn SBProcessGetNumRestartedReasonsFromEvent(event: SBEventRef)
      -> ::std::os::raw::c_uint;
@@ -2882,7 +2868,7 @@ extern "C" {
      -> SBThreadCollectionRef;
     pub fn SBProcessIsInstrumentationRuntimePresent(instance: SBProcessRef,
                                                     type_:
-                                                        LLDBInstrumentationRuntimeType)
+                                                        InstrumentationRuntimeType)
      -> u8;
     pub fn CreateSBQueue() -> SBQueueRef;
     pub fn DisposeSBQueue(instance: SBQueueRef);
@@ -2904,14 +2890,13 @@ extern "C" {
      -> SBQueueItemRef;
     pub fn SBQueueGetNumRunningItems(instance: SBQueueRef)
      -> ::std::os::raw::c_uint;
-    pub fn SBQueueGetKind(instance: SBQueueRef) -> LLDBQueueKind;
+    pub fn SBQueueGetKind(instance: SBQueueRef) -> QueueKind;
     pub fn CreateSBQueueItem() -> SBQueueItemRef;
     pub fn DisposeSBQueueItem(instance: SBQueueItemRef);
     pub fn SBQueueItemIsValid(instance: SBQueueItemRef) -> u8;
     pub fn SBQueueItemClear(instance: SBQueueItemRef);
-    pub fn SBQueueItemGetKind(instance: SBQueueItemRef) -> LLDBQueueItemKind;
-    pub fn SBQueueItemSetKind(instance: SBQueueItemRef,
-                              kind: LLDBQueueItemKind);
+    pub fn SBQueueItemGetKind(instance: SBQueueItemRef) -> QueueItemKind;
+    pub fn SBQueueItemSetKind(instance: SBQueueItemRef, kind: QueueItemKind);
     pub fn SBQueueItemGetAddress(instance: SBQueueItemRef) -> SBAddressRef;
     pub fn SBQueueItemSetAddress(instance: SBQueueItemRef,
                                  addr: SBAddressRef);
@@ -2946,7 +2931,7 @@ extern "C" {
     pub fn SBSectionGetSectionData(instance: SBSectionRef) -> SBDataRef;
     pub fn SBSectionGetSectionData2(instance: SBSectionRef, offset: uint64_t,
                                     size: uint64_t) -> SBDataRef;
-    pub fn SBSectionGetSectionType(instance: SBSectionRef) -> LLDBSectionType;
+    pub fn SBSectionGetSectionType(instance: SBSectionRef) -> SectionType;
     pub fn SBSectionGetTargetByteSize(instance: SBSectionRef)
      -> ::std::os::raw::c_uint;
     pub fn SBSectionGetDescription(instance: SBSectionRef,
@@ -3020,7 +3005,7 @@ extern "C" {
     pub fn SBSymbolGetEndAddress(instance: SBSymbolRef) -> SBAddressRef;
     pub fn SBSymbolGetPrologueByteSize(instance: SBSymbolRef)
      -> ::std::os::raw::c_uint;
-    pub fn SBSymbolGetType(instance: SBSymbolRef) -> LLDBSymbolType;
+    pub fn SBSymbolGetType(instance: SBSymbolRef) -> SymbolType;
     pub fn SBSymbolGetDescription(instance: SBSymbolRef,
                                   description: SBStreamRef) -> u8;
     pub fn SBSymbolIsExternal(instance: SBSymbolRef) -> u8;
@@ -3152,7 +3137,7 @@ extern "C" {
     pub fn SBTargetGetDebugger(instance: SBTargetRef) -> SBDebuggerRef;
     pub fn SBTargetFindModule(instance: SBTargetRef, file_spec: SBFileSpecRef)
      -> SBModuleRef;
-    pub fn SBTargetGetByteOrder(instance: SBTargetRef) -> LLDBByteOrder;
+    pub fn SBTargetGetByteOrder(instance: SBTargetRef) -> ByteOrder;
     pub fn SBTargetGetAddressByteSize(instance: SBTargetRef)
      -> ::std::os::raw::c_uint;
     pub fn SBTargetGetTriple(instance: SBTargetRef)
@@ -3189,12 +3174,12 @@ extern "C" {
     pub fn SBTargetFindGlobalVariables2(instance: SBTargetRef,
                                         name: *const ::std::os::raw::c_char,
                                         max_matches: uint32_t,
-                                        matchtype: LLDBMatchType)
+                                        matchtype: MatchType)
      -> SBValueListRef;
     pub fn SBTargetFindGlobalFunctions(instance: SBTargetRef,
                                        name: *const ::std::os::raw::c_char,
                                        max_matches: uint32_t,
-                                       matchtype: LLDBMatchType)
+                                       matchtype: MatchType)
      -> SBSymbolContextListRef;
     pub fn SBTargetClear(instance: SBTargetRef);
     pub fn SBTargetResolveFileAddress(instance: SBTargetRef,
@@ -3276,7 +3261,7 @@ extern "C" {
                                                       SBFileSpecListRef)
      -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateForException(instance: SBTargetRef,
-                                                language: LLDBLanguageType,
+                                                language: LanguageType,
                                                 catch_bp: u8, throw_bp: u8)
      -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByAddress(instance: SBTargetRef,
@@ -3316,7 +3301,7 @@ extern "C" {
     pub fn SBTargetFindTypes(instance: SBTargetRef,
                              type_: *const ::std::os::raw::c_char)
      -> SBTypeListRef;
-    pub fn SBTargetGetBasicType(instance: SBTargetRef, type_: LLDBBasicType)
+    pub fn SBTargetGetBasicType(instance: SBTargetRef, type_: BasicType)
      -> SBTypeRef;
     pub fn SBTargetCreateValueFromAddress(instance: SBTargetRef,
                                           name: *const ::std::os::raw::c_char,
@@ -3367,12 +3352,10 @@ extern "C" {
      -> SBInstructionListRef;
     pub fn SBTargetFindSymbols(instance: SBTargetRef,
                                name: *const ::std::os::raw::c_char,
-                               type_: LLDBSymbolType)
-     -> SBSymbolContextListRef;
+                               type_: SymbolType) -> SBSymbolContextListRef;
     pub fn SBTargetGetDescription(instance: SBTargetRef,
                                   description: SBStreamRef,
-                                  description_level: LLDBDescriptionLevel)
-     -> u8;
+                                  description_level: DescriptionLevel) -> u8;
     pub fn SBTargetEvaluateExpression(instance: SBTargetRef,
                                       expr: *const ::std::os::raw::c_char,
                                       options: SBExpressionOptionsRef)
@@ -3388,7 +3371,7 @@ extern "C" {
     pub fn SBThreadGetQueue(instance: SBThreadRef) -> SBQueueRef;
     pub fn SBThreadIsValid(instance: SBThreadRef) -> u8;
     pub fn SBThreadClear(instance: SBThreadRef);
-    pub fn SBThreadGetStopReason(instance: SBThreadRef) -> LLDBStopReason;
+    pub fn SBThreadGetStopReason(instance: SBThreadRef) -> StopReason;
     pub fn SBThreadGetStopReasonDataCount(instance: SBThreadRef)
      -> ::std::os::raw::c_uint;
     pub fn SBThreadGetStopReasonDataAtIndex(instance: SBThreadRef,
@@ -3416,12 +3399,12 @@ extern "C" {
                                                  *const ::std::os::raw::c_char,
                                              strm: SBStreamRef) -> u8;
     pub fn SBThreadStepOver(instance: SBThreadRef,
-                            stop_other_threads: LLDBRunMode);
+                            stop_other_threads: RunMode);
     pub fn SBThreadStepInto(instance: SBThreadRef,
-                            stop_other_threads: LLDBRunMode);
+                            stop_other_threads: RunMode);
     pub fn SBThreadStepInto2(instance: SBThreadRef,
                              target_name: *const ::std::os::raw::c_char,
-                             stop_other_threads: LLDBRunMode);
+                             stop_other_threads: RunMode);
     pub fn SBThreadStepOut(instance: SBThreadRef);
     pub fn SBThreadStepOutOfFrame(instance: SBThreadRef, frame: SBFrameRef);
     pub fn SBThreadStepInstruction(instance: SBThreadRef, step_over: u8);
@@ -3478,8 +3461,7 @@ extern "C" {
     pub fn DisposeSBThreadPlan(instance: SBThreadPlanRef);
     pub fn SBThreadPlanIsValid(instance: SBThreadPlanRef) -> u8;
     pub fn SBThreadPlanClear(instance: SBThreadPlanRef);
-    pub fn SBThreadPlanGetStopReason(instance: SBThreadPlanRef)
-     -> LLDBStopReason;
+    pub fn SBThreadPlanGetStopReason(instance: SBThreadPlanRef) -> StopReason;
     pub fn SBThreadPlanGetStopReasonDataCount(instance: SBThreadPlanRef)
      -> ::std::os::raw::c_uint;
     pub fn SBThreadPlanGetStopReasonDataAtIndex(instance: SBThreadPlanRef,
@@ -3527,7 +3509,7 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBTypeMemberGetDescription(instance: SBTypeMemberRef,
                                       description: SBStreamRef,
-                                      description_level: LLDBDescriptionLevel)
+                                      description_level: DescriptionLevel)
      -> u8;
     pub fn CreateSBTypeMemberFunction() -> SBTypeMemberFunctionRef;
     pub fn CreateSBTypeMemberFunction2(rhs: SBTypeMemberFunctionRef)
@@ -3550,12 +3532,12 @@ extern "C" {
                                                       arg1: uint32_t)
      -> SBTypeRef;
     pub fn SBTypeMemberFunctionGetKind(instance: SBTypeMemberFunctionRef)
-     -> LLDBMemberFunctionKind;
+     -> MemberFunctionKind;
     pub fn SBTypeMemberFunctionGetDescription(instance:
                                                   SBTypeMemberFunctionRef,
                                               description: SBStreamRef,
                                               description_level:
-                                                  LLDBDescriptionLevel) -> u8;
+                                                  DescriptionLevel) -> u8;
     pub fn CreateSBType() -> SBTypeRef;
     pub fn DisposeSBType(instance: SBTypeRef);
     pub fn SBTypeIsValid(instance: SBTypeRef) -> u8;
@@ -3577,8 +3559,8 @@ extern "C" {
     pub fn SBTypeGetArrayElementType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetVectorElementType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetCanonicalType(instance: SBTypeRef) -> SBTypeRef;
-    pub fn SBTypeGetBasicType(instance: SBTypeRef) -> LLDBBasicType;
-    pub fn SBTypeGetBasicType2(instance: SBTypeRef, type_: LLDBBasicType)
+    pub fn SBTypeGetBasicType(instance: SBTypeRef) -> BasicType;
+    pub fn SBTypeGetBasicType2(instance: SBTypeRef, type_: BasicType)
      -> SBTypeRef;
     pub fn SBTypeGetNumberOfFields(instance: SBTypeRef)
      -> ::std::os::raw::c_uint;
@@ -3599,7 +3581,7 @@ extern "C" {
     pub fn SBTypeGetTemplateArgumentType(instance: SBTypeRef, idx: uint32_t)
      -> SBTypeRef;
     pub fn SBTypeGetTemplateArgumentKind(instance: SBTypeRef, idx: uint32_t)
-     -> LLDBTemplateArgumentKind;
+     -> TemplateArgumentKind;
     pub fn SBTypeGetFunctionReturnType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetFunctionArgumentTypes(instance: SBTypeRef)
      -> SBTypeListRef;
@@ -3611,12 +3593,11 @@ extern "C" {
      -> *const ::std::os::raw::c_char;
     pub fn SBTypeGetDisplayTypeName(instance: SBTypeRef)
      -> *const ::std::os::raw::c_char;
-    pub fn SBTypeGetTypeClass(instance: SBTypeRef) -> LLDBTypeClass;
+    pub fn SBTypeGetTypeClass(instance: SBTypeRef) -> TypeClass;
     pub fn SBTypeIsTypeComplete(instance: SBTypeRef) -> u8;
     pub fn SBTypeGetTypeFlags(instance: SBTypeRef) -> ::std::os::raw::c_uint;
     pub fn SBTypeGetDescription(instance: SBTypeRef, description: SBStreamRef,
-                                description_level: LLDBDescriptionLevel)
-     -> u8;
+                                description_level: DescriptionLevel) -> u8;
     pub fn CreateSBTypeList() -> SBTypeListRef;
     pub fn DisposeSBTypeList(instance: SBTypeListRef);
     pub fn SBTypeListIsValid(instance: SBTypeListRef) -> u8;
@@ -3634,8 +3615,8 @@ extern "C" {
      -> *const ::std::os::raw::c_char;
     pub fn SBTypeCategoryGetDescription(instance: SBTypeCategoryRef,
                                         description: SBStreamRef,
-                                        description_level:
-                                            LLDBDescriptionLevel) -> u8;
+                                        description_level: DescriptionLevel)
+     -> u8;
     pub fn SBTypeCategoryGetNumFormats(instance: SBTypeCategoryRef)
      -> ::std::os::raw::c_uint;
     pub fn SBTypeCategoryGetNumSummaries(instance: SBTypeCategoryRef)
@@ -3718,8 +3699,8 @@ extern "C" {
      -> SBTypeRef;
     pub fn SBTypeEnumMemberGetDescription(instance: SBTypeEnumMemberRef,
                                           description: SBStreamRef,
-                                          description_level:
-                                              LLDBDescriptionLevel) -> u8;
+                                          description_level: DescriptionLevel)
+     -> u8;
     pub fn CreateSBTypeEnumMemberList() -> SBTypeEnumMemberListRef;
     pub fn DisposeSBTypeEnumMemberList(instance: SBTypeEnumMemberListRef);
     pub fn SBTypeEnumMemberListIsValid(instance: SBTypeEnumMemberListRef)
@@ -3755,29 +3736,29 @@ extern "C" {
     pub fn SBTypeFilterSetOptions(instance: SBTypeFilterRef, arg1: uint32_t);
     pub fn SBTypeFilterGetDescription(instance: SBTypeFilterRef,
                                       description: SBStreamRef,
-                                      description_level: LLDBDescriptionLevel)
+                                      description_level: DescriptionLevel)
      -> u8;
     pub fn SBTypeFilterIsEqualTo(instance: SBTypeFilterRef,
                                  rhs: SBTypeFilterRef) -> u8;
     pub fn CreateSBTypeFormat() -> SBTypeFormatRef;
-    pub fn CreateSBTypeFormat2(format: LLDBFormat, options: uint32_t)
+    pub fn CreateSBTypeFormat2(format: Format, options: uint32_t)
      -> SBTypeFormatRef;
     pub fn CreateSBTypeFormat3(type_: *const ::std::os::raw::c_char,
                                options: uint32_t) -> SBTypeFormatRef;
     pub fn DisposeSBTypeFormat(instance: SBTypeFormatRef);
     pub fn SBTypeFormatIsValid(instance: SBTypeFormatRef) -> u8;
-    pub fn SBTypeFormatGetFormat(instance: SBTypeFormatRef) -> LLDBFormat;
+    pub fn SBTypeFormatGetFormat(instance: SBTypeFormatRef) -> Format;
     pub fn SBTypeFormatGetTypeName(instance: SBTypeFormatRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBTypeFormatGetOptions(instance: SBTypeFormatRef)
      -> ::std::os::raw::c_uint;
-    pub fn SBTypeFormatSetFormat(instance: SBTypeFormatRef, arg1: LLDBFormat);
+    pub fn SBTypeFormatSetFormat(instance: SBTypeFormatRef, arg1: Format);
     pub fn SBTypeFormatSetTypeName(instance: SBTypeFormatRef,
                                    arg1: *const ::std::os::raw::c_char);
     pub fn SBTypeFormatSetOptions(instance: SBTypeFormatRef, arg1: uint32_t);
     pub fn SBTypeFormatGetDescription(instance: SBTypeFormatRef,
                                       description: SBStreamRef,
-                                      description_level: LLDBDescriptionLevel)
+                                      description_level: DescriptionLevel)
      -> u8;
     pub fn SBTypeFormatIsEqualTo(instance: SBTypeFormatRef,
                                  rhs: SBTypeFormatRef) -> u8;
@@ -3796,7 +3777,7 @@ extern "C" {
     pub fn SBTypeNameSpecifierGetDescription(instance: SBTypeNameSpecifierRef,
                                              description: SBStreamRef,
                                              description_level:
-                                                 LLDBDescriptionLevel) -> u8;
+                                                 DescriptionLevel) -> u8;
     pub fn SBTypeNameSpecifierIsEqualTo(instance: SBTypeNameSpecifierRef,
                                         rhs: SBTypeNameSpecifierRef) -> u8;
     pub fn CreateSBTypeSummaryOptions() -> SBTypeSummaryOptionsRef;
@@ -3804,13 +3785,13 @@ extern "C" {
     pub fn SBTypeSummaryOptionsIsValid(instance: SBTypeSummaryOptionsRef)
      -> u8;
     pub fn SBTypeSummaryOptionsGetLanguage(instance: SBTypeSummaryOptionsRef)
-     -> LLDBLanguageType;
+     -> LanguageType;
     pub fn SBTypeSummaryOptionsGetCapping(instance: SBTypeSummaryOptionsRef)
-     -> LLDBTypeSummaryCapping;
+     -> TypeSummaryCapping;
     pub fn SBTypeSummaryOptionsSetLanguage(instance: SBTypeSummaryOptionsRef,
-                                           arg1: LLDBLanguageType);
+                                           arg1: LanguageType);
     pub fn SBTypeSummaryOptionsSetCapping(instance: SBTypeSummaryOptionsRef,
-                                          arg1: LLDBTypeSummaryCapping);
+                                          arg1: TypeSummaryCapping);
     pub fn CreateSBTypeSummary() -> SBTypeSummaryRef;
     pub fn SBTypeSummaryCreateWithSummaryString(data:
                                                     *const ::std::os::raw::c_char,
@@ -3843,8 +3824,8 @@ extern "C" {
                                    arg1: uint32_t);
     pub fn SBTypeSummaryGetDescription(instance: SBTypeSummaryRef,
                                        description: SBStreamRef,
-                                       description_level:
-                                           LLDBDescriptionLevel) -> u8;
+                                       description_level: DescriptionLevel)
+     -> u8;
     pub fn SBTypeSummaryIsEqualTo(instance: SBTypeSummaryRef,
                                   rhs: SBTypeSummaryRef) -> u8;
     pub fn CreateSBTypeSynthetic() -> SBTypeSyntheticRef;
@@ -3872,8 +3853,8 @@ extern "C" {
                                      arg1: uint32_t);
     pub fn SBTypeSyntheticGetDescription(instance: SBTypeSyntheticRef,
                                          description: SBStreamRef,
-                                         description_level:
-                                             LLDBDescriptionLevel) -> u8;
+                                         description_level: DescriptionLevel)
+     -> u8;
     pub fn SBTypeSyntheticIsEqualTo(instance: SBTypeSyntheticRef,
                                     rhs: SBTypeSyntheticRef) -> u8;
     pub fn CreateSBUnixSignals() -> SBUnixSignalsRef;
@@ -3921,8 +3902,8 @@ extern "C" {
      -> *const ::std::os::raw::c_char;
     pub fn SBValueGetByteSize(instance: SBValueRef) -> ::std::os::raw::c_uint;
     pub fn SBValueIsInScope(instance: SBValueRef) -> u8;
-    pub fn SBValueGetFormat(instance: SBValueRef) -> LLDBFormat;
-    pub fn SBValueSetFormat(instance: SBValueRef, format: LLDBFormat);
+    pub fn SBValueGetFormat(instance: SBValueRef) -> Format;
+    pub fn SBValueSetFormat(instance: SBValueRef, format: Format);
     pub fn SBValueGetValue(instance: SBValueRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBValueGetValueAsSigned(instance: SBValueRef, error: SBErrorRef,
@@ -3936,7 +3917,7 @@ extern "C" {
     pub fn SBValueGetValueAsUnsigned2(instance: SBValueRef,
                                       fail_value: uint64_t)
      -> ::std::os::raw::c_ulonglong;
-    pub fn SBValueGetValueType(instance: SBValueRef) -> LLDBValueType;
+    pub fn SBValueGetValueType(instance: SBValueRef) -> ValueType;
     pub fn SBValueGetValueDidChange(instance: SBValueRef) -> u8;
     pub fn SBValueGetSummary(instance: SBValueRef)
      -> *const ::std::os::raw::c_char;
@@ -3948,14 +3929,14 @@ extern "C" {
     pub fn SBValueGetTypeValidatorResult(instance: SBValueRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBValueGetDynamicValue(instance: SBValueRef,
-                                  use_dynamic: LLDBDynamicValueType)
+                                  use_dynamic: DynamicValueType)
      -> SBValueRef;
     pub fn SBValueGetStaticValue(instance: SBValueRef) -> SBValueRef;
     pub fn SBValueGetNonSyntheticValue(instance: SBValueRef) -> SBValueRef;
     pub fn SBValueGetPreferDynamicValue(instance: SBValueRef)
-     -> LLDBDynamicValueType;
+     -> DynamicValueType;
     pub fn SBValueSetPreferDynamicValue(instance: SBValueRef,
-                                        use_dynamic: LLDBDynamicValueType);
+                                        use_dynamic: DynamicValueType);
     pub fn SBValueGetPreferSyntheticValue(instance: SBValueRef) -> u8;
     pub fn SBValueSetPreferSyntheticValue(instance: SBValueRef,
                                           use_synthetic: u8);
@@ -4005,7 +3986,7 @@ extern "C" {
                                       data: SBDataRef, type_: SBTypeRef)
      -> SBValueRef;
     pub fn SBValueGetChildAtIndex2(instance: SBValueRef, idx: uint32_t,
-                                   use_dynamic: LLDBDynamicValueType,
+                                   use_dynamic: DynamicValueType,
                                    can_create_synthetic: u8) -> SBValueRef;
     pub fn SBValueGetIndexOfChildWithName(instance: SBValueRef,
                                           name: *const ::std::os::raw::c_char)
@@ -4015,7 +3996,7 @@ extern "C" {
      -> SBValueRef;
     pub fn SBValueGetChildMemberWithName2(instance: SBValueRef,
                                           name: *const ::std::os::raw::c_char,
-                                          use_dynamic: LLDBDynamicValueType)
+                                          use_dynamic: DynamicValueType)
      -> SBValueRef;
     pub fn SBValueGetValueForExpressionPath(instance: SBValueRef,
                                             expr_path:
@@ -4107,9 +4088,9 @@ extern "C" {
                                                                 SBVariablesOptionsRef,
                                                             arg1: u8);
     pub fn SBVariablesOptionsGetUseDynamic(instance: SBVariablesOptionsRef)
-     -> LLDBDynamicValueType;
+     -> DynamicValueType;
     pub fn SBVariablesOptionsSetUseDynamic(instance: SBVariablesOptionsRef,
-                                           arg1: LLDBDynamicValueType);
+                                           arg1: DynamicValueType);
     pub fn CreateSBWatchpoint() -> SBWatchpointRef;
     pub fn DisposeSBWatchpoint(instance: SBWatchpointRef);
     pub fn SBWatchpointIsValid(instance: SBWatchpointRef) -> u8;
@@ -4135,11 +4116,11 @@ extern "C" {
                                     condition: *const ::std::os::raw::c_char);
     pub fn SBWatchpointGetDescription(instance: SBWatchpointRef,
                                       description: SBStreamRef,
-                                      level: LLDBDescriptionLevel) -> u8;
+                                      level: DescriptionLevel) -> u8;
     pub fn SBWatchpointClear(instance: SBWatchpointRef);
     pub fn SBWatchpointEventIsWatchpointEvent(event: SBEventRef) -> u8;
     pub fn SBWatchpointGetWatchpointEventTypeFromEvent(event: SBEventRef)
-     -> LLDBWatchpointEventType;
+     -> WatchpointEventType;
     pub fn SBWatchpointGetWatchpointFromEvent(event: SBEventRef)
      -> SBWatchpointRef;
 }

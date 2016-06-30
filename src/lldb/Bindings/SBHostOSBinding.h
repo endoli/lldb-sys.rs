@@ -20,7 +20,7 @@ LLDB_API SBFileSpecRef SBHostOSGetProgramFileSpec(void);
 
 LLDB_API SBFileSpecRef SBHostOSGetLLDBPythonPath(void);
 
-LLDB_API SBFileSpecRef SBHostOSGetLLDBPath(LLDBPathType path_type);
+LLDB_API SBFileSpecRef SBHostOSGetLLDBPath(ENUM(PathType) path_type);
 
 #ifdef __cplusplus
 }

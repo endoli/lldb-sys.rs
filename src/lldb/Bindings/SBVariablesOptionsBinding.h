@@ -44,9 +44,9 @@ LLDB_API bool SBVariablesOptionsGetIncludeRuntimeSupportValues(SBVariablesOption
 
 LLDB_API void SBVariablesOptionsSetIncludeRuntimeSupportValues(SBVariablesOptionsRef instance, bool);
 
-LLDB_API LLDBDynamicValueType SBVariablesOptionsGetUseDynamic(SBVariablesOptionsRef instance);
+LLDB_API ENUM(DynamicValueType) SBVariablesOptionsGetUseDynamic(SBVariablesOptionsRef instance);
 
-LLDB_API void SBVariablesOptionsSetUseDynamic(SBVariablesOptionsRef instance, LLDBDynamicValueType);
+LLDB_API void SBVariablesOptionsSetUseDynamic(SBVariablesOptionsRef instance, ENUM(DynamicValueType));
 
 #ifdef __cplusplus
 }

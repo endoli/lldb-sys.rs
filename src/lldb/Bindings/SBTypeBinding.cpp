@@ -370,7 +370,7 @@ SBTypeGetTemplateArgumentType(SBTypeRef instance, uint32_t idx)
     return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetTemplateArgumentType(idx)));
 }
 
-LLDBTemplateArgumentKind
+lldb::TemplateArgumentKind
 SBTypeGetTemplateArgumentKind(SBTypeRef instance, uint32_t idx)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -420,7 +420,7 @@ SBTypeGetDisplayTypeName(SBTypeRef instance)
     return unwrapped->GetDisplayTypeName();
 }
 
-LLDBTypeClass
+lldb::TypeClass
 SBTypeGetTypeClass(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);

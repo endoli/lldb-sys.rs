@@ -29,7 +29,7 @@ LLDB_API void SBTypeCategorySetEnabled(SBTypeCategoryRef instance, bool);
 LLDB_API const char *SBTypeCategoryGetName(SBTypeCategoryRef instance);
 
 LLDB_API bool SBTypeCategoryGetDescription(SBTypeCategoryRef instance, SBStreamRef description,
-                                               LLDBDescriptionLevel description_level);
+                                           ENUM(DescriptionLevel) description_level);
 
 LLDB_API unsigned int SBTypeCategoryGetNumFormats(SBTypeCategoryRef instance);
 

@@ -33,10 +33,10 @@ LLDB_API bool SBExpressionOptionsGetIgnoreBreakpoints(SBExpressionOptionsRef ins
 
 LLDB_API void SBExpressionOptionsSetIgnoreBreakpoints(SBExpressionOptionsRef instance, bool ignore);
 
-LLDB_API LLDBDynamicValueType SBExpressionOptionsGetFetchDynamicValue(SBExpressionOptionsRef instance);
+LLDB_API ENUM(DynamicValueType) SBExpressionOptionsGetFetchDynamicValue(SBExpressionOptionsRef instance);
 
 LLDB_API void SBExpressionOptionsSetFetchDynamicValue(SBExpressionOptionsRef instance,
-                                                          LLDBDynamicValueType dynamic);
+                                                      ENUM(DynamicValueType) dynamic);
 
 LLDB_API unsigned int SBExpressionOptionsGetTimeoutInMicroSeconds(SBExpressionOptionsRef instance);
 
@@ -59,7 +59,7 @@ LLDB_API bool SBExpressionOptionsGetTrapExceptions(SBExpressionOptionsRef instan
 
 LLDB_API void SBExpressionOptionsSetTrapExceptions(SBExpressionOptionsRef instance, bool trap_exceptions);
 
-LLDB_API void SBExpressionOptionsSetLanguage(SBExpressionOptionsRef instance, LLDBLanguageType language);
+LLDB_API void SBExpressionOptionsSetLanguage(SBExpressionOptionsRef instance, ENUM(LanguageType) language);
 
 #ifndef BINDGEN
 LLDB_API void SBExpressionOptionsSetCancelCallback(SBExpressionOptionsRef instance,

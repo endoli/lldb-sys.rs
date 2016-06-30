@@ -102,7 +102,7 @@ LLDB_API bool SBBreakpointGetDescription(SBBreakpointRef instance, SBStreamRef d
 
 LLDB_API bool SBBreakpointEventIsBreakpointEvent(SBEventRef event);
 
-LLDB_API LLDBBreakpointEventType SBBreakpointGetBreakpointEventTypeFromEvent(SBEventRef event);
+LLDB_API ENUM(BreakpointEventType) SBBreakpointGetBreakpointEventTypeFromEvent(SBEventRef event);
 
 LLDB_API SBBreakpointRef SBBreakpointGetBreakpointFromEvent(SBEventRef event);
 

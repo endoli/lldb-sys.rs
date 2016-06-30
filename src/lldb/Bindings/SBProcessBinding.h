@@ -32,7 +32,7 @@ LLDB_API bool SBProcessIsValid(SBProcessRef instance);
 
 LLDB_API SBTargetRef SBProcessGetTarget(SBProcessRef instance);
 
-LLDB_API LLDBByteOrder SBProcessGetByteOrder(SBProcessRef instance);
+LLDB_API ENUM(ByteOrder) SBProcessGetByteOrder(SBProcessRef instance);
 
 LLDB_API unsigned int SBProcessPutSTDIN(SBProcessRef instance, const char *src, size_t src_len);
 
@@ -78,7 +78,7 @@ LLDB_API unsigned int SBProcessGetNumQueues(SBProcessRef instance);
 
 LLDB_API SBQueueRef SBProcessGetQueueAtIndex(SBProcessRef instance, size_t index);
 
-LLDB_API LLDBStateType SBProcessGetState(SBProcessRef instance);
+LLDB_API ENUM(StateType) SBProcessGetState(SBProcessRef instance);
 
 LLDB_API int SBProcessGetExitStatus(SBProcessRef instance);
 
@@ -125,7 +125,7 @@ LLDB_API unsigned long long SBProcessReadUnsignedFromMemory(SBProcessRef instanc
 LLDB_API unsigned long long SBProcessReadPointerFromMemory(SBProcessRef instance, lldb_addr_t addr,
                                                                SBErrorRef error);
 
-LLDB_API LLDBStateType SBProcessGetStateFromEvent(SBEventRef event);
+LLDB_API ENUM(StateType) SBProcessGetStateFromEvent(SBEventRef event);
 
 LLDB_API bool SBProcessGetRestartedFromEvent(SBEventRef event);
 
@@ -146,7 +146,7 @@ LLDB_API bool SBProcessGetDescription(SBProcessRef instance, SBStreamRef descrip
 LLDB_API unsigned int SBProcessGetNumSupportedHardwareWatchpoints(SBProcessRef instance, SBErrorRef error);
 
 LLDB_API unsigned int SBProcessLoadImage(SBProcessRef instance, SBFileSpecRef image_spec,
-                                             SBErrorRef error);
+                                         SBErrorRef error);
 
 LLDB_API SBErrorRef SBProcessUnloadImage(SBProcessRef instance, uint32_t image_token);
 
@@ -159,7 +159,7 @@ LLDB_API const char *SBProcessGetExtendedBacktraceTypeAtIndex(SBProcessRef insta
 LLDB_API SBThreadCollectionRef SBProcessGetHistoryThreads(SBProcessRef instance, lldb_addr_t addr);
 
 LLDB_API bool SBProcessIsInstrumentationRuntimePresent(SBProcessRef instance,
-                                                           LLDBInstrumentationRuntimeType type);
+                                                       ENUM(InstrumentationRuntimeType) type);
 
 #ifdef __cplusplus
 }

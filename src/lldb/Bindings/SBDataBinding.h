@@ -30,9 +30,9 @@ LLDB_API bool SBDataIsValid(SBDataRef instance);
 
 LLDB_API unsigned int SBDataGetByteSize(SBDataRef instance);
 
-LLDB_API LLDBByteOrder SBDataGetByteOrder(SBDataRef instance);
+LLDB_API ENUM(ByteOrder) SBDataGetByteOrder(SBDataRef instance);
 
-LLDB_API void SBDataSetByteOrder(SBDataRef instance, LLDBByteOrder endian);
+LLDB_API void SBDataSetByteOrder(SBDataRef instance, ENUM(ByteOrder) endian);
 
 LLDB_API float SBDataGetFloat(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
@@ -67,26 +67,26 @@ LLDB_API unsigned int SBDataReadRawData(SBDataRef instance, SBErrorRef error, ll
 LLDB_API bool SBDataGetDescription(SBDataRef instance, SBStreamRef description, lldb_addr_t base_addr);
 
 LLDB_API void SBDataSetData(SBDataRef instance, SBErrorRef error, void *buf, size_t size,
-                                LLDBByteOrder endian, uint8_t addr_size);
+                            ENUM(ByteOrder) endian, uint8_t addr_size);
 
 LLDB_API bool SBDataAppend(SBDataRef instance, SBDataRef rhs);
 
-LLDB_API SBDataRef SBDataCreateDataFromCString(LLDBByteOrder endian, uint32_t addr_byte_size, const char *data);
+LLDB_API SBDataRef SBDataCreateDataFromCString(ENUM(ByteOrder) endian, uint32_t addr_byte_size, const char *data);
 
 LLDB_API SBDataRef
-SBDataCreateDataFromUInt64Array(LLDBByteOrder endian, uint32_t addr_byte_size, uint64_t *array, size_t array_len);
+SBDataCreateDataFromUInt64Array(ENUM(ByteOrder) endian, uint32_t addr_byte_size, uint64_t *array, size_t array_len);
 
 LLDB_API SBDataRef
-SBDataCreateDataFromUInt32Array(LLDBByteOrder endian, uint32_t addr_byte_size, uint32_t *array, size_t array_len);
+SBDataCreateDataFromUInt32Array(ENUM(ByteOrder) endian, uint32_t addr_byte_size, uint32_t *array, size_t array_len);
 
 LLDB_API SBDataRef
-SBDataCreateDataFromSInt64Array(LLDBByteOrder endian, uint32_t addr_byte_size, int64_t *array, size_t array_len);
+SBDataCreateDataFromSInt64Array(ENUM(ByteOrder) endian, uint32_t addr_byte_size, int64_t *array, size_t array_len);
 
 LLDB_API SBDataRef
-SBDataCreateDataFromSInt32Array(LLDBByteOrder endian, uint32_t addr_byte_size, int32_t *array, size_t array_len);
+SBDataCreateDataFromSInt32Array(ENUM(ByteOrder) endian, uint32_t addr_byte_size, int32_t *array, size_t array_len);
 
 LLDB_API SBDataRef
-SBDataCreateDataFromDoubleArray(LLDBByteOrder endian, uint32_t addr_byte_size, double *array, size_t array_len);
+SBDataCreateDataFromDoubleArray(ENUM(ByteOrder) endian, uint32_t addr_byte_size, double *array, size_t array_len);
 
 LLDB_API bool SBDataSetDataFromCString(SBDataRef instance, const char *data);
 

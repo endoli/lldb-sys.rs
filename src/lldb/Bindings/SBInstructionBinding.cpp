@@ -42,7 +42,7 @@ SBInstructionGetAddress(SBInstructionRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetAddress()));
 }
 
-LLDBAddressClass
+AddressClass
 SBInstructionGetAddressClass(SBInstructionRef instance)
 {
     SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);

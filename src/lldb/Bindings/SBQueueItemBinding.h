@@ -24,9 +24,9 @@ LLDB_API bool SBQueueItemIsValid(SBQueueItemRef instance);
 
 LLDB_API void SBQueueItemClear(SBQueueItemRef instance);
 
-LLDB_API LLDBQueueItemKind SBQueueItemGetKind(SBQueueItemRef instance);
+LLDB_API ENUM(QueueItemKind) SBQueueItemGetKind(SBQueueItemRef instance);
 
-LLDB_API void SBQueueItemSetKind(SBQueueItemRef instance, LLDBQueueItemKind kind);
+LLDB_API void SBQueueItemSetKind(SBQueueItemRef instance, ENUM(QueueItemKind) kind);
 
 LLDB_API SBAddressRef SBQueueItemGetAddress(SBQueueItemRef instance);
 

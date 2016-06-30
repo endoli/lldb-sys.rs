@@ -159,7 +159,7 @@ SBAddressGetLineEntry(SBAddressRef instance)
     return reinterpret_cast<SBLineEntryRef>(new SBLineEntry(unwrapped->GetLineEntry()));
 }
 
-LLDBAddressClass
+AddressClass
 SBAddressGetAddressClass(SBAddressRef instance)
 {
     SBAddress *unwrapped = reinterpret_cast<SBAddress *>(instance);

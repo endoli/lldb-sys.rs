@@ -38,9 +38,9 @@ LLDB_API unsigned int SBCommandReturnObjectPutError(SBCommandReturnObjectRef ins
 
 LLDB_API void SBCommandReturnObjectClear(SBCommandReturnObjectRef instance);
 
-LLDB_API LLDBReturnStatus SBCommandReturnObjectGetStatus(SBCommandReturnObjectRef instance);
+LLDB_API ENUM(ReturnStatus) SBCommandReturnObjectGetStatus(SBCommandReturnObjectRef instance);
 
-LLDB_API void SBCommandReturnObjectSetStatus(SBCommandReturnObjectRef instance, LLDBReturnStatus status);
+LLDB_API void SBCommandReturnObjectSetStatus(SBCommandReturnObjectRef instance, ENUM(ReturnStatus) status);
 
 LLDB_API bool SBCommandReturnObjectSucceeded(SBCommandReturnObjectRef instance);
 

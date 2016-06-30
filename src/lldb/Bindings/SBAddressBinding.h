@@ -58,7 +58,7 @@ LLDB_API SBSymbolRef SBAddressGetSymbol(SBAddressRef instance);
 
 LLDB_API SBLineEntryRef SBAddressGetLineEntry(SBAddressRef instance);
 
-LLDB_API LLDBAddressClass SBAddressGetAddressClass(SBAddressRef instance);
+LLDB_API ENUM(AddressClass) SBAddressGetAddressClass(SBAddressRef instance);
 
 #ifdef __cplusplus
 }

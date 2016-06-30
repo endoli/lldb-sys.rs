@@ -30,12 +30,12 @@ LLDB_API SBBroadcasterRef SBCommunicationGetBroadcaster(SBCommunicationRef insta
 
 LLDB_API const char *SBCommunicationGetBroadcasterClass(void);
 
-LLDB_API LLDBConnectionStatus
+LLDB_API ENUM(ConnectionStatus)
 SBCommunicationAdoptFileDesriptor(SBCommunicationRef instance, int fd, bool owns_fd);
 
-LLDB_API LLDBConnectionStatus SBCommunicationConnect(SBCommunicationRef instance, const char *url);
+LLDB_API ENUM(ConnectionStatus) SBCommunicationConnect(SBCommunicationRef instance, const char *url);
 
-LLDB_API LLDBConnectionStatus SBCommunicationDisconnect(SBCommunicationRef instance);
+LLDB_API ENUM(ConnectionStatus) SBCommunicationDisconnect(SBCommunicationRef instance);
 
 LLDB_API bool SBCommunicationIsConnected(SBCommunicationRef instance);
 
@@ -44,10 +44,10 @@ LLDB_API bool SBCommunicationGetCloseOnEOF(SBCommunicationRef instance);
 LLDB_API void SBCommunicationSetCloseOnEOF(SBCommunicationRef instance, bool b);
 
 LLDB_API unsigned int SBCommunicationRead(SBCommunicationRef instance, void *dst, size_t dst_len,
-                                              uint32_t timeout_usec, LLDBConnectionStatus status);
+                                          uint32_t timeout_usec, ENUM(ConnectionStatus) status);
 
 LLDB_API unsigned int SBCommunicationWrite(SBCommunicationRef instance, void *src, size_t src_len,
-                                               LLDBConnectionStatus status);
+                                           ENUM(ConnectionStatus) status);
 
 LLDB_API bool SBCommunicationReadThreadStart(SBCommunicationRef instance);
 

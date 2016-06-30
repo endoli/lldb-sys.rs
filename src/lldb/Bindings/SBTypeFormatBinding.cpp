@@ -70,7 +70,7 @@ SBTypeFormatGetOptions(SBTypeFormatRef instance)
 }
 
 void
-SBTypeFormatSetFormat(SBTypeFormatRef instance, LLDBFormat var0)
+SBTypeFormatSetFormat(SBTypeFormatRef instance, enum lldb::Format var0)
 {
     SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
     unwrapped->SetFormat(var0);

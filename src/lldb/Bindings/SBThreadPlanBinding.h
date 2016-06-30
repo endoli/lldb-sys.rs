@@ -26,7 +26,7 @@ LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);
 
 LLDB_API void SBThreadPlanClear(SBThreadPlanRef instance);
 
-LLDB_API LLDBStopReason SBThreadPlanGetStopReason(SBThreadPlanRef instance);
+LLDB_API ENUM(StopReason) SBThreadPlanGetStopReason(SBThreadPlanRef instance);
 
 LLDB_API unsigned int SBThreadPlanGetStopReasonDataCount(SBThreadPlanRef instance);
 

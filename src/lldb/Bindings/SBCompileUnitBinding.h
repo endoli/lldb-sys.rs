@@ -44,7 +44,7 @@ LLDB_API unsigned int SBCompileUnitFindSupportFileIndex(SBCompileUnitRef instanc
 
 LLDB_API SBTypeListRef SBCompileUnitGetTypes(SBCompileUnitRef instance, uint32_t type_mask);
 
-LLDB_API LLDBLanguageType SBCompileUnitGetLanguage(SBCompileUnitRef instance);
+LLDB_API ENUM(LanguageType) SBCompileUnitGetLanguage(SBCompileUnitRef instance);
 
 LLDB_API bool SBCompileUnitGetDescription(SBCompileUnitRef instance, SBStreamRef description);
 

@@ -49,9 +49,9 @@ LLDB_API SBCommandInterpreterRunOptionsRef
 
 LLDB_API void DisposeSBCommandInterpreter(SBCommandInterpreterRef instance);
 
-LLDB_API const char *SBCommandInterpreterGetArgumentTypeAsCString(const LLDBCommandArgumentType arg_type);
+LLDB_API const char *SBCommandInterpreterGetArgumentTypeAsCString(ENUM(CommandArgumentType) arg_type);
 
-LLDB_API const char *SBCommandInterpreterGetArgumentDescriptionAsCString(const LLDBCommandArgumentType arg_type);
+LLDB_API const char *SBCommandInterpreterGetArgumentDescriptionAsCString(ENUM(CommandArgumentType) arg_type);
 
 LLDB_API bool SBCommandInterpreterEventIsCommandInterpreterEvent(SBEventRef event);
 
@@ -87,11 +87,11 @@ LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory(SBCommandInterpr
 LLDB_API void SBCommandInterpreterSourceInitFileInCurrentWorkingDirectory(SBCommandInterpreterRef instance,
                                                                               SBCommandReturnObjectRef result);
 
-LLDB_API LLDBReturnStatus
+LLDB_API ENUM(ReturnStatus)
 SBCommandInterpreterHandleCommand(SBCommandInterpreterRef instance, const char *command_line,
                                       SBCommandReturnObjectRef result, bool add_to_history);
 
-LLDB_API LLDBReturnStatus
+LLDB_API ENUM(ReturnStatus)
 SBCommandInterpreterHandleCommand2(SBCommandInterpreterRef instance, const char *command_line,
                                        SBExecutionContextRef exe_ctx, SBCommandReturnObjectRef result,
                                        bool add_to_history);

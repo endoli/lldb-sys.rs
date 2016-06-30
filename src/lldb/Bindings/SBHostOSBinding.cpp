@@ -29,7 +29,7 @@ SBHostOSGetLLDBPythonPath()
 }
 
 SBFileSpecRef
-SBHostOSGetLLDBPath(LLDBPathType path_type)
+SBHostOSGetLLDBPath(lldb::PathType path_type)
 {
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(lldb::SBHostOS::GetLLDBPath(path_type)));
 }

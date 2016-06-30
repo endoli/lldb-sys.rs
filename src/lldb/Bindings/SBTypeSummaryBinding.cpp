@@ -51,14 +51,14 @@ SBTypeSummaryOptionsGetCapping(SBTypeSummaryOptionsRef instance)
 }
 
 void
-SBTypeSummaryOptionsSetLanguage(SBTypeSummaryOptionsRef instance, LLDBLanguageType var0)
+SBTypeSummaryOptionsSetLanguage(SBTypeSummaryOptionsRef instance, enum lldb::LanguageType var0)
 {
     SBTypeSummaryOptions *unwrapped = reinterpret_cast<SBTypeSummaryOptions *>(instance);
     unwrapped->SetLanguage(var0);
 }
 
 void
-SBTypeSummaryOptionsSetCapping(SBTypeSummaryOptionsRef instance, LLDBTypeSummaryCapping var0)
+SBTypeSummaryOptionsSetCapping(SBTypeSummaryOptionsRef instance, enum lldb::TypeSummaryCapping var0)
 {
     SBTypeSummaryOptions *unwrapped = reinterpret_cast<SBTypeSummaryOptions *>(instance);
     unwrapped->SetCapping(var0);

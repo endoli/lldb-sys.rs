@@ -38,9 +38,9 @@ LLDB_API unsigned int SBValueGetByteSize(SBValueRef instance);
 
 LLDB_API bool SBValueIsInScope(SBValueRef instance);
 
-LLDB_API LLDBFormat SBValueGetFormat(SBValueRef instance);
+LLDB_API ENUM(Format) SBValueGetFormat(SBValueRef instance);
 
-LLDB_API void SBValueSetFormat(SBValueRef instance, LLDBFormat format);
+LLDB_API void SBValueSetFormat(SBValueRef instance, ENUM(Format) format);
 
 LLDB_API const char *SBValueGetValue(SBValueRef instance);
 
@@ -53,7 +53,7 @@ LLDB_API long long SBValueGetValueAsSigned2(SBValueRef instance, int64_t fail_va
 
 LLDB_API unsigned long long SBValueGetValueAsUnsigned2(SBValueRef instance, uint64_t fail_value);
 
-LLDB_API LLDBValueType SBValueGetValueType(SBValueRef instance);
+LLDB_API ENUM(ValueType) SBValueGetValueType(SBValueRef instance);
 
 LLDB_API bool SBValueGetValueDidChange(SBValueRef instance);
 
@@ -66,15 +66,15 @@ LLDB_API const char *SBValueGetObjectDescription(SBValueRef instance);
 
 LLDB_API const char *SBValueGetTypeValidatorResult(SBValueRef instance);
 
-LLDB_API SBValueRef SBValueGetDynamicValue(SBValueRef instance, LLDBDynamicValueType use_dynamic);
+LLDB_API SBValueRef SBValueGetDynamicValue(SBValueRef instance, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBValueGetStaticValue(SBValueRef instance);
 
 LLDB_API SBValueRef SBValueGetNonSyntheticValue(SBValueRef instance);
 
-LLDB_API LLDBDynamicValueType SBValueGetPreferDynamicValue(SBValueRef instance);
+LLDB_API ENUM(DynamicValueType) SBValueGetPreferDynamicValue(SBValueRef instance);
 
-LLDB_API void SBValueSetPreferDynamicValue(SBValueRef instance, LLDBDynamicValueType use_dynamic);
+LLDB_API void SBValueSetPreferDynamicValue(SBValueRef instance, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API bool SBValueGetPreferSyntheticValue(SBValueRef instance);
 
@@ -119,14 +119,14 @@ LLDB_API SBValueRef
 SBValueCreateValueFromData(SBValueRef instance, const char *name, SBDataRef data, SBTypeRef type);
 
 LLDB_API SBValueRef SBValueGetChildAtIndex2(SBValueRef instance, uint32_t idx,
-                                                    LLDBDynamicValueType use_dynamic, bool can_create_synthetic);
+                                            ENUM(DynamicValueType) use_dynamic, bool can_create_synthetic);
 
 LLDB_API unsigned int SBValueGetIndexOfChildWithName(SBValueRef instance, const char *name);
 
 LLDB_API SBValueRef SBValueGetChildMemberWithName(SBValueRef instance, const char *name);
 
 LLDB_API SBValueRef
-SBValueGetChildMemberWithName2(SBValueRef instance, const char *name, LLDBDynamicValueType use_dynamic);
+SBValueGetChildMemberWithName2(SBValueRef instance, const char *name, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBValueGetValueForExpressionPath(SBValueRef instance, const char *expr_path);
 

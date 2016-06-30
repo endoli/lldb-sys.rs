@@ -216,7 +216,7 @@ SBProcessGetQueueAtIndex(SBProcessRef instance, size_t index)
     return reinterpret_cast<SBQueueRef>(new SBQueue(unwrapped->GetQueueAtIndex(index)));
 }
 
-LLDBStateType
+lldb::StateType
 SBProcessGetState(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -365,7 +365,7 @@ SBProcessReadPointerFromMemory(SBProcessRef instance, lldb_addr_t addr, SBErrorR
     return unwrapped->ReadPointerFromMemory(addr, *reinterpret_cast<SBError *>(error));
 }
 
-LLDBStateType
+lldb::StateType
 SBProcessGetStateFromEvent(SBEventRef event)
 {
     return lldb::SBProcess::GetStateFromEvent(*reinterpret_cast<SBEvent *>(event));

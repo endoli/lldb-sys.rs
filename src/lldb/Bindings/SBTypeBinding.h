@@ -35,7 +35,7 @@ LLDB_API bool SBTypeMemberIsBitfield(SBTypeMemberRef instance);
 LLDB_API unsigned int SBTypeMemberGetBitfieldSizeInBits(SBTypeMemberRef instance);
 
 LLDB_API bool SBTypeMemberGetDescription(SBTypeMemberRef instance, SBStreamRef description,
-                                             LLDBDescriptionLevel description_level);
+                                         ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction(void);
 
@@ -55,10 +55,10 @@ LLDB_API unsigned int SBTypeMemberFunctionGetNumberOfArguments(SBTypeMemberFunct
 
 LLDB_API SBTypeRef SBTypeMemberFunctionGetArgumentTypeAtIndex(SBTypeMemberFunctionRef instance, uint32_t);
 
-LLDB_API LLDBMemberFunctionKind SBTypeMemberFunctionGetKind(SBTypeMemberFunctionRef instance);
+LLDB_API ENUM(MemberFunctionKind) SBTypeMemberFunctionGetKind(SBTypeMemberFunctionRef instance);
 
 LLDB_API bool SBTypeMemberFunctionGetDescription(SBTypeMemberFunctionRef instance, SBStreamRef description,
-                                                     LLDBDescriptionLevel description_level);
+                                                 ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeRef CreateSBType(void);
 
@@ -100,9 +100,9 @@ LLDB_API SBTypeRef SBTypeGetVectorElementType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetCanonicalType(SBTypeRef instance);
 
-LLDB_API LLDBBasicType SBTypeGetBasicType(SBTypeRef instance);
+LLDB_API ENUM(BasicType) SBTypeGetBasicType(SBTypeRef instance);
 
-LLDB_API SBTypeRef SBTypeGetBasicType2(SBTypeRef instance, LLDBBasicType type);
+LLDB_API SBTypeRef SBTypeGetBasicType2(SBTypeRef instance, ENUM(BasicType) type);
 
 LLDB_API unsigned int SBTypeGetNumberOfFields(SBTypeRef instance);
 
@@ -122,7 +122,7 @@ LLDB_API unsigned int SBTypeGetNumberOfTemplateArguments(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetTemplateArgumentType(SBTypeRef instance, uint32_t idx);
 
-LLDB_API LLDBTemplateArgumentKind SBTypeGetTemplateArgumentKind(SBTypeRef instance, uint32_t idx);
+LLDB_API ENUM(TemplateArgumentKind) SBTypeGetTemplateArgumentKind(SBTypeRef instance, uint32_t idx);
 
 LLDB_API SBTypeRef SBTypeGetFunctionReturnType(SBTypeRef instance);
 
@@ -136,14 +136,14 @@ LLDB_API const char *SBTypeGetName(SBTypeRef instance);
 
 LLDB_API const char *SBTypeGetDisplayTypeName(SBTypeRef instance);
 
-LLDB_API LLDBTypeClass SBTypeGetTypeClass(SBTypeRef instance);
+LLDB_API ENUM(TypeClass) SBTypeGetTypeClass(SBTypeRef instance);
 
 LLDB_API bool SBTypeIsTypeComplete(SBTypeRef instance);
 
 LLDB_API unsigned int SBTypeGetTypeFlags(SBTypeRef instance);
 
 LLDB_API bool SBTypeGetDescription(SBTypeRef instance, SBStreamRef description,
-                                       LLDBDescriptionLevel description_level);
+                                   ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeListRef CreateSBTypeList(void);
 

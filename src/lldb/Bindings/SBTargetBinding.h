@@ -85,7 +85,7 @@ LLDB_API SBDebuggerRef SBTargetGetDebugger(SBTargetRef instance);
 
 LLDB_API SBModuleRef SBTargetFindModule(SBTargetRef instance, SBFileSpecRef file_spec);
 
-LLDB_API LLDBByteOrder SBTargetGetByteOrder(SBTargetRef instance);
+LLDB_API ENUM(ByteOrder) SBTargetGetByteOrder(SBTargetRef instance);
 
 LLDB_API unsigned int SBTargetGetAddressByteSize(SBTargetRef instance);
 
@@ -114,10 +114,10 @@ SBTargetFindGlobalVariables(SBTargetRef instance, const char *name, uint32_t max
 LLDB_API SBValueRef SBTargetFindFirstGlobalVariable(SBTargetRef instance, const char *name);
 
 LLDB_API SBValueListRef SBTargetFindGlobalVariables2(SBTargetRef instance, const char *name,
-                                                             uint32_t max_matches, LLDBMatchType matchtype);
+                                                     uint32_t max_matches, ENUM(MatchType) matchtype);
 
 LLDB_API SBSymbolContextListRef SBTargetFindGlobalFunctions(SBTargetRef instance, const char *name,
-                                                                    uint32_t max_matches, LLDBMatchType matchtype);
+                                                                    uint32_t max_matches, ENUM(MatchType) matchtype);
 
 LLDB_API void SBTargetClear(SBTargetRef instance);
 
@@ -172,8 +172,8 @@ SBTargetBreakpointCreateBySourceRegex2(SBTargetRef instance, const char *source_
                                            SBFileSpecListRef module_list, SBFileSpecListRef source_file);
 
 LLDB_API SBBreakpointRef SBTargetBreakpointCreateForException(SBTargetRef instance,
-                                                                      LLDBLanguageType language, bool catch_bp,
-                                                                      bool throw_bp);
+                                                              ENUM(LanguageType) language, bool catch_bp,
+                                                              bool throw_bp);
 
 LLDB_API SBBreakpointRef SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address);
 
@@ -214,7 +214,7 @@ LLDB_API SBTypeRef SBTargetFindFirstType(SBTargetRef instance, const char *type)
 
 LLDB_API SBTypeListRef SBTargetFindTypes(SBTargetRef instance, const char *type);
 
-LLDB_API SBTypeRef SBTargetGetBasicType(SBTargetRef instance, LLDBBasicType type);
+LLDB_API SBTypeRef SBTargetGetBasicType(SBTargetRef instance, ENUM(BasicType) type);
 
 LLDB_API SBValueRef SBTargetCreateValueFromAddress(SBTargetRef instance, const char *name,
                                                            SBAddressRef addr, SBTypeRef type);
@@ -248,10 +248,10 @@ SBTargetGetInstructionsWithFlavor2(SBTargetRef instance, lldb_addr_t base_addr, 
                                        void *buf, size_t size);
 
 LLDB_API SBSymbolContextListRef
-SBTargetFindSymbols(SBTargetRef instance, const char *name, LLDBSymbolType type);
+SBTargetFindSymbols(SBTargetRef instance, const char *name, ENUM(SymbolType) type);
 
 LLDB_API bool SBTargetGetDescription(SBTargetRef instance, SBStreamRef description,
-                                         LLDBDescriptionLevel description_level);
+                                     ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBValueRef
 SBTargetEvaluateExpression(SBTargetRef instance, const char *expr, SBExpressionOptionsRef options);

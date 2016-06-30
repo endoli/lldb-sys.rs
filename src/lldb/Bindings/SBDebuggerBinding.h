@@ -30,7 +30,7 @@ LLDB_API void DisposeSBInputReader(SBInputReaderRef instance);
 
 #ifndef BINDGEN
 LLDB_API SBErrorRef SBInputReaderInitialize(SBInputReaderRef instance, SBDebuggerRef, Callback callback,
-                                                    void *callback_baton, LLDBInputReaderGranularity, const char *,
+                                                    void *callback_baton, ENUM(InputReaderGranularity), const char *,
                                                     const char *, bool);
 #endif // BINDGEN
 
@@ -147,16 +147,16 @@ LLDB_API bool SBDebuggerGetDefaultArchitecture(char *arch_name, size_t arch_name
 
 LLDB_API bool SBDebuggerSetDefaultArchitecture(const char *arch_name);
 
-LLDB_API LLDBScriptLanguage
+LLDB_API ENUM(ScriptLanguage)
 SBDebuggerGetScriptingLanguage(SBDebuggerRef instance, const char *script_language_name);
 
 LLDB_API const char *SBDebuggerGetVersionString(void);
 
-LLDB_API const char *SBDebuggerStateAsCString(LLDBStateType state);
+LLDB_API const char *SBDebuggerStateAsCString(ENUM(StateType) state);
 
-LLDB_API bool SBDebuggerStateIsRunningState(LLDBStateType state);
+LLDB_API bool SBDebuggerStateIsRunningState(ENUM(StateType) state);
 
-LLDB_API bool SBDebuggerStateIsStoppedState(LLDBStateType state);
+LLDB_API bool SBDebuggerStateIsStoppedState(ENUM(StateType) state);
 
 LLDB_API bool SBDebuggerEnableLog(SBDebuggerRef instance, const char *channel, const char **categories);
 
@@ -197,9 +197,9 @@ LLDB_API const char *SBDebuggerGetPrompt(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSetPrompt(SBDebuggerRef instance, const char *prompt);
 
-LLDB_API LLDBScriptLanguage SBDebuggerGetScriptLanguage(SBDebuggerRef instance);
+LLDB_API ENUM(ScriptLanguage) SBDebuggerGetScriptLanguage(SBDebuggerRef instance);
 
-LLDB_API void SBDebuggerSetScriptLanguage(SBDebuggerRef instance, LLDBScriptLanguage script_lang);
+LLDB_API void SBDebuggerSetScriptLanguage(SBDebuggerRef instance, ENUM(ScriptLanguage) script_lang);
 
 LLDB_API bool SBDebuggerGetCloseInputOnEOF(SBDebuggerRef instance);
 

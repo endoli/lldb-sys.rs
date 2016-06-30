@@ -36,7 +36,7 @@
 //----------------------------------------------------------------------
 // Process and Thread States
 //----------------------------------------------------------------------
-enum LLDBStateType
+enum StateType
 {
     eStateInvalid = 0,
     eStateUnloaded,     ///< Process is object is valid, but not currently loaded
@@ -57,7 +57,7 @@ enum LLDBStateType
 //----------------------------------------------------------------------
 // Launch Flags
 //----------------------------------------------------------------------
-FLAGS_ENUM(LLDBLaunchFlags)
+FLAGS_ENUM(LaunchFlags)
 {
     eLaunchFlagNone         = 0u,
     eLaunchFlagExec         = (1u << 0),       ///< Exec when launching and turn the calling process into a new process
@@ -79,7 +79,7 @@ FLAGS_ENUM(LLDBLaunchFlags)
 //----------------------------------------------------------------------
 // Thread Run Modes
 //----------------------------------------------------------------------
-enum LLDBRunMode
+enum RunMode
 {
     eOnlyThisThread,
     eAllThreads,
@@ -89,7 +89,7 @@ enum LLDBRunMode
 //----------------------------------------------------------------------
 // Byte ordering definitions
 //----------------------------------------------------------------------
-enum LLDBByteOrder
+enum ByteOrder
 {
     eByteOrderInvalid   = 0,
     eByteOrderBig       = 1,
@@ -100,7 +100,7 @@ enum LLDBByteOrder
 //----------------------------------------------------------------------
 // Register encoding definitions
 //----------------------------------------------------------------------
-enum LLDBEncoding
+enum Encoding
 {
     eEncodingInvalid = 0,
     eEncodingUint,               // unsigned integer
@@ -112,10 +112,9 @@ enum LLDBEncoding
 //----------------------------------------------------------------------
 // Display format definitions
 //----------------------------------------------------------------------
-enum LLDBFormat
+enum Format
 {
     eFormatDefault = 0,
-    eFormatInvalid = 0,
     eFormatBoolean,
     eFormatBinary,
     eFormatBytes,
@@ -123,7 +122,6 @@ enum LLDBFormat
     eFormatChar,
     eFormatCharPrintable,   // Only printable characters, space if not printable
     eFormatComplex,         // Floating point complex type
-    eFormatComplexFloat = eFormatComplex,
     eFormatCString,         // NULL terminated C strings
     eFormatDecimal,
     eFormatEnum,
@@ -161,7 +159,7 @@ enum LLDBFormat
 //----------------------------------------------------------------------
 // Description levels for "void GetDescription(Stream *, DescriptionLevel)" calls
 //----------------------------------------------------------------------
-enum LLDBDescriptionLevel
+enum DescriptionLevel
 {
     eDescriptionLevelBrief = 0,
     eDescriptionLevelFull,
@@ -173,7 +171,7 @@ enum LLDBDescriptionLevel
 //----------------------------------------------------------------------
 // Script interpreter types
 //----------------------------------------------------------------------
-enum LLDBScriptLanguage
+enum ScriptLanguage
 {
     eScriptLanguageNone,
     eScriptLanguagePython,
@@ -186,7 +184,7 @@ enum LLDBScriptLanguage
 // any of these to the lldb internal register numbering scheme 
 // (eRegisterKindLLDB).
 //----------------------------------------------------------------------
-enum LLDBRegisterKind
+enum RegisterKind
 {
     eRegisterKindEHFrame = 0,   // the register numbers seen in eh_frame
     eRegisterKindDWARF,         // the register numbers seen DWARF
@@ -199,7 +197,7 @@ enum LLDBRegisterKind
 //----------------------------------------------------------------------
 // Thread stop reasons
 //----------------------------------------------------------------------
-enum LLDBStopReason
+enum StopReason
 {
     eStopReasonInvalid = 0,
     eStopReasonNone,
@@ -217,7 +215,7 @@ enum LLDBStopReason
 //----------------------------------------------------------------------
 // Command Return Status Types
 //----------------------------------------------------------------------
-enum LLDBReturnStatus
+enum ReturnStatus
 {
     eReturnStatusInvalid,
     eReturnStatusSuccessFinishNoResult,
@@ -233,7 +231,7 @@ enum LLDBReturnStatus
 //----------------------------------------------------------------------
 // The results of expression evaluation:
 //----------------------------------------------------------------------
-enum LLDBExpressionResults
+enum ExpressionResults
 {
     eExpressionCompleted = 0,
     eExpressionSetupError,
@@ -249,7 +247,7 @@ enum LLDBExpressionResults
 //----------------------------------------------------------------------
 // Connection Status Types
 //----------------------------------------------------------------------
-enum LLDBConnectionStatus
+enum ConnectionStatus
 {
     eConnectionStatusSuccess,         // Success
     eConnectionStatusEndOfFile,       // End-of-file encountered
@@ -260,7 +258,7 @@ enum LLDBConnectionStatus
     eConnectionStatusInterrupted      // Interrupted read
 };
 
-enum LLDBErrorType
+enum ErrorType
 {
     eErrorTypeInvalid,
     eErrorTypeGeneric,      ///< Generic errors that can be any value.
@@ -271,7 +269,7 @@ enum LLDBErrorType
 };
 
 
-enum LLDBValueType
+enum ValueType
 {
     eValueTypeInvalid           = 0,
     eValueTypeVariableGlobal    = 1,    // globals variable
@@ -287,7 +285,7 @@ enum LLDBValueType
 // Token size/granularities for Input Readers
 //----------------------------------------------------------------------
 
-enum LLDBInputReaderGranularity
+enum InputReaderGranularity
 {
     eInputReaderGranularityInvalid = 0,
     eInputReaderGranularityByte,
@@ -306,7 +304,7 @@ enum LLDBInputReaderGranularity
 /// in this class, and requests that that item be resolved, or
 /// indicates that the member did get resolved.
 //------------------------------------------------------------------
-FLAGS_ENUM(LLDBSymbolContextItem)
+FLAGS_ENUM(SymbolContextItem)
 {
     eSymbolContextTarget     = (1u << 0), ///< Set when \a target is requested from a query, or was located in query results
     eSymbolContextModule     = (1u << 1), ///< Set when \a module is requested from a query, or was located in query results
@@ -322,14 +320,14 @@ FLAGS_ENUM(LLDBSymbolContextItem)
                                           ///< many other potential address to symbol context lookups.
 };
 
-FLAGS_ENUM(LLDBPermissions)
+FLAGS_ENUM(Permissions)
 {
     ePermissionsWritable    = (1u << 0),
     ePermissionsReadable    = (1u << 1),
     ePermissionsExecutable  = (1u << 2)
 };
 
-enum LLDBInputReaderAction
+enum InputReaderAction
 {
     eInputReaderActivate,   // reader is newly pushed onto the reader stack 
     eInputReaderAsynchronousOutputWritten, // an async output event occurred; the reader may want to do something
@@ -341,7 +339,7 @@ enum LLDBInputReaderAction
     eInputReaderDone        // reader was just popped off the stack and is done
 };
 
-FLAGS_ENUM(LLDBBreakpointEventType)
+FLAGS_ENUM(BreakpointEventType)
 {
     eBreakpointEventTypeInvalidType         = (1u << 0),
     eBreakpointEventTypeAdded               = (1u << 1),
@@ -357,7 +355,7 @@ FLAGS_ENUM(LLDBBreakpointEventType)
     eBreakpointEventTypeThreadChanged       = (1u << 11)
 };
 
-FLAGS_ENUM(LLDBWatchpointEventType)
+FLAGS_ENUM(WatchpointEventType)
 {
     eWatchpointEventTypeInvalidType         = (1u << 0),
     eWatchpointEventTypeAdded               = (1u << 1),
@@ -380,7 +378,7 @@ FLAGS_ENUM(LLDBWatchpointEventType)
 /// The enum -> string code is in LanguageRuntime.cpp, don't change this
 /// table without updating that code as well.
 //----------------------------------------------------------------------
-enum LLDBLanguageType
+enum LanguageType
 {
     eLanguageTypeUnknown         = 0x0000,   ///< Unknown or invalid language value.
     eLanguageTypeC89             = 0x0001,   ///< ISO C:1989.
@@ -430,21 +428,21 @@ enum LLDBLanguageType
     eNumLanguageTypes
 };
 
-enum LLDBInstrumentationRuntimeType
+enum InstrumentationRuntimeType
 {
     eInstrumentationRuntimeTypeAddressSanitizer = 0x0000,
     eInstrumentationRuntimeTypeThreadSanitizer = 0x0001,
     eNumInstrumentationRuntimeTypes
 };
 
-enum LLDBDynamicValueType
+enum DynamicValueType
 {
     eNoDynamicValues = 0,
     eDynamicCanRunTarget    = 1,
     eDynamicDontRunTarget   = 2
 };
 
-enum LLDBAccessType
+enum AccessType
 {
     eAccessNone,
     eAccessPublic,
@@ -453,7 +451,7 @@ enum LLDBAccessType
     eAccessPackage
 };
 
-enum LLDBCommandArgumentType
+enum CommandArgumentType
 {
     eArgTypeAddress = 0,
     eArgTypeAddressOrExpression,
@@ -544,10 +542,9 @@ enum LLDBCommandArgumentType
 //----------------------------------------------------------------------
 // Symbol types
 //----------------------------------------------------------------------
-enum LLDBSymbolType
+enum SymbolType
 {
     eSymbolTypeAny = 0,
-    eSymbolTypeInvalid = 0,
     eSymbolTypeAbsolute,
     eSymbolTypeCode,
     eSymbolTypeResolver,
@@ -578,7 +575,7 @@ enum LLDBSymbolType
     eSymbolTypeReExported
 };
 
-enum LLDBSectionType
+enum SectionType
 {
     eSectionTypeInvalid,
     eSectionTypeCode,
@@ -626,14 +623,14 @@ enum LLDBSectionType
     eSectionTypeOther
 };
 
-FLAGS_ENUM(LLDBEmulateInstructionOptions)
+FLAGS_ENUM(EmulateInstructionOptions)
 {
     eEmulateInstructionOptionNone               = (0u),
     eEmulateInstructionOptionAutoAdvancePC      = (1u << 0),
     eEmulateInstructionOptionIgnoreConditions   = (1u << 1)
 };
 
-FLAGS_ENUM(LLDBFunctionNameType)
+FLAGS_ENUM(FunctionNameType)
 {
     eFunctionNameTypeNone       = 0u,
     eFunctionNameTypeAuto       = (1u << 1),    // Automatically figure out which FunctionNameType
@@ -647,14 +644,13 @@ FLAGS_ENUM(LLDBFunctionNameType)
                                                 // methods or selectors will be searched.
     eFunctionNameTypeMethod     = (1u << 4),    // Find function by method name (C++) with no namespace or arguments
     eFunctionNameTypeSelector   = (1u << 5),    // Find function by selector name (ObjC) names
-    eFunctionNameTypeAny        = eFunctionNameTypeAuto // DEPRECATED: use eFunctionNameTypeAuto
 };
 
 
 //----------------------------------------------------------------------
 // Basic types enumeration for the public API SBType::GetBasicType()
 //----------------------------------------------------------------------
-enum LLDBBasicType
+enum BasicType
 {
 		eBasicTypeInvalid = 0,
     eBasicTypeVoid = 1,
@@ -691,7 +687,7 @@ enum LLDBBasicType
     eBasicTypeOther
 };
 
-FLAGS_ENUM(LLDBTypeClass)
+FLAGS_ENUM(TypeClass)
 {
     eTypeClassInvalid           = (0u),
     eTypeClassArray             = (1u << 0),
@@ -718,7 +714,7 @@ FLAGS_ENUM(LLDBTypeClass)
     eTypeClassAny               = (0xffffffffu)
 };
 
-enum LLDBTemplateArgumentKind
+enum TemplateArgumentKind
 {
     eTemplateArgumentKindNull = 0,
     eTemplateArgumentKindType,
@@ -735,7 +731,7 @@ enum LLDBTemplateArgumentKind
 // Options that can be set for a formatter to alter its behavior
 // Not all of these are applicable to all formatter types
 //----------------------------------------------------------------------
-FLAGS_ENUM(LLDBTypeOptions)
+FLAGS_ENUM(TypeOptions)
 {
     eTypeOptionNone                = (0u),
     eTypeOptionCascade             = (1u << 0),
@@ -760,7 +756,7 @@ FLAGS_ENUM(LLDBTypeOptions)
 // 5) If the two frames are on different threads or processes the comparision is Invalid
 // 6) If for some reason we can't figure out what went on, we return Unknown.
 //----------------------------------------------------------------------
-enum LLDBFrameComparison
+enum FrameComparison
 {
     eFrameCompareInvalid,
     eFrameCompareUnknown,
@@ -780,7 +776,7 @@ enum LLDBFrameComparison
 // might contain PC relative data and the object file might be able to
 // tell us that an address in code is data.
 //----------------------------------------------------------------------
-enum LLDBAddressClass
+enum AddressClass
 {
     eAddressClassInvalid,
     eAddressClassUnknown,
@@ -798,7 +794,7 @@ enum LLDBAddressClass
 // used with functions that set 'mode_t' to certain values for
 // permissions.
 //----------------------------------------------------------------------
-FLAGS_ENUM(LLDBFilePermissions)
+FLAGS_ENUM(FilePermissions)
 {
     eFilePermissionsUserRead        = (1u << 8),
     eFilePermissionsUserWrite       = (1u << 7),
@@ -839,7 +835,7 @@ FLAGS_ENUM(LLDBFilePermissions)
 // The different types of work that can be enqueued on a libdispatch
 // aka Grand Central Dispatch (GCD) queue.
 //----------------------------------------------------------------------
-enum LLDBQueueItemKind
+enum QueueItemKind
 {
     eQueueItemKindUnknown = 0,
     eQueueItemKindFunction,
@@ -851,7 +847,7 @@ enum LLDBQueueItemKind
 // libdispatch aka Grand Central Dispatch (GCD) queues can be either serial
 // (executing on one thread) or concurrent (executing on multiple threads).
 //----------------------------------------------------------------------
-enum LLDBQueueKind
+enum QueueKind
 {
     eQueueKindUnknown = 0,
     eQueueKindSerial,
@@ -864,7 +860,7 @@ enum LLDBQueueKind
 // expression evaluation callback, so that you can interrupt expression
 // evaluation at the various points in its lifecycle.
 //----------------------------------------------------------------------
-enum LLDBExpressionEvaluationPhase
+enum ExpressionEvaluationPhase
 {
     eExpressionEvaluationParse = 0,
     eExpressionEvaluationIRGen,
@@ -878,13 +874,13 @@ enum LLDBExpressionEvaluationPhase
 // Indicates what types of events cause the watchpoint to fire.
 // Used by Native*Protocol-related classes.
 //----------------------------------------------------------------------
-FLAGS_ENUM(LLDBWatchpointKind)
+FLAGS_ENUM(WatchpointKind)
 {
     eWatchpointKindRead = (1u << 0),
     eWatchpointKindWrite = (1u << 1)
 };
 
-enum LLDBGdbSignal
+enum GdbSignal
 {
     eGdbSignalBadAccess      = 0x91,
     eGdbSignalBadInstruction = 0x92,
@@ -899,7 +895,7 @@ enum LLDBGdbSignal
 // related to LLDB on the current host machine. Most files are relative
 // to LLDB or are in known locations.
 //----------------------------------------------------------------------
-enum LLDBPathType
+enum PathType
 {
     ePathTypeLLDBShlibDir,            // The directory where the lldb.so (unix) or LLDB mach-o file in LLDB.framework (MacOSX) exists
     ePathTypeSupportExecutableDir,    // Find LLDB support executable directory (debugserver, etc)
@@ -916,7 +912,7 @@ enum LLDBPathType
 // Kind of member function
 // Used by the type system
 //----------------------------------------------------------------------
-enum LLDBMemberFunctionKind
+enum MemberFunctionKind
 {
     eMemberFunctionKindUnknown = 0,     // Not sure what the type of this is
     eMemberFunctionKindConstructor,     // A function used to create instances
@@ -929,7 +925,7 @@ enum LLDBMemberFunctionKind
 //----------------------------------------------------------------------
 // String matching algorithm used by SBTarget
 //----------------------------------------------------------------------
-enum LLDBMatchType
+enum MatchType
 {
     eMatchTypeNormal,
     eMatchTypeRegex,
@@ -939,7 +935,7 @@ enum LLDBMatchType
 //----------------------------------------------------------------------
 // Bitmask that describes details about a type
 //----------------------------------------------------------------------
-FLAGS_ENUM(LLDBTypeFlags)
+FLAGS_ENUM(TypeFlags)
 {
     eTypeHasChildren        = (1u <<  0),
     eTypeHasValue           = (1u <<  1),
@@ -966,7 +962,7 @@ FLAGS_ENUM(LLDBTypeFlags)
     eTypeInstanceIsPointer  = (1u << 22)
 };
 
-FLAGS_ENUM(LLDBCommandFlags)
+FLAGS_ENUM(CommandFlags)
 {
     //----------------------------------------------------------------------
     // eCommandRequiresTarget
@@ -1052,7 +1048,7 @@ FLAGS_ENUM(LLDBCommandFlags)
 //----------------------------------------------------------------------
 // Whether a summary should cap how much data it returns to users or not
 //----------------------------------------------------------------------
-enum LLDBTypeSummaryCapping
+enum TypeSummaryCapping
 {
     eTypeSummaryCapped = true,
     eTypeSummaryUncapped = false

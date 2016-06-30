@@ -47,7 +47,7 @@ LLDB_API SBAddressRef SBBlockGetRangeEndAddress(SBBlockRef instance, uint32_t id
 LLDB_API unsigned int SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance, SBAddressRef block_addr);
 
 LLDB_API SBValueListRef SBBlockGetVariables(SBBlockRef instance, SBFrameRef frame, bool arguments,
-                                                    bool locals, bool statics, LLDBDynamicValueType use_dynamic);
+                                            bool locals, bool statics, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueListRef
 SBBlockGetVariables2(SBBlockRef instance, SBTargetRef target, bool arguments, bool locals, bool statics);

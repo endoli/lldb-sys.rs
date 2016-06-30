@@ -36,7 +36,7 @@ DisposeSBInputReader(SBInputReaderRef instance)
 
 SBErrorRef
 SBInputReaderInitialize(SBInputReaderRef instance, SBDebuggerRef var0, Callback callback,
-                            void *callback_baton, LLDBInputReaderGranularity var1, const char *var2, const char *var3,
+                            void *callback_baton, lldb::InputReaderGranularity var1, const char *var2, const char *var3,
                             bool var4)
 {
     SBInputReader *unwrapped = reinterpret_cast<SBInputReader *>(instance);

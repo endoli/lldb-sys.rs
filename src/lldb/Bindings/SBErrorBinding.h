@@ -30,9 +30,9 @@ LLDB_API bool SBErrorSuccess(SBErrorRef instance);
 
 LLDB_API unsigned int SBErrorGetError(SBErrorRef instance);
 
-LLDB_API LLDBErrorType SBErrorGetType(SBErrorRef instance);
+LLDB_API ENUM(ErrorType) SBErrorGetType(SBErrorRef instance);
 
-LLDB_API void SBErrorSetError(SBErrorRef instance, uint32_t err, LLDBErrorType type);
+LLDB_API void SBErrorSetError(SBErrorRef instance, uint32_t err, ENUM(ErrorType) type);
 
 LLDB_API void SBErrorSetErrorToErrno(SBErrorRef instance);
 

@@ -120,7 +120,7 @@ SBWatchpointSetCondition(SBWatchpointRef instance, const char *condition)
 }
 
 bool
-SBWatchpointGetDescription(SBWatchpointRef instance, SBStreamRef description, LLDBDescriptionLevel level)
+SBWatchpointGetDescription(SBWatchpointRef instance, SBStreamRef description, enum lldb::DescriptionLevel level)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), level);
@@ -139,7 +139,7 @@ SBWatchpointEventIsWatchpointEvent(SBEventRef event)
     return lldb::SBWatchpoint::EventIsWatchpointEvent(*reinterpret_cast<SBEvent *>(event));
 }
 
-LLDBWatchpointEventType
+lldb::WatchpointEventType
 SBWatchpointGetWatchpointEventTypeFromEvent(SBEventRef event)
 {
     return lldb::SBWatchpoint::GetWatchpointEventTypeFromEvent(*reinterpret_cast<SBEvent *>(event));

@@ -24,7 +24,7 @@ LLDB_API bool SBInstructionIsValid(SBInstructionRef instance);
 
 LLDB_API SBAddressRef SBInstructionGetAddress(SBInstructionRef instance);
 
-LLDB_API LLDBAddressClass SBInstructionGetAddressClass(SBInstructionRef instance);
+LLDB_API ENUM(AddressClass) SBInstructionGetAddressClass(SBInstructionRef instance);
 
 LLDB_API const char *SBInstructionGetMnemonic(SBInstructionRef instance, SBTargetRef target);
 

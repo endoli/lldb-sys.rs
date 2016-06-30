@@ -22,13 +22,13 @@ LLDB_API void DisposeSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance);
 
 LLDB_API bool SBTypeSummaryOptionsIsValid(SBTypeSummaryOptionsRef instance);
 
-LLDB_API LLDBLanguageType SBTypeSummaryOptionsGetLanguage(SBTypeSummaryOptionsRef instance);
+LLDB_API ENUM(LanguageType) SBTypeSummaryOptionsGetLanguage(SBTypeSummaryOptionsRef instance);
 
-LLDB_API LLDBTypeSummaryCapping SBTypeSummaryOptionsGetCapping(SBTypeSummaryOptionsRef instance);
+LLDB_API ENUM(TypeSummaryCapping) SBTypeSummaryOptionsGetCapping(SBTypeSummaryOptionsRef instance);
 
-LLDB_API void SBTypeSummaryOptionsSetLanguage(SBTypeSummaryOptionsRef instance, LLDBLanguageType);
+LLDB_API void SBTypeSummaryOptionsSetLanguage(SBTypeSummaryOptionsRef instance, ENUM(LanguageType));
 
-LLDB_API void SBTypeSummaryOptionsSetCapping(SBTypeSummaryOptionsRef instance, LLDBTypeSummaryCapping);
+LLDB_API void SBTypeSummaryOptionsSetCapping(SBTypeSummaryOptionsRef instance, ENUM(TypeSummaryCapping));
 
 LLDB_API SBTypeSummaryRef CreateSBTypeSummary(void);
 
@@ -61,7 +61,7 @@ LLDB_API unsigned int SBTypeSummaryGetOptions(SBTypeSummaryRef instance);
 LLDB_API void SBTypeSummarySetOptions(SBTypeSummaryRef instance, uint32_t);
 
 LLDB_API bool SBTypeSummaryGetDescription(SBTypeSummaryRef instance, SBStreamRef description,
-                                              LLDBDescriptionLevel description_level);
+                                          ENUM(DescriptionLevel) description_level);
 
 LLDB_API bool SBTypeSummaryIsEqualTo(SBTypeSummaryRef instance, SBTypeSummaryRef rhs);
 

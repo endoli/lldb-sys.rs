@@ -320,7 +320,7 @@ SBTargetFindFirstGlobalVariable(SBTargetRef instance, const char *name)
 
 SBValueListRef
 SBTargetFindGlobalVariables2(SBTargetRef instance, const char *name, uint32_t max_matches,
-                                 LLDBMatchType matchtype)
+                             enum lldb::MatchType matchtype)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBValueListRef>(
@@ -329,7 +329,7 @@ SBTargetFindGlobalVariables2(SBTargetRef instance, const char *name, uint32_t ma
 
 SBSymbolContextListRef
 SBTargetFindGlobalFunctions(SBTargetRef instance, const char *name, uint32_t max_matches,
-                                enum lldb::MatchType matchtype)
+                            enum lldb::MatchType matchtype)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBSymbolContextListRef>(

@@ -43,7 +43,7 @@ LLDB_API SBTypeRef SBFunctionGetType(SBFunctionRef instance);
 
 LLDB_API SBBlockRef SBFunctionGetBlock(SBFunctionRef instance);
 
-LLDB_API LLDBLanguageType SBFunctionGetLanguage(SBFunctionRef instance);
+LLDB_API ENUM(LanguageType) SBFunctionGetLanguage(SBFunctionRef instance);
 
 LLDB_API bool SBFunctionGetIsOptimized(SBFunctionRef instance);
 

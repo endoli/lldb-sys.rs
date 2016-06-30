@@ -59,10 +59,10 @@ LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 LLDB_API SBValueRef SBFrameEvaluateExpression(SBFrameRef instance, const char *expr);
 
 LLDB_API SBValueRef
-SBFrameEvaluateExpression2(SBFrameRef instance, const char *expr, LLDBDynamicValueType use_dynamic);
+SBFrameEvaluateExpression2(SBFrameRef instance, const char *expr, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBFrameEvaluateExpression3(SBFrameRef instance, const char *expr,
-                                                       LLDBDynamicValueType use_dynamic, bool unwind_on_error);
+                                               ENUM(DynamicValueType) use_dynamic, bool unwind_on_error);
 
 LLDB_API SBValueRef
 SBFrameEvaluateExpression4(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options);
@@ -81,7 +81,7 @@ LLDB_API SBValueListRef
 SBFrameGetVariables(SBFrameRef instance, bool arguments, bool locals, bool statics, bool in_scope_only);
 
 LLDB_API SBValueListRef SBFrameGetVariables2(SBFrameRef instance, bool arguments, bool locals, bool statics,
-                                                     bool in_scope_only, LLDBDynamicValueType use_dynamic);
+                                             bool in_scope_only, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueListRef SBFrameGetVariables3(SBFrameRef instance, SBVariablesOptionsRef options);
 
@@ -92,17 +92,17 @@ LLDB_API SBValueRef SBFrameFindRegister(SBFrameRef instance, const char *name);
 LLDB_API SBValueRef SBFrameFindVariable(SBFrameRef instance, const char *var_name);
 
 LLDB_API SBValueRef
-SBFrameFindVariable2(SBFrameRef instance, const char *var_name, LLDBDynamicValueType use_dynamic);
+SBFrameFindVariable2(SBFrameRef instance, const char *var_name, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBFrameGetValueForVariablePath(SBFrameRef instance, const char *var_expr_cstr,
-                                                           LLDBDynamicValueType use_dynamic);
+                                                   ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBFrameGetValueForVariablePath2(SBFrameRef instance, const char *var_path);
 
-LLDB_API SBValueRef SBFrameFindValue(SBFrameRef instance, const char *name, LLDBValueType value_type);
+LLDB_API SBValueRef SBFrameFindValue(SBFrameRef instance, const char *name, ENUM(ValueType) value_type);
 
-LLDB_API SBValueRef SBFrameFindValue2(SBFrameRef instance, const char *name, LLDBValueType value_type,
-                                              LLDBDynamicValueType use_dynamic);
+LLDB_API SBValueRef SBFrameFindValue2(SBFrameRef instance, const char *name, ENUM(ValueType) value_type,
+                                      ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API bool SBFrameGetDescription(SBFrameRef instance, SBStreamRef description);
 

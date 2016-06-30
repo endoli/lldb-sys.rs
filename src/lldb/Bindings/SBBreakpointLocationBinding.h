@@ -65,7 +65,7 @@ LLDB_API const char *SBBreakpointLocationGetQueueName(SBBreakpointLocationRef in
 LLDB_API bool SBBreakpointLocationIsResolved(SBBreakpointLocationRef instance);
 
 LLDB_API bool SBBreakpointLocationGetDescription(SBBreakpointLocationRef instance, SBStreamRef description,
-                                                     LLDBDescriptionLevel level);
+                                                 ENUM(DescriptionLevel) level);
 
 LLDB_API SBBreakpointRef SBBreakpointLocationGetBreakpoint(SBBreakpointLocationRef instance);
 

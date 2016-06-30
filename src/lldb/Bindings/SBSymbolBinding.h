@@ -39,7 +39,7 @@ LLDB_API SBAddressRef SBSymbolGetEndAddress(SBSymbolRef instance);
 
 LLDB_API unsigned int SBSymbolGetPrologueByteSize(SBSymbolRef instance);
 
-LLDB_API LLDBSymbolType SBSymbolGetType(SBSymbolRef instance);
+LLDB_API ENUM(SymbolType) SBSymbolGetType(SBSymbolRef instance);
 
 LLDB_API bool SBSymbolGetDescription(SBSymbolRef instance, SBStreamRef description);
 

@@ -41,7 +41,7 @@ LLDB_API unsigned int SBTypeSyntheticGetOptions(SBTypeSyntheticRef instance);
 LLDB_API void SBTypeSyntheticSetOptions(SBTypeSyntheticRef instance, uint32_t);
 
 LLDB_API bool SBTypeSyntheticGetDescription(SBTypeSyntheticRef instance, SBStreamRef description,
-                                                LLDBDescriptionLevel description_level);
+                                            ENUM(DescriptionLevel) description_level);
 
 LLDB_API bool SBTypeSyntheticIsEqualTo(SBTypeSyntheticRef instance, SBTypeSyntheticRef rhs);
 

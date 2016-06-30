@@ -42,7 +42,7 @@ LLDB_API SBQueueItemRef SBQueueGetPendingItemAtIndex(SBQueueRef instance, uint32
 
 LLDB_API unsigned int SBQueueGetNumRunningItems(SBQueueRef instance);
 
-LLDB_API LLDBQueueKind SBQueueGetKind(SBQueueRef instance);
+LLDB_API ENUM(QueueKind) SBQueueGetKind(SBQueueRef instance);
 
 #ifdef __cplusplus
 }

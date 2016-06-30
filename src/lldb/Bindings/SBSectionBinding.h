@@ -46,7 +46,7 @@ LLDB_API SBDataRef SBSectionGetSectionData(SBSectionRef instance);
 
 LLDB_API SBDataRef SBSectionGetSectionData2(SBSectionRef instance, uint64_t offset, uint64_t size);
 
-LLDB_API LLDBSectionType SBSectionGetSectionType(SBSectionRef instance);
+LLDB_API ENUM(SectionType) SBSectionGetSectionType(SBSectionRef instance);
 
 LLDB_API unsigned int SBSectionGetTargetByteSize(SBSectionRef instance);
 

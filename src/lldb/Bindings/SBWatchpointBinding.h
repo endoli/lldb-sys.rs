@@ -47,13 +47,13 @@ LLDB_API const char *SBWatchpointGetCondition(SBWatchpointRef instance);
 LLDB_API void SBWatchpointSetCondition(SBWatchpointRef instance, const char *condition);
 
 LLDB_API bool SBWatchpointGetDescription(SBWatchpointRef instance, SBStreamRef description,
-                                             LLDBDescriptionLevel level);
+                                         ENUM(DescriptionLevel) level);
 
 LLDB_API void SBWatchpointClear(SBWatchpointRef instance);
 
 LLDB_API bool SBWatchpointEventIsWatchpointEvent(SBEventRef event);
 
-LLDB_API LLDBWatchpointEventType SBWatchpointGetWatchpointEventTypeFromEvent(SBEventRef event);
+LLDB_API ENUM(WatchpointEventType) SBWatchpointGetWatchpointEventTypeFromEvent(SBEventRef event);
 
 LLDB_API SBWatchpointRef SBWatchpointGetWatchpointFromEvent(SBEventRef event);
 

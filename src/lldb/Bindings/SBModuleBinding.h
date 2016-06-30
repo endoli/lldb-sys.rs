@@ -38,7 +38,7 @@ LLDB_API SBFileSpecRef SBModuleGetRemoteInstallFileSpec(SBModuleRef instance);
 
 LLDB_API bool SBModuleSetRemoteInstallFileSpec(SBModuleRef instance, SBFileSpecRef file);
 
-LLDB_API LLDBByteOrder SBModuleGetByteOrder(SBModuleRef instance);
+LLDB_API ENUM(ByteOrder) SBModuleGetByteOrder(SBModuleRef instance);
 
 LLDB_API unsigned int SBModuleGetAddressByteSize(SBModuleRef instance);
 
@@ -65,10 +65,10 @@ LLDB_API unsigned int SBModuleGetNumSymbols(SBModuleRef instance);
 
 LLDB_API SBSymbolRef SBModuleGetSymbolAtIndex(SBModuleRef instance, size_t idx);
 
-LLDB_API SBSymbolRef SBModuleFindSymbol(SBModuleRef instance, const char *name, LLDBSymbolType type);
+LLDB_API SBSymbolRef SBModuleFindSymbol(SBModuleRef instance, const char *name, ENUM(SymbolType) type);
 
 LLDB_API SBSymbolContextListRef
-SBModuleFindSymbols(SBModuleRef instance, const char *name, LLDBSymbolType type);
+SBModuleFindSymbols(SBModuleRef instance, const char *name, ENUM(SymbolType) type);
 
 LLDB_API unsigned int SBModuleGetNumSections(SBModuleRef instance);
 
@@ -89,7 +89,7 @@ LLDB_API SBTypeListRef SBModuleFindTypes(SBModuleRef instance, const char *type)
 
 LLDB_API SBTypeRef SBModuleGetTypeByID(SBModuleRef instance, lldb_user_id_t uid);
 
-LLDB_API SBTypeRef SBModuleGetBasicType(SBModuleRef instance, LLDBBasicType type);
+LLDB_API SBTypeRef SBModuleGetBasicType(SBModuleRef instance, ENUM(BasicType) type);
 
 LLDB_API SBTypeListRef SBModuleGetTypes(SBModuleRef instance, uint32_t type_mask);
 

@@ -28,7 +28,7 @@ LLDB_API bool SBThreadIsValid(SBThreadRef instance);
 
 LLDB_API void SBThreadClear(SBThreadRef instance);
 
-LLDB_API LLDBStopReason SBThreadGetStopReason(SBThreadRef instance);
+LLDB_API ENUM(StopReason) SBThreadGetStopReason(SBThreadRef instance);
 
 LLDB_API unsigned int SBThreadGetStopReasonDataCount(SBThreadRef instance);
 
@@ -52,11 +52,11 @@ LLDB_API unsigned long long SBThreadGetQueueID(SBThreadRef instance);
 
 LLDB_API bool SBThreadGetInfoItemByPathAsString(SBThreadRef instance, const char *path, SBStreamRef strm);
 
-LLDB_API void SBThreadStepOver(SBThreadRef instance, LLDBRunMode stop_other_threads);
+LLDB_API void SBThreadStepOver(SBThreadRef instance, ENUM(RunMode) stop_other_threads);
 
-LLDB_API void SBThreadStepInto(SBThreadRef instance, LLDBRunMode stop_other_threads);
+LLDB_API void SBThreadStepInto(SBThreadRef instance, ENUM(RunMode) stop_other_threads);
 
-LLDB_API void SBThreadStepInto2(SBThreadRef instance, const char *target_name, LLDBRunMode stop_other_threads);
+LLDB_API void SBThreadStepInto2(SBThreadRef instance, const char *target_name, ENUM(RunMode) stop_other_threads);
 
 LLDB_API void SBThreadStepOut(SBThreadRef instance);
 
