@@ -7,10 +7,15 @@
 
 use libc::{FILE, int32_t, int64_t, size_t, uint8_t, uint32_t, uint64_t};
 
+/// Storage for the value of an address.
 pub type lldb_addr_t = uint64_t;
+/// Storage for an OS user ID.
 pub type lldb_user_id_t = uint64_t;
+/// Storage for an OS process ID.
 pub type lldb_pid_t = uint64_t;
+/// Storage for an OS thread ID.
 pub type lldb_tid_t = uint64_t;
+/// Storage for an offset between 2 addresses in memory.
 pub type lldb_offset_t = uint64_t;
 pub enum SBAddressOpaque { }
 pub type SBAddressRef = *mut SBAddressOpaque;
@@ -153,21 +158,36 @@ pub enum SBWatchpointOpaque { }
 pub type SBWatchpointRef = *mut SBWatchpointOpaque;
 pub enum SBUnixSignalsOpaque { }
 pub type SBUnixSignalsRef = *mut SBUnixSignalsOpaque;
+/// Process and thread states.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
 pub enum StateType {
     Invalid = 0,
+    /// Process object is valid, but not currently loaded.
     Unloaded = 1,
+    /// Process is connected to remote debug services, but not launched
+    /// or attached to anything yet.
     Connected = 2,
+    /// Process is currently trying to attach.
     Attaching = 3,
+    /// Process is currently trying to launch.
     Launching = 4,
+    /// Process or thread is stopped and can be examined.
     Stopped = 5,
+    /// Process or thread is running and can't be examined.
     Running = 6,
+    /// Process or thread is in the process of stepping and can't be examined.
     Stepping = 7,
+    /// Process or thread has crashed and can be examined.
     Crashed = 8,
+    /// Process has been detached and can't be examined.
     Detached = 9,
+    /// Process has exited and can't be examined.
     Exited = 10,
+    /// Process or thread is in a suspended state as far as the
+    /// debugger is concerned while other processes or threads
+    /// get the chance to run.
     Suspended = 11,
 }
 #[derive(Copy, Clone)]
@@ -175,19 +195,37 @@ pub enum StateType {
 #[derive(Debug)]
 pub enum LaunchFlags {
     None = 0,
+    /// Exec when launching and turn the calling process into a new process.
     Exec = 1,
+    /// Stop as soon as the process launches to allow the process to be debugged.
     Debug = 2,
+    /// Stop at the program entry point instead of auto-continuiing when
+    /// launching or attaching at entry point.
     StopAtEntry = 4,
+    /// Disable address space layout randomization (ASLR).
     DisableASLR = 8,
+    /// Disable stdio for the inferior process (e.g. for a GUI app).
     DisableSTDIO = 16,
+    /// Launch the process in a new TTY if supported by the host.
     LaunchInTTY = 32,
+    /// Launch the process inside a shell to get shell expansion.
     LaunchInShell = 64,
+    /// Launch the process in a separate process group.
     LaunchInSeparateProcessGroup = 128,
+    /// If you are going to hand the process off (e.g. to debugserver),
+    /// set this flag so that lldb and the handee don't race to set its
+    /// exit status.
     DontSetExitStatus = 256,
+    /// If set, then the client stub should detach rather than
+    /// killing the debugee.
     DetachOnError = 512,
+    /// Perform shell-style argument expansion.
     ShellExpandArguments = 1024,
+    /// Close the open TTY on exit.
     CloseTTYOnExit = 2048,
 }
+
+/// Thread run modes.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
@@ -196,6 +234,8 @@ pub enum RunMode {
     AllThreads = 1,
     OnlyDuringStepping = 2,
 }
+
+/// Byte order definitions.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
@@ -205,16 +245,24 @@ pub enum ByteOrder {
     PDP = 2,
     Little = 4,
 }
+
+/// Register encoding defintions.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
 pub enum Encoding {
     Invalid = 0,
+    /// Unsigned integer.
     Uint = 1,
+    /// signed integer.
     Sint = 2,
+    /// Floating point.
     IEEE754 = 3,
+    /// Vector register.
     Vector = 4,
 }
+
+/// Display format definitions.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
@@ -290,6 +338,8 @@ pub enum RegisterKind {
     LLDB = 4,
     kNumRegisterKinds = 5,
 }
+
+/// Thread stop reasons.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
@@ -379,18 +429,49 @@ pub enum InputReaderGranularity {
     Line = 3,
     All = 4,
 }
+
+/// These mask bits allow a common interface for queries that can
+/// limit the amount of information that gets parsed to only the
+/// information that is requested. These bits also can indicate what
+/// actually did get resolved during query function calls.
+///
+/// Each definition corresponds to a one of the member variables
+/// in this class, and requests that that item be resolved, or
+/// indicates that the member did get resolved.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
 pub enum SymbolContextItem {
+    /// Set when a target is requested from a query or was located
+    /// in the query results.
     Target = 1,
+    /// Set when a module is requested from a query or was located
+    /// in the query results.
     Module = 2,
+    /// Set when a compilation unit is requested from a query or was located
+    /// in the query results.
     CompUnit = 4,
+    /// Set when a function is requested from a query or was located
+    /// in the query results.
     Function = 8,
+    /// Set when the deepest block is requested from a query or was located
+    /// in the query results.
     Block = 16,
+    /// Set when a line entry is requested from a query or was located
+    /// in the query results.
     LineEntry = 32,
+    /// Set when a symbol is requested from a query or was located
+    /// in the query results.
     Symbol = 64,
+    /// Indicates to try and look everything up during a routine symbol
+    /// context query. This doesn't actually include looking up a variable.
     Everything = 127,
+    /// Set when a global or static variable is requested from a query,
+    /// or was located in the query results.
+    ///
+    /// This is potentially expensive to look up, so it isn't included in
+    /// `Everything` which stops it from being used during frame PC
+    /// lookups and many other potential address to symbol context lookups.
     Variable = 128,
 }
 #[derive(Copy, Clone)]
