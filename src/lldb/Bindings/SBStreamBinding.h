@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBStreamRef CreateSBStream(void);
 
+LLDB_API void DisposeSBStream(SBStreamRef instance);
+
 LLDB_API bool SBStreamIsValid(SBStreamRef instance);
 
 LLDB_API const char *SBStreamGetData(SBStreamRef instance);

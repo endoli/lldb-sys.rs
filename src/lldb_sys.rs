@@ -3035,6 +3035,7 @@ extern "C" {
                                                             s: SBStreamRef)
      -> ::std::os::raw::c_uint;
     pub fn CreateSBStream() -> SBStreamRef;
+    pub fn DisposeSBStream(instance: SBStreamRef);
     pub fn SBStreamIsValid(instance: SBStreamRef) -> u8;
     pub fn SBStreamGetData(instance: SBStreamRef)
      -> *const ::std::os::raw::c_char;
