@@ -190,39 +190,37 @@ pub enum StateType {
     /// get the chance to run.
     Suspended = 11,
 }
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum LaunchFlags {
-    None = 0,
-    /// Exec when launching and turn the calling process into a new process.
-    Exec = 1,
-    /// Stop as soon as the process launches to allow the process to be debugged.
-    Debug = 2,
-    /// Stop at the program entry point instead of auto-continuiing when
-    /// launching or attaching at entry point.
-    StopAtEntry = 4,
-    /// Disable address space layout randomization (ASLR).
-    DisableASLR = 8,
-    /// Disable stdio for the inferior process (e.g. for a GUI app).
-    DisableSTDIO = 16,
-    /// Launch the process in a new TTY if supported by the host.
-    LaunchInTTY = 32,
-    /// Launch the process inside a shell to get shell expansion.
-    LaunchInShell = 64,
-    /// Launch the process in a separate process group.
-    LaunchInSeparateProcessGroup = 128,
-    /// If you are going to hand the process off (e.g. to debugserver),
-    /// set this flag so that lldb and the handee don't race to set its
-    /// exit status.
-    DontSetExitStatus = 256,
-    /// If set, then the client stub should detach rather than
-    /// killing the debugee.
-    DetachOnError = 512,
-    /// Perform shell-style argument expansion.
-    ShellExpandArguments = 1024,
-    /// Close the open TTY on exit.
-    CloseTTYOnExit = 2048,
+bitflags! {
+    pub flags LaunchFlags: u32 {
+        /// Exec when launching and turn the calling process into a new process.
+        const LAUNCH_FLAG_EXEC          = 0b0000001,
+        /// Stop as soon as the process launches to allow the process to be debugged.
+        const LAUNCH_FLAG_DEBUG         = 0b0000010,
+        /// Stop at the program entry point instead of auto-continuiing when
+        /// launching or attaching at entry point.
+        const LAUNCH_FLAG_STOP_AT_ENTRY = 0b0000100,
+        /// Disable address space layout randomization (ASLR).
+        const LAUNCH_FLAG_DISABLE_ASLR = 8,
+        /// Disable stdio for the inferior process (e.g. for a GUI app).
+        const LAUNCH_FLAG_DISABLE_STDIO = 16,
+        /// Launch the process in a new TTY if supported by the host.
+        const LAUNCH_FLAG_LAUNCH_IN_TTY = 32,
+        /// Launch the process inside a shell to get shell expansion.
+        const LAUNCH_FLAG_LAUNCH_IN_SHELL = 64,
+        /// Launch the process in a separate process group.
+        const LAUNCH_FLAG_LAUNCH_IN_SEPARATE_PROCESS_GROUP = 128,
+        /// If you are going to hand the process off (e.g. to debugserver),
+        /// set this flag so that lldb and the handee don't race to set its
+        /// exit status.
+        const LAUNCH_FLAG_DONT_SET_EXIT_STATUS = 256,
+        /// If set, then the client stub should detach rather than
+        /// killing the debugee.
+        const LAUNCH_FLAG_DETACH_ON_ERRROR = 512,
+        /// Perform shell-style argument expansion.
+        const LAUNCH_FLAG_SHELL_EXPAND_ARGUMENTS = 1024,
+        /// Close the open TTY on exit.
+        const LAUNCH_FLAG_CLOSE_TTY_ON_EXIT = 2048,
+    }
 }
 
 /// Thread run modes.
