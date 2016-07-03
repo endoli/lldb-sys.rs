@@ -191,6 +191,7 @@ pub enum StateType {
     Suspended = 11,
 }
 bitflags! {
+    #[repr(C)]
     pub flags LaunchFlags: u32 {
         /// Exec when launching and turn the calling process into a new process.
         const LAUNCH_FLAG_EXEC          = 0b0000001,
@@ -428,57 +429,64 @@ pub enum InputReaderGranularity {
     All = 4,
 }
 
-/// These mask bits allow a common interface for queries that can
-/// limit the amount of information that gets parsed to only the
-/// information that is requested. These bits also can indicate what
-/// actually did get resolved during query function calls.
-///
-/// Each definition corresponds to a one of the member variables
-/// in this class, and requests that that item be resolved, or
-/// indicates that the member did get resolved.
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum SymbolContextItem {
-    /// Set when a target is requested from a query or was located
-    /// in the query results.
-    Target = 1,
-    /// Set when a module is requested from a query or was located
-    /// in the query results.
-    Module = 2,
-    /// Set when a compilation unit is requested from a query or was located
-    /// in the query results.
-    CompUnit = 4,
-    /// Set when a function is requested from a query or was located
-    /// in the query results.
-    Function = 8,
-    /// Set when the deepest block is requested from a query or was located
-    /// in the query results.
-    Block = 16,
-    /// Set when a line entry is requested from a query or was located
-    /// in the query results.
-    LineEntry = 32,
-    /// Set when a symbol is requested from a query or was located
-    /// in the query results.
-    Symbol = 64,
-    /// Indicates to try and look everything up during a routine symbol
-    /// context query. This doesn't actually include looking up a variable.
-    Everything = 127,
-    /// Set when a global or static variable is requested from a query,
-    /// or was located in the query results.
+bitflags! {
+    /// These mask bits allow a common interface for queries that can
+    /// limit the amount of information that gets parsed to only the
+    /// information that is requested. These bits also can indicate what
+    /// actually did get resolved during query function calls.
     ///
-    /// This is potentially expensive to look up, so it isn't included in
-    /// `Everything` which stops it from being used during frame PC
-    /// lookups and many other potential address to symbol context lookups.
-    Variable = 128,
+    /// Each definition corresponds to a one of the member variables
+    /// in this class, and requests that that item be resolved, or
+    /// indicates that the member did get resolved.
+    #[repr(C)]
+    pub flags SymbolContextItem: u32 {
+        /// Set when a target is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_TARGET = 1,
+        /// Set when a module is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_MODULE = 2,
+        /// Set when a compilation unit is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_COMPUNIT = 4,
+        /// Set when a function is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_FUNCTION = 8,
+        /// Set when the deepest block is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_BLOCK = 16,
+        /// Set when a line entry is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_LINE_ENTRY = 32,
+        /// Set when a symbol is requested from a query or was located
+        /// in the query results.
+        const SYMBOL_CONTEXT_ITEM_SYMBOL = 64,
+        /// Indicates to try and look everything up during a routine symbol
+        /// context query. This doesn't actually include looking up a variable.
+        const SYMBOL_CONTEXT_ITEM_EVERYTHING
+            = SYMBOL_CONTEXT_ITEM_TARGET.bits |
+              SYMBOL_CONTEXT_ITEM_MODULE.bits |
+              SYMBOL_CONTEXT_ITEM_COMPUNIT.bits |
+              SYMBOL_CONTEXT_ITEM_FUNCTION.bits |
+              SYMBOL_CONTEXT_ITEM_BLOCK.bits |
+              SYMBOL_CONTEXT_ITEM_LINE_ENTRY.bits |
+              SYMBOL_CONTEXT_ITEM_SYMBOL.bits,
+        /// Set when a global or static variable is requested from a query,
+        /// or was located in the query results.
+        ///
+        /// This is potentially expensive to look up, so it isn't included in
+        /// `SYMBOL_CONTEXT_ITEM_EVERYTHING` which stops it from being used during frame PC
+        /// lookups and many other potential address to symbol context lookups.
+        const SYMBOL_CONTEXT_ITEM_VARIABLE = 128,
+    }
 }
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum Permissions {
-    Writable = 1,
-    Readable = 2,
-    Executable = 4,
+bitflags! {
+    #[repr(C)]
+    pub flags Permissions: u32 {
+        const PERMISSIONS_WRITABLE = 1,
+        const PERMISSIONS_READABLE = 2,
+        const PERMISSIONS_EXECUTABLE = 4,
+    }
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
