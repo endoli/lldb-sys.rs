@@ -196,7 +196,7 @@ bitflags! {
         const LAUNCH_FLAG_EXEC          = 0b0000001,
         /// Stop as soon as the process launches to allow the process to be debugged.
         const LAUNCH_FLAG_DEBUG         = 0b0000010,
-        /// Stop at the program entry point instead of auto-continuiing when
+        /// Stop at the program entry point instead of auto-continuing when
         /// launching or attaching at entry point.
         const LAUNCH_FLAG_STOP_AT_ENTRY = 0b0000100,
         /// Disable address space layout randomization (ASLR).
