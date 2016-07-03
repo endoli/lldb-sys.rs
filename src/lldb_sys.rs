@@ -907,38 +907,75 @@ pub enum AddressClass {
     Debug = 5,
     Runtime = 6,
 }
-pub const eFilePermissionsFileDefault: FilePermissions =
-    FilePermissions::UserRW;
-pub const eFilePermissionsDirectoryDefault: FilePermissions =
-    FilePermissions::UserRWX;
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum FilePermissions {
-    UserRead = 256,
-    UserWrite = 128,
-    UserExecute = 64,
-    GroupRead = 32,
-    GroupWrite = 16,
-    GroupExecute = 8,
-    WorldRead = 4,
-    WorldWrite = 2,
-    WorldExecute = 1,
-    UserRW = 384,
-    FileFilePermissionsUserRX = 320,
-    UserRWX = 448,
-    GroupRW = 48,
-    GroupRX = 40,
-    GroupRWX = 56,
-    WorldRW = 6,
-    WorldRX = 5,
-    WorldRWX = 7,
-    EveryoneR = 292,
-    EveryoneW = 146,
-    EveryoneX = 73,
-    EveryoneRW = 438,
-    EveryoneRX = 365,
-    EveryoneRWX = 511,
+bitflags! {
+    #[repr(C)]
+    pub flags FilePermissions: u32 {
+        const FILE_PERMISSIONS_WORLD_EXECUTE = 1,
+        const FILE_PERMISSIONS_WORLD_WRITE = 2,
+        const FILE_PERMISSIONS_WORLD_READ = 4,
+        const FILE_PERMISSIONS_GROUP_EXECUTE = 8,
+        const FILE_PERMISSIONS_GROUP_WRITE = 16,
+        const FILE_PERMISSIONS_GROUP_READ = 32,
+        const FILE_PERMISSIONS_USER_EXECUTE = 64,
+        const FILE_PERMISSIONS_USER_WRITE = 128,
+        const FILE_PERMISSIONS_USER_READ = 256,
+        const FILE_PERMISSIONS_WORLD_RX
+            = FILE_PERMISSIONS_WORLD_READ.bits |
+              FILE_PERMISSIONS_WORLD_EXECUTE.bits,
+        const FILE_PERMISSIONS_WORLD_RW
+            = FILE_PERMISSIONS_WORLD_READ.bits |
+              FILE_PERMISSIONS_WORLD_WRITE.bits,
+        const FILE_PERMISSIONS_WORLD_RWX
+            = FILE_PERMISSIONS_WORLD_READ.bits |
+              FILE_PERMISSIONS_WORLD_WRITE.bits |
+              FILE_PERMISSIONS_WORLD_EXECUTE.bits,
+        const FILE_PERMISSIONS_GROUP_RX
+            = FILE_PERMISSIONS_GROUP_READ.bits |
+              FILE_PERMISSIONS_GROUP_EXECUTE.bits,
+        const FILE_PERMISSIONS_GROUP_RW
+            = FILE_PERMISSIONS_GROUP_READ.bits |
+              FILE_PERMISSIONS_GROUP_WRITE.bits,
+        const FILE_PERMISSIONS_GROUP_RWX
+            = FILE_PERMISSIONS_GROUP_READ.bits |
+              FILE_PERMISSIONS_GROUP_WRITE.bits |
+              FILE_PERMISSIONS_GROUP_EXECUTE.bits,
+        const FILE_PERMISSIONS_USER_RX
+            = FILE_PERMISSIONS_USER_READ.bits |
+              FILE_PERMISSIONS_USER_EXECUTE.bits,
+        const FILE_PERMISSIONS_USER_RW
+            = FILE_PERMISSIONS_USER_READ.bits |
+              FILE_PERMISSIONS_USER_WRITE.bits,
+        const FILE_PERMISSIONS_USER_RWX
+            = FILE_PERMISSIONS_USER_READ.bits |
+              FILE_PERMISSIONS_USER_WRITE.bits |
+              FILE_PERMISSIONS_USER_EXECUTE.bits,
+        const FILE_PERMISSIONS_EVERYONE_R
+            = FILE_PERMISSIONS_WORLD_READ.bits |
+              FILE_PERMISSIONS_GROUP_READ.bits |
+              FILE_PERMISSIONS_USER_READ.bits,
+        const FILE_PERMISSIONS_EVERYONE_W
+            = FILE_PERMISSIONS_WORLD_WRITE.bits |
+              FILE_PERMISSIONS_GROUP_WRITE.bits |
+              FILE_PERMISSIONS_USER_WRITE.bits,
+        const FILE_PERMISSIONS_EVERYONE_X
+            = FILE_PERMISSIONS_WORLD_EXECUTE.bits |
+              FILE_PERMISSIONS_GROUP_EXECUTE.bits |
+              FILE_PERMISSIONS_USER_EXECUTE.bits,
+        const FILE_PERMISSIONS_EVERYONE_RW
+            = FILE_PERMISSIONS_EVERYONE_R.bits |
+              FILE_PERMISSIONS_EVERYONE_W.bits,
+        const FILE_PERMISSIONS_EVERYONE_RX
+            = FILE_PERMISSIONS_EVERYONE_R.bits |
+              FILE_PERMISSIONS_EVERYONE_X.bits,
+        const FILE_PERMISSIONS_EVERYONE_RWX
+            = FILE_PERMISSIONS_EVERYONE_R.bits |
+              FILE_PERMISSIONS_EVERYONE_W.bits |
+              FILE_PERMISSIONS_EVERYONE_X.bits,
+        const FILE_PERMISSIONS_FILE_DEFAULT
+            = FILE_PERMISSIONS_USER_RW.bits,
+        const FILE_PERMISSIONS_DIRECTORY_DEFAULT
+            = FILE_PERMISSIONS_USER_RWX.bits,
+    }
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
