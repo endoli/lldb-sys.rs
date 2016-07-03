@@ -832,31 +832,31 @@ pub enum BasicType {
     NullPtr = 31,
     Other = 32,
 }
-#[derive(Copy, Clone)]
-#[repr(u32)]
-#[derive(Debug)]
-pub enum TypeClass {
-    Invalid = 0,
-    Array = 1,
-    BlockPointer = 2,
-    Builtin = 4,
-    Class = 8,
-    ComplexFloat = 16,
-    ComplexInteger = 32,
-    Enumeration = 64,
-    Function = 128,
-    MemberPointer = 256,
-    ObjCObject = 512,
-    ObjCInterface = 1024,
-    ObjCObjectPointer = 2048,
-    Pointer = 4096,
-    Reference = 8192,
-    Struct = 16384,
-    Typedef = 32768,
-    Union = 65536,
-    Vector = 131072,
-    Other = 2147483648,
-    Any = 4294967295,
+bitflags! {
+    #[repr(C)]
+    pub flags TypeClass: u32 {
+        const TYPE_CLASS_INVALID = 0,
+        const TYPE_CLASS_ARRAY = 1,
+        const TYPE_CLASS_BLOCKPOINTER = 2,
+        const TYPE_CLASS_BUILTIN = 4,
+        const TYPE_CLASS_CLASS = 8,
+        const TYPE_CLASS_COMPLEX_FLOAT = 16,
+        const TYPE_CLASS_COMPLEX_INTEGER = 32,
+        const TYPE_CLASS_ENUMERATION = 64,
+        const TYPE_CLASS_FUNCTION = 128,
+        const TYPE_CLASS_MEMBER_POINTER = 256,
+        const TYPE_CLASS_OBJC_OBJECT = 512,
+        const TYPE_CLASS_OBJC_INTERFACE = 1024,
+        const TYPE_CLASS_OBJC_OBJECT_POINTER = 2048,
+        const TYPE_CLASS_POINTER = 4096,
+        const TYPE_CLASS_REFERENCE = 8192,
+        const TYPE_CLASS_STRUCT = 16384,
+        const TYPE_CLASS_TYPEDEF = 32768,
+        const TYPE_CLASS_UNION = 65536,
+        const TYPE_CLASS_VECTOR = 131072,
+        const TYPE_CLASS_OTHER = 2147483648,
+        const TYPE_CLASS_ANY = 4294967295,
+    }
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
