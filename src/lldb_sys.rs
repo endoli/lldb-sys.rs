@@ -317,8 +317,6 @@ pub enum DescriptionLevel {
     Initial = 3,
     kNumDescriptionLevels = 4,
 }
-pub const eScriptLanguageDefault: ScriptLanguage =
-    ScriptLanguage::Python;
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
