@@ -13,7 +13,7 @@ Add it to your `Cargo.toml` like so:
 
 ```toml
 [dependencies]
-lldb-sys = "0.0.8"
+lldb-sys = "0.0.9"
 ```
 
 You will need to have 2 environment variables set to do the build:
