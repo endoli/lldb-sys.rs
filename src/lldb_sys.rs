@@ -2963,6 +2963,7 @@ extern "C" {
                                                        idx: size_t)
      -> *const ::std::os::raw::c_char;
     pub fn SBProcessGetProcessFromEvent(event: SBEventRef) -> SBProcessRef;
+    pub fn SBProcessGetInterruptedFromEvent(event: SBEventRef) -> u8;
     pub fn SBProcessEventIsProcessEvent(event: SBEventRef) -> u8;
     pub fn SBProcessGetBroadcaster(instance: SBProcessRef)
      -> SBBroadcasterRef;

@@ -135,6 +135,8 @@ LLDB_API const char *SBProcessGetRestartedReasonAtIndexFromEvent(SBEventRef even
 
 LLDB_API SBProcessRef SBProcessGetProcessFromEvent(SBEventRef event);
 
+LLDB_API bool SBProcessGetInterruptedFromEvent(SBEventRef event);
+
 LLDB_API bool SBProcessEventIsProcessEvent(SBEventRef event);
 
 LLDB_API SBBroadcasterRef SBProcessGetBroadcaster(SBProcessRef instance);

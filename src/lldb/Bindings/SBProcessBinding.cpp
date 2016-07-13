@@ -397,6 +397,12 @@ SBProcessGetProcessFromEvent(SBEventRef event)
 }
 
 bool
+SBProcessGetInterruptedFromEvent(SBEventRef event)
+{
+    return lldb::SBProcess::GetInterruptedFromEvent(*reinterpret_cast<SBEvent *>(event));
+}
+
+bool
 SBProcessEventIsProcessEvent(SBEventRef event)
 {
     return lldb::SBProcess::EventIsProcessEvent(*reinterpret_cast<SBEvent *>(event));
