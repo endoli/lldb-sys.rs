@@ -2266,19 +2266,8 @@ extern "C" {
      -> *const ::std::os::raw::c_char;
     pub fn SBFrameIsInlined(instance: SBFrameRef) -> u8;
     pub fn SBFrameEvaluateExpression(instance: SBFrameRef,
-                                     expr: *const ::std::os::raw::c_char)
-     -> SBValueRef;
-    pub fn SBFrameEvaluateExpression2(instance: SBFrameRef,
-                                      expr: *const ::std::os::raw::c_char,
-                                      use_dynamic: DynamicValueType)
-     -> SBValueRef;
-    pub fn SBFrameEvaluateExpression3(instance: SBFrameRef,
-                                      expr: *const ::std::os::raw::c_char,
-                                      use_dynamic: DynamicValueType,
-                                      unwind_on_error: u8) -> SBValueRef;
-    pub fn SBFrameEvaluateExpression4(instance: SBFrameRef,
-                                      expr: *const ::std::os::raw::c_char,
-                                      options: SBExpressionOptionsRef)
+                                     expr: *const ::std::os::raw::c_char,
+                                     options: SBExpressionOptionsRef)
      -> SBValueRef;
     pub fn SBFrameGetFrameBlock(instance: SBFrameRef) -> SBBlockRef;
     pub fn SBFrameGetLineEntry(instance: SBFrameRef) -> SBLineEntryRef;
@@ -2286,15 +2275,8 @@ extern "C" {
     pub fn SBFrameDisassemble(instance: SBFrameRef)
      -> *const ::std::os::raw::c_char;
     pub fn SBFrameClear(instance: SBFrameRef);
-    pub fn SBFrameGetVariables(instance: SBFrameRef, arguments: u8,
-                               locals: u8, statics: u8, in_scope_only: u8)
-     -> SBValueListRef;
-    pub fn SBFrameGetVariables2(instance: SBFrameRef, arguments: u8,
-                                locals: u8, statics: u8, in_scope_only: u8,
-                                use_dynamic: DynamicValueType)
-     -> SBValueListRef;
-    pub fn SBFrameGetVariables3(instance: SBFrameRef,
-                                options: SBVariablesOptionsRef)
+    pub fn SBFrameGetVariables(instance: SBFrameRef,
+                               options: SBVariablesOptionsRef)
      -> SBValueListRef;
     pub fn SBFrameGetRegisters(instance: SBFrameRef) -> SBValueListRef;
     pub fn SBFrameFindRegister(instance: SBFrameRef,
@@ -3239,19 +3221,8 @@ extern "C" {
     pub fn SBTargetGetExecutable(instance: SBTargetRef) -> SBFileSpecRef;
     pub fn SBTargetAddModule(instance: SBTargetRef, module: SBModuleRef)
      -> u8;
-    pub fn SBTargetAddModule2(instance: SBTargetRef,
-                              path: *const ::std::os::raw::c_char,
-                              triple: *const ::std::os::raw::c_char,
-                              uuid: *const ::std::os::raw::c_char)
-     -> SBModuleRef;
-    pub fn SBTargetAddModule3(instance: SBTargetRef,
-                              path: *const ::std::os::raw::c_char,
-                              triple: *const ::std::os::raw::c_char,
-                              uuid_cstr: *const ::std::os::raw::c_char,
-                              symfile: *const ::std::os::raw::c_char)
-     -> SBModuleRef;
-    pub fn SBTargetAddModule4(instance: SBTargetRef,
-                              module_spec: SBModuleSpecRef) -> SBModuleRef;
+    pub fn SBTargetAddModuleSpec(instance: SBTargetRef,
+                                 module_spec: SBModuleSpecRef) -> SBModuleRef;
     pub fn SBTargetGetNumModules(instance: SBTargetRef)
      -> ::std::os::raw::c_uint;
     pub fn SBTargetGetModuleAtIndex(instance: SBTargetRef, idx: uint32_t)

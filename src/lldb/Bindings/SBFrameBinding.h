@@ -56,16 +56,8 @@ LLDB_API const char *SBFrameGetDisplayFunctionName(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 
-LLDB_API SBValueRef SBFrameEvaluateExpression(SBFrameRef instance, const char *expr);
-
 LLDB_API SBValueRef
-SBFrameEvaluateExpression2(SBFrameRef instance, const char *expr, ENUM(DynamicValueType) use_dynamic);
-
-LLDB_API SBValueRef SBFrameEvaluateExpression3(SBFrameRef instance, const char *expr,
-                                               ENUM(DynamicValueType) use_dynamic, bool unwind_on_error);
-
-LLDB_API SBValueRef
-SBFrameEvaluateExpression4(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options);
+SBFrameEvaluateExpression(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options);
 
 LLDB_API SBBlockRef SBFrameGetFrameBlock(SBFrameRef instance);
 
@@ -77,13 +69,7 @@ LLDB_API const char *SBFrameDisassemble(SBFrameRef instance);
 
 LLDB_API void SBFrameClear(SBFrameRef instance);
 
-LLDB_API SBValueListRef
-SBFrameGetVariables(SBFrameRef instance, bool arguments, bool locals, bool statics, bool in_scope_only);
-
-LLDB_API SBValueListRef SBFrameGetVariables2(SBFrameRef instance, bool arguments, bool locals, bool statics,
-                                             bool in_scope_only, ENUM(DynamicValueType) use_dynamic);
-
-LLDB_API SBValueListRef SBFrameGetVariables3(SBFrameRef instance, SBVariablesOptionsRef options);
+LLDB_API SBValueListRef SBFrameGetVariables(SBFrameRef instance, SBVariablesOptionsRef options);
 
 LLDB_API SBValueListRef SBFrameGetRegisters(SBFrameRef instance);
 

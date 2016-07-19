@@ -155,30 +155,7 @@ SBFrameIsInlined(SBFrameRef instance)
 }
 
 SBValueRef
-SBFrameEvaluateExpression(SBFrameRef instance, const char *expr)
-{
-    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
-    return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->EvaluateExpression(expr)));
-}
-
-SBValueRef
-SBFrameEvaluateExpression2(SBFrameRef instance, const char *expr, lldb::DynamicValueType use_dynamic)
-{
-    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
-    return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->EvaluateExpression(expr, use_dynamic)));
-}
-
-SBValueRef
-SBFrameEvaluateExpression3(SBFrameRef instance, const char *expr, lldb::DynamicValueType use_dynamic,
-                               bool unwind_on_error)
-{
-    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
-    return reinterpret_cast<SBValueRef>(
-        new SBValue(unwrapped->EvaluateExpression(expr, use_dynamic, unwind_on_error)));
-}
-
-SBValueRef
-SBFrameEvaluateExpression4(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options)
+SBFrameEvaluateExpression(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
     return reinterpret_cast<SBValueRef>(
@@ -221,24 +198,7 @@ SBFrameClear(SBFrameRef instance)
 }
 
 SBValueListRef
-SBFrameGetVariables(SBFrameRef instance, bool arguments, bool locals, bool statics, bool in_scope_only)
-{
-    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
-    return reinterpret_cast<SBValueListRef>(
-        new SBValueList(unwrapped->GetVariables(arguments, locals, statics, in_scope_only)));
-}
-
-SBValueListRef
-SBFrameGetVariables2(SBFrameRef instance, bool arguments, bool locals, bool statics, bool in_scope_only,
-                         lldb::DynamicValueType use_dynamic)
-{
-    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
-    return reinterpret_cast<SBValueListRef>(
-        new SBValueList(unwrapped->GetVariables(arguments, locals, statics, in_scope_only, use_dynamic)));
-}
-
-SBValueListRef
-SBFrameGetVariables3(SBFrameRef instance, SBVariablesOptionsRef options)
+SBFrameGetVariables(SBFrameRef instance, SBVariablesOptionsRef options)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
     return reinterpret_cast<SBValueListRef>(

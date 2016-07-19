@@ -171,22 +171,7 @@ SBTargetAddModule(SBTargetRef instance, SBModuleRef module)
 }
 
 SBModuleRef
-SBTargetAddModule2(SBTargetRef instance, const char *path, const char *triple, const char *uuid)
-{
-    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
-    return reinterpret_cast<SBModuleRef>(new SBModule(unwrapped->AddModule(path, triple, uuid)));
-}
-
-SBModuleRef
-SBTargetAddModule3(SBTargetRef instance, const char *path, const char *triple, const char *uuid_cstr,
-                       const char *symfile)
-{
-    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
-    return reinterpret_cast<SBModuleRef>(new SBModule(unwrapped->AddModule(path, triple, uuid_cstr, symfile)));
-}
-
-SBModuleRef
-SBTargetAddModule4(SBTargetRef instance, SBModuleSpecRef module_spec)
+SBTargetAddModuleSpec(SBTargetRef instance, SBModuleSpecRef module_spec)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBModuleRef>(

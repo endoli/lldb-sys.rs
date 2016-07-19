@@ -67,13 +67,7 @@ LLDB_API SBFileSpecRef SBTargetGetExecutable(SBTargetRef instance);
 
 LLDB_API bool SBTargetAddModule(SBTargetRef instance, SBModuleRef module);
 
-LLDB_API SBModuleRef
-SBTargetAddModule2(SBTargetRef instance, const char *path, const char *triple, const char *uuid);
-
-LLDB_API SBModuleRef SBTargetAddModule3(SBTargetRef instance, const char *path, const char *triple,
-                                                const char *uuid_cstr, const char *symfile);
-
-LLDB_API SBModuleRef SBTargetAddModule4(SBTargetRef instance, SBModuleSpecRef module_spec);
+LLDB_API SBModuleRef SBTargetAddModuleSpec(SBTargetRef instance, SBModuleSpecRef module_spec);
 
 LLDB_API unsigned int SBTargetGetNumModules(SBTargetRef instance);
 
