@@ -1,17 +1,19 @@
 extern crate gcc;
+use std::env;
 
 fn main() {
-    // These next 2 lines should only be for OS X and other platforms need
-    // to do something different.
-    println!("cargo:rustc-flags=-l framework=LLDB");
-    println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
+    let env = env::var("TARGET").unwrap();
+    if env.contains("darwin") {
+        println!("cargo:rustc-flags=-l framework=LLDB");
+        println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
+    } else if env.contains("linux") {
+        println!("cargo:rustc-link-lib=lldb-3.8");
+    }
     gcc::Config::new()
         .cpp(true)
         .flag("-std=c++14")
         .include("src")
-        .include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
-        .include(env!("LLVM_ROOT").to_owned() + "/include")
-        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include")
+        .include("external")
         .file("src/lldb/Bindings/SBAddressBinding.cpp")
         .file("src/lldb/Bindings/SBAttachInfoBinding.cpp")
         .file("src/lldb/Bindings/SBBlockBinding.cpp")
