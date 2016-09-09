@@ -35,8 +35,8 @@ fn get_config() -> Config {
 
 #[cfg(target_os = "macos")]
 fn get_config() -> Config {
-    println!("cargo:rustc-flags=-l framework=LLDB");
-    println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
+    println!("cargo:rustc-link-lib=framework=LLDB");
+    println!("cargo:rustc-link-search=framework=/Applications/Xcode.app/Contents/SharedFrameworks");
     let mut res = gcc::Config::new();
     res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
         .include(env!("LLVM_ROOT").to_owned() + "/include")
