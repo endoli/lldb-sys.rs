@@ -1,8 +1,11 @@
 extern crate gcc;
 
 use gcc::Config;
+
+#[cfg(target_os = "linux")]
 use std::process::Command;
 
+#[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
     let res = Command::new("llvm-config").arg(arg).output().unwrap();
     if !res.status.success() {
@@ -11,17 +14,6 @@ fn get_llvm_output(arg: &str) -> String {
                res.status.code().unwrap());
     }
     String::from_utf8(res.stdout).unwrap().trim().to_string()
-}
-
-#[cfg(target_os = "macos")]
-fn get_config() -> Config {
-    println!("cargo:rustc-flags=-l framework=LLDB");
-    println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
-    let mut res = gcc::Config::new();
-    res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
-        .include(env!("LLVM_ROOT").to_owned() + "/include")
-        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
-    res
 }
 
 #[cfg(target_os = "linux")]
@@ -38,6 +30,17 @@ fn get_config() -> Config {
     println!("cargo:rustc-link-lib={}", lib_name);
     let mut res = gcc::Config::new();
     res.include(llvm_headers_path);
+    res
+}
+
+#[cfg(target_os = "macos")]
+fn get_config() -> Config {
+    println!("cargo:rustc-flags=-l framework=LLDB");
+    println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
+    let mut res = gcc::Config::new();
+    res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
+        .include(env!("LLVM_ROOT").to_owned() + "/include")
+        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
     res
 }
 
