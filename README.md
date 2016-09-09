@@ -16,6 +16,14 @@ Add it to your `Cargo.toml` like so:
 lldb-sys = "0.0.10"
 ```
 
+### Linux
+
+Install the `lldb` and `lldb-dev` packages for your platform so that
+you have both LLDB itself installed as well as the headers and
+other support files required.
+
+### Mac OS X:
+
 You will need to have 2 environment variables set to do the build:
 
 * `LLVM_ROOT` - This points to the root of the LLVM source tree.
