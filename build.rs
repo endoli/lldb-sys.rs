@@ -1,17 +1,56 @@
 extern crate gcc;
 
-fn main() {
-    // These next 2 lines should only be for OS X and other platforms need
-    // to do something different.
+use gcc::Config;
+use std::process::Command;
+
+fn get_llvm_output(arg: &str) -> String {
+    let res = Command::new("llvm-config").arg(arg).output().unwrap();
+    if !res.status.success() {
+        panic!("Could not run \"llvm-config {}\": {}",
+               arg,
+               res.status.code().unwrap());
+    }
+    String::from_utf8(res.stdout).unwrap().trim().to_string()
+}
+
+#[cfg(target_os = "macos")]
+fn get_config() -> Config {
     println!("cargo:rustc-flags=-l framework=LLDB");
     println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
-    gcc::Config::new()
+    let mut res = gcc::Config::new();
+    res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
+        .include(env!("LLVM_ROOT").to_owned() + "/include")
+        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
+    res
+}
+
+#[cfg(target_os = "linux")]
+fn get_config() -> Config {
+    // On linux lib directory and headers directory are provided by `llvm-config` utility.
+    let llvm_headers_path = get_llvm_output("--includedir");
+    let llvm_lib_path = get_llvm_output("--libdir");
+    // Workaround for broken lldb-3.8 package on Ubuntu. For some reason `lldb`, `lldb-3.8.0`
+    // libraries are not there and only `lldb-3.8` works as expected.
+    let llvm_version =
+        get_llvm_output("--version").split('.').take(2).collect::<Vec<&str>>().join(".");
+    let lib_name = ["lldb-", &llvm_version].join("");
+    println!("cargo:rustc-link-search={}", llvm_lib_path);
+    println!("cargo:rustc-link-lib={}", lib_name);
+    let mut res = gcc::Config::new();
+    res.include(llvm_headers_path);
+    res
+}
+
+#[cfg(not(any(target_os = "macos", target_os = "linux")))]
+fn get_config() -> Config {
+    panic!("Only MacOS and Linux are supported currently");
+}
+
+fn main() {
+    get_config()
         .cpp(true)
         .flag("-std=c++14")
         .include("src")
-        .include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
-        .include(env!("LLVM_ROOT").to_owned() + "/include")
-        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include")
         .file("src/lldb/Bindings/SBAddressBinding.cpp")
         .file("src/lldb/Bindings/SBAttachInfoBinding.cpp")
         .file("src/lldb/Bindings/SBBlockBinding.cpp")
