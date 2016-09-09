@@ -6,7 +6,9 @@ use std::process::Command;
 fn get_llvm_output(arg: &str) -> String {
     let res = Command::new("llvm-config").arg(arg).output().unwrap();
     if !res.status.success() {
-        panic!("Could not run \"llvm-config {}\": {}", arg, res.status.code().unwrap());
+        panic!("Could not run \"llvm-config {}\": {}",
+               arg,
+               res.status.code().unwrap());
     }
     String::from_utf8(res.stdout).unwrap().trim().to_string()
 }
@@ -16,8 +18,7 @@ fn get_config() -> Config {
     println!("cargo:rustc-flags=-l framework=LLDB");
     println!("cargo:rustc-flags=-L framework=/Applications/Xcode.app/Contents/SharedFrameworks");
     let mut res = gcc::Config::new();
-    res
-        .include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
+    res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
         .include(env!("LLVM_ROOT").to_owned() + "/include")
         .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
     res
@@ -25,9 +26,13 @@ fn get_config() -> Config {
 
 #[cfg(target_os = "linux")]
 fn get_config() -> Config {
+    // On linux lib directory and headers directory are provided by `llvm-config` utility.
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
-    let llvm_version = get_llvm_output("--version").split('.').take(2).collect::<Vec<&str>>().join(".");
+    // Workaround for broken lldb-3.8 package on Ubuntu. For some reason `lldb`, `lldb-3.8.0`
+    // libraries are not there and only `lldb-3.8` works as expected.
+    let llvm_version =
+        get_llvm_output("--version").split('.').take(2).collect::<Vec<&str>>().join(".");
     let lib_name = ["lldb-", &llvm_version].join("");
     println!("cargo:rustc-link-search={}", llvm_lib_path);
     println!("cargo:rustc-link-lib={}", lib_name);
