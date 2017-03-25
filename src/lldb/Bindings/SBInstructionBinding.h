@@ -38,6 +38,8 @@ LLDB_API unsigned int SBInstructionGetByteSize(SBInstructionRef instance);
 
 LLDB_API bool SBInstructionDoesBranch(SBInstructionRef instance);
 
+LLDB_API bool SBInstructionHasDelaySlot(SBInstructionRef instance);
+
 LLDB_API void SBInstructionPrint(SBInstructionRef instance, FILE *out);
 
 LLDB_API bool SBInstructionGetDescription(SBInstructionRef instance, SBStreamRef description);

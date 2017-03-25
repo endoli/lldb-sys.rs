@@ -91,6 +91,13 @@ SBInstructionDoesBranch(SBInstructionRef instance)
     return unwrapped->DoesBranch();
 }
 
+bool
+SBInstructionHasDelaySlot(SBInstructionRef instance)
+{
+    SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);
+    return unwrapped->HasDelaySlot();
+}
+
 void
 SBInstructionPrint(SBInstructionRef instance, FILE *out)
 {

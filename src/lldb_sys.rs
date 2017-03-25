@@ -2356,6 +2356,7 @@ extern "C" {
     pub fn SBInstructionGetByteSize(instance: SBInstructionRef)
      -> ::std::os::raw::c_uint;
     pub fn SBInstructionDoesBranch(instance: SBInstructionRef) -> u8;
+    pub fn SBInstructionHasDelaySlot(instance: SBInstructionRef) -> u8;
     pub fn SBInstructionPrint(instance: SBInstructionRef, out: *mut FILE);
     pub fn SBInstructionGetDescription(instance: SBInstructionRef,
                                        description: SBStreamRef) -> u8;
