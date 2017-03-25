@@ -106,6 +106,8 @@ pub enum SBStreamOpaque { }
 pub type SBStreamRef = *mut SBStreamOpaque;
 pub enum SBStringListOpaque { }
 pub type SBStringListRef = *mut SBStringListOpaque;
+pub enum SBStructuredDataOpaque { }
+pub type SBStructuredDataRef = *mut SBStructuredDataOpaque;
 pub enum SBSymbolOpaque { }
 pub type SBSymbolRef = *mut SBSymbolOpaque;
 pub enum SBSymbolContextOpaque { }
@@ -3126,6 +3128,14 @@ extern "C" {
                                         idx: size_t)
      -> *const ::std::os::raw::c_char;
     pub fn SBStringListClear(instance: SBStringListRef);
+    pub fn CreateSBStructuredData() -> SBStructuredDataRef;
+    pub fn DisposeSBStructuredData(instance: SBStructuredDataRef);
+    pub fn SBStructuredDataIsValid(instance: SBStructuredDataRef) -> u8;
+    pub fn SBStructuredDataClear(instance: SBStructuredDataRef);
+    pub fn SBStructuredDataGetAsJSON(instance: SBStructuredDataRef,
+                                     stream: SBStreamRef) -> SBErrorRef;
+    pub fn SBStructuredDataGetDescription(instance: SBStructuredDataRef,
+                                          stream: SBStreamRef) -> SBErrorRef;
     pub fn CreateSBSymbol() -> SBSymbolRef;
     pub fn DisposeSBSymbol(instance: SBSymbolRef);
     pub fn SBSymbolIsValid(instance: SBSymbolRef) -> u8;

@@ -93,6 +93,7 @@ fn main() {
         .file("src/lldb/Bindings/SBSourceManagerBinding.cpp")
         .file("src/lldb/Bindings/SBStreamBinding.cpp")
         .file("src/lldb/Bindings/SBStringListBinding.cpp")
+        .file("src/lldb/Bindings/SBStructuredDataBinding.cpp")
         .file("src/lldb/Bindings/SBSymbolBinding.cpp")
         .file("src/lldb/Bindings/SBSymbolContextBinding.cpp")
         .file("src/lldb/Bindings/SBSymbolContextListBinding.cpp")

@@ -97,6 +97,7 @@ LLDB_API typedef struct SBSectionOpaque *SBSectionRef;
 LLDB_API typedef struct SBSourceManagerOpaque *SBSourceManagerRef;
 LLDB_API typedef struct SBStreamOpaque *SBStreamRef;
 LLDB_API typedef struct SBStringListOpaque *SBStringListRef;
+LLDB_API typedef struct SBStructuredDataOpaque *SBStructuredDataRef;
 LLDB_API typedef struct SBSymbolOpaque *SBSymbolRef;
 LLDB_API typedef struct SBSymbolContextOpaque *SBSymbolContextRef;
 LLDB_API typedef struct SBSymbolContextListOpaque *SBSymbolContextListRef;
