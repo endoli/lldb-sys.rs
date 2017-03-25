@@ -163,6 +163,8 @@ LLDB_API SBThreadCollectionRef SBProcessGetHistoryThreads(SBProcessRef instance,
 LLDB_API bool SBProcessIsInstrumentationRuntimePresent(SBProcessRef instance,
                                                        ENUM(InstrumentationRuntimeType) type);
 
+LLDB_API SBErrorRef SBProcessSaveCore(SBProcessRef instance, const char *file_name);
+
 #ifdef __cplusplus
 }
 #endif

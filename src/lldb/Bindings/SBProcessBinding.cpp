@@ -484,6 +484,13 @@ SBProcessIsInstrumentationRuntimePresent(SBProcessRef instance, enum lldb::Instr
     return unwrapped->IsInstrumentationRuntimePresent(type);
 }
 
+SBErrorRef
+SBProcessSaveCore(SBProcessRef instance, const char *file_name)
+{
+    SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SaveCore(file_name)));
+}
+
 #ifdef __cplusplus
 }
 #endif

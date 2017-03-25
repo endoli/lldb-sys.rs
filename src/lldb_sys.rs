@@ -3007,6 +3007,9 @@ extern "C" {
                                                     type_:
                                                         InstrumentationRuntimeType)
      -> u8;
+    pub fn SBProcessSaveCore(instance: SBProcessRef,
+                             file_name: *const ::std::os::raw::c_char)
+     -> SBErrorRef;
     pub fn CreateSBQueue() -> SBQueueRef;
     pub fn DisposeSBQueue(instance: SBQueueRef);
     pub fn SBQueueIsValid(instance: SBQueueRef) -> u8;
