@@ -167,6 +167,13 @@ SBThreadStepInto2(SBThreadRef instance, const char *target_name, lldb::RunMode s
 }
 
 void
+SBThreadStepInto3(SBThreadRef instance, const char *target_name, uint32_t end_line, SBErrorRef error, ENUM(RunMode) stop_other_threads)
+{
+    SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+    unwrapped->StepInto(target_name, end_line, *reinterpret_cast<SBError *>(error), stop_other_threads);
+}
+
+void
 SBThreadStepOut(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -203,6 +210,13 @@ SBThreadStepUsingScriptedThreadPlan(SBThreadRef instance, const char *script_cla
 }
 
 SBErrorRef
+SBThreadStepUsingScriptedThreadPlan2(SBThreadRef instance, const char *script_class_name, bool resume_immediately)
+{
+    SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->StepUsingScriptedThreadPlan(script_class_name, resume_immediately)));
+}
+
+SBErrorRef
 SBThreadJumpToLine(SBThreadRef instance, SBFileSpecRef file_spec, uint32_t line)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -223,6 +237,14 @@ SBThreadReturnFromFrame(SBThreadRef instance, SBFrameRef frame, SBValueRef retur
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
     return reinterpret_cast<SBErrorRef>(new SBError(
         unwrapped->ReturnFromFrame(*reinterpret_cast<SBFrame *>(frame), *reinterpret_cast<SBValue *>(return_value))));
+}
+
+SBErrorRef
+SBThreadUnwindInnermostExpression(SBThreadRef instance)
+{
+    SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(
+        unwrapped->UnwindInnermostExpression()));
 }
 
 bool

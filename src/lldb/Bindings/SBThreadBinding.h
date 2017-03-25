@@ -58,6 +58,8 @@ LLDB_API void SBThreadStepInto(SBThreadRef instance, ENUM(RunMode) stop_other_th
 
 LLDB_API void SBThreadStepInto2(SBThreadRef instance, const char *target_name, ENUM(RunMode) stop_other_threads);
 
+LLDB_API void SBThreadStepInto3(SBThreadRef instance, const char *target_name, uint32_t end_line, SBErrorRef error, ENUM(RunMode) stop_other_threads);
+
 LLDB_API void SBThreadStepOut(SBThreadRef instance);
 
 LLDB_API void SBThreadStepOutOfFrame(SBThreadRef instance, SBFrameRef frame);
@@ -70,12 +72,17 @@ SBThreadStepOverUntil(SBThreadRef instance, SBFrameRef frame, SBFileSpecRef file
 LLDB_API SBErrorRef
 SBThreadStepUsingScriptedThreadPlan(SBThreadRef instance, const char *script_class_name);
 
+LLDB_API SBErrorRef
+SBThreadStepUsingScriptedThreadPlan2(SBThreadRef instance, const char *script_class_name, bool resume_immediately);
+
 LLDB_API SBErrorRef SBThreadJumpToLine(SBThreadRef instance, SBFileSpecRef file_spec, uint32_t line);
 
 LLDB_API void SBThreadRunToAddress(SBThreadRef instance, lldb_addr_t addr);
 
 LLDB_API SBErrorRef
 SBThreadReturnFromFrame(SBThreadRef instance, SBFrameRef frame, SBValueRef return_value);
+
+LLDB_API SBErrorRef SBThreadUnwindInnermostExpression(SBThreadRef instance);
 
 LLDB_API bool SBThreadSuspend(SBThreadRef instance);
 

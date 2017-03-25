@@ -3508,6 +3508,11 @@ extern "C" {
     pub fn SBThreadStepInto2(instance: SBThreadRef,
                              target_name: *const ::std::os::raw::c_char,
                              stop_other_threads: RunMode);
+    pub fn SBThreadStepInto3(instance: SBThreadRef,
+                             target_name: *const ::std::os::raw::c_char,
+                             end_line: u32,
+                             error: SBErrorRef,
+                             stop_other_threads: RunMode);
     pub fn SBThreadStepOut(instance: SBThreadRef);
     pub fn SBThreadStepOutOfFrame(instance: SBThreadRef, frame: SBFrameRef);
     pub fn SBThreadStepInstruction(instance: SBThreadRef, step_over: u8);
@@ -3518,11 +3523,17 @@ extern "C" {
                                                script_class_name:
                                                    *const ::std::os::raw::c_char)
      -> SBErrorRef;
+    pub fn SBThreadStepUsingScriptedThreadPlan3(instance: SBThreadRef,
+                                                script_class_name:
+                                                   *const ::std::os::raw::c_char,
+                                                resume_immediately: RunMode)
+     -> SBErrorRef;
     pub fn SBThreadJumpToLine(instance: SBThreadRef, file_spec: SBFileSpecRef,
                               line: uint32_t) -> SBErrorRef;
     pub fn SBThreadRunToAddress(instance: SBThreadRef, addr: lldb_addr_t);
     pub fn SBThreadReturnFromFrame(instance: SBThreadRef, frame: SBFrameRef,
                                    return_value: SBValueRef) -> SBErrorRef;
+    pub fn SBThreadUnwindInnermostExpression(instance: SBThreadRef) -> SBErrorRef;
     pub fn SBThreadSuspend(instance: SBThreadRef) -> u8;
     pub fn SBThreadResume(instance: SBThreadRef) -> u8;
     pub fn SBThreadIsSuspended(instance: SBThreadRef) -> u8;
