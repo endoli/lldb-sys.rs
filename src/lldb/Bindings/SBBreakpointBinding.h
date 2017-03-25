@@ -83,6 +83,10 @@ LLDB_API void SBBreakpointSetCallback(SBBreakpointRef instance,
 LLDB_API void SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance,
                                                         const char *callback_function_name);
 
+LLDB_API void SBBreakpointSetCommandLineCommands(SBBreakpointRef instance, SBStringListRef commands);
+
+LLDB_API bool SBBreakpointGetCommandLineCommands(SBBreakpointRef instance, SBStringListRef commands);
+
 LLDB_API SBErrorRef
 SBBreakpointSetScriptCallbackBody(SBBreakpointRef instance, const char *script_body_text);
 
@@ -99,6 +103,8 @@ LLDB_API unsigned int SBBreakpointGetNumResolvedLocations(SBBreakpointRef instan
 LLDB_API unsigned int SBBreakpointGetNumLocations(SBBreakpointRef instance);
 
 LLDB_API bool SBBreakpointGetDescription(SBBreakpointRef instance, SBStreamRef description);
+
+LLDB_API bool SBBreakpointGetDescription2(SBBreakpointRef instance, SBStreamRef description, bool include_locations);
 
 LLDB_API bool SBBreakpointEventIsBreakpointEvent(SBEventRef event);
 

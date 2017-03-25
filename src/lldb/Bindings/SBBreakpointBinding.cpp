@@ -221,6 +221,20 @@ SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance, const char *call
     unwrapped->SetScriptCallbackFunction(callback_function_name);
 }
 
+void
+SBBreakpointSetCommandLineCommands(SBBreakpointRef instance, SBStringListRef commands)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    unwrapped->SetCommandLineCommands(*reinterpret_cast<SBStringList *>(commands));
+}
+
+bool
+SBBreakpointGetCommandLineCommands(SBBreakpointRef instance, SBStringListRef commands)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    return unwrapped->GetCommandLineCommands(*reinterpret_cast<SBStringList *>(commands));
+}
+
 SBErrorRef
 SBBreakpointSetScriptCallbackBody(SBBreakpointRef instance, const char *script_body_text)
 {
@@ -275,6 +289,13 @@ SBBreakpointGetDescription(SBBreakpointRef instance, SBStreamRef description)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
+}
+
+bool
+SBBreakpointGetDescription2(SBBreakpointRef instance, SBStreamRef description, bool include_locations)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), include_locations);
 }
 
 bool

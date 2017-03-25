@@ -1287,6 +1287,10 @@ extern "C" {
     pub fn SBBreakpointSetScriptCallbackFunction(instance: SBBreakpointRef,
                                                  callback_function_name:
                                                      *const ::std::os::raw::c_char);
+    pub fn SBBreakpointSetCommandLineCommands(instance: SBBreakpointRef,
+                                              commands: SBStringListRef);
+    pub fn SBBreakpointGetCommandLineCommands(instance: SBBreakpointRef,
+                                              commands: SBStringListRef) -> u8;
     pub fn SBBreakpointSetScriptCallbackBody(instance: SBBreakpointRef,
                                              script_body_text:
                                                  *const ::std::os::raw::c_char)
@@ -1306,6 +1310,9 @@ extern "C" {
      -> ::std::os::raw::c_uint;
     pub fn SBBreakpointGetDescription(instance: SBBreakpointRef,
                                       description: SBStreamRef) -> u8;
+    pub fn SBBreakpointGetDescription2(instance: SBBreakpointRef,
+                                       description: SBStreamRef,
+                                       include_locations: u8) -> u8;
     pub fn SBBreakpointEventIsBreakpointEvent(event: SBEventRef) -> u8;
     pub fn SBBreakpointGetBreakpointEventTypeFromEvent(event: SBEventRef)
      -> BreakpointEventType;
