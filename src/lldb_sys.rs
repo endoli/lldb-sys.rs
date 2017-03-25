@@ -2391,6 +2391,10 @@ extern "C" {
                                                             triple:
                                                                 *const ::std::os::raw::c_char)
      -> u8;
+    pub fn SBLanguageRuntimeGetLanguageTypeFromString(string: *const ::std::os::raw::c_char)
+     -> LanguageType;
+    pub fn SBLanguageRuntimeGetNameForLanguageType(language: LanguageType)
+     -> *const ::std::os::raw::c_char;
     pub fn CreateSBLaunchInfo(argv: *mut *const ::std::os::raw::c_char)
      -> SBLaunchInfoRef;
     pub fn DisposeSBLaunchInfo(instance: SBLaunchInfoRef);

@@ -78,6 +78,7 @@ fn main() {
         .file("src/lldb/Bindings/SBHostOSBinding.cpp")
         .file("src/lldb/Bindings/SBInstructionBinding.cpp")
         .file("src/lldb/Bindings/SBInstructionListBinding.cpp")
+        .file("src/lldb/Bindings/SBLanguageRuntimeBinding.cpp")
         .file("src/lldb/Bindings/SBLaunchInfoBinding.cpp")
         .file("src/lldb/Bindings/SBLineEntryBinding.cpp")
         .file("src/lldb/Bindings/SBListenerBinding.cpp")
