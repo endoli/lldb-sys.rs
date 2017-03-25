@@ -1144,6 +1144,8 @@ extern "C" {
     pub fn CreateSBAttachInfo2(pid: lldb_pid_t) -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo3(path: *const ::std::os::raw::c_char,
                                wait_for: u8) -> SBAttachInfoRef;
+    pub fn CreateSBAttachInfo4(path: *const ::std::os::raw::c_char,
+                               wait_for: u8, async: u8) -> SBAttachInfoRef;
     pub fn DisposeSBAttachInfo(instance: SBAttachInfoRef);
     pub fn SBAttachInfoGetProcessID(instance: SBAttachInfoRef)
      -> ::std::os::raw::c_ulonglong;
@@ -1155,6 +1157,7 @@ extern "C" {
                                       exe_file: SBFileSpecRef);
     pub fn SBAttachInfoGetWaitForLaunch(instance: SBAttachInfoRef) -> u8;
     pub fn SBAttachInfoSetWaitForLaunch(instance: SBAttachInfoRef, b: u8);
+    pub fn SBAttachInfoSetWaitForLaunch2(instance: SBAttachInfoRef, b: u8, async: u8);
     pub fn SBAttachInfoGetIgnoreExisting(instance: SBAttachInfoRef) -> u8;
     pub fn SBAttachInfoSetIgnoreExisting(instance: SBAttachInfoRef, b: u8);
     pub fn SBAttachInfoGetResumeCount(instance: SBAttachInfoRef)

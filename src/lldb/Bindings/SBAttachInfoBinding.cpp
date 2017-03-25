@@ -34,6 +34,12 @@ CreateSBAttachInfo3(const char *path, bool wait_for)
     return reinterpret_cast<SBAttachInfoRef>(new SBAttachInfo(path, wait_for));
 }
 
+SBAttachInfoRef
+CreateSBAttachInfo4(const char *path, bool wait_for, bool async)
+{
+    return reinterpret_cast<SBAttachInfoRef>(new SBAttachInfo(path, wait_for, async));
+}
+
 void
 DisposeSBAttachInfo(SBAttachInfoRef instance)
 {
@@ -80,6 +86,13 @@ SBAttachInfoSetWaitForLaunch(SBAttachInfoRef instance, bool b)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
     unwrapped->SetWaitForLaunch(b);
+}
+
+void
+SBAttachInfoSetWaitForLaunch2(SBAttachInfoRef instance, bool b, bool async)
+{
+    SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
+    unwrapped->SetWaitForLaunch(b, async);
 }
 
 bool

@@ -22,6 +22,8 @@ LLDB_API SBAttachInfoRef CreateSBAttachInfo2(lldb_pid_t pid);
 
 LLDB_API SBAttachInfoRef CreateSBAttachInfo3(const char *path, bool wait_for);
 
+LLDB_API SBAttachInfoRef CreateSBAttachInfo4(const char *path, bool wait_for, bool async);
+
 LLDB_API void DisposeSBAttachInfo(SBAttachInfoRef instance);
 
 LLDB_API unsigned long long SBAttachInfoGetProcessID(SBAttachInfoRef instance);
@@ -35,6 +37,8 @@ LLDB_API void SBAttachInfoSetExecutable2(SBAttachInfoRef instance, SBFileSpecRef
 LLDB_API bool SBAttachInfoGetWaitForLaunch(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetWaitForLaunch(SBAttachInfoRef instance, bool b);
+
+LLDB_API void SBAttachInfoSetWaitForLaunch2(SBAttachInfoRef instance, bool b, bool async);
 
 LLDB_API bool SBAttachInfoGetIgnoreExisting(SBAttachInfoRef instance);
 
