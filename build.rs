@@ -58,6 +58,7 @@ fn main() {
         .file("src/lldb/Bindings/SBAttachInfoBinding.cpp")
         .file("src/lldb/Bindings/SBBlockBinding.cpp")
         .file("src/lldb/Bindings/SBBreakpointBinding.cpp")
+        .file("src/lldb/Bindings/SBBreakpointListBinding.cpp")
         .file("src/lldb/Bindings/SBBreakpointLocationBinding.cpp")
         .file("src/lldb/Bindings/SBBroadcasterBinding.cpp")
         .file("src/lldb/Bindings/SBCommandInterpreterBinding.cpp")

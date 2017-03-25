@@ -9,6 +9,8 @@ use libc::{FILE, int32_t, int64_t, size_t, uint8_t, uint32_t, uint64_t};
 
 /// Storage for the value of an address.
 pub type lldb_addr_t = uint64_t;
+/// Storage for a breakpoint ID.
+pub type lldb_break_id_t = int32_t;
 /// Storage for an OS user ID.
 pub type lldb_user_id_t = uint64_t;
 /// Storage for an OS process ID.
@@ -25,6 +27,8 @@ pub enum SBBlockOpaque { }
 pub type SBBlockRef = *mut SBBlockOpaque;
 pub enum SBBreakpointOpaque { }
 pub type SBBreakpointRef = *mut SBBreakpointOpaque;
+pub enum SBBreakpointListOpaque { }
+pub type SBBreakpointListRef = *mut SBBreakpointListOpaque;
 pub enum SBBreakpointLocationOpaque { }
 pub type SBBreakpointLocationRef = *mut SBBreakpointLocationOpaque;
 pub enum SBBroadcasterOpaque { }
@@ -1326,6 +1330,19 @@ extern "C" {
     pub fn SBBreakpointGetNumBreakpointLocationsFromEvent(event_sp:
                                                               SBEventRef)
      -> ::std::os::raw::c_uint;
+    pub fn CreateSBBreakpointList(target: SBTargetRef) -> SBBreakpointListRef;
+    pub fn DisposeSBBreakpointList(instance: SBBreakpointListRef);
+    pub fn SBBreakpointListGetSize(instance: SBBreakpointListRef)
+     -> size_t;
+    pub fn SBBreakpointListGetBreakpointAtIndex(instance: SBBreakpointListRef, idx: size_t) -> SBBreakpointRef;
+    pub fn SBBreakpointListFindBreakpointByID(instance: SBBreakpointListRef, break_id: lldb_break_id_t) -> SBBreakpointRef;
+    pub fn SBBreakpointListAppend(instance: SBBreakpointListRef,
+                                  sb_breakpt: SBBreakpointRef);
+    pub fn SBBreakpointListAppendIfUnique(instance: SBBreakpointListRef,
+                                          sb_breakpt: SBBreakpointRef) -> u8;
+    pub fn SBBreakpointListAppendByID(instance: SBBreakpointListRef,
+                                      id: lldb_break_id_t);
+    pub fn SBBreakpointListClear(instance: SBBreakpointListRef);
     pub fn CreateSBBreakpointLocation() -> SBBreakpointLocationRef;
     pub fn DisposeSBBreakpointLocation(instance: SBBreakpointLocationRef);
     pub fn SBBreakpointLocationGetID(instance: SBBreakpointLocationRef)

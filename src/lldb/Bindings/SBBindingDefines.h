@@ -58,6 +58,7 @@ LLDB_API typedef struct SBAddressOpaque *SBAddressRef;
 LLDB_API typedef struct SBAttachInfoOpaque *SBAttachInfoRef;
 LLDB_API typedef struct SBBlockOpaque *SBBlockRef;
 LLDB_API typedef struct SBBreakpointOpaque *SBBreakpointRef;
+LLDB_API typedef struct SBBreakpointListOpaque *SBBreakpointListRef;
 LLDB_API typedef struct SBBreakpointLocationOpaque *SBBreakpointLocationRef;
 LLDB_API typedef struct SBBroadcasterOpaque *SBBroadcasterRef;
 LLDB_API typedef struct SBCommandOpaque *SBCommandRef;
