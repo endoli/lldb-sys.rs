@@ -402,10 +402,23 @@ SBProcessGetInterruptedFromEvent(SBEventRef event)
     return lldb::SBProcess::GetInterruptedFromEvent(*reinterpret_cast<SBEvent *>(event));
 }
 
+SBStructuredDataRef
+SBProcessGetStructuredDataFromEvent(SBEventRef event)
+{
+    return reinterpret_cast<SBStructuredDataRef>(
+        new SBStructuredData(lldb::SBProcess::GetStructuredDataFromEvent(*reinterpret_cast<SBEvent *>(event))));
+}
+
 bool
 SBProcessEventIsProcessEvent(SBEventRef event)
 {
     return lldb::SBProcess::EventIsProcessEvent(*reinterpret_cast<SBEvent *>(event));
+}
+
+bool
+SBProcessEventIsStructuredDataEvent(SBEventRef event)
+{
+    return lldb::SBProcess::EventIsStructuredDataEvent(*reinterpret_cast<SBEvent *>(event));
 }
 
 SBBroadcasterRef

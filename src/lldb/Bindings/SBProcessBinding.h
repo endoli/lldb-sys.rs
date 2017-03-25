@@ -137,7 +137,11 @@ LLDB_API SBProcessRef SBProcessGetProcessFromEvent(SBEventRef event);
 
 LLDB_API bool SBProcessGetInterruptedFromEvent(SBEventRef event);
 
+LLDB_API SBStructuredDataRef SBProcessGetStructuredDataFromEvent(SBEventRef event);
+
 LLDB_API bool SBProcessEventIsProcessEvent(SBEventRef event);
+
+LLDB_API bool SBProcessEventIsStructuredDataEvent(SBEventRef event);
 
 LLDB_API SBBroadcasterRef SBProcessGetBroadcaster(SBProcessRef instance);
 
