@@ -1339,9 +1339,9 @@ extern "C" {
     pub fn SBBreakpointListGetBreakpointAtIndex(instance: SBBreakpointListRef, idx: size_t) -> SBBreakpointRef;
     pub fn SBBreakpointListFindBreakpointByID(instance: SBBreakpointListRef, break_id: lldb_break_id_t) -> SBBreakpointRef;
     pub fn SBBreakpointListAppend(instance: SBBreakpointListRef,
-                                  sb_breakpt: SBBreakpointRef);
+                                  sb_bkpt: SBBreakpointRef);
     pub fn SBBreakpointListAppendIfUnique(instance: SBBreakpointListRef,
-                                          sb_breakpt: SBBreakpointRef) -> u8;
+                                          sb_bkpt: SBBreakpointRef) -> u8;
     pub fn SBBreakpointListAppendByID(instance: SBBreakpointListRef,
                                       id: lldb_break_id_t);
     pub fn SBBreakpointListClear(instance: SBBreakpointListRef);

@@ -50,17 +50,17 @@ SBBreakpointListFindBreakpointByID(SBBreakpointListRef instance, int break_id)
 }
 
 void
-SBBreakpointListAppend(SBBreakpointListRef instance, SBBreakpointRef sb_breakpt)
+SBBreakpointListAppend(SBBreakpointListRef instance, SBBreakpointRef sb_bkpt)
 {
     SBBreakpointList *unwrapped = reinterpret_cast<SBBreakpointList *>(instance);
-    unwrapped->Append(*reinterpret_cast<SBBreakpoint *>(sb_breakpt));
+    unwrapped->Append(*reinterpret_cast<SBBreakpoint *>(sb_bkpt));
 }
 
 bool
-SBBreakpointListAppendIfUnique(SBBreakpointListRef instance, SBBreakpointRef sb_breakpt)
+SBBreakpointListAppendIfUnique(SBBreakpointListRef instance, SBBreakpointRef sb_bkpt)
 {
     SBBreakpointList *unwrapped = reinterpret_cast<SBBreakpointList *>(instance);
-    return unwrapped->AppendIfUnique(*reinterpret_cast<SBBreakpoint *>(sb_breakpt));
+    return unwrapped->AppendIfUnique(*reinterpret_cast<SBBreakpoint *>(sb_bkpt));
 }
 
 void
