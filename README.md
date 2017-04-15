@@ -13,7 +13,7 @@ Add it to your `Cargo.toml` like so:
 
 ```toml
 [dependencies]
-lldb-sys = "0.0.12"
+lldb-sys = "0.0.13"
 ```
 
 ### Linux
