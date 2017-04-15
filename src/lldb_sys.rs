@@ -2982,6 +2982,17 @@ SBCommandReturnObjectRef);
                                                file_spec: SBFileSpecRef,
                                                line: uint32_t)
                                                -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByLocation3(instance: SBTargetRef,
+                                               file_spec: SBFileSpecRef,
+                                               line: uint32_t,
+                                               offset: lldb_addr_t)
+                                               -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByLocation4(instance: SBTargetRef,
+                                               file_spec: SBFileSpecRef,
+                                               line: uint32_t,
+                                               offset: lldb_addr_t,
+                                               module_list: SBFileSpecListRef)
+                                               -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByName(instance: SBTargetRef,
                                           symbol_name: *const ::std::os::raw::c_char,
                                           module_name: *const ::std::os::raw::c_char)
@@ -3004,12 +3015,35 @@ SBCommandReturnObjectRef);
                                            module_list: SBFileSpecListRef,
                                            comp_unit_list: SBFileSpecListRef)
                                            -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByNames2(instance: SBTargetRef,
+                                            symbol_name: *mut *const ::std::os::raw::c_char,
+                                            num_names: uint32_t,
+                                            name_type_mask: uint32_t,
+                                            symbol_language: LanguageType,
+                                            module_list: SBFileSpecListRef,
+                                            comp_unit_list: SBFileSpecListRef)
+                                            -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByNames3(instance: SBTargetRef,
+                                            symbol_name: *mut *const ::std::os::raw::c_char,
+                                            num_names: uint32_t,
+                                            name_type_mask: uint32_t,
+                                            symbol_language: LanguageType,
+                                            offset: lldb_addr_t,
+                                            module_list: SBFileSpecListRef,
+                                            comp_unit_list: SBFileSpecListRef)
+                                            -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByRegex(instance: SBTargetRef,
                                            symbol_name_regex: *const ::std::os::raw::c_char,
                                            module_name: *const ::std::os::raw::c_char)
                                            -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByRegex2(instance: SBTargetRef,
                                             symbol_name_regex: *const ::std::os::raw::c_char,
+                                            module_list: SBFileSpecListRef,
+                                            comp_unit_list: SBFileSpecListRef)
+                                            -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByRegex3(instance: SBTargetRef,
+                                            symbol_name_regex: *const ::std::os::raw::c_char,
+                                            symbol_language: LanguageType,
                                             module_list: SBFileSpecListRef,
                                             comp_unit_list: SBFileSpecListRef)
                                             -> SBBreakpointRef;
@@ -3023,6 +3057,12 @@ SBCommandReturnObjectRef);
                                                   module_list: SBFileSpecListRef,
                                                   source_file: SBFileSpecListRef)
                                                   -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateBySourceRegex3(instance: SBTargetRef,
+                                                  source_regex: *const ::std::os::raw::c_char,
+                                                  module_list: SBFileSpecListRef,
+                                                  source_file: SBFileSpecListRef,
+                                                  func_names: SBStringListRef)
+                                                  -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateForException(instance: SBTargetRef,
                                                 language: LanguageType,
                                                 catch_bp: u8,
@@ -3031,12 +3071,36 @@ SBCommandReturnObjectRef);
     pub fn SBTargetBreakpointCreateByAddress(instance: SBTargetRef,
                                              address: lldb_addr_t)
                                              -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateBySBAddress(instance: SBTargetRef,
+                                               address: SBAddressRef)
+                                               -> SBBreakpointRef;
+    pub fn SBTargetBreakpointsCreateFromFile(instance: SBTargetRef,
+                                             source_file: SBFileSpecRef,
+                                             new_bps: SBBreakpointListRef)
+                                             -> SBErrorRef;
+    pub fn SBTargetBreakpointsCreateFromFile2(instance: SBTargetRef,
+                                              source_file: SBFileSpecRef,
+                                              matching_names: SBStringListRef,
+                                              new_bps: SBBreakpointListRef)
+                                              -> SBErrorRef;
+    pub fn SBTargetBreakpointsWriteToFile(instance: SBTargetRef,
+                                          dest_file: SBFileSpecRef)
+                                          -> SBErrorRef;
+    pub fn SBTargetBreakpointsWriteToFile2(instance: SBTargetRef,
+                                           dest_file: SBFileSpecRef,
+                                           bkpt_list: SBBreakpointListRef,
+                                           append: u8)
+                                           -> SBErrorRef;
     pub fn SBTargetGetNumBreakpoints(instance: SBTargetRef) -> ::std::os::raw::c_uint;
     pub fn SBTargetGetBreakpointAtIndex(instance: SBTargetRef, idx: uint32_t) -> SBBreakpointRef;
     pub fn SBTargetBreakpointDelete(instance: SBTargetRef, break_id: ::std::os::raw::c_int) -> u8;
     pub fn SBTargetFindBreakpointByID(instance: SBTargetRef,
                                       break_id: ::std::os::raw::c_int)
                                       -> SBBreakpointRef;
+    pub fn SBTargetFindBreakpointsByName(instance: SBTargetRef,
+                                         name: *const ::std::os::raw::c_char,
+                                         bkpt_list: SBBreakpointListRef)
+                                         -> u8;
     pub fn SBTargetEnableAllBreakpoints(instance: SBTargetRef) -> u8;
     pub fn SBTargetDisableAllBreakpoints(instance: SBTargetRef) -> u8;
     pub fn SBTargetDeleteAllBreakpoints(instance: SBTargetRef) -> u8;
@@ -3122,7 +3186,7 @@ SBCommandReturnObjectRef);
                                       expr: *const ::std::os::raw::c_char,
                                       options: SBExpressionOptionsRef)
                                       -> SBValueRef;
-    pub fn SBTargetGetStackRedZoneSize(instance: SBTargetRef) -> ::std::os::raw::c_ulonglong;
+    pub fn SBTargetGetStackRedZoneSize(instance: SBTargetRef) -> lldb_addr_t;
     pub fn SBTargetGetLaunchInfo(instance: SBTargetRef) -> SBLaunchInfoRef;
     pub fn SBTargetSetLaunchInfo(instance: SBTargetRef, launch_info: SBLaunchInfoRef);
     pub fn SBThreadGetBroadcasterClassName() -> *const ::std::os::raw::c_char;

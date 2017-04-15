@@ -135,41 +135,95 @@ LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateByLocation2(SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line);
 
 LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByLocation3(SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line, lldb_addr_t offset);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByLocation4(SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line, lldb_addr_t offset, SBFileSpecListRef module_list);
+
+LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateByName(SBTargetRef instance, const char *symbol_name, const char *module_name);
 
 LLDB_API SBBreakpointRef SBTargetBreakpointCreateByName2(SBTargetRef instance, const char *symbol_name,
-                                                                 SBFileSpecListRef module_list,
-                                                                 SBFileSpecListRef comp_unit_list);
+                                                         SBFileSpecListRef module_list,
+                                                         SBFileSpecListRef comp_unit_list);
 
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateByName3(SBTargetRef instance, const char *symbol_name, uint32_t name_type_mask,
-                                    SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
+                                SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
 
-LLDB_API SBBreakpointRef SBTargetBreakpointCreateByNames(SBTargetRef instance, const char **symbol_name,
-                                                                 uint32_t num_names, uint32_t name_type_mask,
-                                                                 SBFileSpecListRef module_list,
-                                                                 SBFileSpecListRef comp_unit_list);
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByNames(SBTargetRef instance, const char **symbol_name,
+                                uint32_t num_names, uint32_t name_type_mask,
+                                SBFileSpecListRef module_list,
+                                SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByNames2(SBTargetRef instance, const char **symbol_name,
+                                 uint32_t num_names, uint32_t name_type_mask,
+                                 ENUM(LanguageType) symbol_language,
+                                 SBFileSpecListRef module_list,
+                                 SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByNames3(SBTargetRef instance, const char **symbol_name,
+                                 uint32_t num_names, uint32_t name_type_mask,
+                                 ENUM(LanguageType) symbol_language,
+                                 lldb_addr_t offset,
+                                 SBFileSpecListRef module_list,
+                                 SBFileSpecListRef comp_unit_list);
 
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateByRegex(SBTargetRef instance, const char *symbol_name_regex, const char *module_name);
 
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateByRegex2(SBTargetRef instance, const char *symbol_name_regex,
-                                     SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
+                                 SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByRegex3(SBTargetRef instance, const char *symbol_name_regex,
+                                 ENUM(LanguageType) symbol_language,
+                                 SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list);
 
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateBySourceRegex(SBTargetRef instance, const char *source_regex,
-                                          SBFileSpecRef source_file, const char *module_name);
+                                      SBFileSpecRef source_file, const char *module_name);
 
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateBySourceRegex2(SBTargetRef instance, const char *source_regex,
-                                           SBFileSpecListRef module_list, SBFileSpecListRef source_file);
+                                       SBFileSpecListRef module_list, SBFileSpecListRef source_file);
 
-LLDB_API SBBreakpointRef SBTargetBreakpointCreateForException(SBTargetRef instance,
-                                                              ENUM(LanguageType) language, bool catch_bp,
-                                                              bool throw_bp);
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateBySourceRegex3(SBTargetRef instance, const char *source_regex,
+                                       SBFileSpecListRef module_list,
+                                       SBFileSpecListRef source_file,
+                                       SBStringListRef func_names);
 
-LLDB_API SBBreakpointRef SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address);
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateForException(SBTargetRef instance,
+                                     ENUM(LanguageType) language, bool catch_bp,
+                                     bool throw_bp);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address);
+
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateBySBAddress(SBTargetRef instance, SBAddressRef address);
+
+LLDB_API SBErrorRef
+SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_file,
+                                  SBBreakpointListRef new_bps);
+
+LLDB_API SBErrorRef
+SBTargetBreakpointsCreateFromFile2(SBTargetRef instance, SBFileSpecRef source_file,
+                                  SBStringListRef matching_names,
+                                  SBBreakpointListRef new_bps);
+
+LLDB_API SBErrorRef
+SBTargetBreakspointsWriteToFile(SBTargetRef instance, SBFileSpecRef dest_file);
+
+LLDB_API SBErrorRef
+SBTargetBreakspointsWriteToFile2(SBTargetRef instance, SBFileSpecRef dest_file,
+                                 SBBreakpointListRef bkpt_list, bool append);
 
 LLDB_API unsigned int SBTargetGetNumBreakpoints(SBTargetRef instance);
 
@@ -178,6 +232,9 @@ LLDB_API SBBreakpointRef SBTargetGetBreakpointAtIndex(SBTargetRef instance, uint
 LLDB_API bool SBTargetBreakpointDelete(SBTargetRef instance, int break_id);
 
 LLDB_API SBBreakpointRef SBTargetFindBreakpointByID(SBTargetRef instance, int break_id);
+
+LLDB_API bool SBTargetFindBreakpointsByName(SBTargetRef instance, const char *name,
+                                            SBBreakpointListRef bkpt_list);
 
 LLDB_API bool SBTargetEnableAllBreakpoints(SBTargetRef instance);
 
@@ -250,7 +307,7 @@ LLDB_API bool SBTargetGetDescription(SBTargetRef instance, SBStreamRef descripti
 LLDB_API SBValueRef
 SBTargetEvaluateExpression(SBTargetRef instance, const char *expr, SBExpressionOptionsRef options);
 
-LLDB_API unsigned long long SBTargetGetStackRedZoneSize(SBTargetRef instance);
+LLDB_API lldb_addr_t SBTargetGetStackRedZoneSize(SBTargetRef instance);
 
 LLDB_API SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance);
 

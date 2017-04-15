@@ -380,6 +380,25 @@ SBTargetBreakpointCreateByLocation2(SBTargetRef instance, SBFileSpecRef file_spe
 }
 
 SBBreakpointRef
+SBTargetBreakpointCreateByLocation3(SBTargetRef instance, SBFileSpecRef file_spec,
+                                    uint32_t line, lldb_addr_t offset)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(
+        new SBBreakpoint(unwrapped->BreakpointCreateByLocation(*reinterpret_cast<SBFileSpec *>(file_spec), line, offset)));
+}
+
+SBBreakpointRef
+SBTargetBreakpointCreateByLocation4(SBTargetRef instance, SBFileSpecRef file_spec,
+                                    uint32_t line, lldb_addr_t offset,
+                                    SBFileSpecListRef module_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(
+        new SBBreakpoint(unwrapped->BreakpointCreateByLocation(*reinterpret_cast<SBFileSpec *>(file_spec), line, offset, *reinterpret_cast<SBFileSpecList *>(module_list))));
+}
+
+SBBreakpointRef
 SBTargetBreakpointCreateByName(SBTargetRef instance, const char *symbol_name, const char *module_name)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -389,7 +408,7 @@ SBTargetBreakpointCreateByName(SBTargetRef instance, const char *symbol_name, co
 
 SBBreakpointRef
 SBTargetBreakpointCreateByName2(SBTargetRef instance, const char *symbol_name,
-                                    SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
+                                SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
@@ -399,7 +418,7 @@ SBTargetBreakpointCreateByName2(SBTargetRef instance, const char *symbol_name,
 
 SBBreakpointRef
 SBTargetBreakpointCreateByName3(SBTargetRef instance, const char *symbol_name, uint32_t name_type_mask,
-                                    SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
+                                SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
@@ -409,12 +428,39 @@ SBTargetBreakpointCreateByName3(SBTargetRef instance, const char *symbol_name, u
 
 SBBreakpointRef
 SBTargetBreakpointCreateByNames(SBTargetRef instance, const char **symbol_name, uint32_t num_names,
-                                    uint32_t name_type_mask, SBFileSpecListRef module_list,
-                                    SBFileSpecListRef comp_unit_list)
+                                uint32_t name_type_mask, SBFileSpecListRef module_list,
+                                SBFileSpecListRef comp_unit_list)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->BreakpointCreateByNames(
         symbol_name, num_names, name_type_mask, *reinterpret_cast<SBFileSpecList *>(module_list),
+        *reinterpret_cast<SBFileSpecList *>(comp_unit_list))));
+}
+
+SBBreakpointRef
+SBTargetBreakpointCreateByNames2(SBTargetRef instance, const char **symbol_name, uint32_t num_names,
+                                 uint32_t name_type_mask, lldb::LanguageType symbol_language,
+                                 SBFileSpecListRef module_list,
+                                 SBFileSpecListRef comp_unit_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->BreakpointCreateByNames(
+        symbol_name, num_names, name_type_mask, symbol_language,
+        *reinterpret_cast<SBFileSpecList *>(module_list),
+        *reinterpret_cast<SBFileSpecList *>(comp_unit_list))));
+}
+
+SBBreakpointRef
+SBTargetBreakpointCreateByNames3(SBTargetRef instance, const char **symbol_name, uint32_t num_names,
+                                 uint32_t name_type_mask, lldb::LanguageType symbol_language,
+                                 lldb::addr_t offset,
+                                 SBFileSpecListRef module_list,
+                                 SBFileSpecListRef comp_unit_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->BreakpointCreateByNames(
+        symbol_name, num_names, name_type_mask, symbol_language, offset,
+        *reinterpret_cast<SBFileSpecList *>(module_list),
         *reinterpret_cast<SBFileSpecList *>(comp_unit_list))));
 }
 
@@ -428,7 +474,7 @@ SBTargetBreakpointCreateByRegex(SBTargetRef instance, const char *symbol_name_re
 
 SBBreakpointRef
 SBTargetBreakpointCreateByRegex2(SBTargetRef instance, const char *symbol_name_regex,
-                                     SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
+                                 SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
@@ -437,8 +483,20 @@ SBTargetBreakpointCreateByRegex2(SBTargetRef instance, const char *symbol_name_r
 }
 
 SBBreakpointRef
+SBTargetBreakpointCreateByRegex3(SBTargetRef instance, const char *symbol_name_regex,
+                                 lldb::LanguageType symbol_language,
+                                 SBFileSpecListRef module_list, SBFileSpecListRef comp_unit_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
+        unwrapped->BreakpointCreateByRegex(symbol_name_regex, symbol_language,
+                                           *reinterpret_cast<SBFileSpecList *>(module_list),
+                                           *reinterpret_cast<SBFileSpecList *>(comp_unit_list))));
+}
+
+SBBreakpointRef
 SBTargetBreakpointCreateBySourceRegex(SBTargetRef instance, const char *source_regex,
-                                          SBFileSpecRef source_file, const char *module_name)
+                                      SBFileSpecRef source_file, const char *module_name)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->BreakpointCreateBySourceRegex(
@@ -447,17 +505,32 @@ SBTargetBreakpointCreateBySourceRegex(SBTargetRef instance, const char *source_r
 
 SBBreakpointRef
 SBTargetBreakpointCreateBySourceRegex2(SBTargetRef instance, const char *source_regex,
-                                           SBFileSpecListRef module_list, SBFileSpecListRef source_file)
+                                       SBFileSpecListRef module_list, SBFileSpecListRef source_file)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
-        unwrapped->BreakpointCreateBySourceRegex(source_regex, *reinterpret_cast<SBFileSpecList *>(module_list),
+        unwrapped->BreakpointCreateBySourceRegex(source_regex,
+                                                 *reinterpret_cast<SBFileSpecList *>(module_list),
                                                  *reinterpret_cast<SBFileSpecList *>(source_file))));
 }
 
 SBBreakpointRef
-SBTargetBreakpointCreateForException(SBTargetRef instance, lldb::LanguageType language, bool catch_bp,
-                                         bool throw_bp)
+SBTargetBreakpointCreateBySourceRegex3(SBTargetRef instance, const char *source_regex,
+                                       SBFileSpecListRef module_list,
+                                       SBFileSpecListRef source_file,
+                                       SBStringListRef func_names)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
+        unwrapped->BreakpointCreateBySourceRegex(source_regex,
+                                                 *reinterpret_cast<SBFileSpecList *>(module_list),
+                                                 *reinterpret_cast<SBFileSpecList *>(source_file),
+                                                 *reinterpret_cast<SBStringList *>(func_names))));
+}
+
+SBBreakpointRef
+SBTargetBreakpointCreateForException(SBTargetRef instance, lldb::LanguageType language,
+                                     bool catch_bp, bool throw_bp)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(
@@ -469,6 +542,60 @@ SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->BreakpointCreateByAddress(address)));
+}
+
+SBBreakpointRef
+SBTargetBreakpointCreateBySBAddress(SBTargetRef instance, SBAddressRef address)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(
+        new SBBreakpoint(
+            unwrapped->BreakpointCreateBySBAddress(*reinterpret_cast<SBAddress *>(address))));
+}
+
+LLDB_API SBErrorRef
+SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_file,
+                                  SBBreakpointListRef new_bps)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBErrorRef>(
+        new SBError(
+            unwrapped->BreakpointsCreateFromFile(*reinterpret_cast<SBFileSpec *>(source_file),
+                                                 *reinterpret_cast<SBBreakpointList *>(new_bps))));
+}
+
+LLDB_API SBErrorRef
+SBTargetBreakpointsCreateFromFile2(SBTargetRef instance, SBFileSpecRef source_file,
+                                  SBStringListRef matching_names,
+                                  SBBreakpointListRef new_bps)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBErrorRef>(
+        new SBError(
+            unwrapped->BreakpointsCreateFromFile(*reinterpret_cast<SBFileSpec *>(source_file),
+                                                 *reinterpret_cast<SBStringList *>(matching_names),
+                                                 *reinterpret_cast<SBBreakpointList *>(new_bps))));
+}
+
+SBErrorRef
+SBTargetBreakspointsWriteToFile(SBTargetRef instance, SBFileSpecRef dest_file)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBErrorRef>(
+        new SBError(
+            unwrapped->BreakpointsWriteToFile(*reinterpret_cast<SBFileSpec *>(dest_file))));
+}
+
+SBErrorRef
+SBTargetBreakspointsWriteToFile2(SBTargetRef instance, SBFileSpecRef dest_file,
+                                 SBBreakpointListRef bkpt_list, bool append)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBErrorRef>(
+        new SBError(
+            unwrapped->BreakpointsWriteToFile(*reinterpret_cast<SBFileSpec *>(dest_file),
+                                              *reinterpret_cast<SBBreakpointList *>(bkpt_list),
+                                              append)));
 }
 
 unsigned int
@@ -497,6 +624,15 @@ SBTargetFindBreakpointByID(SBTargetRef instance, int break_id)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->FindBreakpointByID(break_id)));
+}
+
+bool
+SBTargetFindBreakpointsByName(SBTargetRef instance,
+                              const char *name,
+                              SBBreakpointListRef bkpt_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return unwrapped->FindBreakpointsByName(name, *reinterpret_cast<SBBreakpointList *>(bkpt_list));
 }
 
 bool
@@ -711,7 +847,7 @@ SBTargetEvaluateExpression(SBTargetRef instance, const char *expr, SBExpressionO
         new SBValue(unwrapped->EvaluateExpression(expr, *reinterpret_cast<SBExpressionOptions *>(options))));
 }
 
-unsigned long long
+lldb::addr_t
 SBTargetGetStackRedZoneSize(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
