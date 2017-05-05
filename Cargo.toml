@@ -16,8 +16,8 @@ name = "barebones"
 path = "examples/barebones/main.rs"
 
 [dependencies]
-libc = "0.2.12"
-bitflags = "0.7.0"
+libc = "0.2"
+bitflags = "0.8"
 
 [build-dependencies]
 gcc = "0.3"
