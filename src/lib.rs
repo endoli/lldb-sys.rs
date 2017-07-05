@@ -5,7 +5,8 @@
 // except according to those terms.
 
 extern crate libc;
-#[macro_use] extern crate bitflags;
+#[macro_use]
+extern crate bitflags;
 
 mod lldb_sys;
 
@@ -14,6 +15,5 @@ pub use lldb_sys::*;
 #[cfg(test)]
 mod tests {
     #[test]
-    fn it_works() {
-    }
+    fn it_works() {}
 }
