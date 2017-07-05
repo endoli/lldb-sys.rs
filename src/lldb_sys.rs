@@ -197,35 +197,35 @@ pub enum StateType {
 }
 bitflags! {
     #[repr(C)]
-    pub flags LaunchFlags: u32 {
+    pub struct LaunchFlags: u32 {
         /// Exec when launching and turn the calling process into a new process.
-        const LAUNCH_FLAG_EXEC          = 0b0000001,
+        const LAUNCH_FLAG_EXEC          = 0b0000001;
         /// Stop as soon as the process launches to allow the process to be debugged.
-        const LAUNCH_FLAG_DEBUG         = 0b0000010,
+        const LAUNCH_FLAG_DEBUG         = 0b0000010;
         /// Stop at the program entry point instead of auto-continuing when
         /// launching or attaching at entry point.
-        const LAUNCH_FLAG_STOP_AT_ENTRY = 0b0000100,
+        const LAUNCH_FLAG_STOP_AT_ENTRY = 0b0000100;
         /// Disable address space layout randomization (ASLR).
-        const LAUNCH_FLAG_DISABLE_ASLR = 8,
+        const LAUNCH_FLAG_DISABLE_ASLR = 8;
         /// Disable stdio for the inferior process (e.g. for a GUI app).
-        const LAUNCH_FLAG_DISABLE_STDIO = 16,
+        const LAUNCH_FLAG_DISABLE_STDIO = 16;
         /// Launch the process in a new TTY if supported by the host.
-        const LAUNCH_FLAG_LAUNCH_IN_TTY = 32,
+        const LAUNCH_FLAG_LAUNCH_IN_TTY = 32;
         /// Launch the process inside a shell to get shell expansion.
-        const LAUNCH_FLAG_LAUNCH_IN_SHELL = 64,
+        const LAUNCH_FLAG_LAUNCH_IN_SHELL = 64;
         /// Launch the process in a separate process group.
-        const LAUNCH_FLAG_LAUNCH_IN_SEPARATE_PROCESS_GROUP = 128,
+        const LAUNCH_FLAG_LAUNCH_IN_SEPARATE_PROCESS_GROUP = 128;
         /// If you are going to hand the process off (e.g. to debugserver),
         /// set this flag so that lldb and the handee don't race to set its
         /// exit status.
-        const LAUNCH_FLAG_DONT_SET_EXIT_STATUS = 256,
+        const LAUNCH_FLAG_DONT_SET_EXIT_STATUS = 256;
         /// If set, then the client stub should detach rather than
         /// killing the debugee.
-        const LAUNCH_FLAG_DETACH_ON_ERRROR = 512,
+        const LAUNCH_FLAG_DETACH_ON_ERRROR = 512;
         /// Perform shell-style argument expansion.
-        const LAUNCH_FLAG_SHELL_EXPAND_ARGUMENTS = 1024,
+        const LAUNCH_FLAG_SHELL_EXPAND_ARGUMENTS = 1024;
         /// Close the open TTY on exit.
-        const LAUNCH_FLAG_CLOSE_TTY_ON_EXIT = 2048,
+        const LAUNCH_FLAG_CLOSE_TTY_ON_EXIT = 2048;
     }
 }
 
@@ -442,28 +442,28 @@ bitflags! {
     /// in this class, and requests that that item be resolved, or
     /// indicates that the member did get resolved.
     #[repr(C)]
-    pub flags SymbolContextItem: u32 {
+    pub struct SymbolContextItem: u32 {
         /// Set when a target is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_TARGET = 1,
+        const SYMBOL_CONTEXT_ITEM_TARGET = 1;
         /// Set when a module is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_MODULE = 2,
+        const SYMBOL_CONTEXT_ITEM_MODULE = 2;
         /// Set when a compilation unit is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_COMPUNIT = 4,
+        const SYMBOL_CONTEXT_ITEM_COMPUNIT = 4;
         /// Set when a function is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_FUNCTION = 8,
+        const SYMBOL_CONTEXT_ITEM_FUNCTION = 8;
         /// Set when the deepest block is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_BLOCK = 16,
+        const SYMBOL_CONTEXT_ITEM_BLOCK = 16;
         /// Set when a line entry is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_LINE_ENTRY = 32,
+        const SYMBOL_CONTEXT_ITEM_LINE_ENTRY = 32;
         /// Set when a symbol is requested from a query or was located
         /// in the query results.
-        const SYMBOL_CONTEXT_ITEM_SYMBOL = 64,
+        const SYMBOL_CONTEXT_ITEM_SYMBOL = 64;
         /// Indicates to try and look everything up during a routine symbol
         /// context query. This doesn't actually include looking up a variable.
         const SYMBOL_CONTEXT_ITEM_EVERYTHING
@@ -473,22 +473,22 @@ bitflags! {
               SYMBOL_CONTEXT_ITEM_FUNCTION.bits |
               SYMBOL_CONTEXT_ITEM_BLOCK.bits |
               SYMBOL_CONTEXT_ITEM_LINE_ENTRY.bits |
-              SYMBOL_CONTEXT_ITEM_SYMBOL.bits,
+              SYMBOL_CONTEXT_ITEM_SYMBOL.bits;
         /// Set when a global or static variable is requested from a query,
         /// or was located in the query results.
         ///
         /// This is potentially expensive to look up, so it isn't included in
         /// `SYMBOL_CONTEXT_ITEM_EVERYTHING` which stops it from being used during frame PC
         /// lookups and many other potential address to symbol context lookups.
-        const SYMBOL_CONTEXT_ITEM_VARIABLE = 128,
+        const SYMBOL_CONTEXT_ITEM_VARIABLE = 128;
     }
 }
 bitflags! {
     #[repr(C)]
-    pub flags Permissions: u32 {
-        const PERMISSIONS_WRITABLE = 1,
-        const PERMISSIONS_READABLE = 2,
-        const PERMISSIONS_EXECUTABLE = 4,
+    pub struct Permissions: u32 {
+        const PERMISSIONS_WRITABLE = 1;
+        const PERMISSIONS_READABLE = 2;
+        const PERMISSIONS_EXECUTABLE = 4;
     }
 }
 #[derive(Copy, Clone)]
@@ -837,28 +837,28 @@ pub enum BasicType {
 }
 bitflags! {
     #[repr(C)]
-    pub flags TypeClass: u32 {
-        const TYPE_CLASS_INVALID = 0,
-        const TYPE_CLASS_ARRAY = 1,
-        const TYPE_CLASS_BLOCKPOINTER = 2,
-        const TYPE_CLASS_BUILTIN = 4,
-        const TYPE_CLASS_CLASS = 8,
-        const TYPE_CLASS_COMPLEX_FLOAT = 16,
-        const TYPE_CLASS_COMPLEX_INTEGER = 32,
-        const TYPE_CLASS_ENUMERATION = 64,
-        const TYPE_CLASS_FUNCTION = 128,
-        const TYPE_CLASS_MEMBER_POINTER = 256,
-        const TYPE_CLASS_OBJC_OBJECT = 512,
-        const TYPE_CLASS_OBJC_INTERFACE = 1024,
-        const TYPE_CLASS_OBJC_OBJECT_POINTER = 2048,
-        const TYPE_CLASS_POINTER = 4096,
-        const TYPE_CLASS_REFERENCE = 8192,
-        const TYPE_CLASS_STRUCT = 16384,
-        const TYPE_CLASS_TYPEDEF = 32768,
-        const TYPE_CLASS_UNION = 65536,
-        const TYPE_CLASS_VECTOR = 131072,
-        const TYPE_CLASS_OTHER = 2147483648,
-        const TYPE_CLASS_ANY = 4294967295,
+    pub struct TypeClass: u32 {
+        const TYPE_CLASS_INVALID = 0;
+        const TYPE_CLASS_ARRAY = 1;
+        const TYPE_CLASS_BLOCKPOINTER = 2;
+        const TYPE_CLASS_BUILTIN = 4;
+        const TYPE_CLASS_CLASS = 8;
+        const TYPE_CLASS_COMPLEX_FLOAT = 16;
+        const TYPE_CLASS_COMPLEX_INTEGER = 32;
+        const TYPE_CLASS_ENUMERATION = 64;
+        const TYPE_CLASS_FUNCTION = 128;
+        const TYPE_CLASS_MEMBER_POINTER = 256;
+        const TYPE_CLASS_OBJC_OBJECT = 512;
+        const TYPE_CLASS_OBJC_INTERFACE = 1024;
+        const TYPE_CLASS_OBJC_OBJECT_POINTER = 2048;
+        const TYPE_CLASS_POINTER = 4096;
+        const TYPE_CLASS_REFERENCE = 8192;
+        const TYPE_CLASS_STRUCT = 16384;
+        const TYPE_CLASS_TYPEDEF = 32768;
+        const TYPE_CLASS_UNION = 65536;
+        const TYPE_CLASS_VECTOR = 131072;
+        const TYPE_CLASS_OTHER = 2147483648;
+        const TYPE_CLASS_ANY = 4294967295;
     }
 }
 #[derive(Copy, Clone)]
@@ -914,72 +914,72 @@ pub enum AddressClass {
 }
 bitflags! {
     #[repr(C)]
-    pub flags FilePermissions: u32 {
-        const FILE_PERMISSIONS_WORLD_EXECUTE = 1,
-        const FILE_PERMISSIONS_WORLD_WRITE = 2,
-        const FILE_PERMISSIONS_WORLD_READ = 4,
-        const FILE_PERMISSIONS_GROUP_EXECUTE = 8,
-        const FILE_PERMISSIONS_GROUP_WRITE = 16,
-        const FILE_PERMISSIONS_GROUP_READ = 32,
-        const FILE_PERMISSIONS_USER_EXECUTE = 64,
-        const FILE_PERMISSIONS_USER_WRITE = 128,
-        const FILE_PERMISSIONS_USER_READ = 256,
+    pub struct FilePermissions: u32 {
+        const FILE_PERMISSIONS_WORLD_EXECUTE = 1;
+        const FILE_PERMISSIONS_WORLD_WRITE = 2;
+        const FILE_PERMISSIONS_WORLD_READ = 4;
+        const FILE_PERMISSIONS_GROUP_EXECUTE = 8;
+        const FILE_PERMISSIONS_GROUP_WRITE = 16;
+        const FILE_PERMISSIONS_GROUP_READ = 32;
+        const FILE_PERMISSIONS_USER_EXECUTE = 64;
+        const FILE_PERMISSIONS_USER_WRITE = 128;
+        const FILE_PERMISSIONS_USER_READ = 256;
         const FILE_PERMISSIONS_WORLD_RX
             = FILE_PERMISSIONS_WORLD_READ.bits |
-              FILE_PERMISSIONS_WORLD_EXECUTE.bits,
+              FILE_PERMISSIONS_WORLD_EXECUTE.bits;
         const FILE_PERMISSIONS_WORLD_RW
             = FILE_PERMISSIONS_WORLD_READ.bits |
-              FILE_PERMISSIONS_WORLD_WRITE.bits,
+              FILE_PERMISSIONS_WORLD_WRITE.bits;
         const FILE_PERMISSIONS_WORLD_RWX
             = FILE_PERMISSIONS_WORLD_READ.bits |
               FILE_PERMISSIONS_WORLD_WRITE.bits |
-              FILE_PERMISSIONS_WORLD_EXECUTE.bits,
+              FILE_PERMISSIONS_WORLD_EXECUTE.bits;
         const FILE_PERMISSIONS_GROUP_RX
             = FILE_PERMISSIONS_GROUP_READ.bits |
-              FILE_PERMISSIONS_GROUP_EXECUTE.bits,
+              FILE_PERMISSIONS_GROUP_EXECUTE.bits;
         const FILE_PERMISSIONS_GROUP_RW
             = FILE_PERMISSIONS_GROUP_READ.bits |
-              FILE_PERMISSIONS_GROUP_WRITE.bits,
+              FILE_PERMISSIONS_GROUP_WRITE.bits;
         const FILE_PERMISSIONS_GROUP_RWX
             = FILE_PERMISSIONS_GROUP_READ.bits |
               FILE_PERMISSIONS_GROUP_WRITE.bits |
-              FILE_PERMISSIONS_GROUP_EXECUTE.bits,
+              FILE_PERMISSIONS_GROUP_EXECUTE.bits;
         const FILE_PERMISSIONS_USER_RX
             = FILE_PERMISSIONS_USER_READ.bits |
-              FILE_PERMISSIONS_USER_EXECUTE.bits,
+              FILE_PERMISSIONS_USER_EXECUTE.bits;
         const FILE_PERMISSIONS_USER_RW
             = FILE_PERMISSIONS_USER_READ.bits |
-              FILE_PERMISSIONS_USER_WRITE.bits,
+              FILE_PERMISSIONS_USER_WRITE.bits;
         const FILE_PERMISSIONS_USER_RWX
             = FILE_PERMISSIONS_USER_READ.bits |
               FILE_PERMISSIONS_USER_WRITE.bits |
-              FILE_PERMISSIONS_USER_EXECUTE.bits,
+              FILE_PERMISSIONS_USER_EXECUTE.bits;
         const FILE_PERMISSIONS_EVERYONE_R
             = FILE_PERMISSIONS_WORLD_READ.bits |
               FILE_PERMISSIONS_GROUP_READ.bits |
-              FILE_PERMISSIONS_USER_READ.bits,
+              FILE_PERMISSIONS_USER_READ.bits;
         const FILE_PERMISSIONS_EVERYONE_W
             = FILE_PERMISSIONS_WORLD_WRITE.bits |
               FILE_PERMISSIONS_GROUP_WRITE.bits |
-              FILE_PERMISSIONS_USER_WRITE.bits,
+              FILE_PERMISSIONS_USER_WRITE.bits;
         const FILE_PERMISSIONS_EVERYONE_X
             = FILE_PERMISSIONS_WORLD_EXECUTE.bits |
               FILE_PERMISSIONS_GROUP_EXECUTE.bits |
-              FILE_PERMISSIONS_USER_EXECUTE.bits,
+              FILE_PERMISSIONS_USER_EXECUTE.bits;
         const FILE_PERMISSIONS_EVERYONE_RW
             = FILE_PERMISSIONS_EVERYONE_R.bits |
-              FILE_PERMISSIONS_EVERYONE_W.bits,
+              FILE_PERMISSIONS_EVERYONE_W.bits;
         const FILE_PERMISSIONS_EVERYONE_RX
             = FILE_PERMISSIONS_EVERYONE_R.bits |
-              FILE_PERMISSIONS_EVERYONE_X.bits,
+              FILE_PERMISSIONS_EVERYONE_X.bits;
         const FILE_PERMISSIONS_EVERYONE_RWX
             = FILE_PERMISSIONS_EVERYONE_R.bits |
               FILE_PERMISSIONS_EVERYONE_W.bits |
-              FILE_PERMISSIONS_EVERYONE_X.bits,
+              FILE_PERMISSIONS_EVERYONE_X.bits;
         const FILE_PERMISSIONS_FILE_DEFAULT
-            = FILE_PERMISSIONS_USER_RW.bits,
+            = FILE_PERMISSIONS_USER_RW.bits;
         const FILE_PERMISSIONS_DIRECTORY_DEFAULT
-            = FILE_PERMISSIONS_USER_RWX.bits,
+            = FILE_PERMISSIONS_USER_RWX.bits;
     }
 }
 #[derive(Copy, Clone)]
