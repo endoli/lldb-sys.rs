@@ -835,6 +835,22 @@ pub enum BasicType {
     NullPtr = 31,
     Other = 32,
 }
+
+#[derive(Copy, Clone)]
+#[repr(i32)]
+#[derive(Debug)]
+pub enum StructuredDataType {
+    Invalid = -1,
+    Null = 0,
+    Generic,
+    Array,
+    Integer,
+    Float,
+    Boolean,
+    String,
+    Dictionary,
+}
+
 bitflags! {
     #[repr(C)]
     pub struct TypeClass: u32 {
@@ -3114,6 +3130,10 @@ extern "C" {
     pub fn DisposeSBStructuredData(instance: SBStructuredDataRef);
     pub fn SBStructuredDataIsValid(instance: SBStructuredDataRef) -> u8;
     pub fn SBStructuredDataClear(instance: SBStructuredDataRef);
+    pub fn SBStructuredDataSetFromJSON(
+        instance: SBStructuredDataRef,
+        stream: SBStreamRef,
+    ) -> SBErrorRef;
     pub fn SBStructuredDataGetAsJSON(
         instance: SBStructuredDataRef,
         stream: SBStreamRef,
@@ -3122,6 +3142,30 @@ extern "C" {
         instance: SBStructuredDataRef,
         stream: SBStreamRef,
     ) -> SBErrorRef;
+    pub fn SBStructuredDataGetType(instance: SBStructuredDataRef) -> StructuredDataType;
+    pub fn SBStructuredDataGetSize(instance: SBStructuredDataRef) -> size_t;
+    pub fn SBStructuredDataGetValueForKey(
+        instance: SBStructuredDataRef,
+        key: *const ::std::os::raw::c_char,
+    ) -> SBStructuredDataRef;
+    pub fn SBStructuredDataGetItemAtIndex(
+        instance: SBStructuredDataRef,
+        idx: size_t,
+    ) -> SBStructuredDataRef;
+    pub fn SBStructuredDataGetIntegerValue(
+        instance: SBStructuredDataRef,
+        fail_value: uint64_t,
+    ) -> uint64_t;
+    pub fn SBStructuredDataGetFloatValue(
+        instance: SBStructuredDataRef,
+        fail_value: ::std::os::raw::c_double,
+    ) -> ::std::os::raw::c_double;
+    pub fn SBStructuredDataGetBooleanValue(instance: SBStructuredDataRef, fail_value: u8) -> u8;
+    pub fn SBStructuredDataGetStringValue(
+        instance: SBStructuredDataRef,
+        dst: *mut ::std::os::raw::c_char,
+        dstlen: size_t,
+    ) -> size_t;
     pub fn CreateSBSymbol() -> SBSymbolRef;
     pub fn DisposeSBSymbol(instance: SBSymbolRef);
     pub fn SBSymbolIsValid(instance: SBSymbolRef) -> u8;

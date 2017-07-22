@@ -43,10 +43,17 @@ SBStructuredDataClear(SBStructuredDataRef instance)
 }
 
 SBErrorRef
-SBStructuredDataGetAsJSON(SBStructuredDataRef instance, SBStreamRef description)
+SBStructureDataSetFromJSON(SBStructuredDataRef instance, SBStreamRef stream)
 {
     SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
-    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetAsJSON(*reinterpret_cast<SBStream *>(description))));
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SetFromJSON(*reinterpret_cast<SBStream *>(stream))));
+}
+
+SBErrorRef
+SBStructuredDataGetAsJSON(SBStructuredDataRef instance, SBStreamRef stream)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetAsJSON(*reinterpret_cast<SBStream *>(stream))));
 }
 
 SBErrorRef
@@ -54,6 +61,62 @@ SBStructuredDataGetDescription(SBStructuredDataRef instance, SBStreamRef descrip
 {
     SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description))));
+}
+
+StructuredDataType
+SBStructuredDataGetType(SBStructuredDataRef instance)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetType();
+}
+
+size_t
+SBStructuredDataGetSize(SBStructuredDataRef instance)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetSize();
+}
+
+SBStructuredDataRef
+SBStructuredDataGetValueForKey(SBStructuredDataRef instance, const char *key)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetValueForKey(key)));
+}
+
+SBStructuredDataRef
+SBStructuredDataGetItemAtIndex(SBStructuredDataRef instance, size_t idx)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetItemAtIndex(idx)));
+}
+
+uint64_t
+SBStructuredDataGetIntegerValue(SBStructuredDataRef instance, uint64_t fail_value)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetIntegerValue(fail_value);
+}
+
+double
+SBStructuredDataGetFloatValue(SBStructuredDataRef instance, double fail_value)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetFloatValue(fail_value);
+}
+
+bool
+SBStructuredDataGetBooleanValue(SBStructuredDataRef instance, bool fail_value)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetBooleanValue(fail_value);
+}
+
+size_t
+SBStructuredDataGetStringValue(SBStructuredDataRef instance, char *dst, size_t dst_len)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetStringValue(dst, dst_len);
 }
 
 #ifdef __cplusplus
