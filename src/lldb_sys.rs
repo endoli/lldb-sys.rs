@@ -525,16 +525,16 @@ pub enum BreakpointEventType {
 #[repr(u32)]
 #[derive(Debug)]
 pub enum WatchpointEventType {
-    WatchpointEventTypeInvalidType = 1,
-    WatchpointEventTypeAdded = 2,
-    WatchpointEventTypeRemoved = 4,
-    WatchpointEventTypeEnabled = 64,
-    WatchpointEventTypeDisabled = 128,
-    WatchpointEventTypeCommandChanged = 256,
-    WatchpointEventTypeConditionChanged = 512,
-    WatchpointEventTypeIgnoreChanged = 1024,
-    WatchpointEventTypeThreadChanged = 2048,
-    WatchpointEventTypeTypeChanged = 4096,
+    InvalidType = 1,
+    Added = 2,
+    Removed = 4,
+    Enabled = 64,
+    Disabled = 128,
+    CommandChanged = 256,
+    ConditionChanged = 512,
+    IgnoreChanged = 1024,
+    ThreadChanged = 2048,
+    TypeChanged = 4096,
 }
 #[derive(Copy, Clone)]
 #[repr(u32)]
