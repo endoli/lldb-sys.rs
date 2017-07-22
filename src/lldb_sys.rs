@@ -250,7 +250,7 @@ pub enum ByteOrder {
     Little = 4,
 }
 
-/// Register encoding defintions.
+/// Register encoding definitions.
 #[derive(Copy, Clone)]
 #[repr(u32)]
 #[derive(Debug)]
