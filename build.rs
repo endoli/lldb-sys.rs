@@ -1,6 +1,6 @@
 extern crate gcc;
 
-use gcc::Config;
+use gcc::Build;
 
 #[cfg(target_os = "linux")]
 use std::process::Command;
@@ -19,7 +19,7 @@ fn get_llvm_output(arg: &str) -> String {
 }
 
 #[cfg(target_os = "linux")]
-fn get_config() -> Config {
+fn get_compiler_config() -> Build {
     // On linux lib directory and headers directory are provided by `llvm-config` utility.
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
@@ -33,16 +33,16 @@ fn get_config() -> Config {
     let lib_name = ["lldb-", &llvm_version].join("");
     println!("cargo:rustc-link-search={}", llvm_lib_path);
     println!("cargo:rustc-link-lib={}", lib_name);
-    let mut res = gcc::Config::new();
+    let mut res = gcc::Build::new();
     res.include(llvm_headers_path);
     res
 }
 
 #[cfg(target_os = "macos")]
-fn get_config() -> Config {
+fn get_compiler_config() -> Build {
     println!("cargo:rustc-link-lib=framework=LLDB");
     println!("cargo:rustc-link-search=framework=/Applications/Xcode.app/Contents/SharedFrameworks");
-    let mut res = gcc::Config::new();
+    let mut res = gcc::Build::new();
     res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
         .include(env!("LLVM_ROOT").to_owned() + "/include")
         .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
@@ -50,14 +50,15 @@ fn get_config() -> Config {
 }
 
 #[cfg(not(any(target_os = "macos", target_os = "linux")))]
-fn get_config() -> Config {
+fn get_compiler_config() -> Build {
     panic!("Only MacOS and Linux are supported currently");
 }
 
 fn main() {
-    get_config()
+    get_compiler_config()
         .cpp(true)
         .flag("-std=c++14")
+        .warnings(false)
         .include("src")
         .file("src/lldb/Bindings/SBAddressBinding.cpp")
         .file("src/lldb/Bindings/SBAttachInfoBinding.cpp")
