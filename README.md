@@ -22,7 +22,7 @@ Install the `lldb` and `lldb-dev` packages for your platform so that
 you have both LLDB itself installed as well as the headers and
 other support files required.
 
-### Mac OS X:
+### macOS:
 
 You will need to have 2 environment variables set to do the build:
 
