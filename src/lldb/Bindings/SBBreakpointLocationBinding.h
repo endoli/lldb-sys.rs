@@ -34,7 +34,7 @@ LLDB_API bool SBBreakpointLocationIsEnabled(SBBreakpointLocationRef instance);
 
 LLDB_API uint32_t SBBreakpointLocationGetHitCount(SBBreakpointLocationRef instance);
 
-LLDB_API unsigned int SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance);
+LLDB_API uint32_t SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance);
 
 LLDB_API void SBBreakpointLocationSetIgnoreCount(SBBreakpointLocationRef instance, uint32_t n);
 

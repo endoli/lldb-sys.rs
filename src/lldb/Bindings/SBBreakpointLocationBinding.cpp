@@ -77,7 +77,7 @@ SBBreakpointLocationGetHitCount(SBBreakpointLocationRef instance)
     return unwrapped->GetHitCount();
 }
 
-unsigned int
+uint32_t
 SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance)
 {
     SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);

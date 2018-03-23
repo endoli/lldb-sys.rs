@@ -1330,7 +1330,7 @@ extern "C" {
     ) -> u32;
     pub fn SBBreakpointLocationGetIgnoreCount(
         instance: SBBreakpointLocationRef,
-    ) -> ::std::os::raw::c_uint;
+    ) -> u32;
     pub fn SBBreakpointLocationSetIgnoreCount(instance: SBBreakpointLocationRef, n: uint32_t);
     pub fn SBBreakpointLocationSetCondition(
         instance: SBBreakpointLocationRef,
