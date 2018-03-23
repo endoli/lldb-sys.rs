@@ -5,7 +5,7 @@
          non_upper_case_globals,
          non_snake_case)]
 
-#[cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
+#![cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
 use libc::{FILE, int32_t, int64_t, size_t, uint8_t, uint32_t, uint64_t};
 
