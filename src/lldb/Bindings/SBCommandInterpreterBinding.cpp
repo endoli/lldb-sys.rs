@@ -289,6 +289,13 @@ SBCommandInterpreterHandleCompletion2(SBCommandInterpreterRef instance, const ch
 }
 
 bool
+SBCommandInterpreterWasInterrupted(SBCommandInterpreterRef instance)
+{
+    SBCommandInterpreter *unwrapped = reinterpret_cast<SBCommandInterpreter *>(instance);
+    return unwrapped->WasInterrupted();
+}
+
+bool
 SBCommandInterpreterSetCommandOverrideCallback(SBCommandInterpreterRef instance, const char *command_name,
                                                    lldb::CommandOverrideCallback callback, void *baton)
 {

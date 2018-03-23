@@ -110,6 +110,8 @@ LLDB_API int SBCommandInterpreterHandleCompletion2(SBCommandInterpreterRef insta
                                                        uint32_t cursor_pos, int match_start_point,
                                                        int max_return_elements, SBStringListRef matches);
 
+LLDB_API bool SBCommandInterpreterWasInterrupted(SBCommandInterpreterRef instance);
+
 #ifndef BINDGEN
 LLDB_API bool SBCommandInterpreterSetCommandOverrideCallback(SBCommandInterpreterRef instance,
                                                                  const char *command_name,

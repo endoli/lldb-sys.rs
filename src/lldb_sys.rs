@@ -1539,6 +1539,7 @@ extern "C" {
         max_return_elements: ::std::os::raw::c_int,
         matches: SBStringListRef,
     ) -> ::std::os::raw::c_int;
+    pub fn SBCommandInterpreterWasInterrupted(instance: SBCommandInterpreterRef) -> u8;
     pub fn SBCommandInterpreterIsActive(instance: SBCommandInterpreterRef) -> u8;
     pub fn SBCommandInterpreterGetIOHandlerControlSequence(
         instance: SBCommandInterpreterRef,
