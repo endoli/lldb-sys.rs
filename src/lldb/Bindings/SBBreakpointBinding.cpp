@@ -207,7 +207,7 @@ SBBreakpointGetQueueName(SBBreakpointRef instance)
 }
 
 void
-SBBreakpointSetCallback(SBBreakpointRef instance, lldb::SBBreakpoint::BreakpointHitCallback callback,
+SBBreakpointSetCallback(SBBreakpointRef instance, lldb::SBBreakpointHitCallback callback,
                             void *baton)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);

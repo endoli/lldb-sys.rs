@@ -77,7 +77,7 @@ LLDB_API const char *SBBreakpointGetQueueName(SBBreakpointRef instance);
 
 #ifndef BINDGEN
 LLDB_API void SBBreakpointSetCallback(SBBreakpointRef instance,
-                                          lldb::SBBreakpoint::BreakpointHitCallback callback, void *baton);
+                                          lldb::SBBreakpointHitCallback callback, void *baton);
 #endif // BINDGEN
 
 LLDB_API void SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance,
