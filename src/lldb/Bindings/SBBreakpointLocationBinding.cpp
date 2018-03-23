@@ -70,6 +70,13 @@ SBBreakpointLocationIsEnabled(SBBreakpointLocationRef instance)
     return unwrapped->IsEnabled();
 }
 
+uint32_t
+SBBreakpointLocationGetHitCount(SBBreakpointLocationRef instance)
+{
+    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
+    return unwrapped->GetHitCount();
+}
+
 unsigned int
 SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance)
 {

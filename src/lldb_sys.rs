@@ -1325,6 +1325,9 @@ extern "C" {
     ) -> ::std::os::raw::c_ulonglong;
     pub fn SBBreakpointLocationSetEnabled(instance: SBBreakpointLocationRef, enabled: u8);
     pub fn SBBreakpointLocationIsEnabled(instance: SBBreakpointLocationRef) -> u8;
+    pub fn SBBreakpointLocationGetHitCount(
+        instance: SBBreakpointLocationRef,
+    ) -> u32;
     pub fn SBBreakpointLocationGetIgnoreCount(
         instance: SBBreakpointLocationRef,
     ) -> ::std::os::raw::c_uint;
