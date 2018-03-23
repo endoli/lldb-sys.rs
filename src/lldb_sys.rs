@@ -85,6 +85,10 @@ pub enum SBLineEntryOpaque { }
 pub type SBLineEntryRef = *mut SBLineEntryOpaque;
 pub enum SBListenerOpaque { }
 pub type SBListenerRef = *mut SBListenerOpaque;
+pub enum SBMemoryRegionInfoOpaque { }
+pub type SBMemoryRegionInfoRef = *mut SBMemoryRegionInfoOpaque;
+pub enum SBMemoryRegionInfoListOpaque { }
+pub type SBMemoryRegionInfoListRef = *mut SBMemoryRegionInfoListOpaque;
 pub enum SBModuleOpaque { }
 pub type SBModuleRef = *mut SBModuleOpaque;
 pub enum SBModuleSpecOpaque { }
@@ -2579,6 +2583,24 @@ extern "C" {
         sb_event: SBEventRef,
     ) -> u8;
     pub fn SBListenerHandleBroadcastEvent(instance: SBListenerRef, event: SBEventRef) -> u8;
+    pub fn CreateSBMemoryRegionInfo() -> SBMemoryRegionInfoRef;
+    pub fn DisposeSBMemoryRegionInfo(instance: SBMemoryRegionInfoRef);
+    pub fn SBMemoryRegionInfoClear(instance: SBMemoryRegionInfoRef);
+    pub fn SBMemoryRegionInfoGetRegionBase(instance: SBMemoryRegionInfoRef) -> lldb_addr_t;
+    pub fn SBMemoryRegionInfoGetRegionEnd(instance: SBMemoryRegionInfoRef) -> lldb_addr_t;
+    pub fn SBMemoryRegionInfoIsReadable(instance: SBMemoryRegionInfoRef) -> u8;
+    pub fn SBMemoryRegionInfoIsWritable(instance: SBMemoryRegionInfoRef) -> u8;
+    pub fn SBMemoryRegionInfoIsExecutable(instance: SBMemoryRegionInfoRef) -> u8;
+    pub fn SBMemoryRegionInfoIsMapped(instance: SBMemoryRegionInfoRef) -> u8;
+    pub fn SBMemoryRegionInfoGetName(instance: SBMemoryRegionInfoRef) -> *const ::std::os::raw::c_char;
+    pub fn SBMemoryRegionInfoGetDescription(instance: SBMemoryRegionInfoRef, description: SBStreamRef) -> u8;
+    pub fn CreateSBMemoryRegionInfoList() -> SBMemoryRegionInfoListRef;
+    pub fn DisposeSBMemoryRegionInfoList(instance: SBMemoryRegionInfoListRef);
+    pub fn SBMemoryRegionInfoListGetSize(instance: SBMemoryRegionInfoListRef) -> u32;
+    pub fn SBMemoryRegionInfoListGetMemoryRegionAtIndex(instance: SBMemoryRegionInfoListRef, idx: u32, region: SBMemoryRegionInfoRef) -> u8;
+    pub fn SBMemoryRegionInfoListAppend(instance: SBMemoryRegionInfoListRef, region: SBMemoryRegionInfoRef);
+    pub fn SBMemoryRegionInfoListAppendList(instance: SBMemoryRegionInfoListRef, region_list: SBMemoryRegionInfoListRef);
+    pub fn SBMemoryRegionInfoListClear(instance: SBMemoryRegionInfoListRef);
     pub fn CreateSBModule() -> SBModuleRef;
     pub fn CreateSBModule2(module_spec: SBModuleSpecRef) -> SBModuleRef;
     pub fn CreateSBModule3(process: SBProcessRef, header_addr: lldb_addr_t) -> SBModuleRef;
@@ -2990,6 +3012,11 @@ extern "C" {
         instance: SBProcessRef,
         file_name: *const ::std::os::raw::c_char,
     ) -> SBErrorRef;
+    pub fn SBProcessGetMemoryRegionInfo(
+        instance: SBProcessRef,
+        load_addr: lldb_addr_t,
+        region_info: SBMemoryRegionInfoRef) -> SBErrorRef;
+    pub fn SBProcessGetMemoryRegions(instance: SBProcessRef) -> SBMemoryRegionInfoListRef;
     pub fn SBProcessGetProcessInfo(instance: SBProcessRef) -> SBProcessInfoRef;
     pub fn CreateSBProcessInfo() -> SBProcessInfoRef;
     pub fn DisposeSBProcessInfo(instance: SBProcessInfoRef);

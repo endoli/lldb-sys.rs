@@ -86,6 +86,8 @@ LLDB_API typedef struct SBInstructionListOpaque *SBInstructionListRef;
 LLDB_API typedef struct SBLaunchInfoOpaque *SBLaunchInfoRef;
 LLDB_API typedef struct SBLineEntryOpaque *SBLineEntryRef;
 LLDB_API typedef struct SBListenerOpaque *SBListenerRef;
+LLDB_API typedef struct SBMemoryRegionInfoOpaque *SBMemoryRegionInfoRef;
+LLDB_API typedef struct SBMemoryRegionInfoListOpaque *SBMemoryRegionInfoListRef;
 LLDB_API typedef struct SBModuleOpaque *SBModuleRef;
 LLDB_API typedef struct SBModuleSpecOpaque *SBModuleSpecRef;
 LLDB_API typedef struct SBModuleSpecListOpaque *SBModuleSpecListRef;

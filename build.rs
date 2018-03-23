@@ -89,6 +89,8 @@ fn main() {
         .file("src/lldb/Bindings/SBLaunchInfoBinding.cpp")
         .file("src/lldb/Bindings/SBLineEntryBinding.cpp")
         .file("src/lldb/Bindings/SBListenerBinding.cpp")
+        .file("src/lldb/Bindings/SBMemoryRegionInfoBinding.cpp")
+        .file("src/lldb/Bindings/SBMemoryRegionInfoListBinding.cpp")
         .file("src/lldb/Bindings/SBModuleBinding.cpp")
         .file("src/lldb/Bindings/SBModuleSpecBinding.cpp")
         .file("src/lldb/Bindings/SBPlatformBinding.cpp")

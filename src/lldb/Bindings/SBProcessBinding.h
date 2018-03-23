@@ -169,6 +169,10 @@ LLDB_API bool SBProcessIsInstrumentationRuntimePresent(SBProcessRef instance,
 
 LLDB_API SBErrorRef SBProcessSaveCore(SBProcessRef instance, const char *file_name);
 
+LLDB_API SBErrorRef SBProcessGetMemoryRegionInfo(SBProcessRef instance, lldb_addr_t load_addr, SBMemoryRegionInfoRef region_info);
+
+LLDB_API SBMemoryRegionInfoListRef SBProcessGetMemoryRegions(SBProcessRef instance);
+
 LLDB_API SBProcessInfoRef SBProcessGetProcessInfo(SBProcessRef instance);
 
 #ifdef __cplusplus

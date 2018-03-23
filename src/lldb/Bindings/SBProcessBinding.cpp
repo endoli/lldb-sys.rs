@@ -504,6 +504,21 @@ SBProcessSaveCore(SBProcessRef instance, const char *file_name)
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SaveCore(file_name)));
 }
 
+SBErrorRef
+SBProcessGetMemoryRegionInfo(SBProcessRef instance, lldb_addr_t load_addr, SBMemoryRegionInfoRef region_info)
+{
+    SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetMemoryRegionInfo(load_addr,
+                                        *reinterpret_cast<SBMemoryRegionInfo*>(region_info))));
+}
+
+SBMemoryRegionInfoListRef
+SBProcessGetMemoryRegions(SBProcessRef instance)
+{
+    SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+    return reinterpret_cast<SBMemoryRegionInfoListRef>(new SBMemoryRegionInfoList(unwrapped->GetMemoryRegions()));
+}
+
 SBProcessInfoRef
 SBProcessGetProcessInfo(SBProcessRef instance)
 {
