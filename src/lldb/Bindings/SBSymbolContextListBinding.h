@@ -31,7 +31,7 @@ LLDB_API bool SBSymbolContextListGetDescription(SBSymbolContextListRef instance,
 
 LLDB_API void SBSymbolContextListAppend(SBSymbolContextListRef instance, SBSymbolContextRef sc);
 
-LLDB_API void SBSymbolContextListAppend2(SBSymbolContextListRef instance, SBSymbolContextListRef sc_list);
+LLDB_API void SBSymbolContextListAppendList(SBSymbolContextListRef instance, SBSymbolContextListRef sc_list);
 
 LLDB_API void SBSymbolContextListClear(SBSymbolContextListRef instance);
 

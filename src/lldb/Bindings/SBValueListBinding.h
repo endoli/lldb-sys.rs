@@ -26,7 +26,7 @@ LLDB_API void SBValueListClear(SBValueListRef instance);
 
 LLDB_API void SBValueListAppend(SBValueListRef instance, SBValueRef val_obj);
 
-LLDB_API void SBValueListAppend2(SBValueListRef instance, SBValueListRef value_list);
+LLDB_API void SBValueListAppendList(SBValueListRef instance, SBValueListRef value_list);
 
 LLDB_API unsigned int SBValueListGetSize(SBValueListRef instance);
 

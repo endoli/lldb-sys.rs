@@ -2688,7 +2688,7 @@ extern "C" {
         path: *const ::std::os::raw::c_char,
     ) -> SBModuleSpecListRef;
     pub fn SBModuleSpecListAppend(instance: SBModuleSpecListRef, spec: SBModuleSpecRef);
-    pub fn SBModuleSpecListAppend2(instance: SBModuleSpecListRef, spec_list: SBModuleSpecListRef);
+    pub fn SBModuleSpecListAppendList(instance: SBModuleSpecListRef, spec_list: SBModuleSpecListRef);
     pub fn SBModuleSpecListFindFirstMatchingSpec(
         instance: SBModuleSpecListRef,
         match_spec: SBModuleSpecRef,
@@ -3212,7 +3212,7 @@ extern "C" {
         description: SBStreamRef,
     ) -> u8;
     pub fn SBSymbolContextListAppend(instance: SBSymbolContextListRef, sc: SBSymbolContextRef);
-    pub fn SBSymbolContextListAppend2(
+    pub fn SBSymbolContextListAppendList(
         instance: SBSymbolContextListRef,
         sc_list: SBSymbolContextListRef,
     );
@@ -4354,7 +4354,7 @@ extern "C" {
     pub fn SBValueListIsValid(instance: SBValueListRef) -> u8;
     pub fn SBValueListClear(instance: SBValueListRef);
     pub fn SBValueListAppend(instance: SBValueListRef, val_obj: SBValueRef);
-    pub fn SBValueListAppend2(instance: SBValueListRef, value_list: SBValueListRef);
+    pub fn SBValueListAppendList(instance: SBValueListRef, value_list: SBValueListRef);
     pub fn SBValueListGetSize(instance: SBValueListRef) -> ::std::os::raw::c_uint;
     pub fn SBValueListGetValueAtIndex(instance: SBValueListRef, idx: uint32_t) -> SBValueRef;
     pub fn SBValueListGetFirstValueByName(

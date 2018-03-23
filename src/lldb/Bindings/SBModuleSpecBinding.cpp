@@ -168,7 +168,7 @@ SBModuleSpecListAppend(SBModuleSpecListRef instance, SBModuleSpecRef spec)
 }
 
 void
-SBModuleSpecListAppend2(SBModuleSpecListRef instance, SBModuleSpecListRef spec_list)
+SBModuleSpecListAppendList(SBModuleSpecListRef instance, SBModuleSpecListRef spec_list)
 {
     SBModuleSpecList *unwrapped = reinterpret_cast<SBModuleSpecList *>(instance);
     unwrapped->Append(*reinterpret_cast<SBModuleSpecList *>(spec_list));

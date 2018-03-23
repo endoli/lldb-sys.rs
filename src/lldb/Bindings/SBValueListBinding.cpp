@@ -50,7 +50,7 @@ SBValueListAppend(SBValueListRef instance, SBValueRef val_obj)
 }
 
 void
-SBValueListAppend2(SBValueListRef instance, SBValueListRef value_list)
+SBValueListAppendList(SBValueListRef instance, SBValueListRef value_list)
 {
     SBValueList *unwrapped = reinterpret_cast<SBValueList *>(instance);
     unwrapped->Append(*reinterpret_cast<SBValueList *>(value_list));

@@ -64,7 +64,7 @@ SBSymbolContextListAppend(SBSymbolContextListRef instance, SBSymbolContextRef sc
 }
 
 void
-SBSymbolContextListAppend2(SBSymbolContextListRef instance, SBSymbolContextListRef sc_list)
+SBSymbolContextListAppendList(SBSymbolContextListRef instance, SBSymbolContextListRef sc_list)
 {
     SBSymbolContextList *unwrapped = reinterpret_cast<SBSymbolContextList *>(instance);
     unwrapped->Append(*reinterpret_cast<SBSymbolContextList *>(sc_list));

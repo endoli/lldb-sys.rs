@@ -60,7 +60,7 @@ LLDB_API SBModuleSpecListRef SBModuleSpecListGetModuleSpecifications(const char 
 
 LLDB_API void SBModuleSpecListAppend(SBModuleSpecListRef instance, SBModuleSpecRef spec);
 
-LLDB_API void SBModuleSpecListAppend2(SBModuleSpecListRef instance, SBModuleSpecListRef spec_list);
+LLDB_API void SBModuleSpecListAppendList(SBModuleSpecListRef instance, SBModuleSpecListRef spec_list);
 
 LLDB_API SBModuleSpecRef
 SBModuleSpecListFindFirstMatchingSpec(SBModuleSpecListRef instance, SBModuleSpecRef match_spec);
