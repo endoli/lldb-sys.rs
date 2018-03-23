@@ -129,6 +129,14 @@ LLDB_API SBPlatformRef SBDebuggerGetSelectedPlatform(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSetSelectedPlatform(SBDebuggerRef instance, SBPlatformRef platform);
 
+LLDB_API uint32_t SBDebuggerGetNumPlatforms(SBDebuggerRef instance);
+
+LLDB_API SBPlatformRef SBDebuggerGetPlatformAtIndex(SBDebuggerRef instance, uint32_t idx);
+
+LLDB_API uint32_t SBDebuggerGetNumAvailablePlatforms(SBDebuggerRef instance);
+
+LLDB_API SBStructuredDataRef SBDebuggerGetAvailablePlatformInfoAtIndex(SBDebuggerRef instance, uint32_t idx);
+
 LLDB_API SBSourceManagerRef SBDebuggerGetSourceManager(SBDebuggerRef instance);
 
 LLDB_API SBErrorRef SBDebuggerSetCurrentPlatform(SBDebuggerRef instance, const char *platform_name);

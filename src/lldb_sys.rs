@@ -1975,6 +1975,10 @@ extern "C" {
     pub fn SBDebuggerSetSelectedTarget(instance: SBDebuggerRef, target: SBTargetRef);
     pub fn SBDebuggerGetSelectedPlatform(instance: SBDebuggerRef) -> SBPlatformRef;
     pub fn SBDebuggerSetSelectedPlatform(instance: SBDebuggerRef, platform: SBPlatformRef);
+    pub fn SBDebuggerGetNumPlatforms(instance: SBDebuggerRef) -> u32;
+    pub fn SBDebuggerGetPlatformAtIndex(instance: SBDebuggerRef, idx: u32) -> SBPlatformRef;
+    pub fn SBDebuggerGetNumAvailablePlatforms(instance: SBDebuggerRef) -> u32;
+    pub fn SBDebuggerGetAvailablePlatformInfoAtIndex(instance: SBDebuggerRef, idx: u32) -> SBStructuredDataRef;
     pub fn SBDebuggerGetSourceManager(instance: SBDebuggerRef) -> SBSourceManagerRef;
     pub fn SBDebuggerSetCurrentPlatform(
         instance: SBDebuggerRef,

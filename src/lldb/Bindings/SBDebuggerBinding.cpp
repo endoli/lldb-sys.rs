@@ -343,6 +343,34 @@ SBDebuggerSetSelectedPlatform(SBDebuggerRef instance, SBPlatformRef platform)
     unwrapped->SetSelectedPlatform(*reinterpret_cast<SBPlatform *>(platform));
 }
 
+uint32_t
+SBDebuggerGetNumPlatforms(SBDebuggerRef instance)
+{
+    SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+    return unwrapped->GetNumPlatforms();
+}
+
+SBPlatformRef
+SBDebuggerGetPlatformAtIndex(SBDebuggerRef instance, uint32_t idx)
+{
+    SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+    return reinterpret_cast<SBPlatformRef>(new SBPlatform(unwrapped->GetPlatformAtIndex(idx)));
+}
+
+uint32_t
+SBDebuggerGetNumAvailablePlatforms(SBDebuggerRef instance)
+{
+    SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+    return unwrapped->GetNumAvailablePlatforms();
+}
+
+SBStructuredDataRef
+SBDebuggerGetAvailablePlatformInfoAtIndex(SBDebuggerRef instance, uint32_t idx)
+{
+    SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetAvailablePlatformInfoAtIndex(idx)));
+}
+
 SBSourceManagerRef
 SBDebuggerGetSourceManager(SBDebuggerRef instance)
 {
