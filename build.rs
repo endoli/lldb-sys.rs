@@ -1,6 +1,6 @@
-extern crate gcc;
+extern crate cc;
 
-use gcc::Build;
+use cc::Build;
 
 #[cfg(target_os = "linux")]
 use std::process::Command;
@@ -33,7 +33,7 @@ fn get_compiler_config() -> Build {
     let lib_name = ["lldb-", &llvm_version].join("");
     println!("cargo:rustc-link-search={}", llvm_lib_path);
     println!("cargo:rustc-link-lib={}", lib_name);
-    let mut res = gcc::Build::new();
+    let mut res = cc::Build::new();
     res.include(llvm_headers_path);
     res
 }
@@ -42,7 +42,7 @@ fn get_compiler_config() -> Build {
 fn get_compiler_config() -> Build {
     println!("cargo:rustc-link-lib=framework=LLDB");
     println!("cargo:rustc-link-search=framework=/Applications/Xcode.app/Contents/SharedFrameworks");
-    let mut res = gcc::Build::new();
+    let mut res = cc::Build::new();
     res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
         .include(env!("LLVM_ROOT").to_owned() + "/include")
         .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");

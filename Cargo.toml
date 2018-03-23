@@ -20,4 +20,4 @@ libc = "0.2"
 bitflags = "1"
 
 [build-dependencies]
-gcc = "0.3.54"
+cc = "1"
