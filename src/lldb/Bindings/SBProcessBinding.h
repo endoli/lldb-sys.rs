@@ -169,6 +169,8 @@ LLDB_API bool SBProcessIsInstrumentationRuntimePresent(SBProcessRef instance,
 
 LLDB_API SBErrorRef SBProcessSaveCore(SBProcessRef instance, const char *file_name);
 
+LLDB_API SBProcessInfoRef SBProcessGetProcessInfo(SBProcessRef instance);
+
 #ifdef __cplusplus
 }
 #endif

@@ -504,6 +504,13 @@ SBProcessSaveCore(SBProcessRef instance, const char *file_name)
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SaveCore(file_name)));
 }
 
+SBProcessInfoRef
+SBProcessGetProcessInfo(SBProcessRef instance)
+{
+    SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+    return reinterpret_cast<SBProcessInfoRef>(new SBProcessInfo(unwrapped->GetProcessInfo()));
+}
+
 #ifdef __cplusplus
 }
 #endif

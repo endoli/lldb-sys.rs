@@ -93,6 +93,7 @@ fn main() {
         .file("src/lldb/Bindings/SBModuleSpecBinding.cpp")
         .file("src/lldb/Bindings/SBPlatformBinding.cpp")
         .file("src/lldb/Bindings/SBProcessBinding.cpp")
+        .file("src/lldb/Bindings/SBProcessInfoBinding.cpp")
         .file("src/lldb/Bindings/SBQueueBinding.cpp")
         .file("src/lldb/Bindings/SBQueueItemBinding.cpp")
         .file("src/lldb/Bindings/SBSectionBinding.cpp")

@@ -95,6 +95,8 @@ pub enum SBPlatformOpaque { }
 pub type SBPlatformRef = *mut SBPlatformOpaque;
 pub enum SBProcessOpaque { }
 pub type SBProcessRef = *mut SBProcessOpaque;
+pub enum SBProcessInfoOpaque { }
+pub type SBProcessInfoRef = *mut SBProcessInfoOpaque;
 pub enum SBQueueOpaque { }
 pub type SBQueueRef = *mut SBQueueOpaque;
 pub enum SBQueueItemOpaque { }
@@ -2988,6 +2990,22 @@ extern "C" {
         instance: SBProcessRef,
         file_name: *const ::std::os::raw::c_char,
     ) -> SBErrorRef;
+    pub fn SBProcessGetProcessInfo(instance: SBProcessRef) -> SBProcessInfoRef;
+    pub fn CreateSBProcessInfo() -> SBProcessInfoRef;
+    pub fn DisposeSBProcessInfo(instance: SBProcessInfoRef);
+    pub fn SBProcessInfoIsValid(instance: SBProcessInfoRef) -> u8;
+    pub fn SBProcessInfoGetName(instance: SBProcessInfoRef) -> *const ::std::os::raw::c_char;
+    pub fn SBProcessInfoGetExecutableFile(instance: SBProcessInfoRef) -> SBFileSpecRef;
+    pub fn SBProcessInfoGetProcessID(instance: SBProcessInfoRef) -> lldb_pid_t;
+    pub fn SBProcessInfoGetUserID(instance: SBProcessInfoRef) -> u32;
+    pub fn SBProcessInfoGetGroupID(instance: SBProcessInfoRef) -> u32;
+    pub fn SBProcessInfoUserIDIsValid(instance: SBProcessInfoRef) -> u8;
+    pub fn SBProcessInfoGroupIDIsValid(instance: SBProcessInfoRef) -> u8;
+    pub fn SBProcessInfoGetEffectiveUserID(instance: SBProcessInfoRef) -> u32;
+    pub fn SBProcessInfoGetEffectiveGroupID(instance: SBProcessInfoRef) -> u32;
+    pub fn SBProcessInfoEffectiveUserIDIsValid(instance: SBProcessInfoRef) -> u8;
+    pub fn SBProcessInfoEffectiveGroupIDIsValid(instance: SBProcessInfoRef) -> u8;
+    pub fn SBProcessInfoGetParentProcessID(instance: SBProcessInfoRef) -> lldb_pid_t;
     pub fn CreateSBQueue() -> SBQueueRef;
     pub fn DisposeSBQueue(instance: SBQueueRef);
     pub fn SBQueueIsValid(instance: SBQueueRef) -> u8;

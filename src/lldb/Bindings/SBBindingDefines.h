@@ -91,6 +91,7 @@ LLDB_API typedef struct SBModuleSpecOpaque *SBModuleSpecRef;
 LLDB_API typedef struct SBModuleSpecListOpaque *SBModuleSpecListRef;
 LLDB_API typedef struct SBPlatformOpaque *SBPlatformRef;
 LLDB_API typedef struct SBProcessOpaque *SBProcessRef;
+LLDB_API typedef struct SBProcessInfoOpaque *SBProcessInfoRef;
 LLDB_API typedef struct SBQueueOpaque *SBQueueRef;
 LLDB_API typedef struct SBQueueItemOpaque *SBQueueItemRef;
 LLDB_API typedef struct SBSectionOpaque *SBSectionRef;
