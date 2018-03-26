@@ -44,11 +44,6 @@ Alternatively, for testing and local work, you can set the
 export DYLD_FRAMEWORK_PATH=/Applications/Xcode.app/Contents/SharedFrameworks
 ```
 
-## Status of Implementation
-
-Things are under active development. This project is not quite
-usable yet as some of the basic functionality is being written.
-
 ## Contribution
 
 Unless you explicitly state otherwise, any contribution
