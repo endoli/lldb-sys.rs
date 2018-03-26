@@ -33,6 +33,8 @@ pub enum SBBreakpointListOpaque { }
 pub type SBBreakpointListRef = *mut SBBreakpointListOpaque;
 pub enum SBBreakpointLocationOpaque { }
 pub type SBBreakpointLocationRef = *mut SBBreakpointLocationOpaque;
+pub enum SBBreakpointNameOpaque { }
+pub type SBBreakpointNameRef = *mut SBBreakpointNameOpaque;
 pub enum SBBroadcasterOpaque { }
 pub type SBBroadcasterRef = *mut SBBroadcasterOpaque;
 pub enum SBCommandOpaque { }
@@ -1091,6 +1093,11 @@ pub type ReadThreadBytesReceived =
                              src: *const ::std::os::raw::c_void,
                              src_len: size_t),
     >;
+pub type SBBreakpointHitCallback =
+    unsafe extern "C" fn(baton: *mut ::std::os::raw::c_void,
+                         process: SBProcessRef,
+                         thread: SBThreadRef,
+                         location: SBBreakpointLocationRef);
 extern "C" {
     pub fn CreateSBAddress() -> SBAddressRef;
     pub fn CreateSBAddress2(section: SBSectionRef, offset: lldb_addr_t) -> SBAddressRef;
@@ -1385,6 +1392,89 @@ extern "C" {
         level: DescriptionLevel,
     ) -> u8;
     pub fn SBBreakpointLocationGetBreakpoint(instance: SBBreakpointLocationRef) -> SBBreakpointRef;
+    pub fn CreateSBBreakpointName() -> SBBreakpointNameRef;
+    pub fn CreateSBBreakpointNameFromTarget(
+        target: SBTargetRef,
+        name: *const ::std::os::raw::c_char,
+    ) -> SBBreakpointNameRef;
+    pub fn CreateSBBreakpointNameFromBreakpoint(
+        breakpoint: SBBreakpointRef,
+        name: *const ::std::os::raw::c_char,
+    ) -> SBBreakpointNameRef;
+    pub fn DisposeSBBreakpointName(instance: SBBreakpointNameRef);
+    pub fn SBBreakpointNameIsValid(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameGetName(instance: SBBreakpointNameRef) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointNameSetEnabled(instance: SBBreakpointNameRef, enable: bool);
+    pub fn SBBreakpointNameIsEnabled(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetOneShot(instance: SBBreakpointNameRef, one_shot: bool);
+    pub fn SBBreakpointNameIsOneShot(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetIgnoreCount(instance: SBBreakpointNameRef, count: u32);
+    pub fn SBBreakpointNameGetIgnoreCount(instance: SBBreakpointNameRef) -> u32;
+    pub fn SBBreakpointNameSetCondition(
+        instance: SBBreakpointNameRef,
+        condition: *const ::std::os::raw::c_char,
+    );
+    pub fn SBBreakpointNameGetCondition(
+        instance: SBBreakpointNameRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointNameSetAutoContinue(instance: SBBreakpointNameRef, auto_continue: bool);
+    pub fn SBBreakpointNameGetAutoContinue(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetThreadID(instance: SBBreakpointNameRef, sb_thread_id: lldb_tid_t);
+    pub fn SBBreakpointNameGetThreadID(instance: SBBreakpointNameRef) -> lldb_tid_t;
+    pub fn SBBreakpointNameSetThreadIndex(instance: SBBreakpointNameRef, index: u32);
+    pub fn SBBreakpointNameGetThreadIndex(instance: SBBreakpointNameRef) -> u32;
+    pub fn SBBreakpointNameSetThreadName(
+        instance: SBBreakpointNameRef,
+        thread_name: *const ::std::os::raw::c_char,
+    );
+    pub fn SBBreakpointNameGetThreadName(
+        instance: SBBreakpointNameRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointNameSetQueueName(
+        instance: SBBreakpointNameRef,
+        queue_name: *const ::std::os::raw::c_char,
+    );
+    pub fn SBBreakpointNameGetQueueName(
+        instance: SBBreakpointNameRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointNameSetCallback(
+        instance: SBBreakpointNameRef,
+        callback: SBBreakpointHitCallback,
+        baton: *mut ::std::os::raw::c_void,
+    );
+    pub fn SBBreakpointNameSetScriptCallbackFunction(
+        instance: SBBreakpointNameRef,
+        callback_function_name: *const ::std::os::raw::c_char,
+    );
+    pub fn SBBreakpointNameSetCommandLineCommands(
+        instance: SBBreakpointNameRef,
+        commands: SBStringListRef,
+    );
+    pub fn SBBreakpointNameGetCommandLineCommands(
+        instance: SBBreakpointNameRef,
+        commands: SBStringListRef,
+    ) -> bool;
+    pub fn SBBreakpointNameSetScriptCallbackBody(
+        instance: SBBreakpointNameRef,
+        script_body_text: *const ::std::os::raw::c_char,
+    ) -> SBErrorRef;
+    pub fn SBBreakpointNameGetHelpString(
+        instance: SBBreakpointNameRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointNameSetHelpString(
+        instance: SBBreakpointNameRef,
+        help_string: *const ::std::os::raw::c_char,
+    );
+    pub fn SBBreakpointNameGetAllowList(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetAllowList(instance: SBBreakpointNameRef, value: bool);
+    pub fn SBBreakpointNameGetAllowDelete(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetAllowDelete(instance: SBBreakpointNameRef, value: bool);
+    pub fn SBBreakpointNameGetAllowDisable(instance: SBBreakpointNameRef) -> bool;
+    pub fn SBBreakpointNameSetAllowDisable(instance: SBBreakpointNameRef, value: bool);
+    pub fn SBBreakpointNameGetDescription(
+        instance: SBBreakpointNameRef,
+        description: SBStreamRef,
+    ) -> bool;
     pub fn CreateSBBroadcaster() -> SBBroadcasterRef;
     pub fn CreateSBBroadcaster2(name: *const ::std::os::raw::c_char) -> SBBroadcasterRef;
     pub fn DisposeSBBroadcaster(instance: SBBroadcasterRef);
