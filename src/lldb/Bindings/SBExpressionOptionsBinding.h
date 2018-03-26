@@ -13,7 +13,6 @@
 #include "lldb/Bindings/SBBindingDefines.h"
 
 #ifdef __cplusplus
-
 extern "C" {
 #endif
 
