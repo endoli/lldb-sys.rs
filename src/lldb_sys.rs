@@ -7,7 +7,7 @@
 
 #![cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
-use libc::{size_t, int32_t, int64_t, uint32_t, uint64_t, uint8_t, FILE};
+use libc::{int32_t, int64_t, size_t, uint32_t, uint64_t, uint8_t, FILE};
 
 /// Storage for the value of an address.
 pub type lldb_addr_t = uint64_t;
@@ -21,233 +21,157 @@ pub type lldb_pid_t = uint64_t;
 pub type lldb_tid_t = uint64_t;
 /// Storage for an offset between 2 addresses in memory.
 pub type lldb_offset_t = uint64_t;
-pub enum SBAddressOpaque {
-}
+pub enum SBAddressOpaque {}
 pub type SBAddressRef = *mut SBAddressOpaque;
-pub enum SBAttachInfoOpaque {
-}
+pub enum SBAttachInfoOpaque {}
 pub type SBAttachInfoRef = *mut SBAttachInfoOpaque;
-pub enum SBBlockOpaque {
-}
+pub enum SBBlockOpaque {}
 pub type SBBlockRef = *mut SBBlockOpaque;
-pub enum SBBreakpointOpaque {
-}
+pub enum SBBreakpointOpaque {}
 pub type SBBreakpointRef = *mut SBBreakpointOpaque;
-pub enum SBBreakpointListOpaque {
-}
+pub enum SBBreakpointListOpaque {}
 pub type SBBreakpointListRef = *mut SBBreakpointListOpaque;
-pub enum SBBreakpointLocationOpaque {
-}
+pub enum SBBreakpointLocationOpaque {}
 pub type SBBreakpointLocationRef = *mut SBBreakpointLocationOpaque;
-pub enum SBBreakpointNameOpaque {
-}
+pub enum SBBreakpointNameOpaque {}
 pub type SBBreakpointNameRef = *mut SBBreakpointNameOpaque;
-pub enum SBBroadcasterOpaque {
-}
+pub enum SBBroadcasterOpaque {}
 pub type SBBroadcasterRef = *mut SBBroadcasterOpaque;
-pub enum SBCommandOpaque {
-}
+pub enum SBCommandOpaque {}
 pub type SBCommandRef = *mut SBCommandOpaque;
-pub enum SBCommandInterpreterOpaque {
-}
+pub enum SBCommandInterpreterOpaque {}
 pub type SBCommandInterpreterRef = *mut SBCommandInterpreterOpaque;
-pub enum SBCommandInterpreterRunOptionsOpaque {
-}
+pub enum SBCommandInterpreterRunOptionsOpaque {}
 pub type SBCommandInterpreterRunOptionsRef = *mut SBCommandInterpreterRunOptionsOpaque;
-pub enum SBCommandPluginInterfaceOpaque {
-}
+pub enum SBCommandPluginInterfaceOpaque {}
 pub type SBCommandPluginInterfaceRef = *mut SBCommandPluginInterfaceOpaque;
-pub enum SBCommandReturnObjectOpaque {
-}
+pub enum SBCommandReturnObjectOpaque {}
 pub type SBCommandReturnObjectRef = *mut SBCommandReturnObjectOpaque;
-pub enum SBCommunicationOpaque {
-}
+pub enum SBCommunicationOpaque {}
 pub type SBCommunicationRef = *mut SBCommunicationOpaque;
-pub enum SBCompileUnitOpaque {
-}
+pub enum SBCompileUnitOpaque {}
 pub type SBCompileUnitRef = *mut SBCompileUnitOpaque;
-pub enum SBDataOpaque {
-}
+pub enum SBDataOpaque {}
 pub type SBDataRef = *mut SBDataOpaque;
-pub enum SBDebuggerOpaque {
-}
+pub enum SBDebuggerOpaque {}
 pub type SBDebuggerRef = *mut SBDebuggerOpaque;
-pub enum SBDeclarationOpaque {
-}
+pub enum SBDeclarationOpaque {}
 pub type SBDeclarationRef = *mut SBDeclarationOpaque;
-pub enum SBErrorOpaque {
-}
+pub enum SBErrorOpaque {}
 pub type SBErrorRef = *mut SBErrorOpaque;
-pub enum SBEventOpaque {
-}
+pub enum SBEventOpaque {}
 pub type SBEventRef = *mut SBEventOpaque;
-pub enum SBEventListOpaque {
-}
+pub enum SBEventListOpaque {}
 pub type SBEventListRef = *mut SBEventListOpaque;
-pub enum SBExecutionContextOpaque {
-}
+pub enum SBExecutionContextOpaque {}
 pub type SBExecutionContextRef = *mut SBExecutionContextOpaque;
-pub enum SBExpressionOptionsOpaque {
-}
+pub enum SBExpressionOptionsOpaque {}
 pub type SBExpressionOptionsRef = *mut SBExpressionOptionsOpaque;
-pub enum SBFileSpecOpaque {
-}
+pub enum SBFileSpecOpaque {}
 pub type SBFileSpecRef = *mut SBFileSpecOpaque;
-pub enum SBFileSpecListOpaque {
-}
+pub enum SBFileSpecListOpaque {}
 pub type SBFileSpecListRef = *mut SBFileSpecListOpaque;
-pub enum SBFrameOpaque {
-}
+pub enum SBFrameOpaque {}
 pub type SBFrameRef = *mut SBFrameOpaque;
-pub enum SBFunctionOpaque {
-}
+pub enum SBFunctionOpaque {}
 pub type SBFunctionRef = *mut SBFunctionOpaque;
-pub enum SBHostOSOpaque {
-}
+pub enum SBHostOSOpaque {}
 pub type SBHostOSRef = *mut SBHostOSOpaque;
-pub enum SBInstructionOpaque {
-}
+pub enum SBInstructionOpaque {}
 pub type SBInstructionRef = *mut SBInstructionOpaque;
-pub enum SBInstructionListOpaque {
-}
+pub enum SBInstructionListOpaque {}
 pub type SBInstructionListRef = *mut SBInstructionListOpaque;
-pub enum SBLaunchInfoOpaque {
-}
+pub enum SBLaunchInfoOpaque {}
 pub type SBLaunchInfoRef = *mut SBLaunchInfoOpaque;
-pub enum SBLineEntryOpaque {
-}
+pub enum SBLineEntryOpaque {}
 pub type SBLineEntryRef = *mut SBLineEntryOpaque;
-pub enum SBListenerOpaque {
-}
+pub enum SBListenerOpaque {}
 pub type SBListenerRef = *mut SBListenerOpaque;
-pub enum SBMemoryRegionInfoOpaque {
-}
+pub enum SBMemoryRegionInfoOpaque {}
 pub type SBMemoryRegionInfoRef = *mut SBMemoryRegionInfoOpaque;
-pub enum SBMemoryRegionInfoListOpaque {
-}
+pub enum SBMemoryRegionInfoListOpaque {}
 pub type SBMemoryRegionInfoListRef = *mut SBMemoryRegionInfoListOpaque;
-pub enum SBModuleOpaque {
-}
+pub enum SBModuleOpaque {}
 pub type SBModuleRef = *mut SBModuleOpaque;
-pub enum SBModuleSpecOpaque {
-}
+pub enum SBModuleSpecOpaque {}
 pub type SBModuleSpecRef = *mut SBModuleSpecOpaque;
-pub enum SBModuleSpecListOpaque {
-}
+pub enum SBModuleSpecListOpaque {}
 pub type SBModuleSpecListRef = *mut SBModuleSpecListOpaque;
-pub enum SBPlatformOpaque {
-}
+pub enum SBPlatformOpaque {}
 pub type SBPlatformRef = *mut SBPlatformOpaque;
-pub enum SBProcessOpaque {
-}
+pub enum SBProcessOpaque {}
 pub type SBProcessRef = *mut SBProcessOpaque;
-pub enum SBProcessInfoOpaque {
-}
+pub enum SBProcessInfoOpaque {}
 pub type SBProcessInfoRef = *mut SBProcessInfoOpaque;
-pub enum SBQueueOpaque {
-}
+pub enum SBQueueOpaque {}
 pub type SBQueueRef = *mut SBQueueOpaque;
-pub enum SBQueueItemOpaque {
-}
+pub enum SBQueueItemOpaque {}
 pub type SBQueueItemRef = *mut SBQueueItemOpaque;
-pub enum SBSectionOpaque {
-}
+pub enum SBSectionOpaque {}
 pub type SBSectionRef = *mut SBSectionOpaque;
-pub enum SBSourceManagerOpaque {
-}
+pub enum SBSourceManagerOpaque {}
 pub type SBSourceManagerRef = *mut SBSourceManagerOpaque;
-pub enum SBStreamOpaque {
-}
+pub enum SBStreamOpaque {}
 pub type SBStreamRef = *mut SBStreamOpaque;
-pub enum SBStringListOpaque {
-}
+pub enum SBStringListOpaque {}
 pub type SBStringListRef = *mut SBStringListOpaque;
-pub enum SBStructuredDataOpaque {
-}
+pub enum SBStructuredDataOpaque {}
 pub type SBStructuredDataRef = *mut SBStructuredDataOpaque;
-pub enum SBSymbolOpaque {
-}
+pub enum SBSymbolOpaque {}
 pub type SBSymbolRef = *mut SBSymbolOpaque;
-pub enum SBSymbolContextOpaque {
-}
+pub enum SBSymbolContextOpaque {}
 pub type SBSymbolContextRef = *mut SBSymbolContextOpaque;
-pub enum SBSymbolContextListOpaque {
-}
+pub enum SBSymbolContextListOpaque {}
 pub type SBSymbolContextListRef = *mut SBSymbolContextListOpaque;
-pub enum SBTargetRefOpaque {
-}
+pub enum SBTargetRefOpaque {}
 pub type SBTargetRef = *mut SBTargetRefOpaque;
-pub enum SBThreadRefOpaque {
-}
+pub enum SBThreadRefOpaque {}
 pub type SBThreadRef = *mut SBThreadRefOpaque;
-pub enum SBThreadCollectionOpaque {
-}
+pub enum SBThreadCollectionOpaque {}
 pub type SBThreadCollectionRef = *mut SBThreadCollectionOpaque;
-pub enum SBThreadPlanOpaque {
-}
+pub enum SBThreadPlanOpaque {}
 pub type SBThreadPlanRef = *mut SBThreadPlanOpaque;
-pub enum SBTypeOpaque {
-}
+pub enum SBTypeOpaque {}
 pub type SBTypeRef = *mut SBTypeOpaque;
-pub enum SBTypeMemberOpaque {
-}
+pub enum SBTypeMemberOpaque {}
 pub type SBTypeMemberRef = *mut SBTypeMemberOpaque;
-pub enum SBTypeCategoryOpaque {
-}
+pub enum SBTypeCategoryOpaque {}
 pub type SBTypeCategoryRef = *mut SBTypeCategoryOpaque;
-pub enum SBTypeEnumMemberOpaque {
-}
+pub enum SBTypeEnumMemberOpaque {}
 pub type SBTypeEnumMemberRef = *mut SBTypeEnumMemberOpaque;
-pub enum SBTypeEnumMemberListOpaque {
-}
+pub enum SBTypeEnumMemberListOpaque {}
 pub type SBTypeEnumMemberListRef = *mut SBTypeEnumMemberListOpaque;
-pub enum SBTypeFilterOpaque {
-}
+pub enum SBTypeFilterOpaque {}
 pub type SBTypeFilterRef = *mut SBTypeFilterOpaque;
-pub enum SBTypeFormatOpaque {
-}
+pub enum SBTypeFormatOpaque {}
 pub type SBTypeFormatRef = *mut SBTypeFormatOpaque;
-pub enum SBTypeMemberFunctionOpaque {
-}
+pub enum SBTypeMemberFunctionOpaque {}
 pub type SBTypeMemberFunctionRef = *mut SBTypeMemberFunctionOpaque;
-pub enum SBTypeNameSpecifierOpaque {
-}
+pub enum SBTypeNameSpecifierOpaque {}
 pub type SBTypeNameSpecifierRef = *mut SBTypeNameSpecifierOpaque;
-pub enum SBTypeSummaryOpaque {
-}
+pub enum SBTypeSummaryOpaque {}
 pub type SBTypeSummaryRef = *mut SBTypeSummaryOpaque;
-pub enum SBTypeSummaryOptionsOpaque {
-}
+pub enum SBTypeSummaryOptionsOpaque {}
 pub type SBTypeSummaryOptionsRef = *mut SBTypeSummaryOptionsOpaque;
-pub enum SBInputReaderOpaque {
-}
+pub enum SBInputReaderOpaque {}
 pub type SBInputReaderRef = *mut SBInputReaderOpaque;
-pub enum SBPlatformConnectOptionsOpaque {
-}
+pub enum SBPlatformConnectOptionsOpaque {}
 pub type SBPlatformConnectOptionsRef = *mut SBPlatformConnectOptionsOpaque;
-pub enum SBPlatformShellCommandOpaque {
-}
+pub enum SBPlatformShellCommandOpaque {}
 pub type SBPlatformShellCommandRef = *mut SBPlatformShellCommandOpaque;
-pub enum SBTypeSyntheticOpaque {
-}
+pub enum SBTypeSyntheticOpaque {}
 pub type SBTypeSyntheticRef = *mut SBTypeSyntheticOpaque;
-pub enum SBTypeListOpaque {
-}
+pub enum SBTypeListOpaque {}
 pub type SBTypeListRef = *mut SBTypeListOpaque;
-pub enum SBValueOpaque {
-}
+pub enum SBValueOpaque {}
 pub type SBValueRef = *mut SBValueOpaque;
-pub enum SBValueListOpaque {
-}
+pub enum SBValueListOpaque {}
 pub type SBValueListRef = *mut SBValueListOpaque;
-pub enum SBVariablesOptionsOpaque {
-}
+pub enum SBVariablesOptionsOpaque {}
 pub type SBVariablesOptionsRef = *mut SBVariablesOptionsOpaque;
-pub enum SBWatchpointOpaque {
-}
+pub enum SBWatchpointOpaque {}
 pub type SBWatchpointRef = *mut SBWatchpointOpaque;
-pub enum SBUnixSignalsOpaque {
-}
+pub enum SBUnixSignalsOpaque {}
 pub type SBUnixSignalsRef = *mut SBUnixSignalsOpaque;
 /// Process and thread states.
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
