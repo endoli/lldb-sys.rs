@@ -3,7 +3,7 @@ extern crate cc;
 use cc::Build;
 
 #[cfg(target_os = "linux")]
-use std::process::Command;
+use std::{fs, process::Command};
 
 #[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
@@ -20,18 +20,33 @@ fn get_llvm_output(arg: &str) -> String {
 }
 
 #[cfg(target_os = "linux")]
+fn match_libname(name: &str) -> Option<String> {
+    if name.starts_with("liblldb.so") || name.starts_with("liblldb-") {
+        if let Some(pos) = name.rfind(".so") {
+            return Some(name["lib".len()..pos].into());
+        }
+    }
+    None
+}
+
+#[cfg(test)]
+#[test]
+fn test_match_libname() {
+    assert_eq!(match_libname("liblldb.so"), Some("lldb"));
+    assert_eq!(match_libname("liblldb-3.8.so"), Some("lldb-3.8"));
+    assert_eq!(match_libname("liblldbIntelFeatures.so"), None);
+}
+
+#[cfg(target_os = "linux")]
 fn get_compiler_config() -> Build {
     // On linux lib directory and headers directory are provided by `llvm-config` utility.
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
-    // Workaround for broken lldb-3.8 package on Ubuntu. For some reason `lldb`, `lldb-3.8.0`
-    // libraries are not there and only `lldb-3.8` works as expected.
-    let llvm_version = get_llvm_output("--version")
-        .split('.')
-        .take(2)
-        .collect::<Vec<&str>>()
-        .join(".");
-    let lib_name = ["lldb-", &llvm_version].join("");
+    let lib_name = fs::read_dir(&llvm_lib_path)
+        .expect("failed to stat libdir from llvm-config")
+        .filter_map(|entry| match_libname(entry.unwrap().file_name().to_str().unwrap()))
+        .nth(0)
+        .expect("unable to locate shared library of liblldb");
     println!("cargo:rustc-link-search={}", llvm_lib_path);
     println!("cargo:rustc-link-lib={}", lib_name);
     let mut res = cc::Build::new();
