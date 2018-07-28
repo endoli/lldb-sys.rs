@@ -7,7 +7,8 @@ use std::process::Command;
 
 #[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
-    let res = Command::new("llvm-config").arg(arg).output().unwrap();
+    let llvm_config = std::env::var("LLVM_CONFIG").unwrap_or("llvm-config".into());
+    let res = Command::new(llvm_config).arg(arg).output().unwrap();
     if !res.status.success() {
         panic!(
             "Could not run \"llvm-config {}\": {}",
