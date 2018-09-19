@@ -56,6 +56,8 @@ fn get_compiler_config() -> Build {
 
 #[cfg(target_os = "macos")]
 fn get_compiler_config() -> Build {
+    println!("cargo:rerun-if-env-changed=LLVM_ROOT");
+    println!("cargo:rerun-if-env-changed=LLVM_BUILD_ROOT");
     println!("cargo:rustc-link-lib=framework=LLDB");
     println!("cargo:rustc-link-search=framework=/Applications/Xcode.app/Contents/SharedFrameworks");
     let mut res = cc::Build::new();
