@@ -42,13 +42,6 @@ SBInstructionGetAddress(SBInstructionRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetAddress()));
 }
 
-AddressClass
-SBInstructionGetAddressClass(SBInstructionRef instance)
-{
-    SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);
-    return unwrapped->GetAddressClass();
-}
-
 const char *
 SBInstructionGetMnemonic(SBInstructionRef instance, SBTargetRef target)
 {

@@ -894,17 +894,6 @@ pub enum FrameComparison {
     Younger = 4,
     Older = 5,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum AddressClass {
-    Invalid = 0,
-    Unknown = 1,
-    Code = 2,
-    CodeAlternateISA = 3,
-    Data = 4,
-    Debug = 5,
-    Runtime = 6,
-}
 bitflags! {
     #[repr(C)]
     pub struct FilePermissions: u32 {
@@ -1132,7 +1121,6 @@ extern "C" {
     pub fn SBAddressGetBlock(instance: SBAddressRef) -> SBBlockRef;
     pub fn SBAddressGetSymbol(instance: SBAddressRef) -> SBSymbolRef;
     pub fn SBAddressGetLineEntry(instance: SBAddressRef) -> SBLineEntryRef;
-    pub fn SBAddressGetAddressClass(instance: SBAddressRef) -> AddressClass;
     pub fn CreateSBAttachInfo() -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo2(pid: lldb_pid_t) -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo3(
@@ -2437,7 +2425,6 @@ extern "C" {
     pub fn DisposeSBInstruction(instance: SBInstructionRef);
     pub fn SBInstructionIsValid(instance: SBInstructionRef) -> u8;
     pub fn SBInstructionGetAddress(instance: SBInstructionRef) -> SBAddressRef;
-    pub fn SBInstructionGetAddressClass(instance: SBInstructionRef) -> AddressClass;
     pub fn SBInstructionGetMnemonic(
         instance: SBInstructionRef,
         target: SBTargetRef,

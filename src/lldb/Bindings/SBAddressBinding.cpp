@@ -159,13 +159,6 @@ SBAddressGetLineEntry(SBAddressRef instance)
     return reinterpret_cast<SBLineEntryRef>(new SBLineEntry(unwrapped->GetLineEntry()));
 }
 
-AddressClass
-SBAddressGetAddressClass(SBAddressRef instance)
-{
-    SBAddress *unwrapped = reinterpret_cast<SBAddress *>(instance);
-    return unwrapped->GetAddressClass();
-}
-
 #ifdef __cplusplus
 }
 #endif
