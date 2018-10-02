@@ -23,6 +23,12 @@ CreateSBUnixSignals()
     return reinterpret_cast<SBUnixSignalsRef>(new SBUnixSignals());
 }
 
+SBUnixSignalsRef
+CloneSBUnixSignals(SBUnixSignalsRef instance)
+{
+    return reinterpret_cast<SBUnixSignalsRef>(new SBUnixSignals(*reinterpret_cast<SBUnixSignals *>(instance)));
+}
+
 void
 DisposeSBUnixSignals(SBUnixSignalsRef instance)
 {

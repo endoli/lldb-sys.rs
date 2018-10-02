@@ -22,6 +22,12 @@ CreateSBStructuredData()
     return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData());
 }
 
+SBStructuredDataRef
+CloneSBStructuredData(SBStructuredDataRef instance)
+{
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(*reinterpret_cast<SBStructuredData *>(instance)));
+}
+
 void
 DisposeSBStructuredData(SBStructuredDataRef instance)
 {

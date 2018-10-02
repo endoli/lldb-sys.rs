@@ -37,6 +37,12 @@ SBTypeSyntheticCreateWithScriptCode(const char *data, uint32_t options)
         new SBTypeSynthetic(lldb::SBTypeSynthetic::CreateWithScriptCode(data, options)));
 }
 
+SBTypeSyntheticRef
+CloneSBTypeSynthetic(SBTypeSyntheticRef instance)
+{
+    return reinterpret_cast<SBTypeSyntheticRef>(new SBTypeSynthetic(*reinterpret_cast<SBTypeSynthetic *>(instance)));
+}
+
 void
 DisposeSBTypeSynthetic(SBTypeSyntheticRef instance)
 {

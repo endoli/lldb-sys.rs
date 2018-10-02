@@ -40,6 +40,12 @@ CreateSBAttachInfo4(const char *path, bool wait_for, bool async)
     return reinterpret_cast<SBAttachInfoRef>(new SBAttachInfo(path, wait_for, async));
 }
 
+SBAttachInfoRef
+CloneSBAttachInfo(SBAttachInfoRef instance)
+{
+    return reinterpret_cast<SBAttachInfoRef>(new SBAttachInfo(*reinterpret_cast<SBAttachInfo *>(instance)));
+}
+
 void
 DisposeSBAttachInfo(SBAttachInfoRef instance)
 {

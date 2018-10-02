@@ -22,6 +22,12 @@ CreateSBBreakpoint()
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint());
 }
 
+SBBreakpointRef
+CloneSBBreakpoint(SBBreakpointRef instance)
+{
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(*reinterpret_cast<SBBreakpoint *>(instance)));
+}
+
 void
 DisposeSBBreakpoint(SBBreakpointRef instance)
 {

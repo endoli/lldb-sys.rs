@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBDataRef CreateSBData(void);
 
+LLDB_API SBDataRef CloneSBData(SBDataRef instance);
+
 LLDB_API void DisposeSBData(SBDataRef instance);
 
 LLDB_API unsigned char SBDataGetAddressByteSize(SBDataRef instance);

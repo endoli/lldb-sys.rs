@@ -23,6 +23,12 @@ CreateSBModuleSpec()
     return reinterpret_cast<SBModuleSpecRef>(new SBModuleSpec());
 }
 
+SBModuleSpecRef
+CloneSBModuleSpec(SBModuleSpecRef instance)
+{
+    return reinterpret_cast<SBModuleSpecRef>(new SBModuleSpec(*reinterpret_cast<SBModuleSpec *>(instance)));
+}
+
 void
 DisposeSBModuleSpec(SBModuleSpecRef instance)
 {
@@ -145,6 +151,12 @@ SBModuleSpecListRef
 CreateSBModuleSpecList()
 {
     return reinterpret_cast<SBModuleSpecListRef>(new SBModuleSpecList());
+}
+
+SBModuleSpecListRef
+CloneSBModuleSpecList(SBModuleSpecListRef instance)
+{
+    return reinterpret_cast<SBModuleSpecListRef>(new SBModuleSpecList(*reinterpret_cast<SBModuleSpecList *>(instance)));
 }
 
 void

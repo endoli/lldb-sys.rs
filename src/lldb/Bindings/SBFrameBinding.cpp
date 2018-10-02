@@ -22,6 +22,12 @@ CreateSBFrame()
     return reinterpret_cast<SBFrameRef>(new SBFrame());
 }
 
+SBFrameRef
+CloneSBFrame(SBFrameRef instance)
+{
+    return reinterpret_cast<SBFrameRef>(new SBFrame(*reinterpret_cast<SBFrame *>(instance)));
+}
+
 void
 DisposeSBFrame(SBFrameRef instance)
 {

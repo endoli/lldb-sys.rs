@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBFileSpecListRef CreateSBFileSpecList(void);
 
+LLDB_API SBFileSpecListRef CloneSBFileSpecList(SBFileSpecListRef instance);
+
 LLDB_API void DisposeSBFileSpecList(SBFileSpecListRef instance);
 
 LLDB_API unsigned int SBFileSpecListGetSize(SBFileSpecListRef instance);

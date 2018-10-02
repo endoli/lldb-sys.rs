@@ -22,6 +22,12 @@ CreateSBWatchpoint()
     return reinterpret_cast<SBWatchpointRef>(new SBWatchpoint());
 }
 
+SBWatchpointRef
+CloneSBWatchpoint(SBWatchpointRef instance)
+{
+    return reinterpret_cast<SBWatchpointRef>(new SBWatchpoint(*reinterpret_cast<SBWatchpoint *>(instance)));
+}
+
 void
 DisposeSBWatchpoint(SBWatchpointRef instance)
 {

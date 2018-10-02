@@ -36,6 +36,12 @@ CreateSBBreakpointNameFromBreakpoint(SBBreakpointRef breakpoint, const char *nam
     return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName(*unwrapped_breakpoint, name));
 }
 
+SBBreakpointNameRef
+CloneSBBreakpointName(SBBreakpointNameRef instance)
+{
+    return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName(*reinterpret_cast<SBBreakpointName *>(instance)));
+}
+
 void
 DisposeSBBreakpointName(SBBreakpointNameRef instance)
 {

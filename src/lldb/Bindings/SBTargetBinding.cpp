@@ -22,6 +22,12 @@ CreateSBTarget()
     return reinterpret_cast<SBTargetRef>(new SBTarget());
 }
 
+SBTargetRef
+CloneSBTarget(SBTargetRef instance)
+{
+    return reinterpret_cast<SBTargetRef>(new SBTarget(*reinterpret_cast<SBTarget *>(instance)));
+}
+
 void
 DisposeSBTarget(SBTargetRef instance)
 {

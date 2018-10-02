@@ -22,6 +22,12 @@ CreateSBMemoryRegionInfoList()
     return reinterpret_cast<SBMemoryRegionInfoListRef>(new SBMemoryRegionInfoList());
 }
 
+SBMemoryRegionInfoListRef
+CloneSBMemoryRegionInfoList(SBMemoryRegionInfoListRef instance)
+{
+    return reinterpret_cast<SBMemoryRegionInfoListRef>(new SBMemoryRegionInfoList(*reinterpret_cast<SBMemoryRegionInfoList *>(instance)));
+}
+
 void
 DisposeSBMemoryRegionInfoList(SBMemoryRegionInfoListRef instance)
 {

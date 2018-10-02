@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBExpressionOptionsRef CreateSBExpressionOptions(void);
 
+LLDB_API SBExpressionOptionsRef CloneSBExpressionOptions(SBExpressionOptionsRef instance);
+
 LLDB_API void DisposeSBExpressionOptions(SBExpressionOptionsRef instance);
 
 LLDB_API bool SBExpressionOptionsGetCoerceResultToId(SBExpressionOptionsRef instance);

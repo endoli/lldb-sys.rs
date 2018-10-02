@@ -26,6 +26,12 @@ CreateSBValue()
     return reinterpret_cast<SBValueRef>(new SBValue());
 }
 
+SBValueRef
+CloneSBValue(SBValueRef instance)
+{
+    return reinterpret_cast<SBValueRef>(new SBValue(*reinterpret_cast<SBValue *>(instance)));
+}
+
 void
 DisposeSBValue(SBValueRef instance)
 {

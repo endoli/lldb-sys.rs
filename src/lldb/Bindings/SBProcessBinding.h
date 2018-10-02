@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBProcessRef CreateSBProcess(void);
 
+LLDB_API SBProcessRef CloneSBProcess(SBProcessRef instance);
+
 LLDB_API void DisposeSBProcess(SBProcessRef instance);
 
 LLDB_API const char *SBProcessGetBroadcasterClassName(void);

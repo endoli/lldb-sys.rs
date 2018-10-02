@@ -22,6 +22,8 @@ LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name, boo
 
 LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier3(SBTypeRef type);
 
+LLDB_API SBTypeNameSpecifierRef CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
+
 LLDB_API void DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
 
 LLDB_API bool SBTypeNameSpecifierIsValid(SBTypeNameSpecifierRef instance);

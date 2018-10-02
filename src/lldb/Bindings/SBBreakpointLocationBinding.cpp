@@ -22,6 +22,12 @@ CreateSBBreakpointLocation()
     return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation());
 }
 
+SBBreakpointLocationRef
+CloneSBBreakpointLocation(SBBreakpointLocationRef instance)
+{
+    return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation(*reinterpret_cast<SBBreakpointLocation *>(instance)));
+}
+
 void
 DisposeSBBreakpointLocation(SBBreakpointLocationRef instance)
 {

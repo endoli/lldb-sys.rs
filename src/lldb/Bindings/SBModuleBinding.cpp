@@ -34,6 +34,12 @@ CreateSBModule3(SBProcessRef process, lldb_addr_t header_addr)
     return reinterpret_cast<SBModuleRef>(new SBModule(*reinterpret_cast<SBProcess *>(process), header_addr));
 }
 
+SBModuleRef
+CloneSBModule(SBModuleRef instance)
+{
+    return reinterpret_cast<SBModuleRef>(new SBModule(*reinterpret_cast<SBModule *>(instance)));
+}
+
 void
 DisposeSBModule(SBModuleRef instance)
 {

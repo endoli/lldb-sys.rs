@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBMemoryRegionInfoListRef CreateSBMemoryRegionInfoList(void);
 
+LLDB_API SBMemoryRegionInfoListRef CloneSBMemoryRegionInfoList(SBMemoryRegionInfoListRef instance);
+
 LLDB_API void DisposeSBMemoryRegionInfoList(SBMemoryRegionInfoListRef instance);
 
 LLDB_API uint32_t SBMemoryRegionInfoListGetSize(SBMemoryRegionInfoListRef instance);

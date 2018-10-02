@@ -20,6 +20,8 @@ LLDB_API SBEventRef CreateSBEvent(void);
 
 LLDB_API SBEventRef CreateSBEvent2(uint32_t event, const char *cstr, uint32_t cstr_len);
 
+LLDB_API SBEventRef CloneSBEvent(SBEventRef instance);
+
 LLDB_API void DisposeSBEvent(SBEventRef instance);
 
 LLDB_API bool SBEventIsValid(SBEventRef instance);

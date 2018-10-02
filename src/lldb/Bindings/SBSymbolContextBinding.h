@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBSymbolContextRef CreateSBSymbolContext(void);
 
+LLDB_API SBSymbolContextRef CloneSBSymbolContext(SBSymbolContextRef instance);
+
 LLDB_API void DisposeSBSymbolContext(SBSymbolContextRef instance);
 
 LLDB_API bool SBSymbolContextIsValid(SBSymbolContextRef instance);

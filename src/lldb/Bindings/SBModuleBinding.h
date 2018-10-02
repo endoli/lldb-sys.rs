@@ -22,6 +22,8 @@ LLDB_API SBModuleRef CreateSBModule2(SBModuleSpecRef module_spec);
 
 LLDB_API SBModuleRef CreateSBModule3(SBProcessRef process, lldb_addr_t header_addr);
 
+LLDB_API SBModuleRef CloneSBModule(SBModuleRef instance);
+
 LLDB_API void DisposeSBModule(SBModuleRef instance);
 
 LLDB_API bool SBModuleIsValid(SBModuleRef instance);

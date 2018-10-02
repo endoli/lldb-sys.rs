@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBInstructionRef CreateSBInstruction(void);
 
+LLDB_API SBInstructionRef CloneSBInstruction(SBInstructionRef instance);
+
 LLDB_API void DisposeSBInstruction(SBInstructionRef instance);
 
 LLDB_API bool SBInstructionIsValid(SBInstructionRef instance);

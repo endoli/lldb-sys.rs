@@ -22,6 +22,12 @@ CreateSBSection()
     return reinterpret_cast<SBSectionRef>(new SBSection());
 }
 
+SBSectionRef
+CloneSBSection(SBSectionRef instance)
+{
+    return reinterpret_cast<SBSectionRef>(new SBSection(*reinterpret_cast<SBSection *>(instance)));
+}
+
 void
 DisposeSBSection(SBSectionRef instance)
 {

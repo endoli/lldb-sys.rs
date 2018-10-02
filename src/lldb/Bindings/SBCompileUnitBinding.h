@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBCompileUnitRef CreateSBCompileUnit(void);
 
+LLDB_API SBCompileUnitRef CloneSBCompileUnit(SBCompileUnitRef instance);
+
 LLDB_API void DisposeSBCompileUnit(SBCompileUnitRef instance);
 
 LLDB_API bool SBCompileUnitIsValid(SBCompileUnitRef instance);

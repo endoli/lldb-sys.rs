@@ -35,6 +35,12 @@ CreateSBTypeNameSpecifier3(SBTypeRef type)
     return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(*reinterpret_cast<SBType *>(type)));
 }
 
+SBTypeNameSpecifierRef
+CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance)
+{
+    return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(*reinterpret_cast<SBTypeNameSpecifier *>(instance)));
+}
+
 void
 DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance)
 {

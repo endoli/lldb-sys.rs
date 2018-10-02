@@ -22,6 +22,12 @@ CreateSBData()
     return reinterpret_cast<SBDataRef>(new SBData());
 }
 
+SBDataRef
+CloneSBData(SBDataRef instance)
+{
+    return reinterpret_cast<SBDataRef>(new SBData(*reinterpret_cast<SBData *>(instance)));
+}
+
 void
 DisposeSBData(SBDataRef instance)
 {

@@ -22,6 +22,12 @@ CreateSBDeclaration()
     return reinterpret_cast<SBDeclarationRef>(new SBDeclaration());
 }
 
+SBDeclarationRef
+CloneSBDeclaration(SBDeclarationRef instance)
+{
+    return reinterpret_cast<SBDeclarationRef>(new SBDeclaration(*reinterpret_cast<SBDeclaration *>(instance)));
+}
+
 void
 DisposeSBDeclaration(SBDeclarationRef instance)
 {

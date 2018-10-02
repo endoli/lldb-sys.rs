@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBValueListRef CreateSBValueList(void);
 
+LLDB_API SBValueListRef CloneSBValueList(SBValueListRef instance);
+
 LLDB_API void DisposeSBValueList(SBValueListRef instance);
 
 LLDB_API bool SBValueListIsValid(SBValueListRef instance);

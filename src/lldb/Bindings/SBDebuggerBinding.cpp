@@ -28,6 +28,12 @@ CreateSBInputReader()
     return reinterpret_cast<SBInputReaderRef>(new SBInputReader());
 }
 
+SBInputReaderRef
+CloneSBInputReader(SBInputReaderRef instance)
+{
+    return reinterpret_cast<SBInputReaderRef>(new SBInputReader(*reinterpret_cast<SBInputReader *>(instance)));
+}
+
 void
 DisposeSBInputReader(SBInputReaderRef instance)
 {
@@ -105,6 +111,12 @@ SBDebuggerRef
 CreateSBDebugger()
 {
     return reinterpret_cast<SBDebuggerRef>(new SBDebugger());
+}
+
+SBDebuggerRef
+CloneSBDebugger(SBDebuggerRef instance)
+{
+    return reinterpret_cast<SBDebuggerRef>(new SBDebugger(*reinterpret_cast<SBDebugger *>(instance)));
 }
 
 void

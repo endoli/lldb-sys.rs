@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBBreakpointListRef CreateSBBreakpointList(SBTargetRef target);
 
+LLDB_API SBBreakpointListRef CloneSBBreakpointList(SBBreakpointListRef instance);
+
 LLDB_API void DisposeSBBreakpointList(SBBreakpointListRef instance);
 
 LLDB_API size_t SBBreakpointListGetSize(SBBreakpointListRef instance);

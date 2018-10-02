@@ -46,6 +46,12 @@ CreateSBExecutionContext5(SBFrameRef frame)
     return reinterpret_cast<SBExecutionContextRef>(new SBExecutionContext(*reinterpret_cast<SBFrame *>(frame)));
 }
 
+SBExecutionContextRef
+CloneSBExecutionContext(SBExecutionContextRef instance)
+{
+    return reinterpret_cast<SBExecutionContextRef>(new SBExecutionContext(*reinterpret_cast<SBExecutionContext *>(instance)));
+}
+
 void
 DisposeSBExecutionContext(SBExecutionContextRef instance)
 {

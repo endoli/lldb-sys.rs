@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBLineEntryRef CreateSBLineEntry(void);
 
+LLDB_API SBLineEntryRef CloneSBLineEntry(SBLineEntryRef instance);
+
 LLDB_API void DisposeSBLineEntry(SBLineEntryRef instance);
 
 LLDB_API SBAddressRef SBLineEntryGetStartAddress(SBLineEntryRef instance);

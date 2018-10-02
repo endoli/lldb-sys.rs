@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBStructuredDataRef CreateSBStructuredData(void);
 
+LLDB_API SBStructuredDataRef CloneSBStructuredData(SBStructuredDataRef instance);
+
 LLDB_API void DisposeSBStructuredData(SBStructuredDataRef instance);
 
 LLDB_API bool SBStructuredDataIsValid(SBStructuredDataRef instance);

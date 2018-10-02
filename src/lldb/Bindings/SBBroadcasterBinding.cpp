@@ -28,6 +28,12 @@ CreateSBBroadcaster2(const char *name)
     return reinterpret_cast<SBBroadcasterRef>(new SBBroadcaster(name));
 }
 
+SBBroadcasterRef
+CloneSBBroadcaster(SBBroadcasterRef instance)
+{
+    return reinterpret_cast<SBBroadcasterRef>(new SBBroadcaster(*reinterpret_cast<SBBroadcaster *>(instance)));
+}
+
 void
 DisposeSBBroadcaster(SBBroadcasterRef instance)
 {

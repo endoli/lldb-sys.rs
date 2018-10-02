@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBFrameRef CreateSBFrame(void);
 
+LLDB_API SBFrameRef CloneSBFrame(SBFrameRef instance);
+
 LLDB_API void DisposeSBFrame(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsEqual(SBFrameRef instance, SBFrameRef that);

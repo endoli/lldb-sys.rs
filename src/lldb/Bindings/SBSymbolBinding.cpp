@@ -22,6 +22,12 @@ CreateSBSymbol()
     return reinterpret_cast<SBSymbolRef>(new SBSymbol());
 }
 
+SBSymbolRef
+CloneSBSymbol(SBSymbolRef instance)
+{
+    return reinterpret_cast<SBSymbolRef>(new SBSymbol(*reinterpret_cast<SBSymbol *>(instance)));
+}
+
 void
 DisposeSBSymbol(SBSymbolRef instance)
 {

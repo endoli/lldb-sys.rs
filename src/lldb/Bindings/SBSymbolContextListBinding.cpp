@@ -22,6 +22,12 @@ CreateSBSymbolContextList()
     return reinterpret_cast<SBSymbolContextListRef>(new SBSymbolContextList());
 }
 
+SBSymbolContextListRef
+CloneSBSymbolContextList(SBSymbolContextListRef instance)
+{
+    return reinterpret_cast<SBSymbolContextListRef>(new SBSymbolContextList(*reinterpret_cast<SBSymbolContextList *>(instance)));
+}
+
 void
 DisposeSBSymbolContextList(SBSymbolContextListRef instance)
 {

@@ -24,6 +24,12 @@ CreateSBProcessInfo()
     return reinterpret_cast<SBProcessInfoRef>(new SBProcessInfo());
 }
 
+SBProcessInfoRef
+CloneSBProcessInfo(SBProcessInfoRef instance)
+{
+    return reinterpret_cast<SBProcessInfoRef>(new SBProcessInfo(*reinterpret_cast<SBProcessInfo *>(instance)));
+}
+
 void
 DisposeSBProcessInfo(SBProcessInfoRef instance)
 {

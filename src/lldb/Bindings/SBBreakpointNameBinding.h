@@ -22,6 +22,8 @@ LLDB_API SBBreakpointNameRef CreateSBBreakpointNameFromTarget(SBTargetRef target
 
 LLDB_API SBBreakpointNameRef CreateSBBreakpointNameFromBreakpoint(SBBreakpointRef breakpoint, const char *name);
 
+LLDB_API SBBreakpointNameRef CloneSBBreakpointName(SBBreakpointNameRef instance);
+
 LLDB_API void DisposeSBBreakpointName(SBBreakpointNameRef instance);
 
 LLDB_API bool SBBreakpointNameIsValid(SBBreakpointNameRef instance);

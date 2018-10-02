@@ -22,6 +22,8 @@ LLDB_API SBAddressRef CreateSBAddress2(SBSectionRef section, lldb_addr_t offset)
 
 LLDB_API SBAddressRef CreateSBAddress3(lldb_addr_t load_addr, SBTargetRef target);
 
+LLDB_API SBAddressRef CloneSBAddress(SBAddressRef instance);
+
 LLDB_API void DisposeSBAddress(SBAddressRef instance);
 
 LLDB_API bool SBAddressIsValid(SBAddressRef instance);

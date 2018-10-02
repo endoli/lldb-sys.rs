@@ -20,6 +20,8 @@ LLDB_API SBBroadcasterRef CreateSBBroadcaster(void);
 
 LLDB_API SBBroadcasterRef CreateSBBroadcaster2(const char *name);
 
+LLDB_API SBBroadcasterRef CloneSBBroadcaster(SBBroadcasterRef instance);
+
 LLDB_API void DisposeSBBroadcaster(SBBroadcasterRef instance);
 
 LLDB_API bool SBBroadcasterIsValid(SBBroadcasterRef instance);

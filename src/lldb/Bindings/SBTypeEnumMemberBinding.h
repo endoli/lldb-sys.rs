@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBTypeEnumMemberRef CreateSBTypeEnumMember(void);
 
+LLDB_API SBTypeEnumMemberRef CloneSBTypeEnumMember(SBTypeEnumMemberRef instance);
+
 LLDB_API void DisposeSBTypeEnumMember(SBTypeEnumMemberRef instance);
 
 LLDB_API bool SBTypeEnumMemberIsValid(SBTypeEnumMemberRef instance);
@@ -34,6 +36,8 @@ LLDB_API bool SBTypeEnumMemberGetDescription(SBTypeEnumMemberRef instance, SBStr
                                              ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeEnumMemberListRef CreateSBTypeEnumMemberList(void);
+
+LLDB_API SBTypeEnumMemberListRef CloneSBTypeEnumMemberList(SBTypeEnumMemberListRef instance);
 
 LLDB_API void DisposeSBTypeEnumMemberList(SBTypeEnumMemberListRef instance);
 

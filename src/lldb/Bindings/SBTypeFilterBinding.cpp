@@ -29,6 +29,12 @@ CreateSBTypeFilter2(uint32_t options)
     return reinterpret_cast<SBTypeFilterRef>(new SBTypeFilter(options));
 }
 
+SBTypeFilterRef
+CloneSBTypeFilter(SBTypeFilterRef instance)
+{
+    return reinterpret_cast<SBTypeFilterRef>(new SBTypeFilter(*reinterpret_cast<SBTypeFilter *>(instance)));
+}
+
 void
 DisposeSBTypeFilter(SBTypeFilterRef instance)
 {

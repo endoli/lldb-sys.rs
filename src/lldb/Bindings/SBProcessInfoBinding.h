@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBProcessInfoRef CreateSBProcessInfo(void);
 
+LLDB_API SBProcessInfoRef CloneSBProcessInfo(SBProcessInfoRef instance);
+
 LLDB_API void DisposeSBProcessInfo(SBProcessInfoRef instance);
 
 LLDB_API bool SBProcessInfoIsValid(SBProcessInfoRef instance);

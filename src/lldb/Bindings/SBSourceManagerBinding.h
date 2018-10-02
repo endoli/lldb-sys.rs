@@ -20,6 +20,8 @@ LLDB_API SBSourceManagerRef CreateSBSourceManager(SBDebuggerRef debugger);
 
 LLDB_API SBSourceManagerRef CreateSBSourceManager2(SBTargetRef target);
 
+LLDB_API SBSourceManagerRef CloneSBSourceManager(SBSourceManagerRef instance);
+
 LLDB_API void DisposeSBSourceManager(SBSourceManagerRef instance);
 
 LLDB_API unsigned int

@@ -22,6 +22,12 @@ CreateSBLaunchInfo(const char **argv)
     return reinterpret_cast<SBLaunchInfoRef>(new SBLaunchInfo(argv));
 }
 
+SBLaunchInfoRef
+CloneSBLaunchInfo(SBLaunchInfoRef instance)
+{
+    return reinterpret_cast<SBLaunchInfoRef>(new SBLaunchInfo(*reinterpret_cast<SBLaunchInfo *>(instance)));
+}
+
 void
 DisposeSBLaunchInfo(SBLaunchInfoRef instance)
 {

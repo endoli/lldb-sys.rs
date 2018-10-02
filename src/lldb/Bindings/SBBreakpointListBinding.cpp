@@ -22,6 +22,12 @@ CreateSBBreakpointList(SBTargetRef target)
     return reinterpret_cast<SBBreakpointListRef>(new SBBreakpointList(*reinterpret_cast<SBTarget *>(target)));
 }
 
+SBBreakpointListRef
+CloneSBBreakpointList(SBBreakpointListRef instance)
+{
+    return reinterpret_cast<SBBreakpointListRef>(new SBBreakpointList(*reinterpret_cast<SBBreakpointList *>(instance)));
+}
+
 void
 DisposeSBBreakpointList(SBBreakpointListRef instance)
 {

@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBThreadCollectionRef CreateSBThreadCollection(void);
 
+LLDB_API SBThreadCollectionRef CloneSBThreadCollection(SBThreadCollectionRef instance);
+
 LLDB_API void DisposeSBThreadCollection(SBThreadCollectionRef instance);
 
 LLDB_API bool SBThreadCollectionIsValid(SBThreadCollectionRef instance);

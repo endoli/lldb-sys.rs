@@ -34,6 +34,12 @@ CreateSBAddress3(lldb_addr_t load_addr, SBTargetRef target)
     return reinterpret_cast<SBAddressRef>(new SBAddress(load_addr, *reinterpret_cast<SBTarget *>(target)));
 }
 
+SBAddressRef
+CloneSBAddress(SBAddressRef instance)
+{
+    return reinterpret_cast<SBAddressRef>(new SBAddress(*reinterpret_cast<SBAddress *>(instance)));
+}
+
 void
 DisposeSBAddress(SBAddressRef instance)
 {

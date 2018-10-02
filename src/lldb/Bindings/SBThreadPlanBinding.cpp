@@ -29,6 +29,12 @@ CreateSBThreadPlan2(SBThreadRef thread, const char *class_name)
     return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan(*reinterpret_cast<SBThread *>(thread), class_name));
 }
 
+SBThreadPlanRef
+CloneSBThreadPlan(SBThreadPlanRef instance)
+{
+    return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan(*reinterpret_cast<SBThreadPlan *>(instance)));
+}
+
 void
 DisposeSBThreadPlan(SBThreadPlanRef instance)
 {
