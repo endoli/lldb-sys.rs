@@ -22,6 +22,12 @@ CreateSBInstruction()
     return reinterpret_cast<SBInstructionRef>(new SBInstruction());
 }
 
+SBInstructionRef
+CloneSBInstruction(SBInstructionRef instance)
+{
+    return reinterpret_cast<SBInstructionRef>(new SBInstruction(*reinterpret_cast<SBInstruction *>(instance)));
+}
+
 void
 DisposeSBInstruction(SBInstructionRef instance)
 {

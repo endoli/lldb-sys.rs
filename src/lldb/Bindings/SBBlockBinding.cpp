@@ -22,6 +22,12 @@ CreateSBBlock()
     return reinterpret_cast<SBBlockRef>(new SBBlock());
 }
 
+SBBlockRef
+CloneSBBlock(SBBlockRef instance)
+{
+    return reinterpret_cast<SBBlockRef>(new SBBlock(*reinterpret_cast<SBBlock *>(instance)));
+}
+
 void
 DisposeSBBlock(SBBlockRef instance)
 {

@@ -20,6 +20,8 @@ LLDB_API SBCommandReturnObjectRef CreateSBCommandReturnObject(void);
 
 LLDB_API void *SBCommandReturnObjectRelease(SBCommandReturnObjectRef instance);
 
+LLDB_API SBCommandReturnObjectRef CloneSBCommandReturnObject(SBCommandReturnObjectRef instance);
+
 LLDB_API void DisposeSBCommandReturnObject(SBCommandReturnObjectRef instance);
 
 LLDB_API bool SBCommandReturnObjectIsValid(SBCommandReturnObjectRef instance);

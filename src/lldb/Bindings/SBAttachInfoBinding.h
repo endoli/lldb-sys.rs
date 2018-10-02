@@ -24,6 +24,8 @@ LLDB_API SBAttachInfoRef CreateSBAttachInfo3(const char *path, bool wait_for);
 
 LLDB_API SBAttachInfoRef CreateSBAttachInfo4(const char *path, bool wait_for, bool async);
 
+LLDB_API SBAttachInfoRef CloneSBAttachInfo(SBAttachInfoRef instance);
+
 LLDB_API void DisposeSBAttachInfo(SBAttachInfoRef instance);
 
 LLDB_API unsigned long long SBAttachInfoGetProcessID(SBAttachInfoRef instance);

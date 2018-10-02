@@ -23,6 +23,12 @@ CreateSBThreadCollection()
     return reinterpret_cast<SBThreadCollectionRef>(new SBThreadCollection());
 }
 
+SBThreadCollectionRef
+CloneSBThreadCollection(SBThreadCollectionRef instance)
+{
+    return reinterpret_cast<SBThreadCollectionRef>(new SBThreadCollection(*reinterpret_cast<SBThreadCollection *>(instance)));
+}
+
 void
 DisposeSBThreadCollection(SBThreadCollectionRef instance)
 {

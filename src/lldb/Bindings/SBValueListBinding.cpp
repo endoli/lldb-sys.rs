@@ -22,6 +22,12 @@ CreateSBValueList()
     return reinterpret_cast<SBValueListRef>(new SBValueList());
 }
 
+SBValueListRef
+CloneSBValueList(SBValueListRef instance)
+{
+    return reinterpret_cast<SBValueListRef>(new SBValueList(*reinterpret_cast<SBValueList *>(instance)));
+}
+
 void
 DisposeSBValueList(SBValueListRef instance)
 {

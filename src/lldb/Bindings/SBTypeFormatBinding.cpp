@@ -35,6 +35,12 @@ CreateSBTypeFormat3(const char *type, uint32_t options)
     return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(type, options));
 }
 
+SBTypeFormatRef
+CloneSBTypeFormat(SBTypeFormatRef instance)
+{
+    return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(*reinterpret_cast<SBTypeFormat *>(instance)));
+}
+
 void
 DisposeSBTypeFormat(SBTypeFormatRef instance)
 {

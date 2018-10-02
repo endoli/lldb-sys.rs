@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBUnixSignalsRef CreateSBUnixSignals(void);
 
+LLDB_API SBUnixSignalsRef CloneSBUnixSignals(SBUnixSignalsRef instance);
+
 LLDB_API void DisposeSBUnixSignals(SBUnixSignalsRef instance);
 
 LLDB_API void SBUnixSignalsClear(SBUnixSignalsRef instance);

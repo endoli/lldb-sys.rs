@@ -28,6 +28,12 @@ CreateSBTypeCategory()
     return reinterpret_cast<SBTypeCategoryRef>(new SBTypeCategory());
 }
 
+SBTypeCategoryRef
+CloneSBTypeCategory(SBTypeCategoryRef instance)
+{
+    return reinterpret_cast<SBTypeCategoryRef>(new SBTypeCategory(*reinterpret_cast<SBTypeCategory *>(instance)));
+}
+
 void
 DisposeSBTypeCategory(SBTypeCategoryRef instance)
 {

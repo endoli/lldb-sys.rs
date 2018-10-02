@@ -23,6 +23,12 @@ CreateSBTypeSummaryOptions()
     return reinterpret_cast<SBTypeSummaryOptionsRef>(new SBTypeSummaryOptions());
 }
 
+SBTypeSummaryOptionsRef
+CloneSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance)
+{
+    return reinterpret_cast<SBTypeSummaryOptionsRef>(new SBTypeSummaryOptions(*reinterpret_cast<SBTypeSummaryOptions *>(instance)));
+}
+
 void
 DisposeSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance)
 {
@@ -89,6 +95,12 @@ SBTypeSummaryCreateWithScriptCode(const char *data, uint32_t options)
 {
     return reinterpret_cast<SBTypeSummaryRef>(
         new SBTypeSummary(lldb::SBTypeSummary::CreateWithScriptCode(data, options)));
+}
+
+SBTypeSummaryRef
+CloneSBTypeSummary(SBTypeSummaryRef instance)
+{
+    return reinterpret_cast<SBTypeSummaryRef>(new SBTypeSummary(*reinterpret_cast<SBTypeSummary *>(instance)));
 }
 
 void

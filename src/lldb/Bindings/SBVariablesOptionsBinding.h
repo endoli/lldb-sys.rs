@@ -20,6 +20,8 @@ LLDB_API SBVariablesOptionsRef CreateSBVariablesOptions(void);
 
 LLDB_API SBVariablesOptionsRef CreateSBVariablesOptions2(SBVariablesOptionsRef options);
 
+LLDB_API SBVariablesOptionsRef CloneSBVariablesOptions(SBVariablesOptionsRef instance);
+
 LLDB_API void DisposeSBVariablesOptions(SBVariablesOptionsRef instance);
 
 LLDB_API bool SBVariablesOptionsIsValid(SBVariablesOptionsRef instance);

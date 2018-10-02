@@ -22,6 +22,12 @@ CreateSBFunction()
     return reinterpret_cast<SBFunctionRef>(new SBFunction());
 }
 
+SBFunctionRef
+CloneSBFunction(SBFunctionRef instance)
+{
+    return reinterpret_cast<SBFunctionRef>(new SBFunction(*reinterpret_cast<SBFunction *>(instance)));
+}
+
 void
 DisposeSBFunction(SBFunctionRef instance)
 {

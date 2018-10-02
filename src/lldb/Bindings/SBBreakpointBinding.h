@@ -21,6 +21,8 @@ extern "C" {
 
 LLDB_API SBBreakpointRef CreateSBBreakpoint(void);
 
+LLDB_API SBBreakpointRef CloneSBBreakpoint(SBBreakpointRef instance);
+
 LLDB_API void DisposeSBBreakpoint(SBBreakpointRef instance);
 
 LLDB_API int SBBreakpointGetID(SBBreakpointRef instance);

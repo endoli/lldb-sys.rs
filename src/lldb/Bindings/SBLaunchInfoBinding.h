@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBLaunchInfoRef CreateSBLaunchInfo(const char **argv);
 
+LLDB_API SBLaunchInfoRef CloneSBLaunchInfo(SBLaunchInfoRef instance);
+
 LLDB_API void DisposeSBLaunchInfo(SBLaunchInfoRef instance);
 
 LLDB_API unsigned long long SBLaunchInfoGetProcessID(SBLaunchInfoRef instance);

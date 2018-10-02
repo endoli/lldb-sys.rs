@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBTypeMemberRef CreateSBTypeMember(void);
 
+LLDB_API SBTypeMemberRef CloneSBTypeMember(SBTypeMemberRef instance);
+
 LLDB_API void DisposeSBTypeMember(SBTypeMemberRef instance);
 
 LLDB_API bool SBTypeMemberIsValid(SBTypeMemberRef instance);
@@ -41,6 +43,8 @@ LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction(void);
 
 LLDB_API SBTypeMemberFunctionRef CreateSBTypeMemberFunction2(SBTypeMemberFunctionRef rhs);
 
+LLDB_API SBTypeMemberFunctionRef CloneSBTypeMemberFunction(SBTypeMemberFunctionRef instance);
+
 LLDB_API void DisposeSBTypeMemberFunction(SBTypeMemberFunctionRef instance);
 
 LLDB_API bool SBTypeMemberFunctionIsValid(SBTypeMemberFunctionRef instance);
@@ -61,6 +65,8 @@ LLDB_API bool SBTypeMemberFunctionGetDescription(SBTypeMemberFunctionRef instanc
                                                  ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeRef CreateSBType(void);
+
+LLDB_API SBTypeRef CloneSBType(SBTypeRef instance);
 
 LLDB_API void DisposeSBType(SBTypeRef instance);
 
@@ -146,6 +152,8 @@ LLDB_API bool SBTypeGetDescription(SBTypeRef instance, SBStreamRef description,
                                    ENUM(DescriptionLevel) description_level);
 
 LLDB_API SBTypeListRef CreateSBTypeList(void);
+
+LLDB_API SBTypeListRef CloneSBTypeList(SBTypeListRef instance);
 
 LLDB_API void DisposeSBTypeList(SBTypeListRef instance);
 

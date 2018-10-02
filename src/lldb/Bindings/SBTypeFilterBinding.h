@@ -20,6 +20,8 @@ LLDB_API SBTypeFilterRef CreateSBTypeFilter(void);
 
 LLDB_API SBTypeFilterRef CreateSBTypeFilter2(uint32_t options);
 
+LLDB_API SBTypeFilterRef CloneSBTypeFilter(SBTypeFilterRef instance);
+
 LLDB_API void DisposeSBTypeFilter(SBTypeFilterRef instance);
 
 LLDB_API bool SBTypeFilterIsValid(SBTypeFilterRef instance);

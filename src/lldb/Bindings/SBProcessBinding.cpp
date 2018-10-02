@@ -24,6 +24,12 @@ CreateSBProcess()
     return reinterpret_cast<SBProcessRef>(new SBProcess());
 }
 
+SBProcessRef
+CloneSBProcess(SBProcessRef instance)
+{
+    return reinterpret_cast<SBProcessRef>(new SBProcess(*reinterpret_cast<SBProcess *>(instance)));
+}
+
 void
 DisposeSBProcess(SBProcessRef instance)
 {

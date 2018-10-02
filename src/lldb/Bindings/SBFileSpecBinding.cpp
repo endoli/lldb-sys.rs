@@ -34,6 +34,12 @@ CreateSBFileSpec3(const char *path, bool resolve)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(path, resolve));
 }
 
+SBFileSpecRef
+CloneSBFileSpec(SBFileSpecRef instance)
+{
+    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(*reinterpret_cast<SBFileSpec *>(instance)));
+}
+
 void
 DisposeSBFileSpec(SBFileSpecRef instance)
 {

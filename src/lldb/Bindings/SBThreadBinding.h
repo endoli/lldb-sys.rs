@@ -20,6 +20,8 @@ LLDB_API const char *SBThreadGetBroadcasterClassName(void);
 
 LLDB_API SBThreadRef CreateSBThread(void);
 
+LLDB_API SBThreadRef CloneSBThread(SBThreadRef instance);
+
 LLDB_API void DisposeSBThread(SBThreadRef instance);
 
 LLDB_API SBQueueRef SBThreadGetQueue(SBThreadRef instance);

@@ -23,6 +23,12 @@ CreateSBTypeEnumMember()
     return reinterpret_cast<SBTypeEnumMemberRef>(new SBTypeEnumMember());
 }
 
+SBTypeEnumMemberRef
+CloneSBTypeEnumMember(SBTypeEnumMemberRef instance)
+{
+    return reinterpret_cast<SBTypeEnumMemberRef>(new SBTypeEnumMember(*reinterpret_cast<SBTypeEnumMember *>(instance)));
+}
+
 void
 DisposeSBTypeEnumMember(SBTypeEnumMemberRef instance)
 {
@@ -76,6 +82,12 @@ SBTypeEnumMemberListRef
 CreateSBTypeEnumMemberList()
 {
     return reinterpret_cast<SBTypeEnumMemberListRef>(new SBTypeEnumMemberList());
+}
+
+SBTypeEnumMemberListRef
+CloneSBTypeEnumMemberList(SBTypeEnumMemberListRef instance)
+{
+    return reinterpret_cast<SBTypeEnumMemberListRef>(new SBTypeEnumMemberList(*reinterpret_cast<SBTypeEnumMemberList *>(instance)));
 }
 
 void

@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBSectionRef CreateSBSection(void);
 
+LLDB_API SBSectionRef CloneSBSection(SBSectionRef instance);
+
 LLDB_API void DisposeSBSection(SBSectionRef instance);
 
 LLDB_API bool SBSectionIsValid(SBSectionRef instance);

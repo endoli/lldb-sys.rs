@@ -112,6 +112,12 @@ SBCommandInterpreterRunOptionsSetAddToHistory(SBCommandInterpreterRunOptionsRef 
     unwrapped->SetAddToHistory(var0);
 }
 
+SBCommandInterpreterRef
+CloneSBCommandInterpreter(SBCommandInterpreterRef instance)
+{
+    return reinterpret_cast<SBCommandInterpreterRef>(new SBCommandInterpreter(*reinterpret_cast<SBCommandInterpreter *>(instance)));
+}
+
 void
 DisposeSBCommandInterpreter(SBCommandInterpreterRef instance)
 {
@@ -340,6 +346,12 @@ SBCommandPluginInterfaceDoExecute(SBCommandPluginInterfaceRef instance, SBDebugg
                                 *reinterpret_cast<SBCommandReturnObject *>(var1));
 }
 
+SBCommandPluginInterfaceRef
+CloneSBCommandPluginInterface(SBCommandPluginInterfaceRef instance)
+{
+    return reinterpret_cast<SBCommandPluginInterfaceRef>(new SBCommandPluginInterface(*reinterpret_cast<SBCommandPluginInterface *>(instance)));
+}
+
 void
 DisposeSBCommandPluginInterface(SBCommandPluginInterfaceRef instance)
 {
@@ -408,6 +420,12 @@ SBCommandAddCommand(SBCommandRef instance, const char *name, SBCommandPluginInte
     SBCommand *unwrapped = reinterpret_cast<SBCommand *>(instance);
     return reinterpret_cast<SBCommandRef>(
         new SBCommand(unwrapped->AddCommand(name, reinterpret_cast<SBCommandPluginInterface *>(impl), help)));
+}
+
+SBCommandRef
+CloneSBCommand(SBCommandRef instance)
+{
+    return reinterpret_cast<SBCommandRef>(new SBCommand(*reinterpret_cast<SBCommand *>(instance)));
 }
 
 void

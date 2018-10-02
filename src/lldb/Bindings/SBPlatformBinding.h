@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBPlatformConnectOptionsRef CreateSBPlatformConnectOptions(const char *url);
 
+LLDB_API SBPlatformConnectOptionsRef CloneSBPlatformConnectOptions(SBPlatformConnectOptionsRef instance);
+
 LLDB_API void DisposeSBPlatformConnectOptions(SBPlatformConnectOptionsRef instance);
 
 LLDB_API const char *SBPlatformConnectOptionsGetURL(SBPlatformConnectOptionsRef instance);
@@ -37,6 +39,8 @@ LLDB_API void SBPlatformConnectOptionsSetLocalCacheDirectory(SBPlatformConnectOp
                                                                  const char *path);
 
 LLDB_API SBPlatformShellCommandRef CreateSBPlatformShellCommand(const char *shell_command);
+
+LLDB_API SBPlatformShellCommandRef CloneSBPlatformShellCommand(SBPlatformShellCommandRef instance);
 
 LLDB_API void DisposeSBPlatformShellCommand(SBPlatformShellCommandRef instance);
 
@@ -63,6 +67,8 @@ LLDB_API const char *SBPlatformShellCommandGetOutput(SBPlatformShellCommandRef i
 LLDB_API SBPlatformRef CreateSBPlatform(void);
 
 LLDB_API SBPlatformRef CreateSBPlatform2(const char *platform_name);
+
+LLDB_API SBPlatformRef CloneSBPlatform(SBPlatformRef instance);
 
 LLDB_API void DisposeSBPlatform(SBPlatformRef instance);
 

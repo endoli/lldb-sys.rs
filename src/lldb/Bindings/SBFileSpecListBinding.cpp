@@ -22,6 +22,12 @@ CreateSBFileSpecList()
     return reinterpret_cast<SBFileSpecListRef>(new SBFileSpecList());
 }
 
+SBFileSpecListRef
+CloneSBFileSpecList(SBFileSpecListRef instance)
+{
+    return reinterpret_cast<SBFileSpecListRef>(new SBFileSpecList(*reinterpret_cast<SBFileSpecList *>(instance)));
+}
+
 void
 DisposeSBFileSpecList(SBFileSpecListRef instance)
 {

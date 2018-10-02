@@ -28,6 +28,12 @@ CreateSBEvent2(uint32_t event, const char *cstr, uint32_t cstr_len)
     return reinterpret_cast<SBEventRef>(new SBEvent(event, cstr, cstr_len));
 }
 
+SBEventRef
+CloneSBEvent(SBEventRef instance)
+{
+    return reinterpret_cast<SBEventRef>(new SBEvent(*reinterpret_cast<SBEvent *>(instance)));
+}
+
 void
 DisposeSBEvent(SBEventRef instance)
 {

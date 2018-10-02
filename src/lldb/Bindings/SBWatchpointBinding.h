@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBWatchpointRef CreateSBWatchpoint(void);
 
+LLDB_API SBWatchpointRef CloneSBWatchpoint(SBWatchpointRef instance);
+
 LLDB_API void DisposeSBWatchpoint(SBWatchpointRef instance);
 
 LLDB_API bool SBWatchpointIsValid(SBWatchpointRef instance);

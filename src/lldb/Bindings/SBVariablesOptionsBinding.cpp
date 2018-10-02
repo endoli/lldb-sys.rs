@@ -29,6 +29,12 @@ CreateSBVariablesOptions2(SBVariablesOptionsRef options)
         new SBVariablesOptions(*reinterpret_cast<SBVariablesOptions *>(options)));
 }
 
+SBVariablesOptionsRef
+CloneSBVariablesOptions(SBVariablesOptionsRef instance)
+{
+    return reinterpret_cast<SBVariablesOptionsRef>(new SBVariablesOptions(*reinterpret_cast<SBVariablesOptions *>(instance)));
+}
+
 void
 DisposeSBVariablesOptions(SBVariablesOptionsRef instance)
 {

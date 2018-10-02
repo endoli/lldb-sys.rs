@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBFunctionRef CreateSBFunction(void);
 
+LLDB_API SBFunctionRef CloneSBFunction(SBFunctionRef instance);
+
 LLDB_API void DisposeSBFunction(SBFunctionRef instance);
 
 LLDB_API bool SBFunctionIsValid(SBFunctionRef instance);

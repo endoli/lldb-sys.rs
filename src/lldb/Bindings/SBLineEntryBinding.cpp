@@ -22,6 +22,12 @@ CreateSBLineEntry()
     return reinterpret_cast<SBLineEntryRef>(new SBLineEntry());
 }
 
+SBLineEntryRef
+CloneSBLineEntry(SBLineEntryRef instance)
+{
+    return reinterpret_cast<SBLineEntryRef>(new SBLineEntry(*reinterpret_cast<SBLineEntry *>(instance)));
+}
+
 void
 DisposeSBLineEntry(SBLineEntryRef instance)
 {

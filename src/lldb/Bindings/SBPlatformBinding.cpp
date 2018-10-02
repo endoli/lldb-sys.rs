@@ -28,6 +28,12 @@ DisposeSBPlatformConnectOptions(SBPlatformConnectOptionsRef instance)
     delete reinterpret_cast<SBPlatformConnectOptions *>(instance);
 }
 
+SBPlatformConnectOptionsRef
+CloneSBPlatformConnectOptions(SBPlatformConnectOptionsRef instance)
+{
+    return reinterpret_cast<SBPlatformConnectOptionsRef>(new SBPlatformConnectOptions(*reinterpret_cast<SBPlatformConnectOptions *>(instance)));
+}
+
 const char *
 SBPlatformConnectOptionsGetURL(SBPlatformConnectOptionsRef instance)
 {
@@ -82,6 +88,12 @@ SBPlatformShellCommandRef
 CreateSBPlatformShellCommand(const char *shell_command)
 {
     return reinterpret_cast<SBPlatformShellCommandRef>(new SBPlatformShellCommand(shell_command));
+}
+
+SBPlatformShellCommandRef
+CloneSBPlatformShellCommand(SBPlatformShellCommandRef instance)
+{
+    return reinterpret_cast<SBPlatformShellCommandRef>(new SBPlatformShellCommand(*reinterpret_cast<SBPlatformShellCommand *>(instance)));
 }
 
 void
@@ -170,6 +182,12 @@ SBPlatformRef
 CreateSBPlatform2(const char *platform_name)
 {
     return reinterpret_cast<SBPlatformRef>(new SBPlatform(platform_name));
+}
+
+SBPlatformRef
+CloneSBPlatform(SBPlatformRef instance)
+{
+    return reinterpret_cast<SBPlatformRef>(new SBPlatform(*reinterpret_cast<SBPlatform *>(instance)));
 }
 
 void

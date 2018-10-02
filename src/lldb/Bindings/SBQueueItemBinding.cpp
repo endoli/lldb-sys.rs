@@ -22,6 +22,12 @@ CreateSBQueueItem()
     return reinterpret_cast<SBQueueItemRef>(new SBQueueItem());
 }
 
+SBQueueItemRef
+CloneSBQueueItem(SBQueueItemRef instance)
+{
+    return reinterpret_cast<SBQueueItemRef>(new SBQueueItem(*reinterpret_cast<SBQueueItem *>(instance)));
+}
+
 void
 DisposeSBQueueItem(SBQueueItemRef instance)
 {

@@ -47,6 +47,8 @@ LLDB_API void SBCommandInterpreterRunOptionsSetAddToHistory(SBCommandInterpreter
 LLDB_API SBCommandInterpreterRunOptionsRef
     CreateSBCommandInterpreterRunOptions2(SBCommandInterpreterRunOptionsRef);
 
+LLDB_API SBCommandInterpreterRef CloneSBCommandInterpreter(SBCommandInterpreterRef instance);
+
 LLDB_API void DisposeSBCommandInterpreter(SBCommandInterpreterRef instance);
 
 LLDB_API const char *SBCommandInterpreterGetArgumentTypeAsCString(ENUM(CommandArgumentType) arg_type);
@@ -129,6 +131,8 @@ LLDB_API void SBCommandInterpreterSetPromptOnQuit(SBCommandInterpreterRef instan
 LLDB_API bool SBCommandPluginInterfaceDoExecute(SBCommandPluginInterfaceRef instance, SBDebuggerRef,
                                                     char **, SBCommandReturnObjectRef);
 
+LLDB_API SBCommandPluginInterfaceRef CloneSBCommandPluginInterface(SBCommandPluginInterfaceRef instance);
+
 LLDB_API void DisposeSBCommandPluginInterface(SBCommandPluginInterfaceRef instance);
 
 LLDB_API SBCommandRef CreateSBCommand(void);
@@ -150,6 +154,8 @@ SBCommandAddMultiwordCommand(SBCommandRef instance, const char *name, const char
 
 LLDB_API SBCommandRef SBCommandAddCommand(SBCommandRef instance, const char *name,
                                                   SBCommandPluginInterfaceRef impl, const char *help);
+
+LLDB_API SBCommandRef CloneSBCommand(SBCommandRef instance);
 
 LLDB_API void DisposeSBCommand(SBCommandRef instance);
 

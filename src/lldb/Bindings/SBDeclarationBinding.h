@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBDeclarationRef CreateSBDeclaration(void);
 
+LLDB_API SBDeclarationRef CloneSBDeclaration(SBDeclarationRef instance);
+
 LLDB_API void DisposeSBDeclaration(SBDeclarationRef instance);
 
 LLDB_API bool SBDeclarationIsValid(SBDeclarationRef instance);

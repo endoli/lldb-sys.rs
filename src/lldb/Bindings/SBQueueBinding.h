@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBQueueRef CreateSBQueue(void);
 
+LLDB_API SBQueueRef CloneSBQueue(SBQueueRef instance);
+
 LLDB_API void DisposeSBQueue(SBQueueRef instance);
 
 LLDB_API bool SBQueueIsValid(SBQueueRef instance);

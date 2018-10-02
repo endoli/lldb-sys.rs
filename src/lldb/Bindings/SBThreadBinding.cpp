@@ -34,6 +34,12 @@ CreateSBThread2(SBThreadRef thread)
     return reinterpret_cast<SBThreadRef>(new SBThread(*reinterpret_cast<SBThread *>(thread)));
 }
 
+SBThreadRef
+CloneSBThread(SBThreadRef instance)
+{
+    return reinterpret_cast<SBThreadRef>(new SBThread(*reinterpret_cast<SBThread *>(instance)));
+}
+
 void
 DisposeSBThread(SBThreadRef instance)
 {

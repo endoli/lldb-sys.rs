@@ -23,6 +23,12 @@ CreateSBError()
     return reinterpret_cast<SBErrorRef>(new SBError());
 }
 
+SBErrorRef
+CloneSBError(SBErrorRef instance)
+{
+    return reinterpret_cast<SBErrorRef>(new SBError(*reinterpret_cast<SBError *>(instance)));
+}
+
 void
 DisposeSBError(SBErrorRef instance)
 {

@@ -22,6 +22,8 @@ LLDB_API SBFileSpecRef CreateSBFileSpec2(const char *path);
 
 LLDB_API SBFileSpecRef CreateSBFileSpec3(const char *path, bool resolve);
 
+LLDB_API SBFileSpecRef CloneSBFileSpec(SBFileSpecRef instance);
+
 LLDB_API void DisposeSBFileSpec(SBFileSpecRef instance);
 
 LLDB_API bool SBFileSpecIsValid(SBFileSpecRef instance);

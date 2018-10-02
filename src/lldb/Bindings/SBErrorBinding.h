@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBErrorRef CreateSBError(void);
 
+LLDB_API SBErrorRef CloneSBError(SBErrorRef instance);
+
 LLDB_API void DisposeSBError(SBErrorRef instance);
 
 LLDB_API const char *SBErrorGetCString(SBErrorRef instance);

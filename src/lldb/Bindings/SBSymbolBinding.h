@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBSymbolRef CreateSBSymbol(void);
 
+LLDB_API SBSymbolRef CloneSBSymbol(SBSymbolRef instance);
+
 LLDB_API void DisposeSBSymbol(SBSymbolRef instance);
 
 LLDB_API bool SBSymbolIsValid(SBSymbolRef instance);

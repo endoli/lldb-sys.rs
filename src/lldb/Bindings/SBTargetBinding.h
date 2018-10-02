@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBTargetRef CreateSBTarget(void);
 
+LLDB_API SBTargetRef CloneSBTarget(SBTargetRef instance);
+
 LLDB_API void DisposeSBTarget(SBTargetRef instance);
 
 LLDB_API bool SBTargetIsValid(SBTargetRef instance);

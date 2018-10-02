@@ -22,6 +22,12 @@ CreateSBCompileUnit()
     return reinterpret_cast<SBCompileUnitRef>(new SBCompileUnit());
 }
 
+SBCompileUnitRef
+CloneSBCompileUnit(SBCompileUnitRef instance)
+{
+    return reinterpret_cast<SBCompileUnitRef>(new SBCompileUnit(*reinterpret_cast<SBCompileUnit *>(instance)));
+}
+
 void
 DisposeSBCompileUnit(SBCompileUnitRef instance)
 {

@@ -20,6 +20,8 @@ LLDB_API SBThreadPlanRef CreateSBThreadPlan(void);
 
 LLDB_API SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread, const char *class_name);
 
+LLDB_API SBThreadPlanRef CloneSBThreadPlan(SBThreadPlanRef instance);
+
 LLDB_API void DisposeSBThreadPlan(SBThreadPlanRef instance);
 
 LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);

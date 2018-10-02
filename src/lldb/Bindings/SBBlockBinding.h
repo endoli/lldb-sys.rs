@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBBlockRef CreateSBBlock(void);
 
+LLDB_API SBBlockRef CloneSBBlock(SBBlockRef instance);
+
 LLDB_API void DisposeSBBlock(SBBlockRef instance);
 
 LLDB_API bool SBBlockIsInlined(SBBlockRef instance);

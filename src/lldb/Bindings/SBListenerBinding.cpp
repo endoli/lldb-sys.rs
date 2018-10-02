@@ -28,6 +28,12 @@ CreateSBListener2(const char *name)
     return reinterpret_cast<SBListenerRef>(new SBListener(name));
 }
 
+SBListenerRef
+CloneSBListener(SBListenerRef instance)
+{
+    return reinterpret_cast<SBListenerRef>(new SBListener(*reinterpret_cast<SBListener *>(instance)));
+}
+
 void
 DisposeSBListener(SBListenerRef instance)
 {

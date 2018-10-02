@@ -22,6 +22,12 @@ CreateSBStringList()
     return reinterpret_cast<SBStringListRef>(new SBStringList());
 }
 
+SBStringListRef
+CloneSBStringList(SBStringListRef instance)
+{
+    return reinterpret_cast<SBStringListRef>(new SBStringList(*reinterpret_cast<SBStringList *>(instance)));
+}
+
 void
 DisposeSBStringList(SBStringListRef instance)
 {

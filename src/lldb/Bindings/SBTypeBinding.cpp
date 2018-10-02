@@ -23,6 +23,12 @@ CreateSBTypeMember()
     return reinterpret_cast<SBTypeMemberRef>(new SBTypeMember());
 }
 
+SBTypeMemberRef
+CloneSBTypeMember(SBTypeMemberRef instance)
+{
+    return reinterpret_cast<SBTypeMemberRef>(new SBTypeMember(*reinterpret_cast<SBTypeMember *>(instance)));
+}
+
 void
 DisposeSBTypeMember(SBTypeMemberRef instance)
 {
@@ -92,6 +98,12 @@ CreateSBTypeMemberFunction()
     return reinterpret_cast<SBTypeMemberFunctionRef>(new SBTypeMemberFunction());
 }
 
+SBTypeMemberFunctionRef
+CloneSBTypeMemberFunction(SBTypeMemberFunctionRef instance)
+{
+    return reinterpret_cast<SBTypeMemberFunctionRef>(new SBTypeMemberFunction(*reinterpret_cast<SBTypeMemberFunction *>(instance)));
+}
+
 void
 DisposeSBTypeMemberFunction(SBTypeMemberFunctionRef instance)
 {
@@ -159,6 +171,12 @@ SBTypeRef
 CreateSBType()
 {
     return reinterpret_cast<SBTypeRef>(new SBType());
+}
+
+SBTypeRef
+CloneSBType(SBTypeRef instance)
+{
+    return reinterpret_cast<SBTypeRef>(new SBType(*reinterpret_cast<SBType *>(instance)));
 }
 
 void
@@ -452,6 +470,12 @@ SBTypeListRef
 CreateSBTypeList()
 {
     return reinterpret_cast<SBTypeListRef>(new SBTypeList());
+}
+
+SBTypeListRef
+CloneSBTypeList(SBTypeListRef instance)
+{
+    return reinterpret_cast<SBTypeListRef>(new SBTypeList(*reinterpret_cast<SBTypeList *>(instance)));
 }
 
 void

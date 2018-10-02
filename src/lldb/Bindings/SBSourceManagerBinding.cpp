@@ -28,6 +28,12 @@ CreateSBSourceManager2(SBTargetRef target)
     return reinterpret_cast<SBSourceManagerRef>(new SBSourceManager(*reinterpret_cast<SBTarget *>(target)));
 }
 
+SBSourceManagerRef
+CloneSBSourceManager(SBSourceManagerRef instance)
+{
+    return reinterpret_cast<SBSourceManagerRef>(new SBSourceManager(*reinterpret_cast<SBSourceManager *>(instance)));
+}
+
 void
 DisposeSBSourceManager(SBSourceManagerRef instance)
 {

@@ -31,6 +31,12 @@ SBCommandReturnObjectRelease(SBCommandReturnObjectRef instance)
     return unwrapped->Release();
 }
 
+SBCommandReturnObjectRef
+CloneSBCommandReturnObject(SBCommandReturnObjectRef instance)
+{
+    return reinterpret_cast<SBCommandReturnObjectRef>(new SBCommandReturnObject(*reinterpret_cast<SBCommandReturnObject *>(instance)));
+}
+
 void
 DisposeSBCommandReturnObject(SBCommandReturnObjectRef instance)
 {

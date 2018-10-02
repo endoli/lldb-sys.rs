@@ -20,6 +20,8 @@ LLDB_API SBListenerRef CreateSBListener(void);
 
 LLDB_API SBListenerRef CreateSBListener2(const char *name);
 
+LLDB_API SBListenerRef CloneSBListener(SBListenerRef instance);
+
 LLDB_API void DisposeSBListener(SBListenerRef instance);
 
 LLDB_API void SBListenerAddEvent(SBListenerRef instance, SBEventRef event);

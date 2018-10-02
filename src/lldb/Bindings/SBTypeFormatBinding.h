@@ -22,6 +22,8 @@ LLDB_API SBTypeFormatRef CreateSBTypeFormat2(ENUM(Format) format, uint32_t optio
 
 LLDB_API SBTypeFormatRef CreateSBTypeFormat3(const char *type, uint32_t options);
 
+LLDB_API SBTypeFormatRef CloneSBTypeFormat(SBTypeFormatRef instance);
+
 LLDB_API void DisposeSBTypeFormat(SBTypeFormatRef instance);
 
 LLDB_API bool SBTypeFormatIsValid(SBTypeFormatRef instance);

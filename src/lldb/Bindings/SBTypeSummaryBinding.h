@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBTypeSummaryOptionsRef CreateSBTypeSummaryOptions(void);
 
+LLDB_API SBTypeSummaryOptionsRef CloneSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance);
+
 LLDB_API void DisposeSBTypeSummaryOptions(SBTypeSummaryOptionsRef instance);
 
 LLDB_API bool SBTypeSummaryOptionsIsValid(SBTypeSummaryOptionsRef instance);
@@ -37,6 +39,8 @@ LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithSummaryString(const char *data,
 LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithFunctionName(const char *data, uint32_t options);
 
 LLDB_API SBTypeSummaryRef SBTypeSummaryCreateWithScriptCode(const char *data, uint32_t options);
+
+LLDB_API SBTypeSummaryRef CloneSBTypeSummary(SBTypeSummaryRef instance);
 
 LLDB_API void DisposeSBTypeSummary(SBTypeSummaryRef instance);
 

@@ -22,6 +22,8 @@ LLDB_API SBTypeSyntheticRef SBTypeSyntheticCreateWithClassName(const char *data,
 
 LLDB_API SBTypeSyntheticRef SBTypeSyntheticCreateWithScriptCode(const char *data, uint32_t options);
 
+LLDB_API SBTypeSyntheticRef CloneSBTypeSynthetic(SBTypeSyntheticRef instance);
+
 LLDB_API void DisposeSBTypeSynthetic(SBTypeSyntheticRef instance);
 
 LLDB_API bool SBTypeSyntheticIsValid(SBTypeSyntheticRef instance);

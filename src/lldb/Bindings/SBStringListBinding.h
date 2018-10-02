@@ -18,6 +18,8 @@ extern "C" {
 
 LLDB_API SBStringListRef CreateSBStringList(void);
 
+LLDB_API SBStringListRef CloneSBStringList(SBStringListRef instance);
+
 LLDB_API void DisposeSBStringList(SBStringListRef instance);
 
 LLDB_API bool SBStringListIsValid(SBStringListRef instance);

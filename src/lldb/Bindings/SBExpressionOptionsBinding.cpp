@@ -23,6 +23,12 @@ CreateSBExpressionOptions()
     return reinterpret_cast<SBExpressionOptionsRef>(new SBExpressionOptions());
 }
 
+SBExpressionOptionsRef
+CloneSBExpressionOptions(SBExpressionOptionsRef instance)
+{
+    return reinterpret_cast<SBExpressionOptionsRef>(new SBExpressionOptions(*reinterpret_cast<SBExpressionOptions *>(instance)));
+}
+
 void
 DisposeSBExpressionOptions(SBExpressionOptionsRef instance)
 {

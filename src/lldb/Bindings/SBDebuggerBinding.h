@@ -26,6 +26,8 @@ extern "C" {
 
 LLDB_API SBInputReaderRef CreateSBInputReader(void);
 
+LLDB_API SBInputReaderRef CloneSBInputReader(SBInputReaderRef instance);
+
 LLDB_API void DisposeSBInputReader(SBInputReaderRef instance);
 
 #ifndef BINDGEN
@@ -55,6 +57,8 @@ LLDB_API void SBDebuggerDestroy(SBDebuggerRef debugger);
 LLDB_API void SBDebuggerMemoryPressureDetected(void);
 
 LLDB_API SBDebuggerRef CreateSBDebugger(void);
+
+LLDB_API SBDebuggerRef CloneSBDebugger(SBDebuggerRef instance);
 
 LLDB_API void DisposeSBDebugger(SBDebuggerRef instance);
 
