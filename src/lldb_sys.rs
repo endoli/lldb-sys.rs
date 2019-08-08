@@ -5,7 +5,7 @@
          non_upper_case_globals,
          non_snake_case)]
 
-#![cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
+#![allow(clippy::unreadable_literal)]
 
 use libc::{size_t, FILE};
 
