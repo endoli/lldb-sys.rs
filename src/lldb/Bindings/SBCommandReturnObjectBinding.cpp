@@ -9,8 +9,6 @@
 
 #include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
-#include "lldb/Interpreter/CommandReturnObject.h"
-#include "stdarg.h"
 
 using namespace lldb;
 
