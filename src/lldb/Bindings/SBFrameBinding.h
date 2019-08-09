@@ -58,6 +58,8 @@ LLDB_API const char *SBFrameGetDisplayFunctionName(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 
+LLDB_API bool SBFrameIsArtificial(SBFrameRef instance);
+
 LLDB_API SBValueRef
 SBFrameEvaluateExpression(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options);
 

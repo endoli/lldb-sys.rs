@@ -160,6 +160,13 @@ SBFrameIsInlined(SBFrameRef instance)
     return unwrapped->IsInlined();
 }
 
+bool
+SBFrameIsArtificial(SBFrameRef instance)
+{
+    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
+    return unwrapped->IsArtificial();
+}
+
 SBValueRef
 SBFrameEvaluateExpression(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options)
 {
