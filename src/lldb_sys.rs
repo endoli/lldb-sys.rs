@@ -3780,6 +3780,7 @@ extern "C" {
     pub fn SBTargetGetStackRedZoneSize(instance: SBTargetRef) -> lldb_addr_t;
     pub fn SBTargetGetLaunchInfo(instance: SBTargetRef) -> SBLaunchInfoRef;
     pub fn SBTargetSetLaunchInfo(instance: SBTargetRef, launch_info: SBLaunchInfoRef);
+    pub fn SBTargetGetStatistics(instance: SBTargetRef) -> SBStructuredDataRef;
     pub fn SBThreadGetBroadcasterClassName() -> *const ::std::os::raw::c_char;
     pub fn CreateSBThread() -> SBThreadRef;
     pub fn CloneSBThread(instance: SBThreadRef) -> SBThreadRef;

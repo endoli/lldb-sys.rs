@@ -315,6 +315,8 @@ LLDB_API SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance);
 
 LLDB_API void SBTargetSetLaunchInfo(SBTargetRef instance, SBLaunchInfoRef launch_info);
 
+LLDB_API SBStructuredDataRef SBTargetGetStatistics(SBTargetRef instance);
+
 #ifdef __cplusplus
 }
 #endif

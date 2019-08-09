@@ -874,6 +874,13 @@ SBTargetSetLaunchInfo(SBTargetRef instance, SBLaunchInfoRef launch_info)
     unwrapped->SetLaunchInfo(*reinterpret_cast<SBLaunchInfo *>(launch_info));
 }
 
+SBStructuredDataRef
+SBBTargetGetStatistics(SBTargetRef instance)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetStatistics()));
+}
+
 #ifdef __cplusplus
 }
 #endif
