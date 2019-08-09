@@ -118,6 +118,10 @@ LLDB_API SBThreadRef SBThreadGetExtendedBacktraceThread(SBThreadRef instance, co
 
 LLDB_API unsigned int SBThreadGetExtendedBacktraceOriginatingIndexID(SBThreadRef instance);
 
+LLDB_API SBValueRef SBThreadGetCurrentException(SBThreadRef instance);
+
+LLDB_API SBThreadRef SBThreadGetCurrentExceptionBacktrace(SBThreadRef instance);
+
 LLDB_API bool SBThreadSafeToCallFunctions(SBThreadRef instance);
 
 #ifdef __cplusplus

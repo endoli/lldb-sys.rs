@@ -364,6 +364,20 @@ SBThreadGetExtendedBacktraceOriginatingIndexID(SBThreadRef instance)
     return unwrapped->GetExtendedBacktraceOriginatingIndexID();
 }
 
+SBValueRef
+SBThreadGetCurrentException(SBThreadRef instance)
+{
+    SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+    return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->GetCurrentException()));
+}
+
+SBThreadRef
+SBThreadGetCurrentExceptionBacktrace(SBThreadRef instance)
+{
+    SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+    return reinterpret_cast<SBThreadRef>(new SBThread(unwrapped->GetCurrentExceptionBacktrace()));
+}
+
 bool
 SBThreadSafeToCallFunctions(SBThreadRef instance)
 {

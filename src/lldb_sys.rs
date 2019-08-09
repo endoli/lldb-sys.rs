@@ -3876,6 +3876,8 @@ extern "C" {
     pub fn SBThreadGetExtendedBacktraceOriginatingIndexID(
         instance: SBThreadRef,
     ) -> ::std::os::raw::c_uint;
+    pub fn SBThreadGetCurrentException(instance: SBThreadRef) -> SBValueRef;
+    pub fn SBThreadGetCurrentExceptionBacktrace(instance: SBThreadRef) -> SBThreadRef;
     pub fn SBThreadSafeToCallFunctions(instance: SBThreadRef) -> u8;
     pub fn CreateSBThreadCollection() -> SBThreadCollectionRef;
     pub fn CloneSBThreadCollection(instance: SBThreadCollectionRef) -> SBThreadCollectionRef;
