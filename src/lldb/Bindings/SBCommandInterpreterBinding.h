@@ -112,6 +112,16 @@ LLDB_API int SBCommandInterpreterHandleCompletion2(SBCommandInterpreterRef insta
                                                        uint32_t cursor_pos, int match_start_point,
                                                        int max_return_elements, SBStringListRef matches);
 
+LLDB_API int SBCommandInterpreterHandleCompletionWithDescriptions(
+    SBCommandInterpreterRef instance, const char *current_line,
+    const char *cursor, const char *last_char, int match_start_point,
+    int max_return_elements, SBStringListRef matches, SBStringListRef descriptions);
+
+LLDB_API int SBCommandInterpreterHandleCompletionWithDescriptions2(
+    SBCommandInterpreterRef instance, const char *current_line,
+    uint32_t cursor_pos, int match_start_point,
+    int max_return_elements, SBStringListRef matches, SBStringListRef descriptions);
+
 LLDB_API bool SBCommandInterpreterWasInterrupted(SBCommandInterpreterRef instance);
 
 #ifndef BINDGEN

@@ -1627,6 +1627,25 @@ extern "C" {
         max_return_elements: ::std::os::raw::c_int,
         matches: SBStringListRef,
     ) -> ::std::os::raw::c_int;
+    pub fn SBCommandInterpreterHandleCompletionWithDescriptions(
+        instance: SBCommandInterpreterRef,
+        current_line: *const ::std::os::raw::c_char,
+        cursor: *const ::std::os::raw::c_char,
+        last_char: *const ::std::os::raw::c_char,
+        match_start_point: ::std::os::raw::c_int,
+        max_return_elements: ::std::os::raw::c_int,
+        matches: SBStringListRef,
+        descriptions: SBStringListRef,
+    ) -> ::std::os::raw::c_int;
+    pub fn SBCommandInterpreterHandleCompletionWithDescriptions2(
+        instance: SBCommandInterpreterRef,
+        current_line: *const ::std::os::raw::c_char,
+        cursor_pos: u32,
+        match_start_point: ::std::os::raw::c_int,
+        max_return_elements: ::std::os::raw::c_int,
+        matches: SBStringListRef,
+        descriptions: SBStringListRef,
+    ) -> ::std::os::raw::c_int;
     pub fn SBCommandInterpreterWasInterrupted(instance: SBCommandInterpreterRef) -> u8;
     pub fn SBCommandInterpreterIsActive(instance: SBCommandInterpreterRef) -> u8;
     pub fn SBCommandInterpreterGetIOHandlerControlSequence(

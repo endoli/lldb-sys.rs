@@ -294,6 +294,30 @@ SBCommandInterpreterHandleCompletion2(SBCommandInterpreterRef instance, const ch
                                        *reinterpret_cast<SBStringList *>(matches));
 }
 
+int
+SBCommandInterpreterHandleCompletionWithDescriptions(SBCommandInterpreterRef instance, const char *current_line,
+                                         const char *cursor, const char *last_char, int match_start_point,
+                                         int max_return_elements, SBStringListRef matches, SBStringListRef descriptions)
+{
+    SBCommandInterpreter *unwrapped = reinterpret_cast<SBCommandInterpreter *>(instance);
+    return unwrapped->HandleCompletionWithDescriptions(
+        current_line, cursor, last_char, match_start_point, max_return_elements,
+        *reinterpret_cast<SBStringList *>(matches),
+        *reinterpret_cast<SBStringList *>(descriptions));
+}
+
+int
+SBCommandInterpreterHandleCompletionWithDescriptions2(SBCommandInterpreterRef instance, const char *current_line,
+                                          uint32_t cursor_pos, int match_start_point, int max_return_elements,
+                                          SBStringListRef matches, SBStringListRef descriptions)
+{
+    SBCommandInterpreter *unwrapped = reinterpret_cast<SBCommandInterpreter *>(instance);
+    return unwrapped->HandleCompletionWithDescriptions(
+        current_line, cursor_pos, match_start_point, max_return_elements,
+        *reinterpret_cast<SBStringList *>(matches),
+        *reinterpret_cast<SBStringList *>(descriptions));
+}
+
 bool
 SBCommandInterpreterWasInterrupted(SBCommandInterpreterRef instance)
 {
