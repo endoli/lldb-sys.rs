@@ -56,6 +56,8 @@ LLDB_API const char *SBFrameGetFunctionName(SBFrameRef instance);
 
 LLDB_API const char *SBFrameGetDisplayFunctionName(SBFrameRef instance);
 
+LLDB_API ENUM(LanguageType) SBFrameGuessLanguage(SBFrameRef instance);
+
 LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsArtificial(SBFrameRef instance);

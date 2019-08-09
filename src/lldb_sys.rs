@@ -2379,6 +2379,7 @@ extern "C" {
     pub fn SBFrameGetBlock(instance: SBFrameRef) -> SBBlockRef;
     pub fn SBFrameGetFunctionName(instance: SBFrameRef) -> *const ::std::os::raw::c_char;
     pub fn SBFrameGetDisplayFunctionName(instance: SBFrameRef) -> *const ::std::os::raw::c_char;
+    pub fn SBFrameGuessLanguage(instance: SBFrameRef) -> LanguageType;
     pub fn SBFrameIsInlined(instance: SBFrameRef) -> u8;
     pub fn SBFrameIsArtificial(instance: SBFrameRef) -> u8;
     pub fn SBFrameEvaluateExpression(

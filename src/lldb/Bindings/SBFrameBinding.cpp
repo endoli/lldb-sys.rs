@@ -153,6 +153,13 @@ SBFrameGetDisplayFunctionName(SBFrameRef instance)
     return unwrapped->GetDisplayFunctionName();
 }
 
+lldb::LanguageType
+SBFrameGuessLanguage(SBFrameRef instance)
+{
+    SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
+    return unwrapped->GuessLanguage();
+}
+
 bool
 SBFrameIsInlined(SBFrameRef instance)
 {
