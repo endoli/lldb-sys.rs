@@ -101,6 +101,8 @@ LLDB_API SBFileSpecRef SBModuleGetSymbolFileSpec(SBModuleRef instance);
 
 LLDB_API SBAddressRef SBModuleGetObjectFileHeaderAddress(SBModuleRef instance);
 
+LLDB_API SBAddressRef SBModuleGetObjectFileEntryPointAddress(SBModuleRef instance);
+
 #ifdef __cplusplus
 }
 #endif

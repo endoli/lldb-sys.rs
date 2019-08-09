@@ -296,6 +296,13 @@ SBModuleGetObjectFileHeaderAddress(SBModuleRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetObjectFileHeaderAddress()));
 }
 
+SBAddressRef
+SBModuleGetObjectFileEntryPointAddress(SBModuleRef instance)
+{
+    SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
+    return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetObjectFileEntryPointAddress()));
+}
+
 #ifdef __cplusplus
 }
 #endif

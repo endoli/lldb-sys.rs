@@ -2797,6 +2797,7 @@ extern "C" {
     ) -> ::std::os::raw::c_uint;
     pub fn SBModuleGetSymbolFileSpec(instance: SBModuleRef) -> SBFileSpecRef;
     pub fn SBModuleGetObjectFileHeaderAddress(instance: SBModuleRef) -> SBAddressRef;
+    pub fn SBModuleGetObjectFileEntryPointAddress(instance: SBModuleRef) -> SBAddressRef;
     pub fn CreateSBModuleSpec() -> SBModuleSpecRef;
     pub fn CloneSBModuleSpec(instance: SBModuleSpecRef) -> SBModuleSpecRef;
     pub fn DisposeSBModuleSpec(instance: SBModuleSpecRef);
