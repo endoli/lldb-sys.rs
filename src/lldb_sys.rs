@@ -4567,6 +4567,14 @@ extern "C" {
     pub fn SBVariablesOptionsIsValid(instance: SBVariablesOptionsRef) -> u8;
     pub fn SBVariablesOptionsGetIncludeArguments(instance: SBVariablesOptionsRef) -> u8;
     pub fn SBVariablesOptionsSetIncludeArguments(instance: SBVariablesOptionsRef, arg1: u8);
+    pub fn SBVariablesOptionsGetIncludeRecognizedArguments(
+        instance: SBVariablesOptionsRef,
+        target: SBTargetRef,
+    ) -> u8;
+    pub fn SBVariablesOptionsSetIncludeRecognizedArguments(
+        instance: SBVariablesOptionsRef,
+        arg1: u8,
+    );
     pub fn SBVariablesOptionsGetIncludeLocals(instance: SBVariablesOptionsRef) -> u8;
     pub fn SBVariablesOptionsSetIncludeLocals(instance: SBVariablesOptionsRef, arg1: u8);
     pub fn SBVariablesOptionsGetIncludeStatics(instance: SBVariablesOptionsRef) -> u8;

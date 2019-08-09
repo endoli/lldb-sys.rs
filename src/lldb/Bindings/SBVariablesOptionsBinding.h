@@ -30,6 +30,10 @@ LLDB_API bool SBVariablesOptionsGetIncludeArguments(SBVariablesOptionsRef instan
 
 LLDB_API void SBVariablesOptionsSetIncludeArguments(SBVariablesOptionsRef instance, bool);
 
+LLDB_API bool SBVariablesOptionsGetIncludeRecognizedArguments(SBVariablesOptionsRef instance, SBTargetRef);
+
+LLDB_API void SBVariablesOptionsSetIncludeRecognizedArguments(SBVariablesOptionsRef instance, bool);
+
 LLDB_API bool SBVariablesOptionsGetIncludeLocals(SBVariablesOptionsRef instance);
 
 LLDB_API void SBVariablesOptionsSetIncludeLocals(SBVariablesOptionsRef instance, bool);

@@ -63,6 +63,20 @@ SBVariablesOptionsSetIncludeArguments(SBVariablesOptionsRef instance, bool var0)
 }
 
 bool
+SBVariablesOptionsGetIncludeRecognizedArguments(SBVariablesOptionsRef instance, SBTargetRef target)
+{
+    SBVariablesOptions *unwrapped = reinterpret_cast<SBVariablesOptions *>(instance);
+    return unwrapped->GetIncludeRecognizedArguments(*reinterpret_cast<SBTarget  *>(target));
+}
+
+void
+SBVariablesOptionsSetIncludeRecognizedArguments(SBVariablesOptionsRef instance, bool var0)
+{
+    SBVariablesOptions *unwrapped = reinterpret_cast<SBVariablesOptions *>(instance);
+    unwrapped->SetIncludeRecognizedArguments(var0);
+}
+
+bool
 SBVariablesOptionsGetIncludeLocals(SBVariablesOptionsRef instance)
 {
     SBVariablesOptions *unwrapped = reinterpret_cast<SBVariablesOptions *>(instance);
