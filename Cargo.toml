@@ -11,6 +11,9 @@ homepage = "https://github.com/endoli/lldb-sys.rs"
 repository = "https://github.com/endoli/lldb-sys.rs"
 build = "build.rs"
 
+[features]
+docs-rs = []
+
 [[example]]
 name = "barebones"
 path = "examples/barebones/main.rs"
@@ -21,3 +24,6 @@ bitflags = "1"
 
 [build-dependencies]
 cc = "1"
+
+[package.metadata.docs.rs]
+features = ["docs-rs"]
