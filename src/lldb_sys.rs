@@ -3812,7 +3812,7 @@ extern "C" {
         path: *const ::std::os::raw::c_char,
         strm: SBStreamRef,
     ) -> u8;
-    pub fn SBThreadStepOver(instance: SBThreadRef, stop_other_threads: RunMode);
+    pub fn SBThreadStepOver(instance: SBThreadRef, stop_other_threads: RunMode, error: SBErrorRef);
     pub fn SBThreadStepInto(instance: SBThreadRef, stop_other_threads: RunMode);
     pub fn SBThreadStepInto2(
         instance: SBThreadRef,
@@ -3826,9 +3826,9 @@ extern "C" {
         error: SBErrorRef,
         stop_other_threads: RunMode,
     );
-    pub fn SBThreadStepOut(instance: SBThreadRef);
-    pub fn SBThreadStepOutOfFrame(instance: SBThreadRef, frame: SBFrameRef);
-    pub fn SBThreadStepInstruction(instance: SBThreadRef, step_over: u8);
+    pub fn SBThreadStepOut(instance: SBThreadRef, error: SBErrorRef);
+    pub fn SBThreadStepOutOfFrame(instance: SBThreadRef, frame: SBFrameRef, error: SBErrorRef);
+    pub fn SBThreadStepInstruction(instance: SBThreadRef, step_over: u8, error: SBErrorRef);
     pub fn SBThreadStepOverUntil(
         instance: SBThreadRef,
         frame: SBFrameRef,
@@ -3849,15 +3849,15 @@ extern "C" {
         file_spec: SBFileSpecRef,
         line: u32,
     ) -> SBErrorRef;
-    pub fn SBThreadRunToAddress(instance: SBThreadRef, addr: lldb_addr_t);
+    pub fn SBThreadRunToAddress(instance: SBThreadRef, addr: lldb_addr_t, error: SBErrorRef);
     pub fn SBThreadReturnFromFrame(
         instance: SBThreadRef,
         frame: SBFrameRef,
         return_value: SBValueRef,
     ) -> SBErrorRef;
     pub fn SBThreadUnwindInnermostExpression(instance: SBThreadRef) -> SBErrorRef;
-    pub fn SBThreadSuspend(instance: SBThreadRef) -> u8;
-    pub fn SBThreadResume(instance: SBThreadRef) -> u8;
+    pub fn SBThreadSuspend(instance: SBThreadRef, error: SBErrorRef) -> u8;
+    pub fn SBThreadResume(instance: SBThreadRef, error: SBErrorRef) -> u8;
     pub fn SBThreadIsSuspended(instance: SBThreadRef) -> u8;
     pub fn SBThreadIsStopped(instance: SBThreadRef) -> u8;
     pub fn SBThreadGetNumFrames(instance: SBThreadRef) -> ::std::os::raw::c_uint;

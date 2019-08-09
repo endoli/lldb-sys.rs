@@ -152,10 +152,10 @@ SBThreadGetInfoItemByPathAsString(SBThreadRef instance, const char *path, SBStre
 }
 
 void
-SBThreadStepOver(SBThreadRef instance, lldb::RunMode stop_other_threads)
+SBThreadStepOver(SBThreadRef instance, lldb::RunMode stop_other_threads, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    unwrapped->StepOver(stop_other_threads);
+    unwrapped->StepOver(stop_other_threads, *reinterpret_cast<SBError *>(error));
 }
 
 void
@@ -180,24 +180,24 @@ SBThreadStepInto3(SBThreadRef instance, const char *target_name, uint32_t end_li
 }
 
 void
-SBThreadStepOut(SBThreadRef instance)
+SBThreadStepOut(SBThreadRef instance, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    unwrapped->StepOut();
+    unwrapped->StepOut(*reinterpret_cast<SBError *>(error));
 }
 
 void
-SBThreadStepOutOfFrame(SBThreadRef instance, SBFrameRef frame)
+SBThreadStepOutOfFrame(SBThreadRef instance, SBFrameRef frame, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    unwrapped->StepOutOfFrame(*reinterpret_cast<SBFrame *>(frame));
+    unwrapped->StepOutOfFrame(*reinterpret_cast<SBFrame *>(frame), *reinterpret_cast<SBError *>(error));
 }
 
 void
-SBThreadStepInstruction(SBThreadRef instance, bool step_over)
+SBThreadStepInstruction(SBThreadRef instance, bool step_over, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    unwrapped->StepInstruction(step_over);
+    unwrapped->StepInstruction(step_over, *reinterpret_cast<SBError *>(error));
 }
 
 SBErrorRef
@@ -231,10 +231,10 @@ SBThreadJumpToLine(SBThreadRef instance, SBFileSpecRef file_spec, uint32_t line)
 }
 
 void
-SBThreadRunToAddress(SBThreadRef instance, lldb_addr_t addr)
+SBThreadRunToAddress(SBThreadRef instance, lldb_addr_t addr, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    unwrapped->RunToAddress(addr);
+    unwrapped->RunToAddress(addr, *reinterpret_cast<SBError *>(error));
 }
 
 SBErrorRef
@@ -254,17 +254,17 @@ SBThreadUnwindInnermostExpression(SBThreadRef instance)
 }
 
 bool
-SBThreadSuspend(SBThreadRef instance)
+SBThreadSuspend(SBThreadRef instance, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    return unwrapped->Suspend();
+    return unwrapped->Suspend(*reinterpret_cast<SBError *>(error));
 }
 
 bool
-SBThreadResume(SBThreadRef instance)
+SBThreadResume(SBThreadRef instance, SBErrorRef error)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-    return unwrapped->Resume();
+    return unwrapped->Resume(*reinterpret_cast<SBError *>(error));
 }
 
 bool

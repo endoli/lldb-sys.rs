@@ -54,7 +54,7 @@ LLDB_API unsigned long long SBThreadGetQueueID(SBThreadRef instance);
 
 LLDB_API bool SBThreadGetInfoItemByPathAsString(SBThreadRef instance, const char *path, SBStreamRef strm);
 
-LLDB_API void SBThreadStepOver(SBThreadRef instance, ENUM(RunMode) stop_other_threads);
+LLDB_API void SBThreadStepOver(SBThreadRef instance, ENUM(RunMode) stop_other_threads, SBErrorRef error);
 
 LLDB_API void SBThreadStepInto(SBThreadRef instance, ENUM(RunMode) stop_other_threads);
 
@@ -62,11 +62,11 @@ LLDB_API void SBThreadStepInto2(SBThreadRef instance, const char *target_name, E
 
 LLDB_API void SBThreadStepInto3(SBThreadRef instance, const char *target_name, uint32_t end_line, SBErrorRef error, ENUM(RunMode) stop_other_threads);
 
-LLDB_API void SBThreadStepOut(SBThreadRef instance);
+LLDB_API void SBThreadStepOut(SBThreadRef instance, SBErrorRef error);
 
-LLDB_API void SBThreadStepOutOfFrame(SBThreadRef instance, SBFrameRef frame);
+LLDB_API void SBThreadStepOutOfFrame(SBThreadRef instance, SBFrameRef frame, SBErrorRef error);
 
-LLDB_API void SBThreadStepInstruction(SBThreadRef instance, bool step_over);
+LLDB_API void SBThreadStepInstruction(SBThreadRef instance, bool step_over, SBErrorRef error);
 
 LLDB_API SBErrorRef
 SBThreadStepOverUntil(SBThreadRef instance, SBFrameRef frame, SBFileSpecRef file_spec, uint32_t line);
@@ -79,16 +79,16 @@ SBThreadStepUsingScriptedThreadPlan2(SBThreadRef instance, const char *script_cl
 
 LLDB_API SBErrorRef SBThreadJumpToLine(SBThreadRef instance, SBFileSpecRef file_spec, uint32_t line);
 
-LLDB_API void SBThreadRunToAddress(SBThreadRef instance, lldb_addr_t addr);
+LLDB_API void SBThreadRunToAddress(SBThreadRef instance, lldb_addr_t addr, SBErrorRef error);
 
 LLDB_API SBErrorRef
 SBThreadReturnFromFrame(SBThreadRef instance, SBFrameRef frame, SBValueRef return_value);
 
 LLDB_API SBErrorRef SBThreadUnwindInnermostExpression(SBThreadRef instance);
 
-LLDB_API bool SBThreadSuspend(SBThreadRef instance);
+LLDB_API bool SBThreadSuspend(SBThreadRef instance, SBErrorRef error);
 
-LLDB_API bool SBThreadResume(SBThreadRef instance);
+LLDB_API bool SBThreadResume(SBThreadRef instance, SBErrorRef error);
 
 LLDB_API bool SBThreadIsSuspended(SBThreadRef instance);
 
