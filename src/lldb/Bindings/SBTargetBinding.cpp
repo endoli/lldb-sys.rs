@@ -121,10 +121,10 @@ SBTargetLaunch2(SBTargetRef instance, SBLaunchInfoRef launch_info, SBErrorRef er
 }
 
 SBProcessRef
-SBTargetLoadCore(SBTargetRef instance, const char *core_file)
+SBTargetLoadCore(SBTargetRef instance, const char *core_file, SBErrorRef error)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
-    return reinterpret_cast<SBProcessRef>(new SBProcess(unwrapped->LoadCore(core_file)));
+    return reinterpret_cast<SBProcessRef>(new SBProcess(unwrapped->LoadCore(core_file, *reinterpret_cast<SBError *>(error))));
 }
 
 SBProcessRef

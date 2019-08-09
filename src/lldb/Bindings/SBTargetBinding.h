@@ -51,7 +51,7 @@ SBTargetLaunchSimple(SBTargetRef instance, const char **argv, const char **envp,
 LLDB_API SBProcessRef
 SBTargetLaunch2(SBTargetRef instance, SBLaunchInfoRef launch_info, SBErrorRef error);
 
-LLDB_API SBProcessRef SBTargetLoadCore(SBTargetRef instance, const char *core_file);
+LLDB_API SBProcessRef SBTargetLoadCore(SBTargetRef instance, const char *core_file, SBErrorRef error);
 
 LLDB_API SBProcessRef
 SBTargetAttach(SBTargetRef instance, SBAttachInfoRef attach_info, SBErrorRef error);

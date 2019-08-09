@@ -3416,6 +3416,7 @@ extern "C" {
     pub fn SBTargetLoadCore(
         instance: SBTargetRef,
         core_file: *const ::std::os::raw::c_char,
+        error: SBErrorRef,
     ) -> SBProcessRef;
     pub fn SBTargetAttach(
         instance: SBTargetRef,
