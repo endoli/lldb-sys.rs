@@ -3569,6 +3569,14 @@ extern "C" {
         offset: lldb_addr_t,
         module_list: SBFileSpecListRef,
     ) -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByLocation5(
+        instance: SBTargetRef,
+        file_spec: SBFileSpecRef,
+        line: u32,
+        column: u32,
+        offset: lldb_addr_t,
+        module_list: SBFileSpecListRef,
+    ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByName(
         instance: SBTargetRef,
         symbol_name: *const ::std::os::raw::c_char,

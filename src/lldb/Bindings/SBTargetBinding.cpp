@@ -405,6 +405,16 @@ SBTargetBreakpointCreateByLocation4(SBTargetRef instance, SBFileSpecRef file_spe
 }
 
 SBBreakpointRef
+SBTargetBreakpointCreateByLocation5(SBTargetRef instance, SBFileSpecRef file_spec,
+                                    uint32_t line, uint32_t column, lldb_addr_t offset,
+                                    SBFileSpecListRef module_list)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(
+        new SBBreakpoint(unwrapped->BreakpointCreateByLocation(*reinterpret_cast<SBFileSpec *>(file_spec), line, column, offset, *reinterpret_cast<SBFileSpecList *>(module_list))));
+}
+
+SBBreakpointRef
 SBTargetBreakpointCreateByName(SBTargetRef instance, const char *symbol_name, const char *module_name)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
