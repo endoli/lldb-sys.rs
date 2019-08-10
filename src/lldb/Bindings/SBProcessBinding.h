@@ -156,6 +156,11 @@ LLDB_API unsigned int SBProcessGetNumSupportedHardwareWatchpoints(SBProcessRef i
 LLDB_API unsigned int SBProcessLoadImage(SBProcessRef instance, SBFileSpecRef image_spec,
                                          SBErrorRef error);
 
+LLDB_API uint32_t SBProcessLoadImageUsingPaths(
+    SBProcessRef instance, SBFileSpecRef image_spec,
+    SBStringListRef paths, SBFileSpecRef loaded_path,
+    SBErrorRef error);
+
 LLDB_API SBErrorRef SBProcessUnloadImage(SBProcessRef instance, uint32_t image_token);
 
 LLDB_API SBErrorRef SBProcessSendEventData(SBProcessRef instance, const char *data);

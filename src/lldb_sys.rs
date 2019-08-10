@@ -3140,6 +3140,13 @@ extern "C" {
         image_spec: SBFileSpecRef,
         error: SBErrorRef,
     ) -> ::std::os::raw::c_uint;
+    pub fn SBProcessLoadImageUsingPaths(
+        instance: SBProcessRef,
+        image_spec: SBFileSpecRef,
+        paths: SBStringListRef,
+        loaded_path: SBFileSpecRef,
+        error: SBErrorRef,
+    ) -> u32;
     pub fn SBProcessUnloadImage(instance: SBProcessRef, image_token: u32) -> SBErrorRef;
     pub fn SBProcessSendEventData(
         instance: SBProcessRef,

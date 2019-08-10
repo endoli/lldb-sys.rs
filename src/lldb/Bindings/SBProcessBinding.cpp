@@ -461,6 +461,17 @@ SBProcessLoadImage(SBProcessRef instance, SBFileSpecRef image_spec, SBErrorRef e
     return unwrapped->LoadImage(*reinterpret_cast<SBFileSpec *>(image_spec), *reinterpret_cast<SBError *>(error));
 }
 
+uint32_t
+SBProcessLoadImageUsingPaths(SBProcessRef instance, SBFileSpecRef image_spec, SBStringListRef paths, SBFileSpecRef loaded_path, SBErrorRef error)
+{
+    SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+    return unwrapped->LoadImageUsingPaths(
+        *reinterpret_cast<SBFileSpec *>(image_spec),
+        *reinterpret_cast<SBStringList *>(paths),
+        *reinterpret_cast<SBFileSpec *>(loaded_path),
+        *reinterpret_cast<SBError *>(error));
+}
+
 SBErrorRef
 SBProcessUnloadImage(SBProcessRef instance, uint32_t image_token)
 {
