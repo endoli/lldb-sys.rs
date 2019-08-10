@@ -83,6 +83,13 @@ SBStructuredDataGetSize(SBStructuredDataRef instance)
     return unwrapped->GetSize();
 }
 
+bool
+SBStructuredDataGetKeys(SBStructuredDataRef instance, SBStringListRef keys)
+{
+    SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
+    return unwrapped->GetKeys(*reinterpret_cast<SBStringList *>(keys));
+}
+
 SBStructuredDataRef
 SBStructuredDataGetValueForKey(SBStructuredDataRef instance, const char *key)
 {

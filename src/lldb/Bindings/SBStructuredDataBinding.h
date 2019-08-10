@@ -36,6 +36,8 @@ LLDB_API StructuredDataType SBStructureDataGetType(SBStructureDataRef instance);
 
 LLDB_API size_t SBStructuredDataGetSize(SBStructuredDataRef instance);
 
+LLDB_API bool SBStructuredDataGetKeys(SBStructuredDataRef instance, SBStringListRef keys);
+
 LLDB_API SBStructuredDataRef SBStructuredDataGetValueForKey(SBStructureDataRef instance, const char *key);
 
 LLDB_API SBStructuredDataRef SBStructuredDataGetItemAtIndex(SBStructuredDataRef instance, size_t idx);

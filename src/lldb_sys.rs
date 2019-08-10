@@ -3309,6 +3309,7 @@ extern "C" {
     ) -> SBErrorRef;
     pub fn SBStructuredDataGetType(instance: SBStructuredDataRef) -> StructuredDataType;
     pub fn SBStructuredDataGetSize(instance: SBStructuredDataRef) -> size_t;
+    pub fn SBStructuredDataGetKeys(instance: SBStructuredDataRef, keys: SBStringListRef) -> bool;
     pub fn SBStructuredDataGetValueForKey(
         instance: SBStructuredDataRef,
         key: *const ::std::os::raw::c_char,
