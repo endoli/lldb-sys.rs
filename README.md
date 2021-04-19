@@ -18,7 +18,7 @@ lldb-sys = "0.0.21"
 
 ### Linux
 
-Install the `lldb` and `lldb-dev` packages for your platform so that
+Install the `lldb` and `liblldb-dev` packages for your platform so that
 you have both LLDB itself installed as well as the headers and
 other support files required.
 
