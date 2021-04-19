@@ -22,13 +22,6 @@ CreateSBCommandReturnObject()
     return reinterpret_cast<SBCommandReturnObjectRef>(new SBCommandReturnObject());
 }
 
-void *
-SBCommandReturnObjectRelease(SBCommandReturnObjectRef instance)
-{
-    SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
-    return unwrapped->Release();
-}
-
 SBCommandReturnObjectRef
 CloneSBCommandReturnObject(SBCommandReturnObjectRef instance)
 {

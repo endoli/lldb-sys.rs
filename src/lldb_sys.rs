@@ -1685,9 +1685,6 @@ extern "C" {
     pub fn CloneSBCommand(instance: SBCommandRef) -> SBCommandRef;
     pub fn DisposeSBCommand(instance: SBCommandRef);
     pub fn CreateSBCommandReturnObject() -> SBCommandReturnObjectRef;
-    pub fn SBCommandReturnObjectRelease(
-        instance: SBCommandReturnObjectRef,
-    ) -> *mut ::std::os::raw::c_void;
     pub fn CloneSBCommandReturnObject(
         instance: SBCommandReturnObjectRef,
     ) -> SBCommandReturnObjectRef;
