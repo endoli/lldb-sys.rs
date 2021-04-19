@@ -66,8 +66,6 @@ LLDB_API const char *SBValueGetSummary2(SBValueRef instance, SBStreamRef stream,
 
 LLDB_API const char *SBValueGetObjectDescription(SBValueRef instance);
 
-LLDB_API const char *SBValueGetTypeValidatorResult(SBValueRef instance);
-
 LLDB_API SBValueRef SBValueGetDynamicValue(SBValueRef instance, ENUM(DynamicValueType) use_dynamic);
 
 LLDB_API SBValueRef SBValueGetStaticValue(SBValueRef instance);

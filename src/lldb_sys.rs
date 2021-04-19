@@ -4433,7 +4433,6 @@ extern "C" {
         options: SBTypeSummaryOptionsRef,
     ) -> *const ::std::os::raw::c_char;
     pub fn SBValueGetObjectDescription(instance: SBValueRef) -> *const ::std::os::raw::c_char;
-    pub fn SBValueGetTypeValidatorResult(instance: SBValueRef) -> *const ::std::os::raw::c_char;
     pub fn SBValueGetDynamicValue(
         instance: SBValueRef,
         use_dynamic: DynamicValueType,

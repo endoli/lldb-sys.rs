@@ -186,13 +186,6 @@ SBValueGetObjectDescription(SBValueRef instance)
     return unwrapped->GetObjectDescription();
 }
 
-const char *
-SBValueGetTypeValidatorResult(SBValueRef instance)
-{
-    SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
-    return unwrapped->GetTypeValidatorResult();
-}
-
 SBValueRef
 SBValueGetDynamicValue(SBValueRef instance, lldb::DynamicValueType use_dynamic)
 {
