@@ -165,6 +165,13 @@ SBAddressGetLineEntry(SBAddressRef instance)
     return reinterpret_cast<SBLineEntryRef>(new SBLineEntry(unwrapped->GetLineEntry()));
 }
 
+bool SBAddressIsEqual(SBAddressRef instance, SBAddressRef other)
+{
+    SBAddress *instance_unwrapped = reinterpret_cast<SBAddress *>(instance);
+    SBAddress *other_unwrapped = reinterpret_cast<SBAddress *>(other);
+    return *instance_unwrapped == *other_unwrapped;
+}
+
 #ifdef __cplusplus
 }
 #endif
