@@ -1123,6 +1123,7 @@ extern "C" {
     pub fn SBAddressGetBlock(instance: SBAddressRef) -> SBBlockRef;
     pub fn SBAddressGetSymbol(instance: SBAddressRef) -> SBSymbolRef;
     pub fn SBAddressGetLineEntry(instance: SBAddressRef) -> SBLineEntryRef;
+    pub fn SBAddressIsEqual(instance: SBAddressRef, other: SBAddressRef) -> bool;
     pub fn CreateSBAttachInfo() -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo2(pid: lldb_pid_t) -> SBAttachInfoRef;
     pub fn CreateSBAttachInfo3(

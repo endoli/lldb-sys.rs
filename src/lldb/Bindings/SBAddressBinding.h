@@ -60,6 +60,8 @@ LLDB_API SBSymbolRef SBAddressGetSymbol(SBAddressRef instance);
 
 LLDB_API SBLineEntryRef SBAddressGetLineEntry(SBAddressRef instance);
 
+LLDB_API bool SBAddressIsEqual(SBAddressRef instance, SBAddressRef other);
+
 #ifdef __cplusplus
 }
 #endif
