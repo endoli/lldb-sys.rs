@@ -9,6 +9,7 @@
 
 #include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/API/SBCommandInterpreterRunOptions.h"
 
 using namespace lldb;
 
