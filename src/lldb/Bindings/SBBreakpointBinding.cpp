@@ -157,6 +157,20 @@ SBBreakpointGetCondition(SBBreakpointRef instance)
 }
 
 void
+SBBreakpointSetAutoContinue(SBBreakpointRef instance, bool auto_continue)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    unwrapped->SetAutoContinue(auto_continue);
+}
+
+bool
+SBBreakpointGetAutoContinue(SBBreakpointRef instance)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    return unwrapped->GetAutoContinue();
+}
+
+void
 SBBreakpointSetThreadID(SBBreakpointRef instance, lldb_tid_t sb_thread_id)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -220,11 +234,11 @@ SBBreakpointSetCallback(SBBreakpointRef instance, lldb::SBBreakpointHitCallback 
     unwrapped->SetCallback(callback, baton);
 }
 
-void
-SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance, const char *callback_function_name)
+SBErrorRef
+SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance, const char *callback_function_name, SBStructuredDataRef extra_args)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
-    unwrapped->SetScriptCallbackFunction(callback_function_name);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SetScriptCallbackFunction(callback_function_name, *reinterpret_cast<SBStructuredData *>(extra_args))));
 }
 
 void
@@ -334,6 +348,20 @@ unsigned int
 SBBreakpointGetNumBreakpointLocationsFromEvent(SBEventRef event_sp)
 {
     return lldb::SBBreakpoint::GetNumBreakpointLocationsFromEvent(*reinterpret_cast<SBEvent *>(event_sp));
+}
+
+bool
+SBBreakpointIsHardware(SBBreakpointRef instance)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    return unwrapped->IsHardware();
+}
+
+SBErrorRef
+SBBreakpointAddLocation(SBBreakpointRef instance, SBAddressRef address)
+{
+    SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->AddLocation(*reinterpret_cast<SBAddress *>(address))));
 }
 
 #ifdef __cplusplus

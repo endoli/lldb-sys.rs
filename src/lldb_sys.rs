@@ -1246,6 +1246,8 @@ extern "C" {
         condition: *const ::std::os::raw::c_char,
     );
     pub fn SBBreakpointGetCondition(instance: SBBreakpointRef) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointSetAutoContinue(instance: SBBreakpointRef, auto_continue: u8);
+    pub fn SBBreakpointGetAutoContinue(instance: SBBreakpointRef) -> u8;
     pub fn SBBreakpointSetThreadID(instance: SBBreakpointRef, sb_thread_id: lldb_tid_t);
     pub fn SBBreakpointGetThreadID(instance: SBBreakpointRef) -> ::std::os::raw::c_ulonglong;
     pub fn SBBreakpointSetThreadIndex(instance: SBBreakpointRef, index: u32);
@@ -1263,7 +1265,8 @@ extern "C" {
     pub fn SBBreakpointSetScriptCallbackFunction(
         instance: SBBreakpointRef,
         callback_function_name: *const ::std::os::raw::c_char,
-    );
+        extra_args: SBStructuredDataRef,
+    ) -> SBErrorRef;
     pub fn SBBreakpointSetCommandLineCommands(instance: SBBreakpointRef, commands: SBStringListRef);
     pub fn SBBreakpointGetCommandLineCommands(
         instance: SBBreakpointRef,
@@ -1305,6 +1308,8 @@ extern "C" {
     pub fn SBBreakpointGetNumBreakpointLocationsFromEvent(
         event_sp: SBEventRef,
     ) -> ::std::os::raw::c_uint;
+    pub fn SBBreakpointIsHardware(instance: SBBreakpointRef) -> u8;
+    pub fn SBBreakpointAddLocation(instance: SBBreakpointRef, address: SBAddressRef) -> SBErrorRef;
     pub fn CreateSBBreakpointList(target: SBTargetRef) -> SBBreakpointListRef;
     pub fn CloneSBBreakpointList(instance: SBBreakpointListRef) -> SBBreakpointListRef;
     pub fn DisposeSBBreakpointList(instance: SBBreakpointListRef);

@@ -62,6 +62,10 @@ LLDB_API const char *SBBreakpointGetCondition(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetThreadID(SBBreakpointRef instance, lldb_tid_t sb_thread_id);
 
+LLDB_API void SBBreakpointSetAutoContinue(SBBreakpointRef instance, bool auto_continue);
+
+LLDB_API bool SBBreakpointGetAutoContinue(SBBreakpointRef instance);
+
 LLDB_API unsigned long long SBBreakpointGetThreadID(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetThreadIndex(SBBreakpointRef instance, uint32_t index);
@@ -81,8 +85,10 @@ LLDB_API void SBBreakpointSetCallback(SBBreakpointRef instance,
                                           lldb::SBBreakpointHitCallback callback, void *baton);
 #endif // BINDGEN
 
-LLDB_API void SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance,
-                                                        const char *callback_function_name);
+LLDB_API SBErrorRef
+SBBreakpointSetScriptCallbackFunction(SBBreakpointRef instance,
+                                      const char *callback_function_name,
+                                      SBStructuredDataRef extra_args);
 
 LLDB_API void SBBreakpointSetCommandLineCommands(SBBreakpointRef instance, SBStringListRef commands);
 
@@ -117,6 +123,10 @@ LLDB_API SBBreakpointLocationRef
 SBBreakpointGetBreakpointLocationAtIndexFromEvent(SBEventRef event, uint32_t loc_idx);
 
 LLDB_API unsigned int SBBreakpointGetNumBreakpointLocationsFromEvent(SBEventRef event_sp);
+
+LLDB_API bool SBBreakpointIsHardware(SBBreakpointRef instance);
+
+LLDB_API SBErrorRef SBBreakpointAddLocation(SBBreakpointRef instance, SBAddressRef address);
 
 #ifdef __cplusplus
 }
