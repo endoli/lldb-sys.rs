@@ -36,6 +36,12 @@ LLDB_API const char *SBTargetGetBroadcasterClassName(void);
 
 LLDB_API SBProcessRef SBTargetGetProcess(SBTargetRef instance);
 
+LLDB_API void SBTargetSetCollectingStats(SBTargetRef instance, bool v);
+
+LLDB_API bool SBTargetGetCollectingStats(SBTargetRef instance);
+
+LLDB_API SBStructuredDataRef SBTargetGetStatistics(SBTargetRef instance);
+
 LLDB_API SBPlatformRef SBTargetGetPlatform(SBTargetRef instance);
 
 LLDB_API SBErrorRef SBTargetInstall(SBTargetRef instance);
@@ -67,6 +73,8 @@ LLDB_API SBProcessRef SBTargetConnectRemote(SBTargetRef instance, SBListenerRef 
 
 LLDB_API SBFileSpecRef SBTargetGetExecutable(SBTargetRef instance);
 
+LLDB_API void SBTargetAppendImageSearchPath(SBTargetRef instance, const char *from, const char *to, SBErrorRef error);
+
 LLDB_API bool SBTargetAddModule(SBTargetRef instance, SBModuleRef module);
 
 LLDB_API SBModuleRef SBTargetAddModuleSpec(SBTargetRef instance, SBModuleSpecRef module_spec);
@@ -80,6 +88,8 @@ LLDB_API bool SBTargetRemoveModule(SBTargetRef instance, SBModuleRef module);
 LLDB_API SBDebuggerRef SBTargetGetDebugger(SBTargetRef instance);
 
 LLDB_API SBModuleRef SBTargetFindModule(SBTargetRef instance, SBFileSpecRef file_spec);
+
+LLDB_API SBSymbolContextListRef SBTargetFindCompileUnits(SBTargetRef instance, SBFileSpecRef file_spec);
 
 LLDB_API ENUM(ByteOrder) SBTargetGetByteOrder(SBTargetRef instance);
 
@@ -214,6 +224,13 @@ SBTargetBreakpointCreateByAddress(SBTargetRef instance, lldb_addr_t address);
 LLDB_API SBBreakpointRef
 SBTargetBreakpointCreateBySBAddress(SBTargetRef instance, SBAddressRef address);
 
+LLDB_API SBBreakpointRef
+SBTargetBreakpointCreateFromScript(SBTargetRef instance,
+                                   const char *class_name,
+                                   SBStructuredDataRef extra_args,
+                                   SBFileSpecListRef module_list,
+                                   SBFileSpecListRef file_list,
+                                   bool request_hardware);
 LLDB_API SBErrorRef
 SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_file,
                                   SBBreakpointListRef new_bps);
@@ -240,6 +257,10 @@ LLDB_API SBBreakpointRef SBTargetFindBreakpointByID(SBTargetRef instance, int br
 
 LLDB_API bool SBTargetFindBreakpointsByName(SBTargetRef instance, const char *name,
                                             SBBreakpointListRef bkpt_list);
+
+LLDB_API void SBTargetGetBreakpointNames(SBTargetRef instance, SBStringListRef names);
+
+LLDB_API void SBTargetDeleteBreakpointName(SBTargetRef instance, const char *name);
 
 LLDB_API bool SBTargetEnableAllBreakpoints(SBTargetRef instance);
 
@@ -317,8 +338,6 @@ LLDB_API lldb_addr_t SBTargetGetStackRedZoneSize(SBTargetRef instance);
 LLDB_API SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance);
 
 LLDB_API void SBTargetSetLaunchInfo(SBTargetRef instance, SBLaunchInfoRef launch_info);
-
-LLDB_API SBStructuredDataRef SBTargetGetStatistics(SBTargetRef instance);
 
 #ifdef __cplusplus
 }

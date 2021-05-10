@@ -3420,6 +3420,9 @@ extern "C" {
     pub fn SBTargetGetModuleAtIndexFromEvent(idx: u32, event: SBEventRef) -> SBModuleRef;
     pub fn SBTargetGetBroadcasterClassName() -> *const ::std::os::raw::c_char;
     pub fn SBTargetGetProcess(instance: SBTargetRef) -> SBProcessRef;
+    pub fn SBTargetSetCollectingStats(instance: SBTargetRef, v: bool);
+    pub fn SBTargetGetCollectingStats(instance: SBTargetRef) -> bool;
+    pub fn SBTargetGetStatistics(instance: SBTargetRef) -> SBStructuredDataRef;
     pub fn SBTargetGetPlatform(instance: SBTargetRef) -> SBPlatformRef;
     pub fn SBTargetInstall(instance: SBTargetRef) -> SBErrorRef;
     pub fn SBTargetLaunch(
@@ -3477,6 +3480,12 @@ extern "C" {
         error: SBErrorRef,
     ) -> SBProcessRef;
     pub fn SBTargetGetExecutable(instance: SBTargetRef) -> SBFileSpecRef;
+    pub fn SBTargetAppendImageSearchPath(
+        instance: SBTargetRef,
+        from: *const ::std::os::raw::c_char,
+        to: *const ::std::os::raw::c_char,
+        error: SBErrorRef,
+    );
     pub fn SBTargetAddModule(instance: SBTargetRef, module: SBModuleRef) -> u8;
     pub fn SBTargetAddModuleSpec(
         instance: SBTargetRef,
@@ -3487,6 +3496,10 @@ extern "C" {
     pub fn SBTargetRemoveModule(instance: SBTargetRef, module: SBModuleRef) -> u8;
     pub fn SBTargetGetDebugger(instance: SBTargetRef) -> SBDebuggerRef;
     pub fn SBTargetFindModule(instance: SBTargetRef, file_spec: SBFileSpecRef) -> SBModuleRef;
+    pub fn SBTargetFindCompileUnits(
+        instance: SBTargetRef,
+        file_spec: SBFileSpecRef,
+    ) -> SBSymbolContextListRef;
     pub fn SBTargetGetByteOrder(instance: SBTargetRef) -> ByteOrder;
     pub fn SBTargetGetAddressByteSize(instance: SBTargetRef) -> ::std::os::raw::c_uint;
     pub fn SBTargetGetTriple(instance: SBTargetRef) -> *const ::std::os::raw::c_char;
@@ -3684,6 +3697,14 @@ extern "C" {
         instance: SBTargetRef,
         address: SBAddressRef,
     ) -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateFromScript(
+        instance: SBTargetRef,
+        class_name: *const ::std::os::raw::c_char,
+        extra_args: SBStructuredDataRef,
+        module_list: SBFileSpecListRef,
+        file_list: SBFileSpecListRef,
+        request_hardware: bool,
+    ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointsCreateFromFile(
         instance: SBTargetRef,
         source_file: SBFileSpecRef,
@@ -3717,6 +3738,8 @@ extern "C" {
         name: *const ::std::os::raw::c_char,
         bkpt_list: SBBreakpointListRef,
     ) -> u8;
+    pub fn SBTargetGetBreakpointNames(instance: SBTargetRef, names: SBStringListRef);
+    pub fn SBTargetDeleteBreakpointName(instance: SBTargetRef, name: *const ::std::os::raw::c_char);
     pub fn SBTargetEnableAllBreakpoints(instance: SBTargetRef) -> u8;
     pub fn SBTargetDisableAllBreakpoints(instance: SBTargetRef) -> u8;
     pub fn SBTargetDeleteAllBreakpoints(instance: SBTargetRef) -> u8;
@@ -3821,7 +3844,6 @@ extern "C" {
     pub fn SBTargetGetStackRedZoneSize(instance: SBTargetRef) -> lldb_addr_t;
     pub fn SBTargetGetLaunchInfo(instance: SBTargetRef) -> SBLaunchInfoRef;
     pub fn SBTargetSetLaunchInfo(instance: SBTargetRef, launch_info: SBLaunchInfoRef);
-    pub fn SBTargetGetStatistics(instance: SBTargetRef) -> SBStructuredDataRef;
     pub fn SBThreadGetBroadcasterClassName() -> *const ::std::os::raw::c_char;
     pub fn CreateSBThread() -> SBThreadRef;
     pub fn CloneSBThread(instance: SBThreadRef) -> SBThreadRef;

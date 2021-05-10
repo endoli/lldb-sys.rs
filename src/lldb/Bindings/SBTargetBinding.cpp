@@ -80,6 +80,27 @@ SBTargetGetProcess(SBTargetRef instance)
     return reinterpret_cast<SBProcessRef>(new SBProcess(unwrapped->GetProcess()));
 }
 
+void
+SBTargetSetCollectingStats(SBTargetRef instance, bool v)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    unwrapped->SetCollectingStats(v);
+}
+
+bool
+SBTargetGetCollectingStats(SBTargetRef instance)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return unwrapped->GetCollectingStats();
+}
+
+SBStructuredDataRef
+SBBTargetGetStatistics(SBTargetRef instance)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetStatistics()));
+}
+
 SBPlatformRef
 SBTargetGetPlatform(SBTargetRef instance)
 {
@@ -169,6 +190,14 @@ SBTargetGetExecutable(SBTargetRef instance)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetExecutable()));
 }
 
+void
+SBTargetAppendImageSearchPath(SBTargetRef instance, const char *from,
+                              const char *to, SBErrorRef error)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    unwrapped->AppendImageSearchPath(from, to, *reinterpret_cast<SBError *>(error));
+}
+
 bool
 SBTargetAddModule(SBTargetRef instance, SBModuleRef module)
 {
@@ -218,6 +247,14 @@ SBTargetFindModule(SBTargetRef instance, SBFileSpecRef file_spec)
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBModuleRef>(
         new SBModule(unwrapped->FindModule(*reinterpret_cast<SBFileSpec *>(file_spec))));
+}
+
+SBSymbolContextListRef
+SBTargetFindCompileUnits(SBTargetRef instance, SBFileSpecRef file_spec)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBSymbolContextListRef>(
+        new SBSymbolContextList(unwrapped->FindCompileUnits(*reinterpret_cast<SBFileSpec *>(file_spec))));
 }
 
 enum lldb::ByteOrder
@@ -569,6 +606,23 @@ SBTargetBreakpointCreateBySBAddress(SBTargetRef instance, SBAddressRef address)
             unwrapped->BreakpointCreateBySBAddress(*reinterpret_cast<SBAddress *>(address))));
 }
 
+SBBreakpointRef
+SBTargetBreakpointCreateFromScript(SBTargetRef instance,
+                                   const char *class_name,
+                                   SBStructuredDataRef extra_args,
+                                   SBFileSpecListRef module_list,
+                                   SBFileSpecListRef file_list,
+                                   bool request_hardware)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(
+        unwrapped->BreakpointCreateFromScript(class_name,
+                                              *reinterpret_cast<SBStructuredData *>(extra_args),
+                                              *reinterpret_cast<SBFileSpecList *>(module_list),
+                                              *reinterpret_cast<SBFileSpecList *>(file_list),
+                                              request_hardware)));
+}
+
 LLDB_API SBErrorRef
 SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_file,
                                   SBBreakpointListRef new_bps)
@@ -649,6 +703,20 @@ SBTargetFindBreakpointsByName(SBTargetRef instance,
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return unwrapped->FindBreakpointsByName(name, *reinterpret_cast<SBBreakpointList *>(bkpt_list));
+}
+
+void
+SBTargetGetBreakpointNames(SBTargetRef instance, SBStringListRef names)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    unwrapped->GetBreakpointNames(*reinterpret_cast<SBStringList *>(names));
+}
+
+void
+SBTargetDeleteBreakpointName(SBTargetRef instance, const char *name)
+{
+    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+    unwrapped->DeleteBreakpointName(name);
 }
 
 bool
@@ -882,13 +950,6 @@ SBTargetSetLaunchInfo(SBTargetRef instance, SBLaunchInfoRef launch_info)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     unwrapped->SetLaunchInfo(*reinterpret_cast<SBLaunchInfo *>(launch_info));
-}
-
-SBStructuredDataRef
-SBBTargetGetStatistics(SBTargetRef instance)
-{
-    SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
-    return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(unwrapped->GetStatistics()));
 }
 
 #ifdef __cplusplus
