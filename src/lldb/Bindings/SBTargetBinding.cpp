@@ -623,7 +623,7 @@ SBTargetBreakpointCreateFromScript(SBTargetRef instance,
                                               request_hardware)));
 }
 
-LLDB_API SBErrorRef
+SBErrorRef
 SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_file,
                                   SBBreakpointListRef new_bps)
 {
@@ -634,7 +634,7 @@ SBTargetBreakpointsCreateFromFile(SBTargetRef instance, SBFileSpecRef source_fil
                                                  *reinterpret_cast<SBBreakpointList *>(new_bps))));
 }
 
-LLDB_API SBErrorRef
+SBErrorRef
 SBTargetBreakpointsCreateFromFile2(SBTargetRef instance, SBFileSpecRef source_file,
                                   SBStringListRef matching_names,
                                   SBBreakpointListRef new_bps)
