@@ -572,7 +572,7 @@ SBDebuggerSetTerminalWidth(SBDebuggerRef instance, uint32_t term_width)
     unwrapped->SetTerminalWidth(term_width);
 }
 
-unsigned long long
+lldb_user_id_t
 SBDebuggerGetID(SBDebuggerRef instance)
 {
     SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);

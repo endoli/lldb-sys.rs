@@ -28,7 +28,7 @@ LLDB_API void SBValueClear(SBValueRef instance);
 
 LLDB_API SBErrorRef SBValueGetError(SBValueRef instance);
 
-LLDB_API unsigned long long SBValueGetID(SBValueRef instance);
+LLDB_API lldb_user_id_t SBValueGetID(SBValueRef instance);
 
 LLDB_API const char *SBValueGetName(SBValueRef instance);
 
@@ -36,7 +36,7 @@ LLDB_API const char *SBValueGetTypeName(SBValueRef instance);
 
 LLDB_API const char *SBValueGetDisplayTypeName(SBValueRef instance);
 
-LLDB_API unsigned int SBValueGetByteSize(SBValueRef instance);
+LLDB_API size_t SBValueGetByteSize(SBValueRef instance);
 
 LLDB_API bool SBValueIsInScope(SBValueRef instance);
 
@@ -121,7 +121,7 @@ SBValueCreateValueFromData(SBValueRef instance, const char *name, SBDataRef data
 LLDB_API SBValueRef SBValueGetChildAtIndex2(SBValueRef instance, uint32_t idx,
                                             ENUM(DynamicValueType) use_dynamic, bool can_create_synthetic);
 
-LLDB_API unsigned int SBValueGetIndexOfChildWithName(SBValueRef instance, const char *name);
+LLDB_API uint32_t SBValueGetIndexOfChildWithName(SBValueRef instance, const char *name);
 
 LLDB_API SBValueRef SBValueGetChildMemberWithName(SBValueRef instance, const char *name);
 
@@ -132,7 +132,7 @@ LLDB_API SBValueRef SBValueGetValueForExpressionPath(SBValueRef instance, const 
 
 LLDB_API SBValueRef SBValueAddressOf(SBValueRef instance);
 
-LLDB_API unsigned long long SBValueGetLoadAddress(SBValueRef instance);
+LLDB_API lldb_addr_t SBValueGetLoadAddress(SBValueRef instance);
 
 LLDB_API SBAddressRef SBValueGetAddress(SBValueRef instance);
 
@@ -148,7 +148,7 @@ LLDB_API bool SBValueMightHaveChildren(SBValueRef instance);
 
 LLDB_API bool SBValueIsRuntimeSupportValue(SBValueRef instance);
 
-LLDB_API unsigned int SBValueGetNumChildren(SBValueRef instance);
+LLDB_API uint32_t SBValueGetNumChildren(SBValueRef instance);
 
 LLDB_API void *SBValueGetOpaqueType(SBValueRef instance);
 

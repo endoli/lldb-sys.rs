@@ -42,7 +42,7 @@ LLDB_API unsigned int SBThreadGetStopDescription(SBThreadRef instance, char *dst
 
 LLDB_API SBValueRef SBThreadGetStopReturnValue(SBThreadRef instance);
 
-LLDB_API unsigned long long SBThreadGetThreadID(SBThreadRef instance);
+LLDB_API lldb_tid_t SBThreadGetThreadID(SBThreadRef instance);
 
 LLDB_API unsigned int SBThreadGetIndexID(SBThreadRef instance);
 
@@ -50,7 +50,7 @@ LLDB_API const char *SBThreadGetName(SBThreadRef instance);
 
 LLDB_API const char *SBThreadGetQueueName(SBThreadRef instance);
 
-LLDB_API unsigned long long SBThreadGetQueueID(SBThreadRef instance);
+LLDB_API lldb_queue_id_t SBThreadGetQueueID(SBThreadRef instance);
 
 LLDB_API bool SBThreadGetInfoItemByPathAsString(SBThreadRef instance, const char *path, SBStreamRef strm);
 

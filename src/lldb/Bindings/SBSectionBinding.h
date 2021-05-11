@@ -34,11 +34,11 @@ LLDB_API unsigned int SBSectionGetNumSubSections(SBSectionRef instance);
 
 LLDB_API SBSectionRef SBSectionGetSubSectionAtIndex(SBSectionRef instance, size_t idx);
 
-LLDB_API unsigned long long SBSectionGetFileAddress(SBSectionRef instance);
+LLDB_API lldb_addr_t SBSectionGetFileAddress(SBSectionRef instance);
 
-LLDB_API unsigned long long SBSectionGetLoadAddress(SBSectionRef instance, SBTargetRef target);
+LLDB_API lldb_addr_t SBSectionGetLoadAddress(SBSectionRef instance, SBTargetRef target);
 
-LLDB_API unsigned long long SBSectionGetByteSize(SBSectionRef instance);
+LLDB_API lldb_addr_t SBSectionGetByteSize(SBSectionRef instance);
 
 LLDB_API unsigned long long SBSectionGetFileOffset(SBSectionRef instance);
 

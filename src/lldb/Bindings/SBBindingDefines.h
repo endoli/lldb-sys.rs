@@ -38,6 +38,9 @@ typedef uint64_t lldb_user_id_t;
 typedef uint64_t lldb_pid_t;
 typedef uint64_t lldb_tid_t;
 typedef uint64_t lldb_offset_t;
+typedef int32_t lldb_break_id_t;
+typedef int32_t lldb_watch_id_t;
+typedef uint64_t lldb_queue_id_t;
 
 #else
 
@@ -51,6 +54,9 @@ typedef lldb::user_id_t lldb_user_id_t;
 typedef lldb::pid_t lldb_pid_t;
 typedef lldb::tid_t lldb_tid_t;
 typedef lldb::offset_t lldb_offset_t;
+typedef lldb::break_id_t lldb_break_id_t;
+typedef lldb::watch_id_t lldb_watch_id_t;
+typedef lldb::queue_id_t lldb_queue_id_t;
 
 #endif
 

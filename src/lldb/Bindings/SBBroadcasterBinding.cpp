@@ -76,7 +76,7 @@ SBBroadcasterAddInitialEventsToListener(SBBroadcasterRef instance, SBListenerRef
     unwrapped->AddInitialEventsToListener(*reinterpret_cast<SBListener *>(listener), requested_events);
 }
 
-unsigned int
+uint32_t
 SBBroadcasterAddListener(SBBroadcasterRef instance, SBListenerRef listener, uint32_t event_mask)
 {
     SBBroadcaster *unwrapped = reinterpret_cast<SBBroadcaster *>(instance);

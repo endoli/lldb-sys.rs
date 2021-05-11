@@ -25,7 +25,7 @@ LLDB_API SBBreakpointRef CloneSBBreakpoint(SBBreakpointRef instance);
 
 LLDB_API void DisposeSBBreakpoint(SBBreakpointRef instance);
 
-LLDB_API int SBBreakpointGetID(SBBreakpointRef instance);
+LLDB_API lldb_break_id_t SBBreakpointGetID(SBBreakpointRef instance);
 
 LLDB_API bool SBBreakpointIsValid(SBBreakpointRef instance);
 
@@ -34,9 +34,9 @@ LLDB_API void SBBreakpointClearAllBreakpointSites(SBBreakpointRef instance);
 LLDB_API SBBreakpointLocationRef
 SBBreakpointFindLocationByAddress(SBBreakpointRef instance, lldb_addr_t vm_addr);
 
-LLDB_API int SBBreakpointFindLocationIDByAddress(SBBreakpointRef instance, lldb_addr_t vm_addr);
+LLDB_API lldb_break_id_t SBBreakpointFindLocationIDByAddress(SBBreakpointRef instance, lldb_addr_t vm_addr);
 
-LLDB_API SBBreakpointLocationRef SBBreakpointFindLocationByID(SBBreakpointRef instance, int bp_loc_id);
+LLDB_API SBBreakpointLocationRef SBBreakpointFindLocationByID(SBBreakpointRef instance, lldb_break_id_t bp_loc_id);
 
 LLDB_API SBBreakpointLocationRef SBBreakpointGetLocationAtIndex(SBBreakpointRef instance, uint32_t index);
 
@@ -50,11 +50,11 @@ LLDB_API bool SBBreakpointIsOneShot(SBBreakpointRef instance);
 
 LLDB_API bool SBBreakpointIsInternal(SBBreakpointRef instance);
 
-LLDB_API unsigned int SBBreakpointGetHitCount(SBBreakpointRef instance);
+LLDB_API uint32_t SBBreakpointGetHitCount(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetIgnoreCount(SBBreakpointRef instance, uint32_t count);
 
-LLDB_API unsigned int SBBreakpointGetIgnoreCount(SBBreakpointRef instance);
+LLDB_API uint32_t SBBreakpointGetIgnoreCount(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetCondition(SBBreakpointRef instance, const char *condition);
 
@@ -66,11 +66,11 @@ LLDB_API void SBBreakpointSetAutoContinue(SBBreakpointRef instance, bool auto_co
 
 LLDB_API bool SBBreakpointGetAutoContinue(SBBreakpointRef instance);
 
-LLDB_API unsigned long long SBBreakpointGetThreadID(SBBreakpointRef instance);
+LLDB_API lldb_tid_t SBBreakpointGetThreadID(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetThreadIndex(SBBreakpointRef instance, uint32_t index);
 
-LLDB_API unsigned int SBBreakpointGetThreadIndex(SBBreakpointRef instance);
+LLDB_API uint32_t SBBreakpointGetThreadIndex(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointSetThreadName(SBBreakpointRef instance, const char *thread_name);
 
@@ -105,9 +105,9 @@ LLDB_API bool SBBreakpointMatchesName(SBBreakpointRef instance, const char *name
 
 LLDB_API void SBBreakpointGetNames(SBBreakpointRef instance, SBStringListRef names);
 
-LLDB_API unsigned int SBBreakpointGetNumResolvedLocations(SBBreakpointRef instance);
+LLDB_API size_t SBBreakpointGetNumResolvedLocations(SBBreakpointRef instance);
 
-LLDB_API unsigned int SBBreakpointGetNumLocations(SBBreakpointRef instance);
+LLDB_API size_t SBBreakpointGetNumLocations(SBBreakpointRef instance);
 
 LLDB_API bool SBBreakpointGetDescription(SBBreakpointRef instance, SBStreamRef description);
 
@@ -122,7 +122,7 @@ LLDB_API SBBreakpointRef SBBreakpointGetBreakpointFromEvent(SBEventRef event);
 LLDB_API SBBreakpointLocationRef
 SBBreakpointGetBreakpointLocationAtIndexFromEvent(SBEventRef event, uint32_t loc_idx);
 
-LLDB_API unsigned int SBBreakpointGetNumBreakpointLocationsFromEvent(SBEventRef event_sp);
+LLDB_API uint32_t SBBreakpointGetNumBreakpointLocationsFromEvent(SBEventRef event_sp);
 
 LLDB_API bool SBBreakpointIsHardware(SBBreakpointRef instance);
 

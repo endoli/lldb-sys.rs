@@ -42,7 +42,7 @@ LLDB_API double SBDataGetDouble(SBDataRef instance, SBErrorRef error, lldb_offse
 
 LLDB_API long double SBDataGetLongDouble(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned long long SBDataGetAddress(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API lldb_addr_t SBDataGetAddress(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
 LLDB_API unsigned char SBDataGetUnsignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 

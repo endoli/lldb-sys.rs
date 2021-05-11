@@ -26,21 +26,21 @@ LLDB_API bool SBWatchpointIsValid(SBWatchpointRef instance);
 
 LLDB_API SBErrorRef SBWatchpointGetError(SBWatchpointRef instance);
 
-LLDB_API int SBWatchpointGetID(SBWatchpointRef instance);
+LLDB_API lldb_watch_id_t SBWatchpointGetID(SBWatchpointRef instance);
 
-LLDB_API int SBWatchpointGetHardwareIndex(SBWatchpointRef instance);
+LLDB_API int32_t SBWatchpointGetHardwareIndex(SBWatchpointRef instance);
 
-LLDB_API unsigned long long SBWatchpointGetWatchAddress(SBWatchpointRef instance);
+LLDB_API lldb_addr_t SBWatchpointGetWatchAddress(SBWatchpointRef instance);
 
-LLDB_API unsigned int SBWatchpointGetWatchSize(SBWatchpointRef instance);
+LLDB_API size_t SBWatchpointGetWatchSize(SBWatchpointRef instance);
 
 LLDB_API void SBWatchpointSetEnabled(SBWatchpointRef instance, bool enabled);
 
 LLDB_API bool SBWatchpointIsEnabled(SBWatchpointRef instance);
 
-LLDB_API unsigned int SBWatchpointGetHitCount(SBWatchpointRef instance);
+LLDB_API uint32_t SBWatchpointGetHitCount(SBWatchpointRef instance);
 
-LLDB_API unsigned int SBWatchpointGetIgnoreCount(SBWatchpointRef instance);
+LLDB_API uint32_t SBWatchpointGetIgnoreCount(SBWatchpointRef instance);
 
 LLDB_API void SBWatchpointSetIgnoreCount(SBWatchpointRef instance, uint32_t n);
 

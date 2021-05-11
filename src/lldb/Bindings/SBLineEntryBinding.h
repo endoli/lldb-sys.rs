@@ -30,9 +30,9 @@ LLDB_API bool SBLineEntryIsValid(SBLineEntryRef instance);
 
 LLDB_API SBFileSpecRef SBLineEntryGetFileSpec(SBLineEntryRef instance);
 
-LLDB_API unsigned int SBLineEntryGetLine(SBLineEntryRef instance);
+LLDB_API uint32_t SBLineEntryGetLine(SBLineEntryRef instance);
 
-LLDB_API unsigned int SBLineEntryGetColumn(SBLineEntryRef instance);
+LLDB_API uint32_t SBLineEntryGetColumn(SBLineEntryRef instance);
 
 LLDB_API void SBLineEntrySetFileSpec(SBLineEntryRef instance, SBFileSpecRef filespec);
 

@@ -48,28 +48,28 @@ SBWatchpointGetError(SBWatchpointRef instance)
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetError()));
 }
 
-int
+lldb_watch_id_t
 SBWatchpointGetID(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
     return unwrapped->GetID();
 }
 
-int
+int32_t
 SBWatchpointGetHardwareIndex(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
     return unwrapped->GetHardwareIndex();
 }
 
-unsigned long long
+lldb_addr_t
 SBWatchpointGetWatchAddress(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
     return unwrapped->GetWatchAddress();
 }
 
-unsigned int
+size_t
 SBWatchpointGetWatchSize(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
@@ -90,14 +90,14 @@ SBWatchpointIsEnabled(SBWatchpointRef instance)
     return unwrapped->IsEnabled();
 }
 
-unsigned int
+uint32_t
 SBWatchpointGetHitCount(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);
     return unwrapped->GetHitCount();
 }
 
-unsigned int
+uint32_t
 SBWatchpointGetIgnoreCount(SBWatchpointRef instance)
 {
     SBWatchpoint *unwrapped = reinterpret_cast<SBWatchpoint *>(instance);

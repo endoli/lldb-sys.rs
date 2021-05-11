@@ -30,9 +30,9 @@ LLDB_API bool SBAddressIsValid(SBAddressRef instance);
 
 LLDB_API void SBAddressClear(SBAddressRef instance);
 
-LLDB_API unsigned long long SBAddressGetFileAddress(SBAddressRef instance);
+LLDB_API lldb_addr_t SBAddressGetFileAddress(SBAddressRef instance);
 
-LLDB_API unsigned long long SBAddressGetLoadAddress(SBAddressRef instance, SBTargetRef target);
+LLDB_API lldb_addr_t SBAddressGetLoadAddress(SBAddressRef instance, SBTargetRef target);
 
 LLDB_API void SBAddressSetAddress(SBAddressRef instance, SBSectionRef section, lldb_addr_t offset);
 
@@ -46,7 +46,7 @@ LLDB_API SBSymbolContextRef SBAddressGetSymbolContext(SBAddressRef instance, uin
 
 LLDB_API SBSectionRef SBAddressGetSection(SBAddressRef instance);
 
-LLDB_API unsigned long long SBAddressGetOffset(SBAddressRef instance);
+LLDB_API lldb_addr_t SBAddressGetOffset(SBAddressRef instance);
 
 LLDB_API SBModuleRef SBAddressGetModule(SBAddressRef instance);
 

@@ -97,7 +97,7 @@ SBBreakpointNameSetIgnoreCount(SBBreakpointNameRef instance, uint32_t count)
     unwrapped->SetIgnoreCount(count);
 }
 
-unsigned int
+uint32_t
 SBBreakpointNameGetIgnoreCount(SBBreakpointNameRef instance)
 {
     SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);

@@ -28,7 +28,7 @@ LLDB_API SBAttachInfoRef CloneSBAttachInfo(SBAttachInfoRef instance);
 
 LLDB_API void DisposeSBAttachInfo(SBAttachInfoRef instance);
 
-LLDB_API unsigned long long SBAttachInfoGetProcessID(SBAttachInfoRef instance);
+LLDB_API lldb_pid_t SBAttachInfoGetProcessID(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetProcessID(SBAttachInfoRef instance, lldb_pid_t pid);
 
@@ -46,7 +46,7 @@ LLDB_API bool SBAttachInfoGetIgnoreExisting(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetIgnoreExisting(SBAttachInfoRef instance, bool b);
 
-LLDB_API unsigned int SBAttachInfoGetResumeCount(SBAttachInfoRef instance);
+LLDB_API uint32_t SBAttachInfoGetResumeCount(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetResumeCount(SBAttachInfoRef instance, uint32_t c);
 
@@ -54,9 +54,9 @@ LLDB_API const char *SBAttachInfoGetProcessPluginName(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetProcessPluginName(SBAttachInfoRef instance, const char *plugin_name);
 
-LLDB_API unsigned int SBAttachInfoGetUserID(SBAttachInfoRef instance);
+LLDB_API uint32_t SBAttachInfoGetUserID(SBAttachInfoRef instance);
 
-LLDB_API unsigned int SBAttachInfoGetGroupID(SBAttachInfoRef instance);
+LLDB_API uint32_t SBAttachInfoGetGroupID(SBAttachInfoRef instance);
 
 LLDB_API bool SBAttachInfoUserIDIsValid(SBAttachInfoRef instance);
 
@@ -66,9 +66,9 @@ LLDB_API void SBAttachInfoSetUserID(SBAttachInfoRef instance, uint32_t uid);
 
 LLDB_API void SBAttachInfoSetGroupID(SBAttachInfoRef instance, uint32_t gid);
 
-LLDB_API unsigned int SBAttachInfoGetEffectiveUserID(SBAttachInfoRef instance);
+LLDB_API uint32_t SBAttachInfoGetEffectiveUserID(SBAttachInfoRef instance);
 
-LLDB_API unsigned int SBAttachInfoGetEffectiveGroupID(SBAttachInfoRef instance);
+LLDB_API uint32_t SBAttachInfoGetEffectiveGroupID(SBAttachInfoRef instance);
 
 LLDB_API bool SBAttachInfoEffectiveUserIDIsValid(SBAttachInfoRef instance);
 
@@ -78,7 +78,7 @@ LLDB_API void SBAttachInfoSetEffectiveUserID(SBAttachInfoRef instance, uint32_t 
 
 LLDB_API void SBAttachInfoSetEffectiveGroupID(SBAttachInfoRef instance, uint32_t gid);
 
-LLDB_API unsigned long long SBAttachInfoGetParentProcessID(SBAttachInfoRef instance);
+LLDB_API lldb_pid_t SBAttachInfoGetParentProcessID(SBAttachInfoRef instance);
 
 LLDB_API void SBAttachInfoSetParentProcessID(SBAttachInfoRef instance, lldb_pid_t pid);
 

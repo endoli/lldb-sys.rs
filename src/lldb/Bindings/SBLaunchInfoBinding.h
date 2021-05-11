@@ -22,9 +22,9 @@ LLDB_API SBLaunchInfoRef CloneSBLaunchInfo(SBLaunchInfoRef instance);
 
 LLDB_API void DisposeSBLaunchInfo(SBLaunchInfoRef instance);
 
-LLDB_API unsigned long long SBLaunchInfoGetProcessID(SBLaunchInfoRef instance);
+LLDB_API lldb_pid_t SBLaunchInfoGetProcessID(SBLaunchInfoRef instance);
 
-LLDB_API unsigned int SBLaunchInfoGetUserID(SBLaunchInfoRef instance);
+LLDB_API lldb_user_id_t SBLaunchInfoGetUserID(SBLaunchInfoRef instance);
 
 LLDB_API unsigned int SBLaunchInfoGetGroupID(SBLaunchInfoRef instance);
 

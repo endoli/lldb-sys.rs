@@ -50,13 +50,13 @@ SBUnixSignalsIsValid(SBUnixSignalsRef instance)
 }
 
 const char *
-SBUnixSignalsGetSignalAsCString(SBUnixSignalsRef instance, int signo)
+SBUnixSignalsGetSignalAsCString(SBUnixSignalsRef instance, int32_t signo)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetSignalAsCString(signo);
 }
 
-int
+int32_t
 SBUnixSignalsGetSignalNumberFromName(SBUnixSignalsRef instance, const char *name)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
@@ -64,56 +64,56 @@ SBUnixSignalsGetSignalNumberFromName(SBUnixSignalsRef instance, const char *name
 }
 
 bool
-SBUnixSignalsGetShouldSuppress(SBUnixSignalsRef instance, int signo)
+SBUnixSignalsGetShouldSuppress(SBUnixSignalsRef instance, int32_t signo)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetShouldSuppress(signo);
 }
 
 bool
-SBUnixSignalsSetShouldSuppress(SBUnixSignalsRef instance, int signo, bool value)
+SBUnixSignalsSetShouldSuppress(SBUnixSignalsRef instance, int32_t signo, bool value)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->SetShouldSuppress(signo, value);
 }
 
 bool
-SBUnixSignalsGetShouldStop(SBUnixSignalsRef instance, int signo)
+SBUnixSignalsGetShouldStop(SBUnixSignalsRef instance, int32_t signo)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetShouldStop(signo);
 }
 
 bool
-SBUnixSignalsSetShouldStop(SBUnixSignalsRef instance, int signo, bool value)
+SBUnixSignalsSetShouldStop(SBUnixSignalsRef instance, int32_t signo, bool value)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->SetShouldStop(signo, value);
 }
 
 bool
-SBUnixSignalsGetShouldNotify(SBUnixSignalsRef instance, int signo)
+SBUnixSignalsGetShouldNotify(SBUnixSignalsRef instance, int32_t signo)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetShouldNotify(signo);
 }
 
 bool
-SBUnixSignalsSetShouldNotify(SBUnixSignalsRef instance, int signo, bool value)
+SBUnixSignalsSetShouldNotify(SBUnixSignalsRef instance, int32_t signo, bool value)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->SetShouldNotify(signo, value);
 }
 
-int
+int32_t
 SBUnixSignalsGetNumSignals(SBUnixSignalsRef instance)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetNumSignals();
 }
 
-int
-SBUnixSignalsGetSignalAtIndex(SBUnixSignalsRef instance, int index)
+int32_t
+SBUnixSignalsGetSignalAtIndex(SBUnixSignalsRef instance, int32_t index)
 {
     SBUnixSignals *unwrapped = reinterpret_cast<SBUnixSignals *>(instance);
     return unwrapped->GetSignalAtIndex(index);

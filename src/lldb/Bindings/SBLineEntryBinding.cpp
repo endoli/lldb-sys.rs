@@ -62,14 +62,14 @@ SBLineEntryGetFileSpec(SBLineEntryRef instance)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetFileSpec()));
 }
 
-unsigned int
+uint32_t
 SBLineEntryGetLine(SBLineEntryRef instance)
 {
     SBLineEntry *unwrapped = reinterpret_cast<SBLineEntry *>(instance);
     return unwrapped->GetLine();
 }
 
-unsigned int
+uint32_t
 SBLineEntryGetColumn(SBLineEntryRef instance)
 {
     SBLineEntry *unwrapped = reinterpret_cast<SBLineEntry *>(instance);

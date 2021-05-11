@@ -28,7 +28,7 @@ LLDB_API bool SBBreakpointLocationIsValid(SBBreakpointLocationRef instance);
 
 LLDB_API SBAddressRef SBBreakpointLocationGetAddress(SBBreakpointLocationRef instance);
 
-LLDB_API unsigned long long SBBreakpointLocationGetLoadAddress(SBBreakpointLocationRef instance);
+LLDB_API lldb_addr_t SBBreakpointLocationGetLoadAddress(SBBreakpointLocationRef instance);
 
 LLDB_API void SBBreakpointLocationSetEnabled(SBBreakpointLocationRef instance, bool enabled);
 
@@ -52,11 +52,11 @@ SBBreakpointLocationSetScriptCallbackBody(SBBreakpointLocationRef instance, cons
 
 LLDB_API void SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance, lldb_tid_t sb_thread_id);
 
-LLDB_API unsigned long long SBBreakpointLocationGetThreadID(SBBreakpointLocationRef instance);
+LLDB_API lldb_tid_t SBBreakpointLocationGetThreadID(SBBreakpointLocationRef instance);
 
 LLDB_API void SBBreakpointLocationSetThreadIndex(SBBreakpointLocationRef instance, uint32_t index);
 
-LLDB_API unsigned int SBBreakpointLocationGetThreadIndex(SBBreakpointLocationRef instance);
+LLDB_API uint32_t SBBreakpointLocationGetThreadIndex(SBBreakpointLocationRef instance);
 
 LLDB_API void SBBreakpointLocationSetThreadName(SBBreakpointLocationRef instance, const char *thread_name);
 

@@ -84,28 +84,28 @@ SBProcessGetByteOrder(SBProcessRef instance)
     return unwrapped->GetByteOrder();
 }
 
-unsigned int
+size_t
 SBProcessPutSTDIN(SBProcessRef instance, const char *src, size_t src_len)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->PutSTDIN(src, src_len);
 }
 
-unsigned int
+size_t
 SBProcessGetSTDOUT(SBProcessRef instance, char *dst, size_t dst_len)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetSTDOUT(dst, dst_len);
 }
 
-unsigned int
+size_t
 SBProcessGetSTDERR(SBProcessRef instance, char *dst, size_t dst_len)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetSTDERR(dst, dst_len);
 }
 
-unsigned int
+size_t
 SBProcessGetAsyncProfileData(SBProcessRef instance, char *dst, size_t dst_len)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -145,7 +145,7 @@ SBProcessRemoteLaunch(SBProcessRef instance, const char **argv, const char **env
                                    stop_at_entry, *reinterpret_cast<SBError *>(error));
 }
 
-unsigned int
+uint32_t
 SBProcessGetNumThreads(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -208,7 +208,7 @@ SBProcessSetSelectedThreadByIndexID(SBProcessRef instance, uint32_t index_id)
     return unwrapped->SetSelectedThreadByIndexID(index_id);
 }
 
-unsigned int
+uint32_t
 SBProcessGetNumQueues(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -243,21 +243,21 @@ SBProcessGetExitDescription(SBProcessRef instance)
     return unwrapped->GetExitDescription();
 }
 
-unsigned long long
+lldb_pid_t
 SBProcessGetProcessID(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetProcessID();
 }
 
-unsigned int
+uint32_t
 SBProcessGetUniqueID(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetUniqueID();
 }
 
-unsigned int
+uint32_t
 SBProcessGetAddressByteSize(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -327,28 +327,28 @@ SBProcessSendAsyncInterrupt(SBProcessRef instance)
     unwrapped->SendAsyncInterrupt();
 }
 
-unsigned int
+uint32_t
 SBProcessGetStopID(SBProcessRef instance, bool include_expression_stops)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetStopID(include_expression_stops);
 }
 
-unsigned int
+size_t
 SBProcessReadMemory(SBProcessRef instance, lldb_addr_t addr, void *buf, size_t size, SBErrorRef error)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->ReadMemory(addr, buf, size, *reinterpret_cast<SBError *>(error));
 }
 
-unsigned int
+size_t
 SBProcessWriteMemory(SBProcessRef instance, lldb_addr_t addr, void *buf, size_t size, SBErrorRef error)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->WriteMemory(addr, buf, size, *reinterpret_cast<SBError *>(error));
 }
 
-unsigned int
+size_t
 SBProcessReadCStringFromMemory(SBProcessRef instance, lldb_addr_t addr, void *buf, size_t size,
                                    SBErrorRef error)
 {
@@ -364,7 +364,7 @@ SBProcessReadUnsignedFromMemory(SBProcessRef instance, lldb_addr_t addr, uint32_
     return unwrapped->ReadUnsignedFromMemory(addr, byte_size, *reinterpret_cast<SBError *>(error));
 }
 
-unsigned long long
+lldb_addr_t
 SBProcessReadPointerFromMemory(SBProcessRef instance, lldb_addr_t addr, SBErrorRef error)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -383,7 +383,7 @@ SBProcessGetRestartedFromEvent(SBEventRef event)
     return lldb::SBProcess::GetRestartedFromEvent(*reinterpret_cast<SBEvent *>(event));
 }
 
-unsigned int
+size_t
 SBProcessGetNumRestartedReasonsFromEvent(SBEventRef event)
 {
     return lldb::SBProcess::GetNumRestartedReasonsFromEvent(*reinterpret_cast<SBEvent *>(event));
@@ -447,14 +447,14 @@ SBProcessGetDescription(SBProcessRef instance, SBStreamRef description)
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
-unsigned int
+uint32_t
 SBProcessGetNumSupportedHardwareWatchpoints(SBProcessRef instance, SBErrorRef error)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
     return unwrapped->GetNumSupportedHardwareWatchpoints(*reinterpret_cast<SBError *>(error));
 }
 
-unsigned int
+uint32_t
 SBProcessLoadImage(SBProcessRef instance, SBFileSpecRef image_spec, SBErrorRef error)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
@@ -486,7 +486,7 @@ SBProcessSendEventData(SBProcessRef instance, const char *data)
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SendEventData(data)));
 }
 
-unsigned int
+uint32_t
 SBProcessGetNumExtendedBacktraceTypes(SBProcessRef instance)
 {
     SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);

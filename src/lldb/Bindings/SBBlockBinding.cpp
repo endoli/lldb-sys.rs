@@ -62,14 +62,14 @@ SBBlockGetInlinedCallSiteFile(SBBlockRef instance)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetInlinedCallSiteFile()));
 }
 
-unsigned int
+uint32_t
 SBBlockGetInlinedCallSiteLine(SBBlockRef instance)
 {
     SBBlock *unwrapped = reinterpret_cast<SBBlock *>(instance);
     return unwrapped->GetInlinedCallSiteLine();
 }
 
-unsigned int
+uint32_t
 SBBlockGetInlinedCallSiteColumn(SBBlockRef instance)
 {
     SBBlock *unwrapped = reinterpret_cast<SBBlock *>(instance);
@@ -97,7 +97,7 @@ SBBlockGetFirstChild(SBBlockRef instance)
     return reinterpret_cast<SBBlockRef>(new SBBlock(unwrapped->GetFirstChild()));
 }
 
-unsigned int
+uint32_t
 SBBlockGetNumRanges(SBBlockRef instance)
 {
     SBBlock *unwrapped = reinterpret_cast<SBBlock *>(instance);
@@ -118,7 +118,7 @@ SBBlockGetRangeEndAddress(SBBlockRef instance, uint32_t idx)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetRangeEndAddress(idx)));
 }
 
-unsigned int
+uint32_t
 SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance, SBAddressRef block_addr)
 {
     SBBlock *unwrapped = reinterpret_cast<SBBlock *>(instance);

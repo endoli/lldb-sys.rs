@@ -34,7 +34,7 @@ DisposeSBBreakpoint(SBBreakpointRef instance)
     delete reinterpret_cast<SBBreakpoint *>(instance);
 }
 
-int
+lldb_break_id_t
 SBBreakpointGetID(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -63,7 +63,7 @@ SBBreakpointFindLocationByAddress(SBBreakpointRef instance, lldb_addr_t vm_addr)
         new SBBreakpointLocation(unwrapped->FindLocationByAddress(vm_addr)));
 }
 
-int
+lldb_break_id_t
 SBBreakpointFindLocationIDByAddress(SBBreakpointRef instance, lldb_addr_t vm_addr)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -71,7 +71,7 @@ SBBreakpointFindLocationIDByAddress(SBBreakpointRef instance, lldb_addr_t vm_add
 }
 
 SBBreakpointLocationRef
-SBBreakpointFindLocationByID(SBBreakpointRef instance, int bp_loc_id)
+SBBreakpointFindLocationByID(SBBreakpointRef instance, lldb_break_id_t bp_loc_id)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
     return reinterpret_cast<SBBreakpointLocationRef>(
@@ -121,7 +121,7 @@ SBBreakpointIsInternal(SBBreakpointRef instance)
     return unwrapped->IsInternal();
 }
 
-unsigned int
+uint32_t
 SBBreakpointGetHitCount(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -135,7 +135,7 @@ SBBreakpointSetIgnoreCount(SBBreakpointRef instance, uint32_t count)
     unwrapped->SetIgnoreCount(count);
 }
 
-unsigned int
+uint32_t
 SBBreakpointGetIgnoreCount(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -177,7 +177,7 @@ SBBreakpointSetThreadID(SBBreakpointRef instance, lldb_tid_t sb_thread_id)
     unwrapped->SetThreadID(sb_thread_id);
 }
 
-unsigned long long
+lldb_tid_t
 SBBreakpointGetThreadID(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -191,7 +191,7 @@ SBBreakpointSetThreadIndex(SBBreakpointRef instance, uint32_t index)
     unwrapped->SetThreadIndex(index);
 }
 
-unsigned int
+uint32_t
 SBBreakpointGetThreadIndex(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -290,14 +290,14 @@ SBBreakpointGetNames(SBBreakpointRef instance, SBStringListRef names)
     unwrapped->GetNames(*reinterpret_cast<SBStringList *>(names));
 }
 
-unsigned int
+size_t
 SBBreakpointGetNumResolvedLocations(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
     return unwrapped->GetNumResolvedLocations();
 }
 
-unsigned int
+size_t
 SBBreakpointGetNumLocations(SBBreakpointRef instance)
 {
     SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
@@ -344,7 +344,7 @@ SBBreakpointGetBreakpointLocationAtIndexFromEvent(SBEventRef event, uint32_t loc
         lldb::SBBreakpoint::GetBreakpointLocationAtIndexFromEvent(*reinterpret_cast<SBEvent *>(event), loc_idx)));
 }
 
-unsigned int
+uint32_t
 SBBreakpointGetNumBreakpointLocationsFromEvent(SBEventRef event_sp)
 {
     return lldb::SBBreakpoint::GetNumBreakpointLocationsFromEvent(*reinterpret_cast<SBEvent *>(event_sp));

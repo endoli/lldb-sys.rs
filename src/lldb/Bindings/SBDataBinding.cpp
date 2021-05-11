@@ -104,7 +104,7 @@ SBDataGetLongDouble(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
     return unwrapped->GetLongDouble(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned long long
+lldb_addr_t
 SBDataGetAddress(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);

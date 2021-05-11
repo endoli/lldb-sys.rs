@@ -109,7 +109,7 @@ SBThreadGetStopReturnValue(SBThreadRef instance)
     return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->GetStopReturnValue()));
 }
 
-unsigned long long
+lldb_tid_t
 SBThreadGetThreadID(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -137,7 +137,7 @@ SBThreadGetQueueName(SBThreadRef instance)
     return unwrapped->GetQueueName();
 }
 
-unsigned long long
+lldb_queue_id_t
 SBThreadGetQueueID(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);

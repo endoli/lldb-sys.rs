@@ -28,15 +28,15 @@ LLDB_API bool SBFrameIsValid(SBFrameRef instance);
 
 LLDB_API unsigned int SBFrameGetFrameID(SBFrameRef instance);
 
-LLDB_API unsigned long long SBFrameGetCFA(SBFrameRef instance);
+LLDB_API lldb_addr_t SBFrameGetCFA(SBFrameRef instance);
 
-LLDB_API unsigned long long SBFrameGetPC(SBFrameRef instance);
+LLDB_API lldb_addr_t SBFrameGetPC(SBFrameRef instance);
 
 LLDB_API bool SBFrameSetPC(SBFrameRef instance, lldb_addr_t new_pc);
 
-LLDB_API unsigned long long SBFrameGetSP(SBFrameRef instance);
+LLDB_API lldb_addr_t SBFrameGetSP(SBFrameRef instance);
 
-LLDB_API unsigned long long SBFrameGetFP(SBFrameRef instance);
+LLDB_API lldb_addr_t SBFrameGetFP(SBFrameRef instance);
 
 LLDB_API SBAddressRef SBFrameGetPCAddress(SBFrameRef instance);
 

@@ -55,7 +55,7 @@ SBBreakpointLocationGetAddress(SBBreakpointLocationRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetAddress()));
 }
 
-unsigned long long
+lldb_addr_t
 SBBreakpointLocationGetLoadAddress(SBBreakpointLocationRef instance)
 {
     SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
@@ -133,7 +133,7 @@ SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance, lldb_tid_t sb_
     unwrapped->SetThreadID(sb_thread_id);
 }
 
-unsigned long long
+lldb_tid_t
 SBBreakpointLocationGetThreadID(SBBreakpointLocationRef instance)
 {
     SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
@@ -147,7 +147,7 @@ SBBreakpointLocationSetThreadIndex(SBBreakpointLocationRef instance, uint32_t in
     unwrapped->SetThreadIndex(index);
 }
 
-unsigned int
+uint32_t
 SBBreakpointLocationGetThreadIndex(SBBreakpointLocationRef instance)
 {
     SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);

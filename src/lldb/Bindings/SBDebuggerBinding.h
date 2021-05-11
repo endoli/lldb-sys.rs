@@ -203,7 +203,7 @@ LLDB_API unsigned int SBDebuggerGetTerminalWidth(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSetTerminalWidth(SBDebuggerRef instance, uint32_t term_width);
 
-LLDB_API unsigned long long SBDebuggerGetID(SBDebuggerRef instance);
+LLDB_API lldb_user_id_t SBDebuggerGetID(SBDebuggerRef instance);
 
 LLDB_API const char *SBDebuggerGetPrompt(SBDebuggerRef instance);
 

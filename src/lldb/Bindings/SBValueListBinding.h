@@ -30,7 +30,7 @@ LLDB_API void SBValueListAppend(SBValueListRef instance, SBValueRef val_obj);
 
 LLDB_API void SBValueListAppendList(SBValueListRef instance, SBValueListRef value_list);
 
-LLDB_API unsigned int SBValueListGetSize(SBValueListRef instance);
+LLDB_API uint32_t SBValueListGetSize(SBValueListRef instance);
 
 LLDB_API SBValueRef SBValueListGetValueAtIndex(SBValueListRef instance, uint32_t idx);
 

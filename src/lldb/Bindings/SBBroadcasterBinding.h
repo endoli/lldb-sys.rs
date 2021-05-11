@@ -35,7 +35,7 @@ LLDB_API void SBBroadcasterBroadcastEvent(SBBroadcasterRef instance, SBEventRef 
 LLDB_API void SBBroadcasterAddInitialEventsToListener(SBBroadcasterRef instance, SBListenerRef listener,
                                                           uint32_t requested_events);
 
-LLDB_API unsigned int SBBroadcasterAddListener(SBBroadcasterRef instance, SBListenerRef listener,
+LLDB_API uint32_t SBBroadcasterAddListener(SBBroadcasterRef instance, SBListenerRef listener,
                                                    uint32_t event_mask);
 
 LLDB_API const char *SBBroadcasterGetName(SBBroadcasterRef instance);

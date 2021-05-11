@@ -30,9 +30,9 @@ LLDB_API const char *SBBlockGetInlinedName(SBBlockRef instance);
 
 LLDB_API SBFileSpecRef SBBlockGetInlinedCallSiteFile(SBBlockRef instance);
 
-LLDB_API unsigned int SBBlockGetInlinedCallSiteLine(SBBlockRef instance);
+LLDB_API uint32_t SBBlockGetInlinedCallSiteLine(SBBlockRef instance);
 
-LLDB_API unsigned int SBBlockGetInlinedCallSiteColumn(SBBlockRef instance);
+LLDB_API uint32_t SBBlockGetInlinedCallSiteColumn(SBBlockRef instance);
 
 LLDB_API SBBlockRef SBBlockGetParent(SBBlockRef instance);
 
@@ -40,13 +40,13 @@ LLDB_API SBBlockRef SBBlockGetSibling(SBBlockRef instance);
 
 LLDB_API SBBlockRef SBBlockGetFirstChild(SBBlockRef instance);
 
-LLDB_API unsigned int SBBlockGetNumRanges(SBBlockRef instance);
+LLDB_API uint32_t SBBlockGetNumRanges(SBBlockRef instance);
 
 LLDB_API SBAddressRef SBBlockGetRangeStartAddress(SBBlockRef instance, uint32_t idx);
 
 LLDB_API SBAddressRef SBBlockGetRangeEndAddress(SBBlockRef instance, uint32_t idx);
 
-LLDB_API unsigned int SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance, SBAddressRef block_addr);
+LLDB_API uint32_t SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance, SBAddressRef block_addr);
 
 LLDB_API SBValueListRef SBBlockGetVariables(SBBlockRef instance, SBFrameRef frame, bool arguments,
                                             bool locals, bool statics, ENUM(DynamicValueType) use_dynamic);

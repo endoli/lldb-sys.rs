@@ -60,14 +60,14 @@ SBAddressClear(SBAddressRef instance)
     unwrapped->Clear();
 }
 
-unsigned long long
+lldb_addr_t
 SBAddressGetFileAddress(SBAddressRef instance)
 {
     SBAddress *unwrapped = reinterpret_cast<SBAddress *>(instance);
     return unwrapped->GetFileAddress();
 }
 
-unsigned long long
+lldb_addr_t
 SBAddressGetLoadAddress(SBAddressRef instance, SBTargetRef target)
 {
     SBAddress *unwrapped = reinterpret_cast<SBAddress *>(instance);
@@ -116,7 +116,7 @@ SBAddressGetSection(SBAddressRef instance)
     return reinterpret_cast<SBSectionRef>(new SBSection(unwrapped->GetSection()));
 }
 
-unsigned long long
+lldb_addr_t
 SBAddressGetOffset(SBAddressRef instance)
 {
     SBAddress *unwrapped = reinterpret_cast<SBAddress *>(instance);

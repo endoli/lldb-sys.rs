@@ -52,7 +52,7 @@ DisposeSBAttachInfo(SBAttachInfoRef instance)
     delete reinterpret_cast<SBAttachInfo *>(instance);
 }
 
-unsigned long long
+lldb_pid_t
 SBAttachInfoGetProcessID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
@@ -115,7 +115,7 @@ SBAttachInfoSetIgnoreExisting(SBAttachInfoRef instance, bool b)
     unwrapped->SetIgnoreExisting(b);
 }
 
-unsigned int
+uint32_t
 SBAttachInfoGetResumeCount(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
@@ -143,14 +143,14 @@ SBAttachInfoSetProcessPluginName(SBAttachInfoRef instance, const char *plugin_na
     unwrapped->SetProcessPluginName(plugin_name);
 }
 
-unsigned int
+uint32_t
 SBAttachInfoGetUserID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
     return unwrapped->GetUserID();
 }
 
-unsigned int
+uint32_t
 SBAttachInfoGetGroupID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
@@ -185,14 +185,14 @@ SBAttachInfoSetGroupID(SBAttachInfoRef instance, uint32_t gid)
     unwrapped->SetGroupID(gid);
 }
 
-unsigned int
+uint32_t
 SBAttachInfoGetEffectiveUserID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
     return unwrapped->GetEffectiveUserID();
 }
 
-unsigned int
+uint32_t
 SBAttachInfoGetEffectiveGroupID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);
@@ -227,7 +227,7 @@ SBAttachInfoSetEffectiveGroupID(SBAttachInfoRef instance, uint32_t gid)
     unwrapped->SetEffectiveGroupID(gid);
 }
 
-unsigned long long
+lldb_pid_t
 SBAttachInfoGetParentProcessID(SBAttachInfoRef instance)
 {
     SBAttachInfo *unwrapped = reinterpret_cast<SBAttachInfo *>(instance);

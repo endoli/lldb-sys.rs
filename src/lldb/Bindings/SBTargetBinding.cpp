@@ -54,7 +54,7 @@ SBTargetGetTargetFromEvent(SBEventRef event)
         new SBTarget(lldb::SBTarget::GetTargetFromEvent(*reinterpret_cast<SBEvent *>(event))));
 }
 
-unsigned int
+uint32_t
 SBTargetGetNumModulesFromEvent(SBEventRef event)
 {
     return lldb::SBTarget::GetNumModulesFromEvent(*reinterpret_cast<SBEvent *>(event));
@@ -213,7 +213,7 @@ SBTargetAddModuleSpec(SBTargetRef instance, SBModuleSpecRef module_spec)
         new SBModule(unwrapped->AddModule(*reinterpret_cast<SBModuleSpec *>(module_spec))));
 }
 
-unsigned int
+uint32_t
 SBTargetGetNumModules(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -264,7 +264,7 @@ SBTargetGetByteOrder(SBTargetRef instance)
     return unwrapped->GetByteOrder();
 }
 
-unsigned int
+uint32_t
 SBTargetGetAddressByteSize(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -278,14 +278,14 @@ SBTargetGetTriple(SBTargetRef instance)
     return unwrapped->GetTriple();
 }
 
-unsigned int
+uint32_t
 SBTargetGetDataByteSize(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return unwrapped->GetDataByteSize();
 }
 
-unsigned int
+uint32_t
 SBTargetGetCodeByteSize(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -400,7 +400,7 @@ SBTargetResolveSymbolContextForAddress(SBTargetRef instance, SBAddressRef addr, 
         unwrapped->ResolveSymbolContextForAddress(*reinterpret_cast<SBAddress *>(addr), resolve_scope)));
 }
 
-unsigned int
+size_t
 SBTargetReadMemory(SBTargetRef instance, SBAddressRef addr, void *buf, size_t size, SBErrorRef error)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -668,7 +668,7 @@ SBTargetBreakspointsWriteToFile2(SBTargetRef instance, SBFileSpecRef dest_file,
                                               append)));
 }
 
-unsigned int
+uint32_t
 SBTargetGetNumBreakpoints(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -683,14 +683,14 @@ SBTargetGetBreakpointAtIndex(SBTargetRef instance, uint32_t idx)
 }
 
 bool
-SBTargetBreakpointDelete(SBTargetRef instance, int break_id)
+SBTargetBreakpointDelete(SBTargetRef instance, lldb_break_id_t break_id)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return unwrapped->BreakpointDelete(break_id);
 }
 
 SBBreakpointRef
-SBTargetFindBreakpointByID(SBTargetRef instance, int break_id)
+SBTargetFindBreakpointByID(SBTargetRef instance, lldb_break_id_t break_id)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->FindBreakpointByID(break_id)));
@@ -740,7 +740,7 @@ SBTargetDeleteAllBreakpoints(SBTargetRef instance)
     return unwrapped->DeleteAllBreakpoints();
 }
 
-unsigned int
+uint32_t
 SBTargetGetNumWatchpoints(SBTargetRef instance)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
@@ -755,14 +755,14 @@ SBTargetGetWatchpointAtIndex(SBTargetRef instance, uint32_t idx)
 }
 
 bool
-SBTargetDeleteWatchpoint(SBTargetRef instance, int watch_id)
+SBTargetDeleteWatchpoint(SBTargetRef instance, lldb_watch_id_t watch_id)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return unwrapped->DeleteWatchpoint(watch_id);
 }
 
 SBWatchpointRef
-SBTargetFindWatchpointByID(SBTargetRef instance, int watch_id)
+SBTargetFindWatchpointByID(SBTargetRef instance, lldb_watch_id_t watch_id)
 {
     SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
     return reinterpret_cast<SBWatchpointRef>(new SBWatchpoint(unwrapped->FindWatchpointByID(watch_id)));

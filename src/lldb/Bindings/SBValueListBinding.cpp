@@ -62,7 +62,7 @@ SBValueListAppendList(SBValueListRef instance, SBValueListRef value_list)
     unwrapped->Append(*reinterpret_cast<SBValueList *>(value_list));
 }
 
-unsigned int
+uint32_t
 SBValueListGetSize(SBValueListRef instance)
 {
     SBValueList *unwrapped = reinterpret_cast<SBValueList *>(instance);

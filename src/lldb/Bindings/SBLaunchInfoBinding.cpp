@@ -34,14 +34,14 @@ DisposeSBLaunchInfo(SBLaunchInfoRef instance)
     delete reinterpret_cast<SBLaunchInfo *>(instance);
 }
 
-unsigned long long
+lldb_pid_t
 SBLaunchInfoGetProcessID(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
     return unwrapped->GetProcessID();
 }
 
-unsigned int
+lldb_user_id_t
 SBLaunchInfoGetUserID(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);

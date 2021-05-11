@@ -55,14 +55,14 @@ SBFrameGetFrameID(SBFrameRef instance)
     return unwrapped->GetFrameID();
 }
 
-unsigned long long
+lldb_addr_t
 SBFrameGetCFA(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
     return unwrapped->GetCFA();
 }
 
-unsigned long long
+lldb_addr_t
 SBFrameGetPC(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
@@ -76,14 +76,14 @@ SBFrameSetPC(SBFrameRef instance, lldb_addr_t new_pc)
     return unwrapped->SetPC(new_pc);
 }
 
-unsigned long long
+lldb_addr_t
 SBFrameGetSP(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);
     return unwrapped->GetSP();
 }
 
-unsigned long long
+lldb_addr_t
 SBFrameGetFP(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);

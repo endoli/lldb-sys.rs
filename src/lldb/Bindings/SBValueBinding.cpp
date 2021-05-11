@@ -59,7 +59,7 @@ SBValueGetError(SBValueRef instance)
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->GetError()));
 }
 
-unsigned long long
+lldb_user_id_t
 SBValueGetID(SBValueRef instance)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
@@ -87,7 +87,7 @@ SBValueGetDisplayTypeName(SBValueRef instance)
     return unwrapped->GetDisplayTypeName();
 }
 
-unsigned int
+size_t
 SBValueGetByteSize(SBValueRef instance)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
@@ -361,7 +361,7 @@ SBValueGetChildAtIndex2(SBValueRef instance, uint32_t idx, lldb::DynamicValueTyp
         new SBValue(unwrapped->GetChildAtIndex(idx, use_dynamic, can_create_synthetic)));
 }
 
-unsigned int
+uint32_t
 SBValueGetIndexOfChildWithName(SBValueRef instance, const char *name)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
@@ -396,7 +396,7 @@ SBValueAddressOf(SBValueRef instance)
     return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->AddressOf()));
 }
 
-unsigned long long
+lldb_addr_t
 SBValueGetLoadAddress(SBValueRef instance)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
@@ -452,7 +452,7 @@ SBValueIsRuntimeSupportValue(SBValueRef instance)
     return unwrapped->IsRuntimeSupportValue();
 }
 
-unsigned int
+uint32_t
 SBValueGetNumChildren(SBValueRef instance)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);

@@ -28,7 +28,7 @@ LLDB_API bool SBTargetEventIsTargetEvent(SBEventRef event);
 
 LLDB_API SBTargetRef SBTargetGetTargetFromEvent(SBEventRef event);
 
-LLDB_API unsigned int SBTargetGetNumModulesFromEvent(SBEventRef event);
+LLDB_API uint32_t SBTargetGetNumModulesFromEvent(SBEventRef event);
 
 LLDB_API SBModuleRef SBTargetGetModuleAtIndexFromEvent(const uint32_t idx, SBEventRef event);
 
@@ -79,7 +79,7 @@ LLDB_API bool SBTargetAddModule(SBTargetRef instance, SBModuleRef module);
 
 LLDB_API SBModuleRef SBTargetAddModuleSpec(SBTargetRef instance, SBModuleSpecRef module_spec);
 
-LLDB_API unsigned int SBTargetGetNumModules(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetNumModules(SBTargetRef instance);
 
 LLDB_API SBModuleRef SBTargetGetModuleAtIndex(SBTargetRef instance, uint32_t idx);
 
@@ -93,13 +93,13 @@ LLDB_API SBSymbolContextListRef SBTargetFindCompileUnits(SBTargetRef instance, S
 
 LLDB_API ENUM(ByteOrder) SBTargetGetByteOrder(SBTargetRef instance);
 
-LLDB_API unsigned int SBTargetGetAddressByteSize(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetAddressByteSize(SBTargetRef instance);
 
 LLDB_API const char *SBTargetGetTriple(SBTargetRef instance);
 
-LLDB_API unsigned int SBTargetGetDataByteSize(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetDataByteSize(SBTargetRef instance);
 
-LLDB_API unsigned int SBTargetGetCodeByteSize(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetCodeByteSize(SBTargetRef instance);
 
 LLDB_API SBErrorRef
 SBTargetSetSectionLoadAddress(SBTargetRef instance, SBSectionRef section, lldb_addr_t section_base_addr);
@@ -137,7 +137,7 @@ SBTargetResolvePastLoadAddress(SBTargetRef instance, uint32_t stop_id, lldb_addr
 LLDB_API SBSymbolContextRef
 SBTargetResolveSymbolContextForAddress(SBTargetRef instance, SBAddressRef addr, uint32_t resolve_scope);
 
-LLDB_API unsigned int SBTargetReadMemory(SBTargetRef instance, SBAddressRef addr, void *buf, size_t size,
+LLDB_API size_t SBTargetReadMemory(SBTargetRef instance, SBAddressRef addr, void *buf, size_t size,
                                              SBErrorRef error);
 
 LLDB_API SBBreakpointRef
@@ -247,13 +247,13 @@ LLDB_API SBErrorRef
 SBTargetBreakspointsWriteToFile2(SBTargetRef instance, SBFileSpecRef dest_file,
                                  SBBreakpointListRef bkpt_list, bool append);
 
-LLDB_API unsigned int SBTargetGetNumBreakpoints(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetNumBreakpoints(SBTargetRef instance);
 
 LLDB_API SBBreakpointRef SBTargetGetBreakpointAtIndex(SBTargetRef instance, uint32_t idx);
 
-LLDB_API bool SBTargetBreakpointDelete(SBTargetRef instance, int break_id);
+LLDB_API bool SBTargetBreakpointDelete(SBTargetRef instance, lldb_break_id_t break_id);
 
-LLDB_API SBBreakpointRef SBTargetFindBreakpointByID(SBTargetRef instance, int break_id);
+LLDB_API SBBreakpointRef SBTargetFindBreakpointByID(SBTargetRef instance, lldb_break_id_t break_id);
 
 LLDB_API bool SBTargetFindBreakpointsByName(SBTargetRef instance, const char *name,
                                             SBBreakpointListRef bkpt_list);
@@ -268,13 +268,13 @@ LLDB_API bool SBTargetDisableAllBreakpoints(SBTargetRef instance);
 
 LLDB_API bool SBTargetDeleteAllBreakpoints(SBTargetRef instance);
 
-LLDB_API unsigned int SBTargetGetNumWatchpoints(SBTargetRef instance);
+LLDB_API uint32_t SBTargetGetNumWatchpoints(SBTargetRef instance);
 
 LLDB_API SBWatchpointRef SBTargetGetWatchpointAtIndex(SBTargetRef instance, uint32_t idx);
 
-LLDB_API bool SBTargetDeleteWatchpoint(SBTargetRef instance, int watch_id);
+LLDB_API bool SBTargetDeleteWatchpoint(SBTargetRef instance, lldb_watch_id_t watch_id);
 
-LLDB_API SBWatchpointRef SBTargetFindWatchpointByID(SBTargetRef instance, int watch_id);
+LLDB_API SBWatchpointRef SBTargetFindWatchpointByID(SBTargetRef instance, lldb_watch_id_t watch_id);
 
 LLDB_API SBWatchpointRef SBTargetWatchAddress(SBTargetRef instance, lldb_addr_t addr, size_t size,
                                                       bool read, bool write, SBErrorRef error);

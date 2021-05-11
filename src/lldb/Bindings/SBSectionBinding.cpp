@@ -76,21 +76,21 @@ SBSectionGetSubSectionAtIndex(SBSectionRef instance, size_t idx)
     return reinterpret_cast<SBSectionRef>(new SBSection(unwrapped->GetSubSectionAtIndex(idx)));
 }
 
-unsigned long long
+lldb_addr_t
 SBSectionGetFileAddress(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
     return unwrapped->GetFileAddress();
 }
 
-unsigned long long
+lldb_addr_t
 SBSectionGetLoadAddress(SBSectionRef instance, SBTargetRef target)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
     return unwrapped->GetLoadAddress(*reinterpret_cast<SBTarget *>(target));
 }
 
-unsigned long long
+lldb_addr_t
 SBSectionGetByteSize(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
