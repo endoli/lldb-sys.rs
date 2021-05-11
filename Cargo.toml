@@ -1,6 +1,6 @@
 [package]
 name = "lldb-sys"
-version = "0.0.23"
+version = "0.0.24"
 authors = ["Bruce Mitchener <bruce.mitchener@gmail.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
