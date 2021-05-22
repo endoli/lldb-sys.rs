@@ -22,6 +22,8 @@ LLDB_API SBFileSpecRef SBHostOSGetLLDBPythonPath(void);
 
 LLDB_API SBFileSpecRef SBHostOSGetLLDBPath(ENUM(PathType) path_type);
 
+LLDB_API SBFileSpecRef SBHostOSGetUserHomeDirectory(void);
+
 #ifdef __cplusplus
 }
 #endif

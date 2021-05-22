@@ -2453,6 +2453,7 @@ extern "C" {
     pub fn SBHostOSGetProgramFileSpec() -> SBFileSpecRef;
     pub fn SBHostOSGetLLDBPythonPath() -> SBFileSpecRef;
     pub fn SBHostOSGetLLDBPath(path_type: PathType) -> SBFileSpecRef;
+    pub fn SBHostOSGetUserHomeDirectory() -> SBFileSpecRef;
     pub fn CreateSBInstruction() -> SBInstructionRef;
     pub fn CloneSBInstruction(instance: SBInstructionRef) -> SBInstructionRef;
     pub fn DisposeSBInstruction(instance: SBInstructionRef);

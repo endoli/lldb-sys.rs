@@ -34,6 +34,12 @@ SBHostOSGetLLDBPath(lldb::PathType path_type)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(lldb::SBHostOS::GetLLDBPath(path_type)));
 }
 
+SBFileSpecRef
+SBHostOSGetUserHomeDirectory(void)
+{
+    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(lldb::SBHostOS::GetUserHomeDirectory()));
+}
+
 #ifdef __cplusplus
 }
 #endif
