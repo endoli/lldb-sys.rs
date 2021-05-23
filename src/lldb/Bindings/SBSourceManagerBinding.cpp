@@ -51,6 +51,19 @@ SBSourceManagerDisplaySourceLinesWithLineNumbers(SBSourceManagerRef instance, SB
                                                         *reinterpret_cast<SBStream *>(s));
 }
 
+size_t
+SBSourceManagerDisplaySourceLinesWithLineNumbersAndColumn(
+    SBSourceManagerRef instance, SBFileSpecRef file,
+    uint32_t line, uint32_t column,
+    uint32_t context_before, uint32_t context_after,
+    const char *current_line_cstr, SBStreamRef s)
+{
+    SBSourceManager *unwrapped = reinterpret_cast<SBSourceManager *>(instance);
+    return unwrapped->DisplaySourceLinesWithLineNumbersAndColumn(*reinterpret_cast<SBFileSpec *>(file), line, column, context_before,
+                                                        context_after, current_line_cstr,
+                                                        *reinterpret_cast<SBStream *>(s));
+}
+
 #ifdef __cplusplus
 }
 #endif

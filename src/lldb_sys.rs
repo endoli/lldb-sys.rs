@@ -3254,6 +3254,16 @@ extern "C" {
         current_line_cstr: *const ::std::os::raw::c_char,
         s: SBStreamRef,
     ) -> size_t;
+    pub fn SBSourceManagerDisplaySourceLinesWithLineNumbersAndColumn(
+        instance: SBSourceManagerRef,
+        file: SBFileSpecRef,
+        line: u32,
+        column: u32,
+        context_before: u32,
+        context_after: u32,
+        current_line_cstr: *const ::std::os::raw::c_char,
+        s: SBStreamRef,
+    ) -> size_t;
     pub fn CreateSBStream() -> SBStreamRef;
     pub fn DisposeSBStream(instance: SBStreamRef);
     pub fn SBStreamIsValid(instance: SBStreamRef) -> bool;
