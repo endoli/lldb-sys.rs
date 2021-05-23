@@ -30,6 +30,12 @@ LLDB_API void SBTypeCategorySetEnabled(SBTypeCategoryRef instance, bool);
 
 LLDB_API const char *SBTypeCategoryGetName(SBTypeCategoryRef instance);
 
+LLDB_API ENUM(LanguageType) SBTypeCategoryGetLanguageAtIndex(SBTypeCategoryRef instance, uint32_t idx);
+
+LLDB_API uint32_t SBTypeCategoryGetNumLanguages(SBTypeCategoryRef instance);
+
+LLDB_API void SBTypeCategoryAddLanguage(SBTypeCategoryRef instance, ENUM(LanguageType) language);
+
 LLDB_API bool SBTypeCategoryGetDescription(SBTypeCategoryRef instance, SBStreamRef description,
                                            ENUM(DescriptionLevel) description_level);
 

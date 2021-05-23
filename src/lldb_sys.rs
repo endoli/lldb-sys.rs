@@ -4085,6 +4085,12 @@ extern "C" {
     pub fn SBTypeCategoryGetEnabled(instance: SBTypeCategoryRef) -> bool;
     pub fn SBTypeCategorySetEnabled(instance: SBTypeCategoryRef, arg1: bool);
     pub fn SBTypeCategoryGetName(instance: SBTypeCategoryRef) -> *const ::std::os::raw::c_char;
+    pub fn SBTypeCategoryGetLanguageAtIndex(
+        instance: SBTypeCategoryRef,
+        index: u32,
+    ) -> LanguageType;
+    pub fn SBTypeCategoryGetNumLanguages(instance: SBTypeCategoryRef) -> u32;
+    pub fn SBTypeCategoryAddLanguage(instance: SBTypeCategoryRef, language: LanguageType);
     pub fn SBTypeCategoryGetDescription(
         instance: SBTypeCategoryRef,
         description: SBStreamRef,

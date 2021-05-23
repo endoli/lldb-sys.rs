@@ -68,6 +68,27 @@ SBTypeCategoryGetName(SBTypeCategoryRef instance)
     return unwrapped->GetName();
 }
 
+ENUM(LanguageType)
+SBTypeCategoryGetLanguageAtIndex(SBTypeCategoryRef instance, uint32_t idx)
+{
+    SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
+    return unwrapped->GetLanguageAtIndex(idx);
+}
+
+uint32_t
+SBTypeCategoryGetNumLanguages(SBTypeCategoryRef instance)
+{
+    SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
+    return unwrapped->GetNumLanguages();
+}
+
+void
+SBTypeCategoryAddLanguage(SBTypeCategoryRef instance, ENUM(LanguageType) language)
+{
+    SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
+    unwrapped->AddLanguage(language);
+}
+
 bool
 SBTypeCategoryGetDescription(SBTypeCategoryRef instance, SBStreamRef description,
                                  lldb::DescriptionLevel description_level)
