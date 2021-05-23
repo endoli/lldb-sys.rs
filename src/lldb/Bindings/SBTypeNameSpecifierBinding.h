@@ -18,26 +18,32 @@ extern "C" {
 
 LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier(void);
 
-LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name, bool is_regex);
+LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name,
+                                                           bool is_regex);
 
 LLDB_API SBTypeNameSpecifierRef CreateSBTypeNameSpecifier3(SBTypeRef type);
 
-LLDB_API SBTypeNameSpecifierRef CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
+LLDB_API SBTypeNameSpecifierRef
+CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
 
 LLDB_API void DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance);
 
 LLDB_API bool SBTypeNameSpecifierIsValid(SBTypeNameSpecifierRef instance);
 
-LLDB_API const char *SBTypeNameSpecifierGetName(SBTypeNameSpecifierRef instance);
+LLDB_API const char *
+SBTypeNameSpecifierGetName(SBTypeNameSpecifierRef instance);
 
 LLDB_API SBTypeRef SBTypeNameSpecifierGetType(SBTypeNameSpecifierRef instance);
 
 LLDB_API bool SBTypeNameSpecifierIsRegex(SBTypeNameSpecifierRef instance);
 
-LLDB_API bool SBTypeNameSpecifierGetDescription(SBTypeNameSpecifierRef instance, SBStreamRef description,
-                                                ENUM(DescriptionLevel) description_level);
+LLDB_API bool SBTypeNameSpecifierGetDescription(SBTypeNameSpecifierRef instance,
+                                                SBStreamRef description,
+                                                ENUM(DescriptionLevel)
+                                                    description_level);
 
-LLDB_API bool SBTypeNameSpecifierIsEqualTo(SBTypeNameSpecifierRef instance, SBTypeNameSpecifierRef rhs);
+LLDB_API bool SBTypeNameSpecifierIsEqualTo(SBTypeNameSpecifierRef instance,
+                                           SBTypeNameSpecifierRef rhs);
 
 #ifdef __cplusplus
 }

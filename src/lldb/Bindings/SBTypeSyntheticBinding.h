@@ -18,9 +18,11 @@ extern "C" {
 
 LLDB_API SBTypeSyntheticRef CreateSBTypeSynthetic(void);
 
-LLDB_API SBTypeSyntheticRef SBTypeSyntheticCreateWithClassName(const char *data, uint32_t options);
+LLDB_API SBTypeSyntheticRef
+SBTypeSyntheticCreateWithClassName(const char *data, uint32_t options);
 
-LLDB_API SBTypeSyntheticRef SBTypeSyntheticCreateWithScriptCode(const char *data, uint32_t options);
+LLDB_API SBTypeSyntheticRef
+SBTypeSyntheticCreateWithScriptCode(const char *data, uint32_t options);
 
 LLDB_API SBTypeSyntheticRef CloneSBTypeSynthetic(SBTypeSyntheticRef instance);
 
@@ -34,18 +36,23 @@ LLDB_API bool SBTypeSyntheticIsClassName(SBTypeSyntheticRef instance);
 
 LLDB_API const char *SBTypeSyntheticGetData(SBTypeSyntheticRef instance);
 
-LLDB_API void SBTypeSyntheticSetClassName(SBTypeSyntheticRef instance, const char *data);
+LLDB_API void SBTypeSyntheticSetClassName(SBTypeSyntheticRef instance,
+                                          const char *data);
 
-LLDB_API void SBTypeSyntheticSetClassCode(SBTypeSyntheticRef instance, const char *data);
+LLDB_API void SBTypeSyntheticSetClassCode(SBTypeSyntheticRef instance,
+                                          const char *data);
 
 LLDB_API uint32_t SBTypeSyntheticGetOptions(SBTypeSyntheticRef instance);
 
 LLDB_API void SBTypeSyntheticSetOptions(SBTypeSyntheticRef instance, uint32_t);
 
-LLDB_API bool SBTypeSyntheticGetDescription(SBTypeSyntheticRef instance, SBStreamRef description,
-                                            ENUM(DescriptionLevel) description_level);
+LLDB_API bool SBTypeSyntheticGetDescription(SBTypeSyntheticRef instance,
+                                            SBStreamRef description,
+                                            ENUM(DescriptionLevel)
+                                                description_level);
 
-LLDB_API bool SBTypeSyntheticIsEqualTo(SBTypeSyntheticRef instance, SBTypeSyntheticRef rhs);
+LLDB_API bool SBTypeSyntheticIsEqualTo(SBTypeSyntheticRef instance,
+                                       SBTypeSyntheticRef rhs);
 
 #ifdef __cplusplus
 }

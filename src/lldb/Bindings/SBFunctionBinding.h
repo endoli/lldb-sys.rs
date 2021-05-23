@@ -30,10 +30,12 @@ LLDB_API const char *SBFunctionGetDisplayName(SBFunctionRef instance);
 
 LLDB_API const char *SBFunctionGetMangledName(SBFunctionRef instance);
 
-LLDB_API SBInstructionListRef SBFunctionGetInstructions(SBFunctionRef instance, SBTargetRef target);
+LLDB_API SBInstructionListRef SBFunctionGetInstructions(SBFunctionRef instance,
+                                                        SBTargetRef target);
 
-LLDB_API SBInstructionListRef
-SBFunctionGetInstructions2(SBFunctionRef instance, SBTargetRef target, const char *flavor);
+LLDB_API SBInstructionListRef SBFunctionGetInstructions2(SBFunctionRef instance,
+                                                         SBTargetRef target,
+                                                         const char *flavor);
 
 LLDB_API SBAddressRef SBFunctionGetStartAddress(SBFunctionRef instance);
 
@@ -49,7 +51,8 @@ LLDB_API ENUM(LanguageType) SBFunctionGetLanguage(SBFunctionRef instance);
 
 LLDB_API bool SBFunctionGetIsOptimized(SBFunctionRef instance);
 
-LLDB_API bool SBFunctionGetDescription(SBFunctionRef instance, SBStreamRef description);
+LLDB_API bool SBFunctionGetDescription(SBFunctionRef instance,
+                                       SBStreamRef description);
 
 #ifdef __cplusplus
 }

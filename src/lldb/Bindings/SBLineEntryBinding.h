@@ -34,13 +34,15 @@ LLDB_API uint32_t SBLineEntryGetLine(SBLineEntryRef instance);
 
 LLDB_API uint32_t SBLineEntryGetColumn(SBLineEntryRef instance);
 
-LLDB_API void SBLineEntrySetFileSpec(SBLineEntryRef instance, SBFileSpecRef filespec);
+LLDB_API void SBLineEntrySetFileSpec(SBLineEntryRef instance,
+                                     SBFileSpecRef filespec);
 
 LLDB_API void SBLineEntrySetLine(SBLineEntryRef instance, uint32_t line);
 
 LLDB_API void SBLineEntrySetColumn(SBLineEntryRef instance, uint32_t column);
 
-LLDB_API bool SBLineEntryGetDescription(SBLineEntryRef instance, SBStreamRef description);
+LLDB_API bool SBLineEntryGetDescription(SBLineEntryRef instance,
+                                        SBStreamRef description);
 
 #ifdef __cplusplus
 }

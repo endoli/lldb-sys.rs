@@ -28,27 +28,34 @@ LLDB_API SBFileSpecRef SBCompileUnitGetFileSpec(SBCompileUnitRef instance);
 
 LLDB_API uint32_t SBCompileUnitGetNumLineEntries(SBCompileUnitRef instance);
 
-LLDB_API SBLineEntryRef SBCompileUnitGetLineEntryAtIndex(SBCompileUnitRef instance, uint32_t idx);
+LLDB_API SBLineEntryRef
+SBCompileUnitGetLineEntryAtIndex(SBCompileUnitRef instance, uint32_t idx);
 
-LLDB_API uint32_t SBCompileUnitFindLineEntryIndex(SBCompileUnitRef instance, uint32_t start_idx,
-                                                          uint32_t line, SBFileSpecRef inline_file_spec);
+LLDB_API uint32_t
+SBCompileUnitFindLineEntryIndex(SBCompileUnitRef instance, uint32_t start_idx,
+                                uint32_t line, SBFileSpecRef inline_file_spec);
 
-LLDB_API uint32_t SBCompileUnitFindLineEntryIndex2(SBCompileUnitRef instance, uint32_t start_idx,
-                                                           uint32_t line, SBFileSpecRef inline_file_spec,
-                                                           bool exact);
+LLDB_API uint32_t SBCompileUnitFindLineEntryIndex2(
+    SBCompileUnitRef instance, uint32_t start_idx, uint32_t line,
+    SBFileSpecRef inline_file_spec, bool exact);
 
-LLDB_API SBFileSpecRef SBCompileUnitGetSupportFileAtIndex(SBCompileUnitRef instance, uint32_t idx);
+LLDB_API SBFileSpecRef
+SBCompileUnitGetSupportFileAtIndex(SBCompileUnitRef instance, uint32_t idx);
 
 LLDB_API uint32_t SBCompileUnitGetNumSupportFiles(SBCompileUnitRef instance);
 
-LLDB_API uint32_t SBCompileUnitFindSupportFileIndex(SBCompileUnitRef instance, uint32_t start_idx,
-                                                            SBFileSpecRef sb_file, bool full);
+LLDB_API uint32_t SBCompileUnitFindSupportFileIndex(SBCompileUnitRef instance,
+                                                    uint32_t start_idx,
+                                                    SBFileSpecRef sb_file,
+                                                    bool full);
 
-LLDB_API SBTypeListRef SBCompileUnitGetTypes(SBCompileUnitRef instance, uint32_t type_mask);
+LLDB_API SBTypeListRef SBCompileUnitGetTypes(SBCompileUnitRef instance,
+                                             uint32_t type_mask);
 
 LLDB_API ENUM(LanguageType) SBCompileUnitGetLanguage(SBCompileUnitRef instance);
 
-LLDB_API bool SBCompileUnitGetDescription(SBCompileUnitRef instance, SBStreamRef description);
+LLDB_API bool SBCompileUnitGetDescription(SBCompileUnitRef instance,
+                                          SBStreamRef description);
 
 #ifdef __cplusplus
 }

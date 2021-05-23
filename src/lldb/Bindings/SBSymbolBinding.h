@@ -30,10 +30,11 @@ LLDB_API const char *SBSymbolGetDisplayName(SBSymbolRef instance);
 
 LLDB_API const char *SBSymbolGetMangledName(SBSymbolRef instance);
 
-LLDB_API SBInstructionListRef SBSymbolGetInstructions(SBSymbolRef instance, SBTargetRef target);
+LLDB_API SBInstructionListRef SBSymbolGetInstructions(SBSymbolRef instance,
+                                                      SBTargetRef target);
 
-LLDB_API SBInstructionListRef
-SBSymbolGetInstructions2(SBSymbolRef instance, SBTargetRef target, const char *flavor_string);
+LLDB_API SBInstructionListRef SBSymbolGetInstructions2(
+    SBSymbolRef instance, SBTargetRef target, const char *flavor_string);
 
 LLDB_API SBAddressRef SBSymbolGetStartAddress(SBSymbolRef instance);
 
@@ -43,7 +44,8 @@ LLDB_API uint32_t SBSymbolGetPrologueByteSize(SBSymbolRef instance);
 
 LLDB_API ENUM(SymbolType) SBSymbolGetType(SBSymbolRef instance);
 
-LLDB_API bool SBSymbolGetDescription(SBSymbolRef instance, SBStreamRef description);
+LLDB_API bool SBSymbolGetDescription(SBSymbolRef instance,
+                                     SBStreamRef description);
 
 LLDB_API bool SBSymbolIsExternal(SBSymbolRef instance);
 

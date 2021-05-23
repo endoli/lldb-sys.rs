@@ -18,7 +18,8 @@ extern "C" {
 
 LLDB_API SBThreadCollectionRef CreateSBThreadCollection(void);
 
-LLDB_API SBThreadCollectionRef CloneSBThreadCollection(SBThreadCollectionRef instance);
+LLDB_API SBThreadCollectionRef
+CloneSBThreadCollection(SBThreadCollectionRef instance);
 
 LLDB_API void DisposeSBThreadCollection(SBThreadCollectionRef instance);
 
@@ -26,7 +27,8 @@ LLDB_API bool SBThreadCollectionIsValid(SBThreadCollectionRef instance);
 
 LLDB_API size_t SBThreadCollectionGetSize(SBThreadCollectionRef instance);
 
-LLDB_API SBThreadRef SBThreadCollectionGetThreadAtIndex(SBThreadCollectionRef instance, size_t idx);
+LLDB_API SBThreadRef
+SBThreadCollectionGetThreadAtIndex(SBThreadCollectionRef instance, size_t idx);
 
 #ifdef __cplusplus
 }

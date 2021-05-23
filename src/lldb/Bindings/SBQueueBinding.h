@@ -40,7 +40,8 @@ LLDB_API SBThreadRef SBQueueGetThreadAtIndex(SBQueueRef instance, uint32_t);
 
 LLDB_API uint32_t SBQueueGetNumPendingItems(SBQueueRef instance);
 
-LLDB_API SBQueueItemRef SBQueueGetPendingItemAtIndex(SBQueueRef instance, uint32_t);
+LLDB_API SBQueueItemRef SBQueueGetPendingItemAtIndex(SBQueueRef instance,
+                                                     uint32_t);
 
 LLDB_API uint32_t SBQueueGetNumRunningItems(SBQueueRef instance);
 

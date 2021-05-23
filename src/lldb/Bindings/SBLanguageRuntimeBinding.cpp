@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -17,15 +17,13 @@ extern "C" {
 #endif
 
 lldb::LanguageType
-SBLanguageRuntimeGetLanguageTypeFromString(const char *string)
-{
-    return SBLanguageRuntime::GetLanguageTypeFromString(string);
+SBLanguageRuntimeGetLanguageTypeFromString(const char *string) {
+  return SBLanguageRuntime::GetLanguageTypeFromString(string);
 }
 
 const char *
-SBLanguageRuntimeGetNameForLanguageType(lldb::LanguageType language)
-{
-    return SBLanguageRuntime::GetNameForLanguageType(language);
+SBLanguageRuntimeGetNameForLanguageType(lldb::LanguageType language) {
+  return SBLanguageRuntime::GetNameForLanguageType(language);
 }
 
 #ifdef __cplusplus

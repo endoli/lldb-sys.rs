@@ -18,7 +18,8 @@ extern "C" {
 
 LLDB_API SBBreakpointListRef CreateSBBreakpointList(SBTargetRef target);
 
-LLDB_API SBBreakpointListRef CloneSBBreakpointList(SBBreakpointListRef instance);
+LLDB_API SBBreakpointListRef
+CloneSBBreakpointList(SBBreakpointListRef instance);
 
 LLDB_API void DisposeSBBreakpointList(SBBreakpointListRef instance);
 
@@ -30,11 +31,14 @@ SBBreakpointListGetBreakpointAtIndex(SBBreakpointListRef instance, size_t idx);
 LLDB_API SBBreakpointRef
 SBBreakpointListFindBreakpointByID(SBBreakpointListRef instance, int break_id);
 
-LLDB_API void SBBreakpointListAppend(SBBreakpointListRef instance, SBBreakpointRef sb_bkpt);
+LLDB_API void SBBreakpointListAppend(SBBreakpointListRef instance,
+                                     SBBreakpointRef sb_bkpt);
 
-LLDB_API bool SBBreakpointListAppendIfUnique(SBBreakpointListRef instance, SBBreakpointRef sb_bkpt);
+LLDB_API bool SBBreakpointListAppendIfUnique(SBBreakpointListRef instance,
+                                             SBBreakpointRef sb_bkpt);
 
-LLDB_API void SBBreakpointListAppendByID(SBBreakpointListRef instance, int break_id);
+LLDB_API void SBBreakpointListAppendByID(SBBreakpointListRef instance,
+                                         int break_id);
 
 LLDB_API void SBBreakpointListClear(SBBreakpointListRef instance);
 

@@ -30,13 +30,16 @@ LLDB_API uint32_t SBDeclarationGetLine(SBDeclarationRef instance);
 
 LLDB_API uint32_t SBDeclarationGetColumn(SBDeclarationRef instance);
 
-LLDB_API void SBDeclarationSetFileSpec(SBDeclarationRef instance, SBFileSpecRef filespec);
+LLDB_API void SBDeclarationSetFileSpec(SBDeclarationRef instance,
+                                       SBFileSpecRef filespec);
 
 LLDB_API void SBDeclarationSetLine(SBDeclarationRef instance, uint32_t line);
 
-LLDB_API void SBDeclarationSetColumn(SBDeclarationRef instance, uint32_t column);
+LLDB_API void SBDeclarationSetColumn(SBDeclarationRef instance,
+                                     uint32_t column);
 
-LLDB_API bool SBDeclarationGetDescription(SBDeclarationRef instance, SBStreamRef description);
+LLDB_API bool SBDeclarationGetDescription(SBDeclarationRef instance,
+                                          SBStreamRef description);
 
 #ifdef __cplusplus
 }

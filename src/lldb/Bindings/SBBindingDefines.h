@@ -21,16 +21,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined (_MSC_VER)
-    #if defined(EXPORT_LIBLLDB)
-        #define  LLDB_API __declspec(dllexport)
-    #elif defined(IMPORT_LIBLLDB)
-        #define  LLDB_API __declspec(dllimport)
-    #else
-        #define LLDB_API
-    #endif
+#if defined(_MSC_VER)
+#if defined(EXPORT_LIBLLDB)
+#define LLDB_API __declspec(dllexport)
+#elif defined(IMPORT_LIBLLDB)
+#define LLDB_API __declspec(dllimport)
+#else
+#define LLDB_API
+#endif
 #else // defined (_MSC_VER)
-    #define LLDB_API
+#define LLDB_API
 #endif
 
 typedef uint64_t lldb_addr_t;
@@ -44,8 +44,8 @@ typedef uint64_t lldb_queue_id_t;
 
 #else
 
-#include "lldb/lldb-enumerations.h"
 #include "lldb/lldb-defines.h"
+#include "lldb/lldb-enumerations.h"
 #include "lldb/lldb-forward.h"
 #include "lldb/lldb-types.h"
 
@@ -70,8 +70,10 @@ LLDB_API typedef struct SBBreakpointNameOpaque *SBBreakpointNameRef;
 LLDB_API typedef struct SBBroadcasterOpaque *SBBroadcasterRef;
 LLDB_API typedef struct SBCommandOpaque *SBCommandRef;
 LLDB_API typedef struct SBCommandInterpreterOpaque *SBCommandInterpreterRef;
-LLDB_API typedef struct SBCommandInterpreterRunOptionsOpaque *SBCommandInterpreterRunOptionsRef;
-LLDB_API typedef struct SBCommandPluginInterfaceOpaque *SBCommandPluginInterfaceRef;
+LLDB_API typedef struct SBCommandInterpreterRunOptionsOpaque
+    *SBCommandInterpreterRunOptionsRef;
+LLDB_API typedef struct SBCommandPluginInterfaceOpaque
+    *SBCommandPluginInterfaceRef;
 LLDB_API typedef struct SBCommandReturnObjectOpaque *SBCommandReturnObjectRef;
 LLDB_API typedef struct SBCommunicationOpaque *SBCommunicationRef;
 LLDB_API typedef struct SBCompileUnitOpaque *SBCompileUnitRef;
@@ -127,7 +129,8 @@ LLDB_API typedef struct SBTypeNameSpecifierOpaque *SBTypeNameSpecifierRef;
 LLDB_API typedef struct SBTypeSummaryOpaque *SBTypeSummaryRef;
 LLDB_API typedef struct SBTypeSummaryOptionsOpaque *SBTypeSummaryOptionsRef;
 LLDB_API typedef struct SBInputReaderOpaque *SBInputReaderRef;
-LLDB_API typedef struct SBPlatformConnectOptionsOpaque *SBPlatformConnectOptionsRef;
+LLDB_API typedef struct SBPlatformConnectOptionsOpaque
+    *SBPlatformConnectOptionsRef;
 LLDB_API typedef struct SBPlatformShellCommandOpaque *SBPlatformShellCommandRef;
 
 #ifndef LLDB_DISABLE_PYTHON

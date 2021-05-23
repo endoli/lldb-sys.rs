@@ -42,21 +42,28 @@ LLDB_API SBBlockRef SBBlockGetFirstChild(SBBlockRef instance);
 
 LLDB_API uint32_t SBBlockGetNumRanges(SBBlockRef instance);
 
-LLDB_API SBAddressRef SBBlockGetRangeStartAddress(SBBlockRef instance, uint32_t idx);
+LLDB_API SBAddressRef SBBlockGetRangeStartAddress(SBBlockRef instance,
+                                                  uint32_t idx);
 
-LLDB_API SBAddressRef SBBlockGetRangeEndAddress(SBBlockRef instance, uint32_t idx);
+LLDB_API SBAddressRef SBBlockGetRangeEndAddress(SBBlockRef instance,
+                                                uint32_t idx);
 
-LLDB_API uint32_t SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance, SBAddressRef block_addr);
+LLDB_API uint32_t SBBlockGetRangeIndexForBlockAddress(SBBlockRef instance,
+                                                      SBAddressRef block_addr);
 
-LLDB_API SBValueListRef SBBlockGetVariables(SBBlockRef instance, SBFrameRef frame, bool arguments,
-                                            bool locals, bool statics, ENUM(DynamicValueType) use_dynamic);
+LLDB_API SBValueListRef SBBlockGetVariables(SBBlockRef instance,
+                                            SBFrameRef frame, bool arguments,
+                                            bool locals, bool statics,
+                                            ENUM(DynamicValueType) use_dynamic);
 
-LLDB_API SBValueListRef
-SBBlockGetVariables2(SBBlockRef instance, SBTargetRef target, bool arguments, bool locals, bool statics);
+LLDB_API SBValueListRef SBBlockGetVariables2(SBBlockRef instance,
+                                             SBTargetRef target, bool arguments,
+                                             bool locals, bool statics);
 
 LLDB_API SBBlockRef SBBlockGetContainingInlinedBlock(SBBlockRef instance);
 
-LLDB_API bool SBBlockGetDescription(SBBlockRef instance, SBStreamRef description);
+LLDB_API bool SBBlockGetDescription(SBBlockRef instance,
+                                    SBStreamRef description);
 
 #ifdef __cplusplus
 }

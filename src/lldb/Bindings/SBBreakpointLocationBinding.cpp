@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -16,192 +16,180 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBBreakpointLocationRef
-CreateSBBreakpointLocation()
-{
-    return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation());
+SBBreakpointLocationRef CreateSBBreakpointLocation() {
+  return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation());
 }
 
 SBBreakpointLocationRef
-CloneSBBreakpointLocation(SBBreakpointLocationRef instance)
-{
-    return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation(*reinterpret_cast<SBBreakpointLocation *>(instance)));
+CloneSBBreakpointLocation(SBBreakpointLocationRef instance) {
+  return reinterpret_cast<SBBreakpointLocationRef>(new SBBreakpointLocation(
+      *reinterpret_cast<SBBreakpointLocation *>(instance)));
 }
 
-void
-DisposeSBBreakpointLocation(SBBreakpointLocationRef instance)
-{
-    delete reinterpret_cast<SBBreakpointLocation *>(instance);
+void DisposeSBBreakpointLocation(SBBreakpointLocationRef instance) {
+  delete reinterpret_cast<SBBreakpointLocation *>(instance);
 }
 
-int
-SBBreakpointLocationGetID(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetID();
+int SBBreakpointLocationGetID(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetID();
 }
 
-bool
-SBBreakpointLocationIsValid(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->IsValid();
+bool SBBreakpointLocationIsValid(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->IsValid();
 }
 
-SBAddressRef
-SBBreakpointLocationGetAddress(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetAddress()));
+SBAddressRef SBBreakpointLocationGetAddress(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetAddress()));
 }
 
 lldb_addr_t
-SBBreakpointLocationGetLoadAddress(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetLoadAddress();
+SBBreakpointLocationGetLoadAddress(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetLoadAddress();
 }
 
-void
-SBBreakpointLocationSetEnabled(SBBreakpointLocationRef instance, bool enabled)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetEnabled(enabled);
+void SBBreakpointLocationSetEnabled(SBBreakpointLocationRef instance,
+                                    bool enabled) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetEnabled(enabled);
 }
 
-bool
-SBBreakpointLocationIsEnabled(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->IsEnabled();
+bool SBBreakpointLocationIsEnabled(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->IsEnabled();
 }
 
-uint32_t
-SBBreakpointLocationGetHitCount(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetHitCount();
+uint32_t SBBreakpointLocationGetHitCount(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetHitCount();
 }
 
-uint32_t
-SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetIgnoreCount();
+uint32_t SBBreakpointLocationGetIgnoreCount(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetIgnoreCount();
 }
 
-void
-SBBreakpointLocationSetIgnoreCount(SBBreakpointLocationRef instance, uint32_t n)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetIgnoreCount(n);
+void SBBreakpointLocationSetIgnoreCount(SBBreakpointLocationRef instance,
+                                        uint32_t n) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetIgnoreCount(n);
 }
 
-void
-SBBreakpointLocationSetCondition(SBBreakpointLocationRef instance, const char *condition)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetCondition(condition);
+void SBBreakpointLocationSetCondition(SBBreakpointLocationRef instance,
+                                      const char *condition) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetCondition(condition);
 }
 
-const char *
-SBBreakpointLocationGetCondition(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetCondition();
+const char *SBBreakpointLocationGetCondition(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetCondition();
 }
 
-void
-SBBreakpointLocationSetScriptCallbackFunction(SBBreakpointLocationRef instance,
-                                                  const char *callback_function_name)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetScriptCallbackFunction(callback_function_name);
+void SBBreakpointLocationSetScriptCallbackFunction(
+    SBBreakpointLocationRef instance, const char *callback_function_name) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetScriptCallbackFunction(callback_function_name);
 }
 
 SBErrorRef
-SBBreakpointLocationSetScriptCallbackBody(SBBreakpointLocationRef instance, const char *script_body_text)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SetScriptCallbackBody(script_body_text)));
+SBBreakpointLocationSetScriptCallbackBody(SBBreakpointLocationRef instance,
+                                          const char *script_body_text) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetScriptCallbackBody(script_body_text)));
 }
 
-void
-SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance, lldb_tid_t sb_thread_id)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetThreadID(sb_thread_id);
+void SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance,
+                                     lldb_tid_t sb_thread_id) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetThreadID(sb_thread_id);
 }
 
-lldb_tid_t
-SBBreakpointLocationGetThreadID(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetThreadID();
+lldb_tid_t SBBreakpointLocationGetThreadID(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetThreadID();
 }
 
-void
-SBBreakpointLocationSetThreadIndex(SBBreakpointLocationRef instance, uint32_t index)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetThreadIndex(index);
+void SBBreakpointLocationSetThreadIndex(SBBreakpointLocationRef instance,
+                                        uint32_t index) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetThreadIndex(index);
 }
 
-uint32_t
-SBBreakpointLocationGetThreadIndex(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetThreadIndex();
+uint32_t SBBreakpointLocationGetThreadIndex(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetThreadIndex();
 }
 
-void
-SBBreakpointLocationSetThreadName(SBBreakpointLocationRef instance, const char *thread_name)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetThreadName(thread_name);
-}
-
-const char *
-SBBreakpointLocationGetThreadName(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetThreadName();
-}
-
-void
-SBBreakpointLocationSetQueueName(SBBreakpointLocationRef instance, const char *queue_name)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    unwrapped->SetQueueName(queue_name);
+void SBBreakpointLocationSetThreadName(SBBreakpointLocationRef instance,
+                                       const char *thread_name) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetThreadName(thread_name);
 }
 
 const char *
-SBBreakpointLocationGetQueueName(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetQueueName();
+SBBreakpointLocationGetThreadName(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetThreadName();
 }
 
-bool
-SBBreakpointLocationIsResolved(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->IsResolved();
+void SBBreakpointLocationSetQueueName(SBBreakpointLocationRef instance,
+                                      const char *queue_name) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetQueueName(queue_name);
 }
 
-bool
-SBBreakpointLocationGetDescription(SBBreakpointLocationRef instance, SBStreamRef description,
-                                       enum lldb::DescriptionLevel level)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), level);
+const char *SBBreakpointLocationGetQueueName(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetQueueName();
+}
+
+bool SBBreakpointLocationIsResolved(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->IsResolved();
+}
+
+bool SBBreakpointLocationGetDescription(SBBreakpointLocationRef instance,
+                                        SBStreamRef description,
+                                        enum lldb::DescriptionLevel level) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description),
+                                   level);
 }
 
 SBBreakpointRef
-SBBreakpointLocationGetBreakpoint(SBBreakpointLocationRef instance)
-{
-    SBBreakpointLocation *unwrapped = reinterpret_cast<SBBreakpointLocation *>(instance);
-    return reinterpret_cast<SBBreakpointRef>(new SBBreakpoint(unwrapped->GetBreakpoint()));
+SBBreakpointLocationGetBreakpoint(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return reinterpret_cast<SBBreakpointRef>(
+      new SBBreakpoint(unwrapped->GetBreakpoint()));
 }
 
 #ifdef __cplusplus

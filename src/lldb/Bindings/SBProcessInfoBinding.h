@@ -26,7 +26,8 @@ LLDB_API bool SBProcessInfoIsValid(SBProcessInfoRef instance);
 
 LLDB_API const char *SBProcessInfoGetName(SBProcessInfoRef instance);
 
-LLDB_API SBFileSpecRef SBProcessInfoGetExecutableFile(SBProcessInfoRef instance);
+LLDB_API SBFileSpecRef
+SBProcessInfoGetExecutableFile(SBProcessInfoRef instance);
 
 LLDB_API lldb_pid_t SBProcessInfoGetProcessID(SBProcessInfoRef instance);
 

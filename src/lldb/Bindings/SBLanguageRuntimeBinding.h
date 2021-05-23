@@ -16,9 +16,11 @@
 extern "C" {
 #endif
 
-LLDB_API lldb::LanguageType SBLanguageRuntimeGetLanguageTypeFromString(const char *string);
+LLDB_API lldb::LanguageType
+SBLanguageRuntimeGetLanguageTypeFromString(const char *string);
 
-LLDB_API const char *SBLanguageRuntimeGetNameForLanguageType(lldb::LanguageType language);
+LLDB_API const char *
+SBLanguageRuntimeGetNameForLanguageType(lldb::LanguageType language);
 
 #ifdef __cplusplus
 }

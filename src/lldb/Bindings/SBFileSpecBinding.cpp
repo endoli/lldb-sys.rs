@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -16,103 +16,76 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBFileSpecRef
-CreateSBFileSpec()
-{
-    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec());
+SBFileSpecRef CreateSBFileSpec() {
+  return reinterpret_cast<SBFileSpecRef>(new SBFileSpec());
 }
 
-SBFileSpecRef
-CreateSBFileSpec2(const char *path)
-{
-    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(path));
+SBFileSpecRef CreateSBFileSpec2(const char *path) {
+  return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(path));
 }
 
-SBFileSpecRef
-CreateSBFileSpec3(const char *path, bool resolve)
-{
-    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(path, resolve));
+SBFileSpecRef CreateSBFileSpec3(const char *path, bool resolve) {
+  return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(path, resolve));
 }
 
-SBFileSpecRef
-CloneSBFileSpec(SBFileSpecRef instance)
-{
-    return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(*reinterpret_cast<SBFileSpec *>(instance)));
+SBFileSpecRef CloneSBFileSpec(SBFileSpecRef instance) {
+  return reinterpret_cast<SBFileSpecRef>(
+      new SBFileSpec(*reinterpret_cast<SBFileSpec *>(instance)));
 }
 
-void
-DisposeSBFileSpec(SBFileSpecRef instance)
-{
-    delete reinterpret_cast<SBFileSpec *>(instance);
+void DisposeSBFileSpec(SBFileSpecRef instance) {
+  delete reinterpret_cast<SBFileSpec *>(instance);
 }
 
-bool
-SBFileSpecIsValid(SBFileSpecRef instance)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->IsValid();
+bool SBFileSpecIsValid(SBFileSpecRef instance) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->IsValid();
 }
 
-bool
-SBFileSpecExists(SBFileSpecRef instance)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->Exists();
+bool SBFileSpecExists(SBFileSpecRef instance) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->Exists();
 }
 
-bool
-SBFileSpecResolveExecutableLocation(SBFileSpecRef instance)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->ResolveExecutableLocation();
+bool SBFileSpecResolveExecutableLocation(SBFileSpecRef instance) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->ResolveExecutableLocation();
 }
 
-const char *
-SBFileSpecGetFilename(SBFileSpecRef instance)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->GetFilename();
+const char *SBFileSpecGetFilename(SBFileSpecRef instance) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->GetFilename();
 }
 
-const char *
-SBFileSpecGetDirectory(SBFileSpecRef instance)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->GetDirectory();
+const char *SBFileSpecGetDirectory(SBFileSpecRef instance) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->GetDirectory();
 }
 
-void
-SBFileSpecSetFilename(SBFileSpecRef instance, const char *filename)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    unwrapped->SetFilename(filename);
+void SBFileSpecSetFilename(SBFileSpecRef instance, const char *filename) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  unwrapped->SetFilename(filename);
 }
 
-void
-SBFileSpecSetDirectory(SBFileSpecRef instance, const char *directory)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    unwrapped->SetDirectory(directory);
+void SBFileSpecSetDirectory(SBFileSpecRef instance, const char *directory) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  unwrapped->SetDirectory(directory);
 }
 
-uint32_t
-SBFileSpecGetPath(SBFileSpecRef instance, char *dst_path, size_t dst_len)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->GetPath(dst_path, dst_len);
+uint32_t SBFileSpecGetPath(SBFileSpecRef instance, char *dst_path,
+                           size_t dst_len) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->GetPath(dst_path, dst_len);
 }
 
-int
-SBFileSpecResolvePath(const char *src_path, char *dst_path, size_t dst_len)
-{
-    return lldb::SBFileSpec::ResolvePath(src_path, dst_path, dst_len);
+int SBFileSpecResolvePath(const char *src_path, char *dst_path,
+                          size_t dst_len) {
+  return lldb::SBFileSpec::ResolvePath(src_path, dst_path, dst_len);
 }
 
-bool
-SBFileSpecGetDescription(SBFileSpecRef instance, SBStreamRef description)
-{
-    SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
+bool SBFileSpecGetDescription(SBFileSpecRef instance, SBStreamRef description) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
 #ifdef __cplusplus

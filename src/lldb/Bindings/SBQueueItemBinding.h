@@ -28,13 +28,15 @@ LLDB_API void SBQueueItemClear(SBQueueItemRef instance);
 
 LLDB_API ENUM(QueueItemKind) SBQueueItemGetKind(SBQueueItemRef instance);
 
-LLDB_API void SBQueueItemSetKind(SBQueueItemRef instance, ENUM(QueueItemKind) kind);
+LLDB_API void SBQueueItemSetKind(SBQueueItemRef instance,
+                                 ENUM(QueueItemKind) kind);
 
 LLDB_API SBAddressRef SBQueueItemGetAddress(SBQueueItemRef instance);
 
 LLDB_API void SBQueueItemSetAddress(SBQueueItemRef instance, SBAddressRef addr);
 
-LLDB_API SBThreadRef SBQueueItemGetExtendedBacktraceThread(SBQueueItemRef instance, const char *type);
+LLDB_API SBThreadRef SBQueueItemGetExtendedBacktraceThread(
+    SBQueueItemRef instance, const char *type);
 
 #ifdef __cplusplus
 }

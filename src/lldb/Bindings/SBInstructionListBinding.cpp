@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -16,78 +16,71 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBInstructionListRef
-CreateSBInstructionList()
-{
-    return reinterpret_cast<SBInstructionListRef>(new SBInstructionList());
+SBInstructionListRef CreateSBInstructionList() {
+  return reinterpret_cast<SBInstructionListRef>(new SBInstructionList());
 }
 
-SBInstructionListRef
-CloneSBInstructionList(SBInstructionListRef instance)
-{
-    return reinterpret_cast<SBInstructionListRef>(new SBInstructionList(*reinterpret_cast<SBInstructionList *>(instance)));
+SBInstructionListRef CloneSBInstructionList(SBInstructionListRef instance) {
+  return reinterpret_cast<SBInstructionListRef>(
+      new SBInstructionList(*reinterpret_cast<SBInstructionList *>(instance)));
 }
 
-void
-DisposeSBInstructionList(SBInstructionListRef instance)
-{
-    delete reinterpret_cast<SBInstructionList *>(instance);
+void DisposeSBInstructionList(SBInstructionListRef instance) {
+  delete reinterpret_cast<SBInstructionList *>(instance);
 }
 
-bool
-SBInstructionListIsValid(SBInstructionListRef instance)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    return unwrapped->IsValid();
+bool SBInstructionListIsValid(SBInstructionListRef instance) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  return unwrapped->IsValid();
 }
 
-size_t
-SBInstructionListGetSize(SBInstructionListRef instance)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    return unwrapped->GetSize();
+size_t SBInstructionListGetSize(SBInstructionListRef instance) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  return unwrapped->GetSize();
 }
 
 SBInstructionRef
-SBInstructionListGetInstructionAtIndex(SBInstructionListRef instance, uint32_t idx)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    return reinterpret_cast<SBInstructionRef>(new SBInstruction(unwrapped->GetInstructionAtIndex(idx)));
+SBInstructionListGetInstructionAtIndex(SBInstructionListRef instance,
+                                       uint32_t idx) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  return reinterpret_cast<SBInstructionRef>(
+      new SBInstruction(unwrapped->GetInstructionAtIndex(idx)));
 }
 
-void
-SBInstructionListClear(SBInstructionListRef instance)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    unwrapped->Clear();
+void SBInstructionListClear(SBInstructionListRef instance) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  unwrapped->Clear();
 }
 
-void
-SBInstructionListAppendInstruction(SBInstructionListRef instance, SBInstructionRef inst)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    unwrapped->AppendInstruction(*reinterpret_cast<SBInstruction *>(inst));
+void SBInstructionListAppendInstruction(SBInstructionListRef instance,
+                                        SBInstructionRef inst) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  unwrapped->AppendInstruction(*reinterpret_cast<SBInstruction *>(inst));
 }
 
-void
-SBInstructionListPrint(SBInstructionListRef instance, FILE *out)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    unwrapped->Print(out);
+void SBInstructionListPrint(SBInstructionListRef instance, FILE *out) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  unwrapped->Print(out);
 }
 
-bool
-SBInstructionListGetDescription(SBInstructionListRef instance, SBStreamRef description)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
+bool SBInstructionListGetDescription(SBInstructionListRef instance,
+                                     SBStreamRef description) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
-bool
-SBInstructionListDumpEmulationForAllInstructions(SBInstructionListRef instance, const char *triple)
-{
-    SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);
-    return unwrapped->DumpEmulationForAllInstructions(triple);
+bool SBInstructionListDumpEmulationForAllInstructions(
+    SBInstructionListRef instance, const char *triple) {
+  SBInstructionList *unwrapped =
+      reinterpret_cast<SBInstructionList *>(instance);
+  return unwrapped->DumpEmulationForAllInstructions(triple);
 }
 
 #ifdef __cplusplus

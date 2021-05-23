@@ -18,9 +18,11 @@ extern "C" {
 
 LLDB_API SBTypeFormatRef CreateSBTypeFormat(void);
 
-LLDB_API SBTypeFormatRef CreateSBTypeFormat2(ENUM(Format) format, uint32_t options);
+LLDB_API SBTypeFormatRef CreateSBTypeFormat2(ENUM(Format) format,
+                                             uint32_t options);
 
-LLDB_API SBTypeFormatRef CreateSBTypeFormat3(const char *type, uint32_t options);
+LLDB_API SBTypeFormatRef CreateSBTypeFormat3(const char *type,
+                                             uint32_t options);
 
 LLDB_API SBTypeFormatRef CloneSBTypeFormat(SBTypeFormatRef instance);
 
@@ -40,10 +42,13 @@ LLDB_API void SBTypeFormatSetTypeName(SBTypeFormatRef instance, const char *);
 
 LLDB_API void SBTypeFormatSetOptions(SBTypeFormatRef instance, uint32_t);
 
-LLDB_API bool SBTypeFormatGetDescription(SBTypeFormatRef instance, SBStreamRef description,
-                                         ENUM(DescriptionLevel) description_level);
+LLDB_API bool SBTypeFormatGetDescription(SBTypeFormatRef instance,
+                                         SBStreamRef description,
+                                         ENUM(DescriptionLevel)
+                                             description_level);
 
-LLDB_API bool SBTypeFormatIsEqualTo(SBTypeFormatRef instance, SBTypeFormatRef rhs);
+LLDB_API bool SBTypeFormatIsEqualTo(SBTypeFormatRef instance,
+                                    SBTypeFormatRef rhs);
 
 #ifdef __cplusplus
 }

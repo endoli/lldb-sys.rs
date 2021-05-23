@@ -18,15 +18,18 @@ extern "C" {
 
 LLDB_API SBMemoryRegionInfoRef CreateSBMemoryRegionInfo(void);
 
-LLDB_API SBMemoryRegionInfoRef CloneSBMemoryRegionInfo(SBMemoryRegionInfoRef instance);
+LLDB_API SBMemoryRegionInfoRef
+CloneSBMemoryRegionInfo(SBMemoryRegionInfoRef instance);
 
 LLDB_API void DisposeSBMemoryRegionInfo(SBMemoryRegionInfoRef instance);
 
 LLDB_API void SBMemoryRegionInfoClear(SBMemoryRegionInfoRef instance);
 
-LLDB_API lldb_addr_t SBMemoryRegionInfoGetRegionBase(SBMemoryRegionInfoRef instance);
+LLDB_API lldb_addr_t
+SBMemoryRegionInfoGetRegionBase(SBMemoryRegionInfoRef instance);
 
-LLDB_API lldb_addr_t SBMemoryRegionInfoGetRegionEnd(SBMemoryRegionInfoRef instance);
+LLDB_API lldb_addr_t
+SBMemoryRegionInfoGetRegionEnd(SBMemoryRegionInfoRef instance);
 
 LLDB_API bool SBMemoryRegionInfoIsReadable(SBMemoryRegionInfoRef instance);
 
@@ -38,7 +41,8 @@ LLDB_API bool SBMemoryRegionInfoIsMapped(SBMemoryRegionInfoRef instance);
 
 LLDB_API const char *SBMemoryRegionInfoGetName(SBMemoryRegionInfoRef instance);
 
-LLDB_API bool SBMemoryRegionInfoGetDescription(SBMemoryRegionInfoRef instance, SBStreamRef description);
+LLDB_API bool SBMemoryRegionInfoGetDescription(SBMemoryRegionInfoRef instance,
+                                               SBStreamRef description);
 
 #ifdef __cplusplus
 }

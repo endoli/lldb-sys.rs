@@ -28,22 +28,30 @@ LLDB_API bool SBBroadcasterIsValid(SBBroadcasterRef instance);
 
 LLDB_API void SBBroadcasterClear(SBBroadcasterRef instance);
 
-LLDB_API void SBBroadcasterBroadcastEventByType(SBBroadcasterRef instance, uint32_t event_type, bool unique);
+LLDB_API void SBBroadcasterBroadcastEventByType(SBBroadcasterRef instance,
+                                                uint32_t event_type,
+                                                bool unique);
 
-LLDB_API void SBBroadcasterBroadcastEvent(SBBroadcasterRef instance, SBEventRef event, bool unique);
+LLDB_API void SBBroadcasterBroadcastEvent(SBBroadcasterRef instance,
+                                          SBEventRef event, bool unique);
 
-LLDB_API void SBBroadcasterAddInitialEventsToListener(SBBroadcasterRef instance, SBListenerRef listener,
-                                                          uint32_t requested_events);
+LLDB_API void
+SBBroadcasterAddInitialEventsToListener(SBBroadcasterRef instance,
+                                        SBListenerRef listener,
+                                        uint32_t requested_events);
 
-LLDB_API uint32_t SBBroadcasterAddListener(SBBroadcasterRef instance, SBListenerRef listener,
-                                                   uint32_t event_mask);
+LLDB_API uint32_t SBBroadcasterAddListener(SBBroadcasterRef instance,
+                                           SBListenerRef listener,
+                                           uint32_t event_mask);
 
 LLDB_API const char *SBBroadcasterGetName(SBBroadcasterRef instance);
 
-LLDB_API bool SBBroadcasterEventTypeHasListeners(SBBroadcasterRef instance, uint32_t event_type);
+LLDB_API bool SBBroadcasterEventTypeHasListeners(SBBroadcasterRef instance,
+                                                 uint32_t event_type);
 
-LLDB_API bool SBBroadcasterRemoveListener(SBBroadcasterRef instance, SBListenerRef listener,
-                                              uint32_t event_mask);
+LLDB_API bool SBBroadcasterRemoveListener(SBBroadcasterRef instance,
+                                          SBListenerRef listener,
+                                          uint32_t event_mask);
 
 #ifdef __cplusplus
 }

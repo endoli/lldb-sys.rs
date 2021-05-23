@@ -34,7 +34,8 @@ LLDB_API uint32_t SBErrorGetError(SBErrorRef instance);
 
 LLDB_API ENUM(ErrorType) SBErrorGetType(SBErrorRef instance);
 
-LLDB_API void SBErrorSetError(SBErrorRef instance, uint32_t err, ENUM(ErrorType) type);
+LLDB_API void SBErrorSetError(SBErrorRef instance, uint32_t err,
+                              ENUM(ErrorType) type);
 
 LLDB_API void SBErrorSetErrorToErrno(SBErrorRef instance);
 
@@ -42,11 +43,13 @@ LLDB_API void SBErrorSetErrorToGenericError(SBErrorRef instance);
 
 LLDB_API void SBErrorSetErrorString(SBErrorRef instance, const char *err_str);
 
-LLDB_API int SBErrorSetErrorStringWithFormat(SBErrorRef instance, const char *format, ...);
+LLDB_API int SBErrorSetErrorStringWithFormat(SBErrorRef instance,
+                                             const char *format, ...);
 
 LLDB_API bool SBErrorIsValid(SBErrorRef instance);
 
-LLDB_API bool SBErrorGetDescription(SBErrorRef instance, SBStreamRef description);
+LLDB_API bool SBErrorGetDescription(SBErrorRef instance,
+                                    SBStreamRef description);
 
 #ifdef __cplusplus
 }

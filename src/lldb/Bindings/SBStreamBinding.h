@@ -28,11 +28,14 @@ LLDB_API size_t SBStreamGetSize(SBStreamRef instance);
 
 LLDB_API void SBStreamPrintf(SBStreamRef instance, const char *format, ...);
 
-LLDB_API void SBStreamRedirectToFile(SBStreamRef instance, const char *path, bool append);
+LLDB_API void SBStreamRedirectToFile(SBStreamRef instance, const char *path,
+                                     bool append);
 
-LLDB_API void SBStreamRedirectToFileHandle(SBStreamRef instance, FILE *fh, bool transfer_fh_ownership);
+LLDB_API void SBStreamRedirectToFileHandle(SBStreamRef instance, FILE *fh,
+                                           bool transfer_fh_ownership);
 
-LLDB_API void SBStreamRedirectToFileDescriptor(SBStreamRef instance, int fd, bool transfer_fh_ownership);
+LLDB_API void SBStreamRedirectToFileDescriptor(SBStreamRef instance, int fd,
+                                               bool transfer_fh_ownership);
 
 LLDB_API void SBStreamClear(SBStreamRef instance);
 

@@ -18,7 +18,8 @@ extern "C" {
 
 LLDB_API SBSymbolContextListRef CreateSBSymbolContextList(void);
 
-LLDB_API SBSymbolContextListRef CloneSBSymbolContextList(SBSymbolContextListRef instance);
+LLDB_API SBSymbolContextListRef
+CloneSBSymbolContextList(SBSymbolContextListRef instance);
 
 LLDB_API void DisposeSBSymbolContextList(SBSymbolContextListRef instance);
 
@@ -26,14 +27,17 @@ LLDB_API bool SBSymbolContextListIsValid(SBSymbolContextListRef instance);
 
 LLDB_API uint32_t SBSymbolContextListGetSize(SBSymbolContextListRef instance);
 
-LLDB_API SBSymbolContextRef
-SBSymbolContextListGetContextAtIndex(SBSymbolContextListRef instance, uint32_t idx);
+LLDB_API SBSymbolContextRef SBSymbolContextListGetContextAtIndex(
+    SBSymbolContextListRef instance, uint32_t idx);
 
-LLDB_API bool SBSymbolContextListGetDescription(SBSymbolContextListRef instance, SBStreamRef description);
+LLDB_API bool SBSymbolContextListGetDescription(SBSymbolContextListRef instance,
+                                                SBStreamRef description);
 
-LLDB_API void SBSymbolContextListAppend(SBSymbolContextListRef instance, SBSymbolContextRef sc);
+LLDB_API void SBSymbolContextListAppend(SBSymbolContextListRef instance,
+                                        SBSymbolContextRef sc);
 
-LLDB_API void SBSymbolContextListAppendList(SBSymbolContextListRef instance, SBSymbolContextListRef sc_list);
+LLDB_API void SBSymbolContextListAppendList(SBSymbolContextListRef instance,
+                                            SBSymbolContextListRef sc_list);
 
 LLDB_API void SBSymbolContextListClear(SBSymbolContextListRef instance);
 

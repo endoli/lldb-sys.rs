@@ -40,7 +40,8 @@ LLDB_API lldb_addr_t SBFrameGetFP(SBFrameRef instance);
 
 LLDB_API SBAddressRef SBFrameGetPCAddress(SBFrameRef instance);
 
-LLDB_API SBSymbolContextRef SBFrameGetSymbolContext(SBFrameRef instance, uint32_t resolve_scope);
+LLDB_API SBSymbolContextRef SBFrameGetSymbolContext(SBFrameRef instance,
+                                                    uint32_t resolve_scope);
 
 LLDB_API SBModuleRef SBFrameGetModule(SBFrameRef instance);
 
@@ -62,8 +63,9 @@ LLDB_API bool SBFrameIsInlined(SBFrameRef instance);
 
 LLDB_API bool SBFrameIsArtificial(SBFrameRef instance);
 
-LLDB_API SBValueRef
-SBFrameEvaluateExpression(SBFrameRef instance, const char *expr, SBExpressionOptionsRef options);
+LLDB_API SBValueRef SBFrameEvaluateExpression(SBFrameRef instance,
+                                              const char *expr,
+                                              SBExpressionOptionsRef options);
 
 LLDB_API SBBlockRef SBFrameGetFrameBlock(SBFrameRef instance);
 
@@ -75,28 +77,37 @@ LLDB_API const char *SBFrameDisassemble(SBFrameRef instance);
 
 LLDB_API void SBFrameClear(SBFrameRef instance);
 
-LLDB_API SBValueListRef SBFrameGetVariables(SBFrameRef instance, SBVariablesOptionsRef options);
+LLDB_API SBValueListRef SBFrameGetVariables(SBFrameRef instance,
+                                            SBVariablesOptionsRef options);
 
 LLDB_API SBValueListRef SBFrameGetRegisters(SBFrameRef instance);
 
 LLDB_API SBValueRef SBFrameFindRegister(SBFrameRef instance, const char *name);
 
-LLDB_API SBValueRef SBFrameFindVariable(SBFrameRef instance, const char *var_name);
+LLDB_API SBValueRef SBFrameFindVariable(SBFrameRef instance,
+                                        const char *var_name);
 
-LLDB_API SBValueRef
-SBFrameFindVariable2(SBFrameRef instance, const char *var_name, ENUM(DynamicValueType) use_dynamic);
+LLDB_API SBValueRef SBFrameFindVariable2(SBFrameRef instance,
+                                         const char *var_name,
+                                         ENUM(DynamicValueType) use_dynamic);
 
-LLDB_API SBValueRef SBFrameGetValueForVariablePath(SBFrameRef instance, const char *var_expr_cstr,
-                                                   ENUM(DynamicValueType) use_dynamic);
+LLDB_API SBValueRef SBFrameGetValueForVariablePath(SBFrameRef instance,
+                                                   const char *var_expr_cstr,
+                                                   ENUM(DynamicValueType)
+                                                       use_dynamic);
 
-LLDB_API SBValueRef SBFrameGetValueForVariablePath2(SBFrameRef instance, const char *var_path);
+LLDB_API SBValueRef SBFrameGetValueForVariablePath2(SBFrameRef instance,
+                                                    const char *var_path);
 
-LLDB_API SBValueRef SBFrameFindValue(SBFrameRef instance, const char *name, ENUM(ValueType) value_type);
+LLDB_API SBValueRef SBFrameFindValue(SBFrameRef instance, const char *name,
+                                     ENUM(ValueType) value_type);
 
-LLDB_API SBValueRef SBFrameFindValue2(SBFrameRef instance, const char *name, ENUM(ValueType) value_type,
+LLDB_API SBValueRef SBFrameFindValue2(SBFrameRef instance, const char *name,
+                                      ENUM(ValueType) value_type,
                                       ENUM(DynamicValueType) use_dynamic);
 
-LLDB_API bool SBFrameGetDescription(SBFrameRef instance, SBStreamRef description);
+LLDB_API bool SBFrameGetDescription(SBFrameRef instance,
+                                    SBStreamRef description);
 
 #ifdef __cplusplus
 }

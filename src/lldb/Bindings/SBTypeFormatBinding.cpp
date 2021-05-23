@@ -7,9 +7,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
 #include "lldb/API/SBTypeFormat.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -17,98 +17,73 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBTypeFormatRef
-CreateSBTypeFormat()
-{
-    return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat());
+SBTypeFormatRef CreateSBTypeFormat() {
+  return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat());
 }
 
-SBTypeFormatRef
-CreateSBTypeFormat2(lldb::Format format, uint32_t options)
-{
-    return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(format, options));
+SBTypeFormatRef CreateSBTypeFormat2(lldb::Format format, uint32_t options) {
+  return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(format, options));
 }
 
-SBTypeFormatRef
-CreateSBTypeFormat3(const char *type, uint32_t options)
-{
-    return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(type, options));
+SBTypeFormatRef CreateSBTypeFormat3(const char *type, uint32_t options) {
+  return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(type, options));
 }
 
-SBTypeFormatRef
-CloneSBTypeFormat(SBTypeFormatRef instance)
-{
-    return reinterpret_cast<SBTypeFormatRef>(new SBTypeFormat(*reinterpret_cast<SBTypeFormat *>(instance)));
+SBTypeFormatRef CloneSBTypeFormat(SBTypeFormatRef instance) {
+  return reinterpret_cast<SBTypeFormatRef>(
+      new SBTypeFormat(*reinterpret_cast<SBTypeFormat *>(instance)));
 }
 
-void
-DisposeSBTypeFormat(SBTypeFormatRef instance)
-{
-    delete reinterpret_cast<SBTypeFormat *>(instance);
+void DisposeSBTypeFormat(SBTypeFormatRef instance) {
+  delete reinterpret_cast<SBTypeFormat *>(instance);
 }
 
-bool
-SBTypeFormatIsValid(SBTypeFormatRef instance)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->IsValid();
+bool SBTypeFormatIsValid(SBTypeFormatRef instance) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->IsValid();
 }
 
-enum lldb::Format
-SBTypeFormatGetFormat(SBTypeFormatRef instance)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->GetFormat();
+enum lldb::Format SBTypeFormatGetFormat(SBTypeFormatRef instance) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->GetFormat();
 }
 
-const char *
-SBTypeFormatGetTypeName(SBTypeFormatRef instance)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->GetTypeName();
+const char *SBTypeFormatGetTypeName(SBTypeFormatRef instance) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->GetTypeName();
 }
 
-uint32_t
-SBTypeFormatGetOptions(SBTypeFormatRef instance)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->GetOptions();
+uint32_t SBTypeFormatGetOptions(SBTypeFormatRef instance) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->GetOptions();
 }
 
-void
-SBTypeFormatSetFormat(SBTypeFormatRef instance, enum lldb::Format var0)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    unwrapped->SetFormat(var0);
+void SBTypeFormatSetFormat(SBTypeFormatRef instance, enum lldb::Format var0) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  unwrapped->SetFormat(var0);
 }
 
-void
-SBTypeFormatSetTypeName(SBTypeFormatRef instance, const char *var0)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    unwrapped->SetTypeName(var0);
+void SBTypeFormatSetTypeName(SBTypeFormatRef instance, const char *var0) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  unwrapped->SetTypeName(var0);
 }
 
-void
-SBTypeFormatSetOptions(SBTypeFormatRef instance, uint32_t var0)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    unwrapped->SetOptions(var0);
+void SBTypeFormatSetOptions(SBTypeFormatRef instance, uint32_t var0) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  unwrapped->SetOptions(var0);
 }
 
-bool
-SBTypeFormatGetDescription(SBTypeFormatRef instance, SBStreamRef description,
-                               lldb::DescriptionLevel description_level)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), description_level);
+bool SBTypeFormatGetDescription(SBTypeFormatRef instance,
+                                SBStreamRef description,
+                                lldb::DescriptionLevel description_level) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description),
+                                   description_level);
 }
 
-bool
-SBTypeFormatIsEqualTo(SBTypeFormatRef instance, SBTypeFormatRef rhs)
-{
-    SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
-    return unwrapped->IsEqualTo(*reinterpret_cast<SBTypeFormat *>(rhs));
+bool SBTypeFormatIsEqualTo(SBTypeFormatRef instance, SBTypeFormatRef rhs) {
+  SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);
+  return unwrapped->IsEqualTo(*reinterpret_cast<SBTypeFormat *>(rhs));
 }
 
 #ifdef __cplusplus

@@ -18,7 +18,8 @@ extern "C" {
 
 LLDB_API SBEventRef CreateSBEvent(void);
 
-LLDB_API SBEventRef CreateSBEvent2(uint32_t event, const char *cstr, uint32_t cstr_len);
+LLDB_API SBEventRef CreateSBEvent2(uint32_t event, const char *cstr,
+                                   uint32_t cstr_len);
 
 LLDB_API SBEventRef CloneSBEvent(SBEventRef instance);
 
@@ -34,17 +35,21 @@ LLDB_API SBBroadcasterRef SBEventGetBroadcaster(SBEventRef instance);
 
 LLDB_API const char *SBEventGetBroadcasterClass(SBEventRef instance);
 
-LLDB_API bool SBEventBroadcasterMatchesPtr(SBEventRef instance, SBBroadcasterRef broadcaster);
+LLDB_API bool SBEventBroadcasterMatchesPtr(SBEventRef instance,
+                                           SBBroadcasterRef broadcaster);
 
-LLDB_API bool SBEventBroadcasterMatchesRef(SBEventRef instance, SBBroadcasterRef broadcaster);
+LLDB_API bool SBEventBroadcasterMatchesRef(SBEventRef instance,
+                                           SBBroadcasterRef broadcaster);
 
 LLDB_API void SBEventClear(SBEventRef instance);
 
 LLDB_API const char *SBEventGetCStringFromEvent(SBEventRef event);
 
-LLDB_API bool SBEventGetDescription(SBEventRef instance, SBStreamRef description);
+LLDB_API bool SBEventGetDescription(SBEventRef instance,
+                                    SBStreamRef description);
 
-LLDB_API bool SBEventGetDescription(SBEventRef instance, SBStreamRef description);
+LLDB_API bool SBEventGetDescription(SBEventRef instance,
+                                    SBStreamRef description);
 
 #ifdef __cplusplus
 }

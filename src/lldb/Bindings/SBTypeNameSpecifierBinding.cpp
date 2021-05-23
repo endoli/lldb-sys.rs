@@ -7,9 +7,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
 #include "lldb/API/SBTypeNameSpecifier.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -17,77 +17,69 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBTypeNameSpecifierRef
-CreateSBTypeNameSpecifier()
-{
-    return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier());
+SBTypeNameSpecifierRef CreateSBTypeNameSpecifier() {
+  return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier());
+}
+
+SBTypeNameSpecifierRef CreateSBTypeNameSpecifier2(const char *name,
+                                                  bool is_regex) {
+  return reinterpret_cast<SBTypeNameSpecifierRef>(
+      new SBTypeNameSpecifier(name, is_regex));
+}
+
+SBTypeNameSpecifierRef CreateSBTypeNameSpecifier3(SBTypeRef type) {
+  return reinterpret_cast<SBTypeNameSpecifierRef>(
+      new SBTypeNameSpecifier(*reinterpret_cast<SBType *>(type)));
 }
 
 SBTypeNameSpecifierRef
-CreateSBTypeNameSpecifier2(const char *name, bool is_regex)
-{
-    return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(name, is_regex));
+CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance) {
+  return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(
+      *reinterpret_cast<SBTypeNameSpecifier *>(instance)));
 }
 
-SBTypeNameSpecifierRef
-CreateSBTypeNameSpecifier3(SBTypeRef type)
-{
-    return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(*reinterpret_cast<SBType *>(type)));
+void DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance) {
+  delete reinterpret_cast<SBTypeNameSpecifier *>(instance);
 }
 
-SBTypeNameSpecifierRef
-CloneSBTypeNameSpecifier(SBTypeNameSpecifierRef instance)
-{
-    return reinterpret_cast<SBTypeNameSpecifierRef>(new SBTypeNameSpecifier(*reinterpret_cast<SBTypeNameSpecifier *>(instance)));
+bool SBTypeNameSpecifierIsValid(SBTypeNameSpecifierRef instance) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return unwrapped->IsValid();
 }
 
-void
-DisposeSBTypeNameSpecifier(SBTypeNameSpecifierRef instance)
-{
-    delete reinterpret_cast<SBTypeNameSpecifier *>(instance);
+const char *SBTypeNameSpecifierGetName(SBTypeNameSpecifierRef instance) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return unwrapped->GetName();
 }
 
-bool
-SBTypeNameSpecifierIsValid(SBTypeNameSpecifierRef instance)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return unwrapped->IsValid();
+SBTypeRef SBTypeNameSpecifierGetType(SBTypeNameSpecifierRef instance) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetType()));
 }
 
-const char *
-SBTypeNameSpecifierGetName(SBTypeNameSpecifierRef instance)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return unwrapped->GetName();
+bool SBTypeNameSpecifierIsRegex(SBTypeNameSpecifierRef instance) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return unwrapped->IsRegex();
 }
 
-SBTypeRef
-SBTypeNameSpecifierGetType(SBTypeNameSpecifierRef instance)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetType()));
+bool SBTypeNameSpecifierGetDescription(
+    SBTypeNameSpecifierRef instance, SBStreamRef description,
+    lldb::DescriptionLevel description_level) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description),
+                                   description_level);
 }
 
-bool
-SBTypeNameSpecifierIsRegex(SBTypeNameSpecifierRef instance)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return unwrapped->IsRegex();
-}
-
-bool
-SBTypeNameSpecifierGetDescription(SBTypeNameSpecifierRef instance, SBStreamRef description,
-                                      lldb::DescriptionLevel description_level)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), description_level);
-}
-
-bool
-SBTypeNameSpecifierIsEqualTo(SBTypeNameSpecifierRef instance, SBTypeNameSpecifierRef rhs)
-{
-    SBTypeNameSpecifier *unwrapped = reinterpret_cast<SBTypeNameSpecifier *>(instance);
-    return unwrapped->IsEqualTo(*reinterpret_cast<SBTypeNameSpecifier *>(rhs));
+bool SBTypeNameSpecifierIsEqualTo(SBTypeNameSpecifierRef instance,
+                                  SBTypeNameSpecifierRef rhs) {
+  SBTypeNameSpecifier *unwrapped =
+      reinterpret_cast<SBTypeNameSpecifier *>(instance);
+  return unwrapped->IsEqualTo(*reinterpret_cast<SBTypeNameSpecifier *>(rhs));
 }
 
 #ifdef __cplusplus

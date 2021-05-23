@@ -24,15 +24,19 @@ LLDB_API void DisposeSBStringList(SBStringListRef instance);
 
 LLDB_API bool SBStringListIsValid(SBStringListRef instance);
 
-LLDB_API void SBStringListAppendString(SBStringListRef instance, const char *str);
+LLDB_API void SBStringListAppendString(SBStringListRef instance,
+                                       const char *str);
 
-LLDB_API void SBStringListAppendList(SBStringListRef instance, const char **strv, int strc);
+LLDB_API void SBStringListAppendList(SBStringListRef instance,
+                                     const char **strv, int strc);
 
-LLDB_API void SBStringListAppendList2(SBStringListRef instance, SBStringListRef strings);
+LLDB_API void SBStringListAppendList2(SBStringListRef instance,
+                                      SBStringListRef strings);
 
 LLDB_API uint32_t SBStringListGetSize(SBStringListRef instance);
 
-LLDB_API const char *SBStringListGetStringAtIndex(SBStringListRef instance, size_t idx);
+LLDB_API const char *SBStringListGetStringAtIndex(SBStringListRef instance,
+                                                  size_t idx);
 
 LLDB_API void SBStringListClear(SBStringListRef instance);
 

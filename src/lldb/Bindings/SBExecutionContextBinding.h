@@ -26,15 +26,19 @@ LLDB_API SBExecutionContextRef CreateSBExecutionContext4(SBThreadRef thread);
 
 LLDB_API SBExecutionContextRef CreateSBExecutionContext5(SBFrameRef frame);
 
-LLDB_API SBExecutionContextRef CloneSBExecutionContext(SBExecutionContextRef instance);
+LLDB_API SBExecutionContextRef
+CloneSBExecutionContext(SBExecutionContextRef instance);
 
 LLDB_API void DisposeSBExecutionContext(SBExecutionContextRef instance);
 
-LLDB_API SBTargetRef SBExecutionContextGetTarget(SBExecutionContextRef instance);
+LLDB_API SBTargetRef
+SBExecutionContextGetTarget(SBExecutionContextRef instance);
 
-LLDB_API SBProcessRef SBExecutionContextGetProcess(SBExecutionContextRef instance);
+LLDB_API SBProcessRef
+SBExecutionContextGetProcess(SBExecutionContextRef instance);
 
-LLDB_API SBThreadRef SBExecutionContextGetThread(SBExecutionContextRef instance);
+LLDB_API SBThreadRef
+SBExecutionContextGetThread(SBExecutionContextRef instance);
 
 LLDB_API SBFrameRef SBExecutionContextGetFrame(SBExecutionContextRef instance);
 

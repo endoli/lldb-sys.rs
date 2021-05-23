@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "lldb/Bindings/LLDBBinding.h"
 #include "lldb/API/LLDB.h"
+#include "lldb/Bindings/LLDBBinding.h"
 
 using namespace lldb;
 
@@ -16,261 +16,210 @@ using namespace lldb;
 extern "C" {
 #endif
 
-SBBreakpointNameRef
-CreateSBBreakpointName()
-{
-    return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName());
+SBBreakpointNameRef CreateSBBreakpointName() {
+  return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName());
+}
+
+SBBreakpointNameRef CreateSBBreakpointNameFromTarget(SBTargetRef target,
+                                                     const char *name) {
+  SBTarget *unwrapped_target = reinterpret_cast<SBTarget *>(target);
+  return reinterpret_cast<SBBreakpointNameRef>(
+      new SBBreakpointName(*unwrapped_target, name));
 }
 
 SBBreakpointNameRef
-CreateSBBreakpointNameFromTarget(SBTargetRef target, const char *name)
-{
-    SBTarget *unwrapped_target = reinterpret_cast<SBTarget *>(target);
-    return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName(*unwrapped_target, name));
+CreateSBBreakpointNameFromBreakpoint(SBBreakpointRef breakpoint,
+                                     const char *name) {
+  SBBreakpoint *unwrapped_breakpoint =
+      reinterpret_cast<SBBreakpoint *>(breakpoint);
+  return reinterpret_cast<SBBreakpointNameRef>(
+      new SBBreakpointName(*unwrapped_breakpoint, name));
 }
 
-SBBreakpointNameRef
-CreateSBBreakpointNameFromBreakpoint(SBBreakpointRef breakpoint, const char *name)
-{
-    SBBreakpoint *unwrapped_breakpoint = reinterpret_cast<SBBreakpoint *>(breakpoint);
-    return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName(*unwrapped_breakpoint, name));
+SBBreakpointNameRef CloneSBBreakpointName(SBBreakpointNameRef instance) {
+  return reinterpret_cast<SBBreakpointNameRef>(
+      new SBBreakpointName(*reinterpret_cast<SBBreakpointName *>(instance)));
 }
 
-SBBreakpointNameRef
-CloneSBBreakpointName(SBBreakpointNameRef instance)
-{
-    return reinterpret_cast<SBBreakpointNameRef>(new SBBreakpointName(*reinterpret_cast<SBBreakpointName *>(instance)));
+void DisposeSBBreakpointName(SBBreakpointNameRef instance) {
+  delete reinterpret_cast<SBBreakpointName *>(instance);
 }
 
-void
-DisposeSBBreakpointName(SBBreakpointNameRef instance)
-{
-    delete reinterpret_cast<SBBreakpointName *>(instance);
+bool SBBreakpointNameIsValid(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->IsValid();
 }
 
-bool
-SBBreakpointNameIsValid(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->IsValid();
+const char *SBBreakpointNameGetName(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetName();
 }
 
-const char *
-SBBreakpointNameGetName(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetName();
+void SBBreakpointNameSetEnabled(SBBreakpointNameRef instance, bool enable) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetEnabled(enable);
 }
 
-void
-SBBreakpointNameSetEnabled(SBBreakpointNameRef instance, bool enable)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetEnabled(enable);
+bool SBBreakpointNameIsEnabled(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->IsEnabled();
 }
 
-bool
-SBBreakpointNameIsEnabled(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->IsEnabled();
+void SBBreakpointNameSetOneShot(SBBreakpointNameRef instance, bool one_shot) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetOneShot(one_shot);
 }
 
-void
-SBBreakpointNameSetOneShot(SBBreakpointNameRef instance, bool one_shot)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetOneShot(one_shot);
+bool SBBreakpointNameIsOneShot(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->IsOneShot();
 }
 
-bool
-SBBreakpointNameIsOneShot(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->IsOneShot();
+void SBBreakpointNameSetIgnoreCount(SBBreakpointNameRef instance,
+                                    uint32_t count) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetIgnoreCount(count);
 }
 
-void
-SBBreakpointNameSetIgnoreCount(SBBreakpointNameRef instance, uint32_t count)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetIgnoreCount(count);
+uint32_t SBBreakpointNameGetIgnoreCount(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetIgnoreCount();
 }
 
-uint32_t
-SBBreakpointNameGetIgnoreCount(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetIgnoreCount();
+void SBBreakpointNameSetCondition(SBBreakpointNameRef instance,
+                                  const char *condition) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetCondition(condition);
 }
 
-void
-SBBreakpointNameSetCondition(SBBreakpointNameRef instance, const char *condition)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetCondition(condition);
+const char *SBBreakpointNameGetCondition(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetCondition();
 }
 
-const char *
-SBBreakpointNameGetCondition(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetCondition();
+void SBBreakpointNameSetThreadID(SBBreakpointNameRef instance,
+                                 lldb_tid_t sb_thread_id) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetThreadID(sb_thread_id);
 }
 
-void
-SBBreakpointNameSetThreadID(SBBreakpointNameRef instance, lldb_tid_t sb_thread_id)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetThreadID(sb_thread_id);
+lldb_tid_t SBBreakpointNameGetThreadID(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetThreadID();
 }
 
-lldb_tid_t
-SBBreakpointNameGetThreadID(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetThreadID();
+void SBBreakpointNameSetThreadIndex(SBBreakpointNameRef instance,
+                                    uint32_t index) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetThreadIndex(index);
 }
 
-void
-SBBreakpointNameSetThreadIndex(SBBreakpointNameRef instance, uint32_t index)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetThreadIndex(index);
+uint32_t SBBreakpointNameGetThreadIndex(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetThreadIndex();
 }
 
-uint32_t
-SBBreakpointNameGetThreadIndex(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetThreadIndex();
+void SBBreakpointNameSetThreadName(SBBreakpointNameRef instance,
+                                   const char *thread_name) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetThreadName(thread_name);
 }
 
-void
-SBBreakpointNameSetThreadName(SBBreakpointNameRef instance, const char *thread_name)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetThreadName(thread_name);
+const char *SBBreakpointNameGetThreadName(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetThreadName();
 }
 
-const char *
-SBBreakpointNameGetThreadName(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetThreadName();
+void SBBreakpointNameSetQueueName(SBBreakpointNameRef instance,
+                                  const char *queue_name) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetQueueName(queue_name);
 }
 
-void
-SBBreakpointNameSetQueueName(SBBreakpointNameRef instance, const char *queue_name)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetQueueName(queue_name);
+const char *SBBreakpointNameGetQueueName(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetQueueName();
 }
 
-const char *
-SBBreakpointNameGetQueueName(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetQueueName();
+void SBBreakpointNameSetCallback(SBBreakpointNameRef instance,
+                                 lldb::SBBreakpointHitCallback callback,
+                                 void *baton) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetCallback(callback, baton);
 }
 
-void
-SBBreakpointNameSetCallback(SBBreakpointNameRef instance, lldb::SBBreakpointHitCallback callback,
-                            void *baton)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetCallback(callback, baton);
+void SBBreakpointNameSetScriptCallbackFunction(
+    SBBreakpointNameRef instance, const char *callback_function_name) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetScriptCallbackFunction(callback_function_name);
 }
 
-void
-SBBreakpointNameSetScriptCallbackFunction(SBBreakpointNameRef instance, const char *callback_function_name)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetScriptCallbackFunction(callback_function_name);
+void SBBreakpointNameSetCommandLineCommands(SBBreakpointNameRef instance,
+                                            SBStringListRef commands) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetCommandLineCommands(
+      *reinterpret_cast<SBStringList *>(commands));
 }
 
-void
-SBBreakpointNameSetCommandLineCommands(SBBreakpointNameRef instance, SBStringListRef commands)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetCommandLineCommands(*reinterpret_cast<SBStringList *>(commands));
+bool SBBreakpointNameGetCommandLineCommands(SBBreakpointNameRef instance,
+                                            SBStringListRef commands) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetCommandLineCommands(
+      *reinterpret_cast<SBStringList *>(commands));
 }
 
-bool
-SBBreakpointNameGetCommandLineCommands(SBBreakpointNameRef instance, SBStringListRef commands)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetCommandLineCommands(*reinterpret_cast<SBStringList *>(commands));
+SBErrorRef SBBreakpointNameSetScriptCallbackBody(SBBreakpointNameRef instance,
+                                                 const char *script_body_text) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetScriptCallbackBody(script_body_text)));
 }
 
-SBErrorRef
-SBBreakpointNameSetScriptCallbackBody(SBBreakpointNameRef instance, const char *script_body_text)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->SetScriptCallbackBody(script_body_text)));
+void SBBreakpointNameSetHelpString(SBBreakpointNameRef instance,
+                                   const char *help_string) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetHelpString(help_string);
 }
 
-void
-SBBreakpointNameSetHelpString(SBBreakpointNameRef instance, const char *help_string)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetHelpString(help_string);
+const char *SBBreakpointNameGetHelpString(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetHelpString();
 }
 
-const char *
-SBBreakpointNameGetHelpString(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetHelpString();
+void SBBreakpointNameSetAllowList(SBBreakpointNameRef instance, bool value) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetAllowList(value);
 }
 
-void
-SBBreakpointNameSetAllowList(SBBreakpointNameRef instance, bool value)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetAllowList(value);
+bool SBBreakpointNameGetAllowList(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetAllowList();
 }
 
-bool
-SBBreakpointNameGetAllowList(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetAllowList();
+void SBBreakpointNameSetAllowDelete(SBBreakpointNameRef instance, bool value) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetAllowDelete(value);
 }
 
-void
-SBBreakpointNameSetAllowDelete(SBBreakpointNameRef instance, bool value)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetAllowDelete(value);
+bool SBBreakpointNameGetAllowDelete(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetAllowDelete();
 }
 
-bool
-SBBreakpointNameGetAllowDelete(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetAllowDelete();
+void SBBreakpointNameSetAllowDisable(SBBreakpointNameRef instance, bool value) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  unwrapped->SetAllowDisable(value);
 }
 
-void
-SBBreakpointNameSetAllowDisable(SBBreakpointNameRef instance, bool value)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    unwrapped->SetAllowDisable(value);
+bool SBBreakpointNameGetAllowDisable(SBBreakpointNameRef instance) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetAllowDisable();
 }
 
-bool
-SBBreakpointNameGetAllowDisable(SBBreakpointNameRef instance)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetAllowDisable();
-}
-
-bool
-SBBreakpointNameGetDescription(SBBreakpointNameRef instance, SBStreamRef description)
-{
-    SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-    return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
+bool SBBreakpointNameGetDescription(SBBreakpointNameRef instance,
+                                    SBStreamRef description) {
+  SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
+  return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
 #ifdef __cplusplus

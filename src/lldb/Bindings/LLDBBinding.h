@@ -14,9 +14,9 @@
 // C++ Includes
 // Other libraries and framework includes
 // Project includes
-#include "lldb/Bindings/SBBindingDefines.h"
 #include "lldb/Bindings/SBAddressBinding.h"
 #include "lldb/Bindings/SBAttachInfoBinding.h"
+#include "lldb/Bindings/SBBindingDefines.h"
 #include "lldb/Bindings/SBBlockBinding.h"
 #include "lldb/Bindings/SBBreakpointBinding.h"
 #include "lldb/Bindings/SBBreakpointLocationBinding.h"

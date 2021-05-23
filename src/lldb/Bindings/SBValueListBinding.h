@@ -28,15 +28,19 @@ LLDB_API void SBValueListClear(SBValueListRef instance);
 
 LLDB_API void SBValueListAppend(SBValueListRef instance, SBValueRef val_obj);
 
-LLDB_API void SBValueListAppendList(SBValueListRef instance, SBValueListRef value_list);
+LLDB_API void SBValueListAppendList(SBValueListRef instance,
+                                    SBValueListRef value_list);
 
 LLDB_API uint32_t SBValueListGetSize(SBValueListRef instance);
 
-LLDB_API SBValueRef SBValueListGetValueAtIndex(SBValueListRef instance, uint32_t idx);
+LLDB_API SBValueRef SBValueListGetValueAtIndex(SBValueListRef instance,
+                                               uint32_t idx);
 
-LLDB_API SBValueRef SBValueListGetFirstValueByName(SBValueListRef instance, const char *name);
+LLDB_API SBValueRef SBValueListGetFirstValueByName(SBValueListRef instance,
+                                                   const char *name);
 
-LLDB_API SBValueRef SBValueListFindValueObjectByUID(SBValueListRef instance, lldb_user_id_t uid);
+LLDB_API SBValueRef SBValueListFindValueObjectByUID(SBValueListRef instance,
+                                                    lldb_user_id_t uid);
 
 #ifdef __cplusplus
 }
