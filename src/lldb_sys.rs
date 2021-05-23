@@ -1281,6 +1281,10 @@ extern "C" {
         instance: SBBreakpointRef,
         new_name: *const ::std::os::raw::c_char,
     ) -> bool;
+    pub fn SBBreakpointAddNameWithErrorHandling(
+        instance: SBBreakpointRef,
+        new_name: *const ::std::os::raw::c_char,
+    ) -> SBErrorRef;
     pub fn SBBreakpointRemoveName(
         instance: SBBreakpointRef,
         name_to_remove: *const ::std::os::raw::c_char,

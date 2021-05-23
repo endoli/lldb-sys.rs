@@ -220,6 +220,13 @@ bool SBBreakpointAddName(SBBreakpointRef instance, const char *new_name) {
   return unwrapped->AddName(new_name);
 }
 
+SBErrorRef SBBreakpointAddNameWithErrorHandling(SBBreakpointRef instance,
+                                                const char *new_name) {
+  SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->AddNameWithErrorHandling(new_name)));
+}
+
 void SBBreakpointRemoveName(SBBreakpointRef instance,
                             const char *name_to_remove) {
   SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);

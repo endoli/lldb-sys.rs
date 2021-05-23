@@ -112,6 +112,9 @@ LLDB_API SBErrorRef SBBreakpointSetScriptCallbackBody(
 LLDB_API bool SBBreakpointAddName(SBBreakpointRef instance,
                                   const char *new_name);
 
+LLDB_API SBErrorRef SBBreakpointAddNameWithErrorHandling(
+    SBBreakpointRef instance, const char *new_name);
+
 LLDB_API void SBBreakpointRemoveName(SBBreakpointRef instance,
                                      const char *name_to_remove);
 
