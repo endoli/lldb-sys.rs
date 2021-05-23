@@ -26,7 +26,7 @@ LLDB_API bool SBFrameIsEqual(SBFrameRef instance, SBFrameRef that);
 
 LLDB_API bool SBFrameIsValid(SBFrameRef instance);
 
-LLDB_API unsigned int SBFrameGetFrameID(SBFrameRef instance);
+LLDB_API uint32_t SBFrameGetFrameID(SBFrameRef instance);
 
 LLDB_API lldb_addr_t SBFrameGetCFA(SBFrameRef instance);
 

@@ -30,7 +30,7 @@ LLDB_API void SBStringListAppendList(SBStringListRef instance, const char **strv
 
 LLDB_API void SBStringListAppendList2(SBStringListRef instance, SBStringListRef strings);
 
-LLDB_API unsigned int SBStringListGetSize(SBStringListRef instance);
+LLDB_API uint32_t SBStringListGetSize(SBStringListRef instance);
 
 LLDB_API const char *SBStringListGetStringAtIndex(SBStringListRef instance, size_t idx);
 

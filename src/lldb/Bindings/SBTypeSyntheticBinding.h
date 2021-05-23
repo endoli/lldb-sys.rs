@@ -38,7 +38,7 @@ LLDB_API void SBTypeSyntheticSetClassName(SBTypeSyntheticRef instance, const cha
 
 LLDB_API void SBTypeSyntheticSetClassCode(SBTypeSyntheticRef instance, const char *data);
 
-LLDB_API unsigned int SBTypeSyntheticGetOptions(SBTypeSyntheticRef instance);
+LLDB_API uint32_t SBTypeSyntheticGetOptions(SBTypeSyntheticRef instance);
 
 LLDB_API void SBTypeSyntheticSetOptions(SBTypeSyntheticRef instance, uint32_t);
 

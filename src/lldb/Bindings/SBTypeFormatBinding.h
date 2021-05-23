@@ -32,7 +32,7 @@ LLDB_API ENUM(Format) SBTypeFormatGetFormat(SBTypeFormatRef instance);
 
 LLDB_API const char *SBTypeFormatGetTypeName(SBTypeFormatRef instance);
 
-LLDB_API unsigned int SBTypeFormatGetOptions(SBTypeFormatRef instance);
+LLDB_API uint32_t SBTypeFormatGetOptions(SBTypeFormatRef instance);
 
 LLDB_API void SBTypeFormatSetFormat(SBTypeFormatRef instance, ENUM(Format));
 

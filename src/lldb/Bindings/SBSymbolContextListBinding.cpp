@@ -41,7 +41,7 @@ SBSymbolContextListIsValid(SBSymbolContextListRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+uint32_t
 SBSymbolContextListGetSize(SBSymbolContextListRef instance)
 {
     SBSymbolContextList *unwrapped = reinterpret_cast<SBSymbolContextList *>(instance);

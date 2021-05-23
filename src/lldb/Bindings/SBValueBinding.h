@@ -46,14 +46,13 @@ LLDB_API void SBValueSetFormat(SBValueRef instance, ENUM(Format) format);
 
 LLDB_API const char *SBValueGetValue(SBValueRef instance);
 
-LLDB_API long long SBValueGetValueAsSigned(SBValueRef instance, SBErrorRef error, int64_t fail_value);
+LLDB_API int64_t SBValueGetValueAsSigned(SBValueRef instance, SBErrorRef error, int64_t fail_value);
 
-LLDB_API unsigned long long SBValueGetValueAsUnsigned(SBValueRef instance, SBErrorRef error,
-                                                          uint64_t fail_value);
+LLDB_API uint64_t SBValueGetValueAsUnsigned(SBValueRef instance, SBErrorRef error, uint64_t fail_value);
 
-LLDB_API long long SBValueGetValueAsSigned2(SBValueRef instance, int64_t fail_value);
+LLDB_API int64_t SBValueGetValueAsSigned2(SBValueRef instance, int64_t fail_value);
 
-LLDB_API unsigned long long SBValueGetValueAsUnsigned2(SBValueRef instance, uint64_t fail_value);
+LLDB_API uint64_t SBValueGetValueAsUnsigned2(SBValueRef instance, uint64_t fail_value);
 
 LLDB_API ENUM(ValueType) SBValueGetValueType(SBValueRef instance);
 

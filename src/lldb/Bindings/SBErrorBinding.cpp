@@ -63,7 +63,7 @@ SBErrorSuccess(SBErrorRef instance)
     return unwrapped->Success();
 }
 
-unsigned int
+uint32_t
 SBErrorGetError(SBErrorRef instance)
 {
     SBError *unwrapped = reinterpret_cast<SBError *>(instance);

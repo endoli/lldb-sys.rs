@@ -24,7 +24,7 @@ LLDB_API void DisposeSBInstructionList(SBInstructionListRef instance);
 
 LLDB_API bool SBInstructionListIsValid(SBInstructionListRef instance);
 
-LLDB_API unsigned int SBInstructionListGetSize(SBInstructionListRef instance);
+LLDB_API size_t SBInstructionListGetSize(SBInstructionListRef instance);
 
 LLDB_API SBInstructionRef
 SBInstructionListGetInstructionAtIndex(SBInstructionListRef instance, uint32_t idx);

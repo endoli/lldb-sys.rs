@@ -24,7 +24,7 @@ LLDB_API void DisposeSBThreadCollection(SBThreadCollectionRef instance);
 
 LLDB_API bool SBThreadCollectionIsValid(SBThreadCollectionRef instance);
 
-LLDB_API unsigned int SBThreadCollectionGetSize(SBThreadCollectionRef instance);
+LLDB_API size_t SBThreadCollectionGetSize(SBThreadCollectionRef instance);
 
 LLDB_API SBThreadRef SBThreadCollectionGetThreadAtIndex(SBThreadCollectionRef instance, size_t idx);
 

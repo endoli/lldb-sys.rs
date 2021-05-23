@@ -34,7 +34,7 @@ DisposeSBFileSpecList(SBFileSpecListRef instance)
     delete reinterpret_cast<SBFileSpecList *>(instance);
 }
 
-unsigned int
+uint32_t
 SBFileSpecListGetSize(SBFileSpecListRef instance)
 {
     SBFileSpecList *unwrapped = reinterpret_cast<SBFileSpecList *>(instance);
@@ -69,7 +69,7 @@ SBFileSpecListClear(SBFileSpecListRef instance)
     unwrapped->Clear();
 }
 
-unsigned int
+uint32_t
 SBFileSpecListFindFileIndex(SBFileSpecListRef instance, uint32_t idx, SBFileSpecRef sb_file, bool full)
 {
     SBFileSpecList *unwrapped = reinterpret_cast<SBFileSpecList *>(instance);

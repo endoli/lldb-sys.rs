@@ -76,28 +76,28 @@ SBTypeCategoryGetDescription(SBTypeCategoryRef instance, SBStreamRef description
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description), description_level);
 }
 
-unsigned int
+uint32_t
 SBTypeCategoryGetNumFormats(SBTypeCategoryRef instance)
 {
     SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
     return unwrapped->GetNumFormats();
 }
 
-unsigned int
+uint32_t
 SBTypeCategoryGetNumSummaries(SBTypeCategoryRef instance)
 {
     SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
     return unwrapped->GetNumSummaries();
 }
 
-unsigned int
+uint32_t
 SBTypeCategoryGetNumFilters(SBTypeCategoryRef instance)
 {
     SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);
     return unwrapped->GetNumFilters();
 }
 
-unsigned int
+uint32_t
 SBTypeCategoryGetNumSynthetics(SBTypeCategoryRef instance)
 {
     SBTypeCategory *unwrapped = reinterpret_cast<SBTypeCategory *>(instance);

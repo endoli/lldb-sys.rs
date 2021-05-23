@@ -116,14 +116,14 @@ LLDB_API bool SBDebuggerDeleteTarget(SBDebuggerRef instance, SBTargetRef target)
 
 LLDB_API SBTargetRef SBDebuggerGetTargetAtIndex(SBDebuggerRef instance, uint32_t idx);
 
-LLDB_API unsigned int SBDebuggerGetIndexOfTarget(SBDebuggerRef instance, SBTargetRef target);
+LLDB_API uint32_t SBDebuggerGetIndexOfTarget(SBDebuggerRef instance, SBTargetRef target);
 
 LLDB_API SBTargetRef SBDebuggerFindTargetWithProcessID(SBDebuggerRef instance, lldb_pid_t pid);
 
 LLDB_API SBTargetRef
 SBDebuggerFindTargetWithFileAndArch(SBDebuggerRef instance, const char *filename, const char *arch);
 
-LLDB_API unsigned int SBDebuggerGetNumTargets(SBDebuggerRef instance);
+LLDB_API uint32_t SBDebuggerGetNumTargets(SBDebuggerRef instance);
 
 LLDB_API SBTargetRef SBDebuggerGetSelectedTarget(SBDebuggerRef instance);
 
@@ -199,7 +199,7 @@ SBDebuggerGetInternalVariableValue(const char *var_name, const char *debugger_in
 
 LLDB_API bool SBDebuggerGetDescription(SBDebuggerRef instance, SBStreamRef description);
 
-LLDB_API unsigned int SBDebuggerGetTerminalWidth(SBDebuggerRef instance);
+LLDB_API uint32_t SBDebuggerGetTerminalWidth(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSetTerminalWidth(SBDebuggerRef instance, uint32_t term_width);
 
@@ -223,7 +223,7 @@ LLDB_API SBTypeCategoryRef SBDebuggerCreateCategory(SBDebuggerRef instance, cons
 
 LLDB_API bool SBDebuggerDeleteCategory(SBDebuggerRef instance, const char *category_name);
 
-LLDB_API unsigned int SBDebuggerGetNumCategories(SBDebuggerRef instance);
+LLDB_API uint32_t SBDebuggerGetNumCategories(SBDebuggerRef instance);
 
 LLDB_API SBTypeCategoryRef SBDebuggerGetCategoryAtIndex(SBDebuggerRef instance, uint32_t);
 

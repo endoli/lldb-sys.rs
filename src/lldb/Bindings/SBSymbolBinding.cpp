@@ -92,7 +92,7 @@ SBSymbolGetEndAddress(SBSymbolRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetEndAddress()));
 }
 
-unsigned int
+uint32_t
 SBSymbolGetPrologueByteSize(SBSymbolRef instance)
 {
     SBSymbol *unwrapped = reinterpret_cast<SBSymbol *>(instance);

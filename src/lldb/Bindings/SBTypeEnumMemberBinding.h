@@ -24,9 +24,9 @@ LLDB_API void DisposeSBTypeEnumMember(SBTypeEnumMemberRef instance);
 
 LLDB_API bool SBTypeEnumMemberIsValid(SBTypeEnumMemberRef instance);
 
-LLDB_API long long SBTypeEnumMemberGetValueAsSigned(SBTypeEnumMemberRef instance);
+LLDB_API int64_t SBTypeEnumMemberGetValueAsSigned(SBTypeEnumMemberRef instance);
 
-LLDB_API unsigned long long SBTypeEnumMemberGetValueAsUnsigned(SBTypeEnumMemberRef instance);
+LLDB_API uint64_t SBTypeEnumMemberGetValueAsUnsigned(SBTypeEnumMemberRef instance);
 
 LLDB_API const char *SBTypeEnumMemberGetName(SBTypeEnumMemberRef instance);
 
@@ -48,7 +48,7 @@ LLDB_API void SBTypeEnumMemberListAppend(SBTypeEnumMemberListRef instance, SBTyp
 LLDB_API SBTypeEnumMemberRef
 SBTypeEnumMemberListGetTypeEnumMemberAtIndex(SBTypeEnumMemberListRef instance, uint32_t index);
 
-LLDB_API unsigned int SBTypeEnumMemberListGetSize(SBTypeEnumMemberListRef instance);
+LLDB_API uint32_t SBTypeEnumMemberListGetSize(SBTypeEnumMemberListRef instance);
 
 #ifdef __cplusplus
 }

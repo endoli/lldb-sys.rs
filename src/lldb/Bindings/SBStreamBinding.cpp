@@ -43,7 +43,7 @@ SBStreamGetData(SBStreamRef instance)
     return unwrapped->GetData();
 }
 
-unsigned int
+size_t
 SBStreamGetSize(SBStreamRef instance)
 {
     SBStream *unwrapped = reinterpret_cast<SBStream *>(instance);

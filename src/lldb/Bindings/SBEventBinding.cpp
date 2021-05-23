@@ -54,7 +54,7 @@ SBEventGetDataFlavor(SBEventRef instance)
     return unwrapped->GetDataFlavor();
 }
 
-unsigned int
+uint32_t
 SBEventGetType(SBEventRef instance)
 {
     SBEvent *unwrapped = reinterpret_cast<SBEvent *>(instance);

@@ -26,9 +26,9 @@ LLDB_API bool SBDeclarationIsValid(SBDeclarationRef instance);
 
 LLDB_API SBFileSpecRef SBDeclarationGetFileSpec(SBDeclarationRef instance);
 
-LLDB_API unsigned int SBDeclarationGetLine(SBDeclarationRef instance);
+LLDB_API uint32_t SBDeclarationGetLine(SBDeclarationRef instance);
 
-LLDB_API unsigned int SBDeclarationGetColumn(SBDeclarationRef instance);
+LLDB_API uint32_t SBDeclarationGetColumn(SBDeclarationRef instance);
 
 LLDB_API void SBDeclarationSetFileSpec(SBDeclarationRef instance, SBFileSpecRef filespec);
 

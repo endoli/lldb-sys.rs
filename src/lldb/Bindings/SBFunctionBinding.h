@@ -39,7 +39,7 @@ LLDB_API SBAddressRef SBFunctionGetStartAddress(SBFunctionRef instance);
 
 LLDB_API SBAddressRef SBFunctionGetEndAddress(SBFunctionRef instance);
 
-LLDB_API unsigned int SBFunctionGetPrologueByteSize(SBFunctionRef instance);
+LLDB_API uint32_t SBFunctionGetPrologueByteSize(SBFunctionRef instance);
 
 LLDB_API SBTypeRef SBFunctionGetType(SBFunctionRef instance);
 

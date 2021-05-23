@@ -62,7 +62,7 @@ SBSectionFindSubSection(SBSectionRef instance, const char *sect_name)
     return reinterpret_cast<SBSectionRef>(new SBSection(unwrapped->FindSubSection(sect_name)));
 }
 
-unsigned int
+size_t
 SBSectionGetNumSubSections(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
@@ -97,14 +97,14 @@ SBSectionGetByteSize(SBSectionRef instance)
     return unwrapped->GetByteSize();
 }
 
-unsigned long long
+uint64_t
 SBSectionGetFileOffset(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
     return unwrapped->GetFileOffset();
 }
 
-unsigned long long
+uint64_t
 SBSectionGetFileByteSize(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
@@ -132,7 +132,7 @@ SBSectionGetSectionType(SBSectionRef instance)
     return unwrapped->GetSectionType();
 }
 
-unsigned int
+uint32_t
 SBSectionGetTargetByteSize(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);

@@ -34,7 +34,7 @@ DisposeSBData(SBDataRef instance)
     delete reinterpret_cast<SBData *>(instance);
 }
 
-unsigned char
+uint8_t
 SBDataGetAddressByteSize(SBDataRef instance)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
@@ -62,7 +62,7 @@ SBDataIsValid(SBDataRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+size_t
 SBDataGetByteSize(SBDataRef instance)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
@@ -111,56 +111,56 @@ SBDataGetAddress(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
     return unwrapped->GetAddress(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned char
+uint8_t
 SBDataGetUnsignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetUnsignedInt8(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned short
+uint16_t
 SBDataGetUnsignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetUnsignedInt16(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned int
+uint32_t
 SBDataGetUnsignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetUnsignedInt32(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned long long
+uint64_t
 SBDataGetUnsignedInt64(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetUnsignedInt64(*reinterpret_cast<SBError *>(error), offset);
 }
 
-signed char
+int8_t
 SBDataGetSignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetSignedInt8(*reinterpret_cast<SBError *>(error), offset);
 }
 
-short
+int16_t
 SBDataGetSignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetSignedInt16(*reinterpret_cast<SBError *>(error), offset);
 }
 
-int
+int32_t
 SBDataGetSignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
     return unwrapped->GetSignedInt32(*reinterpret_cast<SBError *>(error), offset);
 }
 
-long long
+int64_t
 SBDataGetSignedInt64(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);
@@ -174,7 +174,7 @@ SBDataGetString(SBDataRef instance, SBErrorRef error, lldb_offset_t offset)
     return unwrapped->GetString(*reinterpret_cast<SBError *>(error), offset);
 }
 
-unsigned int
+size_t
 SBDataReadRawData(SBDataRef instance, SBErrorRef error, lldb_offset_t offset, void *buf, size_t size)
 {
     SBData *unwrapped = reinterpret_cast<SBData *>(instance);

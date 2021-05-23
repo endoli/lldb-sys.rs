@@ -74,14 +74,14 @@ SBThreadGetStopReason(SBThreadRef instance)
     return unwrapped->GetStopReason();
 }
 
-unsigned int
+size_t
 SBThreadGetStopReasonDataCount(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
     return unwrapped->GetStopReasonDataCount();
 }
 
-unsigned long long
+uint64_t
 SBThreadGetStopReasonDataAtIndex(SBThreadRef instance, uint32_t idx)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -95,7 +95,7 @@ SBThreadGetStopReasonExtendedInfoAsJSON(SBThreadRef instance, SBStreamRef stream
     return unwrapped->GetStopReasonExtendedInfoAsJSON(*reinterpret_cast<SBStream *>(stream));
 }
 
-unsigned int
+size_t
 SBThreadGetStopDescription(SBThreadRef instance, char *dst, size_t dst_len)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -116,7 +116,7 @@ SBThreadGetThreadID(SBThreadRef instance)
     return unwrapped->GetThreadID();
 }
 
-unsigned int
+uint32_t
 SBThreadGetIndexID(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -281,7 +281,7 @@ SBThreadIsStopped(SBThreadRef instance)
     return unwrapped->IsStopped();
 }
 
-unsigned int
+uint32_t
 SBThreadGetNumFrames(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
@@ -357,7 +357,7 @@ SBThreadGetExtendedBacktraceThread(SBThreadRef instance, const char *type)
     return reinterpret_cast<SBThreadRef>(new SBThread(unwrapped->GetExtendedBacktraceThread(type)));
 }
 
-unsigned int
+uint32_t
 SBThreadGetExtendedBacktraceOriginatingIndexID(SBThreadRef instance)
 {
     SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);

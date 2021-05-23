@@ -76,7 +76,7 @@ SBInstructionGetData(SBInstructionRef instance, SBTargetRef target)
     return reinterpret_cast<SBDataRef>(new SBData(unwrapped->GetData(*reinterpret_cast<SBTarget *>(target))));
 }
 
-unsigned int
+size_t
 SBInstructionGetByteSize(SBInstructionRef instance)
 {
     SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);

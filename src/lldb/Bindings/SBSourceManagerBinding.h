@@ -24,7 +24,7 @@ LLDB_API SBSourceManagerRef CloneSBSourceManager(SBSourceManagerRef instance);
 
 LLDB_API void DisposeSBSourceManager(SBSourceManagerRef instance);
 
-LLDB_API unsigned int
+LLDB_API size_t
 SBSourceManagerDisplaySourceLinesWithLineNumbers(SBSourceManagerRef instance, SBFileSpecRef file,
                                                      uint32_t line, uint32_t context_before, uint32_t context_after,
                                                      const char *current_line_cstr, SBStreamRef s);

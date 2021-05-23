@@ -48,7 +48,7 @@ SBCompileUnitGetFileSpec(SBCompileUnitRef instance)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetFileSpec()));
 }
 
-unsigned int
+uint32_t
 SBCompileUnitGetNumLineEntries(SBCompileUnitRef instance)
 {
     SBCompileUnit *unwrapped = reinterpret_cast<SBCompileUnit *>(instance);
@@ -62,7 +62,7 @@ SBCompileUnitGetLineEntryAtIndex(SBCompileUnitRef instance, uint32_t idx)
     return reinterpret_cast<SBLineEntryRef>(new SBLineEntry(unwrapped->GetLineEntryAtIndex(idx)));
 }
 
-unsigned int
+uint32_t
 SBCompileUnitFindLineEntryIndex(SBCompileUnitRef instance, uint32_t start_idx, uint32_t line,
                                     SBFileSpecRef inline_file_spec)
 {
@@ -70,7 +70,7 @@ SBCompileUnitFindLineEntryIndex(SBCompileUnitRef instance, uint32_t start_idx, u
     return unwrapped->FindLineEntryIndex(start_idx, line, reinterpret_cast<SBFileSpec *>(inline_file_spec));
 }
 
-unsigned int
+uint32_t
 SBCompileUnitFindLineEntryIndex2(SBCompileUnitRef instance, uint32_t start_idx, uint32_t line,
                                      SBFileSpecRef inline_file_spec, bool exact)
 {
@@ -85,14 +85,14 @@ SBCompileUnitGetSupportFileAtIndex(SBCompileUnitRef instance, uint32_t idx)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetSupportFileAtIndex(idx)));
 }
 
-unsigned int
+uint32_t
 SBCompileUnitGetNumSupportFiles(SBCompileUnitRef instance)
 {
     SBCompileUnit *unwrapped = reinterpret_cast<SBCompileUnit *>(instance);
     return unwrapped->GetNumSupportFiles();
 }
 
-unsigned int
+uint32_t
 SBCompileUnitFindSupportFileIndex(SBCompileUnitRef instance, uint32_t start_idx, SBFileSpecRef sb_file,
                                       bool full)
 {

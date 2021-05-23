@@ -24,9 +24,9 @@ LLDB_API void DisposeSBLaunchInfo(SBLaunchInfoRef instance);
 
 LLDB_API lldb_pid_t SBLaunchInfoGetProcessID(SBLaunchInfoRef instance);
 
-LLDB_API lldb_user_id_t SBLaunchInfoGetUserID(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetUserID(SBLaunchInfoRef instance);
 
-LLDB_API unsigned int SBLaunchInfoGetGroupID(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetGroupID(SBLaunchInfoRef instance);
 
 LLDB_API bool SBLaunchInfoUserIDIsValid(SBLaunchInfoRef instance);
 
@@ -45,13 +45,13 @@ LLDB_API SBListenerRef SBLaunchInfoGetListener(SBLaunchInfoRef instance);
 
 LLDB_API void SBLaunchInfoSetListener(SBLaunchInfoRef instance, SBListenerRef listener);
 
-LLDB_API unsigned int SBLaunchInfoGetNumArguments(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetNumArguments(SBLaunchInfoRef instance);
 
 LLDB_API const char *SBLaunchInfoGetArgumentAtIndex(SBLaunchInfoRef instance, uint32_t idx);
 
 LLDB_API void SBLaunchInfoSetArguments(SBLaunchInfoRef instance, const char **argv, bool append);
 
-LLDB_API unsigned int SBLaunchInfoGetNumEnvironmentEntries(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetNumEnvironmentEntries(SBLaunchInfoRef instance);
 
 LLDB_API const char *SBLaunchInfoGetEnvironmentEntryAtIndex(SBLaunchInfoRef instance, uint32_t idx);
 
@@ -63,7 +63,7 @@ LLDB_API const char *SBLaunchInfoGetWorkingDirectory(SBLaunchInfoRef instance);
 
 LLDB_API void SBLaunchInfoSetWorkingDirectory(SBLaunchInfoRef instance, const char *working_dir);
 
-LLDB_API unsigned int SBLaunchInfoGetLaunchFlags(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetLaunchFlags(SBLaunchInfoRef instance);
 
 LLDB_API void SBLaunchInfoSetLaunchFlags(SBLaunchInfoRef instance, uint32_t flags);
 
@@ -79,7 +79,7 @@ LLDB_API bool SBLaunchInfoGetShellExpandArguments(SBLaunchInfoRef instance);
 
 LLDB_API void SBLaunchInfoSetShellExpandArguments(SBLaunchInfoRef instance, bool glob);
 
-LLDB_API unsigned int SBLaunchInfoGetResumeCount(SBLaunchInfoRef instance);
+LLDB_API uint32_t SBLaunchInfoGetResumeCount(SBLaunchInfoRef instance);
 
 LLDB_API void SBLaunchInfoSetResumeCount(SBLaunchInfoRef instance, uint32_t c);
 

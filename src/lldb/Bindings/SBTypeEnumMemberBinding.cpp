@@ -42,14 +42,14 @@ SBTypeEnumMemberIsValid(SBTypeEnumMemberRef instance)
     return unwrapped->IsValid();
 }
 
-long long
+int64_t
 SBTypeEnumMemberGetValueAsSigned(SBTypeEnumMemberRef instance)
 {
     SBTypeEnumMember *unwrapped = reinterpret_cast<SBTypeEnumMember *>(instance);
     return unwrapped->GetValueAsSigned();
 }
 
-unsigned long long
+uint64_t
 SBTypeEnumMemberGetValueAsUnsigned(SBTypeEnumMemberRef instance)
 {
     SBTypeEnumMember *unwrapped = reinterpret_cast<SBTypeEnumMember *>(instance);
@@ -117,7 +117,7 @@ SBTypeEnumMemberListGetTypeEnumMemberAtIndex(SBTypeEnumMemberListRef instance, u
     return reinterpret_cast<SBTypeEnumMemberRef>(new SBTypeEnumMember(unwrapped->GetTypeEnumMemberAtIndex(index)));
 }
 
-unsigned int
+uint32_t
 SBTypeEnumMemberListGetSize(SBTypeEnumMemberListRef instance)
 {
     SBTypeEnumMemberList *unwrapped = reinterpret_cast<SBTypeEnumMemberList *>(instance);

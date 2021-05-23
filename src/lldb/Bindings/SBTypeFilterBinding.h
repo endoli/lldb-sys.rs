@@ -26,7 +26,7 @@ LLDB_API void DisposeSBTypeFilter(SBTypeFilterRef instance);
 
 LLDB_API bool SBTypeFilterIsValid(SBTypeFilterRef instance);
 
-LLDB_API unsigned int SBTypeFilterGetNumberOfExpressionPaths(SBTypeFilterRef instance);
+LLDB_API uint32_t SBTypeFilterGetNumberOfExpressionPaths(SBTypeFilterRef instance);
 
 LLDB_API const char *SBTypeFilterGetExpressionPathAtIndex(SBTypeFilterRef instance, uint32_t i);
 
@@ -36,7 +36,7 @@ LLDB_API void SBTypeFilterAppendExpressionPath(SBTypeFilterRef instance, const c
 
 LLDB_API void SBTypeFilterClear(SBTypeFilterRef instance);
 
-LLDB_API unsigned int SBTypeFilterGetOptions(SBTypeFilterRef instance);
+LLDB_API uint32_t SBTypeFilterGetOptions(SBTypeFilterRef instance);
 
 LLDB_API void SBTypeFilterSetOptions(SBTypeFilterRef instance, uint32_t);
 

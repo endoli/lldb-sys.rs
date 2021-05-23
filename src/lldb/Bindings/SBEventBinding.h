@@ -28,7 +28,7 @@ LLDB_API bool SBEventIsValid(SBEventRef instance);
 
 LLDB_API const char *SBEventGetDataFlavor(SBEventRef instance);
 
-LLDB_API unsigned int SBEventGetType(SBEventRef instance);
+LLDB_API uint32_t SBEventGetType(SBEventRef instance);
 
 LLDB_API SBBroadcasterRef SBEventGetBroadcaster(SBEventRef instance);
 

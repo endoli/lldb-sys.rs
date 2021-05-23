@@ -91,7 +91,7 @@ SBExpressionOptionsSetFetchDynamicValue(SBExpressionOptionsRef instance, lldb::D
     unwrapped->SetFetchDynamicValue(dynamic);
 }
 
-unsigned int
+uint32_t
 SBExpressionOptionsGetTimeoutInMicroSeconds(SBExpressionOptionsRef instance)
 {
     SBExpressionOptions *unwrapped = reinterpret_cast<SBExpressionOptions *>(instance);
@@ -105,7 +105,7 @@ SBExpressionOptionsSetTimeoutInMicroSeconds(SBExpressionOptionsRef instance, uin
     unwrapped->SetTimeoutInMicroSeconds(timeout);
 }
 
-unsigned int
+uint32_t
 SBExpressionOptionsGetOneThreadTimeoutInMicroSeconds(SBExpressionOptionsRef instance)
 {
     SBExpressionOptions *unwrapped = reinterpret_cast<SBExpressionOptions *>(instance);

@@ -102,7 +102,7 @@ SBModuleGetByteOrder(SBModuleRef instance)
     return unwrapped->GetByteOrder();
 }
 
-unsigned int
+uint32_t
 SBModuleGetAddressByteSize(SBModuleRef instance)
 {
     SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
@@ -159,7 +159,7 @@ SBModuleGetDescription(SBModuleRef instance, SBStreamRef description)
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
-unsigned int
+uint32_t
 SBModuleGetNumCompileUnits(SBModuleRef instance)
 {
     SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
@@ -173,7 +173,7 @@ SBModuleGetCompileUnitAtIndex(SBModuleRef instance, uint32_t var0)
     return reinterpret_cast<SBCompileUnitRef>(new SBCompileUnit(unwrapped->GetCompileUnitAtIndex(var0)));
 }
 
-unsigned int
+size_t
 SBModuleGetNumSymbols(SBModuleRef instance)
 {
     SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
@@ -201,7 +201,7 @@ SBModuleFindSymbols(SBModuleRef instance, const char *name, lldb::SymbolType typ
     return reinterpret_cast<SBSymbolContextListRef>(new SBSymbolContextList(unwrapped->FindSymbols(name, type)));
 }
 
-unsigned int
+size_t
 SBModuleGetNumSections(SBModuleRef instance)
 {
     SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
@@ -275,7 +275,7 @@ SBModuleGetTypes(SBModuleRef instance, uint32_t type_mask)
     return reinterpret_cast<SBTypeListRef>(new SBTypeList(unwrapped->GetTypes(type_mask)));
 }
 
-unsigned int
+uint32_t
 SBModuleGetVersion(SBModuleRef instance, uint32_t *versions, uint32_t num_versions)
 {
     SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);

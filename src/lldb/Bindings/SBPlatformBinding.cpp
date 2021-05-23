@@ -137,7 +137,7 @@ SBPlatformShellCommandSetWorkingDirectory(SBPlatformShellCommandRef instance, co
     unwrapped->SetWorkingDirectory(path);
 }
 
-unsigned int
+uint32_t
 SBPlatformShellCommandGetTimeoutSeconds(SBPlatformShellCommandRef instance)
 {
     SBPlatformShellCommand *unwrapped = reinterpret_cast<SBPlatformShellCommand *>(instance);
@@ -281,21 +281,21 @@ SBPlatformGetOSDescription(SBPlatformRef instance)
     return unwrapped->GetOSDescription();
 }
 
-unsigned int
+uint32_t
 SBPlatformGetOSMajorVersion(SBPlatformRef instance)
 {
     SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);
     return unwrapped->GetOSMajorVersion();
 }
 
-unsigned int
+uint32_t
 SBPlatformGetOSMinorVersion(SBPlatformRef instance)
 {
     SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);
     return unwrapped->GetOSMinorVersion();
 }
 
-unsigned int
+uint32_t
 SBPlatformGetOSUpdateVersion(SBPlatformRef instance)
 {
     SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);
@@ -356,7 +356,7 @@ SBPlatformMakeDirectory(SBPlatformRef instance, const char *path, uint32_t file_
     return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->MakeDirectory(path, file_permissions)));
 }
 
-unsigned int
+uint32_t
 SBPlatformGetFilePermissions(SBPlatformRef instance, const char *path)
 {
     SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);

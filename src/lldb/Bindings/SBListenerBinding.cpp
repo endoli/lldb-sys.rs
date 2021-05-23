@@ -61,7 +61,7 @@ SBListenerIsValid(SBListenerRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+uint32_t
 SBListenerStartListeningForEventClass(SBListenerRef instance, SBDebuggerRef debugger,
                                           const char *broadcaster_class, uint32_t event_mask)
 {
@@ -79,7 +79,7 @@ SBListenerStopListeningForEventClass(SBListenerRef instance, SBDebuggerRef debug
                                                  event_mask);
 }
 
-unsigned int
+uint32_t
 SBListenerStartListeningForEvents(SBListenerRef instance, SBBroadcasterRef broadcaster, uint32_t event_mask)
 {
     SBListener *unwrapped = reinterpret_cast<SBListener *>(instance);

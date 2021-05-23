@@ -126,7 +126,7 @@ SBModuleSpecGetUUIDBytes(SBModuleSpecRef instance)
     return unwrapped->GetUUIDBytes();
 }
 
-unsigned int
+size_t
 SBModuleSpecGetUUIDLength(SBModuleSpecRef instance)
 {
     SBModuleSpec *unwrapped = reinterpret_cast<SBModuleSpec *>(instance);
@@ -202,7 +202,7 @@ SBModuleSpecListFindMatchingSpecs(SBModuleSpecListRef instance, SBModuleSpecRef 
         new SBModuleSpecList(unwrapped->FindMatchingSpecs(*reinterpret_cast<SBModuleSpec *>(match_spec))));
 }
 
-unsigned int
+size_t
 SBModuleSpecListGetSize(SBModuleSpecListRef instance)
 {
     SBModuleSpecList *unwrapped = reinterpret_cast<SBModuleSpecList *>(instance);

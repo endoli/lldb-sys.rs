@@ -55,7 +55,7 @@ SBQueueGetProcess(SBQueueRef instance)
     return reinterpret_cast<SBProcessRef>(new SBProcess(unwrapped->GetProcess()));
 }
 
-unsigned long long
+lldb_queue_id_t
 SBQueueGetQueueID(SBQueueRef instance)
 {
     SBQueue *unwrapped = reinterpret_cast<SBQueue *>(instance);
@@ -69,14 +69,14 @@ SBQueueGetName(SBQueueRef instance)
     return unwrapped->GetName();
 }
 
-unsigned int
+uint32_t
 SBQueueGetIndexID(SBQueueRef instance)
 {
     SBQueue *unwrapped = reinterpret_cast<SBQueue *>(instance);
     return unwrapped->GetIndexID();
 }
 
-unsigned int
+uint32_t
 SBQueueGetNumThreads(SBQueueRef instance)
 {
     SBQueue *unwrapped = reinterpret_cast<SBQueue *>(instance);
@@ -90,7 +90,7 @@ SBQueueGetThreadAtIndex(SBQueueRef instance, uint32_t var0)
     return reinterpret_cast<SBThreadRef>(new SBThread(unwrapped->GetThreadAtIndex(var0)));
 }
 
-unsigned int
+uint32_t
 SBQueueGetNumPendingItems(SBQueueRef instance)
 {
     SBQueue *unwrapped = reinterpret_cast<SBQueue *>(instance);
@@ -104,7 +104,7 @@ SBQueueGetPendingItemAtIndex(SBQueueRef instance, uint32_t var0)
     return reinterpret_cast<SBQueueItemRef>(new SBQueueItem(unwrapped->GetPendingItemAtIndex(var0)));
 }
 
-unsigned int
+uint32_t
 SBQueueGetNumRunningItems(SBQueueRef instance)
 {
     SBQueue *unwrapped = reinterpret_cast<SBQueue *>(instance);

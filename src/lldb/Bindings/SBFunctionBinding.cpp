@@ -92,7 +92,7 @@ SBFunctionGetEndAddress(SBFunctionRef instance)
     return reinterpret_cast<SBAddressRef>(new SBAddress(unwrapped->GetEndAddress()));
 }
 
-unsigned int
+uint32_t
 SBFunctionGetPrologueByteSize(SBFunctionRef instance)
 {
     SBFunction *unwrapped = reinterpret_cast<SBFunction *>(instance);

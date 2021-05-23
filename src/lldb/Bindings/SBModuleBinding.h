@@ -42,7 +42,7 @@ LLDB_API bool SBModuleSetRemoteInstallFileSpec(SBModuleRef instance, SBFileSpecR
 
 LLDB_API ENUM(ByteOrder) SBModuleGetByteOrder(SBModuleRef instance);
 
-LLDB_API unsigned int SBModuleGetAddressByteSize(SBModuleRef instance);
+LLDB_API uint32_t SBModuleGetAddressByteSize(SBModuleRef instance);
 
 LLDB_API const char *SBModuleGetTriple(SBModuleRef instance);
 
@@ -59,11 +59,11 @@ SBModuleResolveSymbolContextForAddress(SBModuleRef instance, SBAddressRef addr, 
 
 LLDB_API bool SBModuleGetDescription(SBModuleRef instance, SBStreamRef description);
 
-LLDB_API unsigned int SBModuleGetNumCompileUnits(SBModuleRef instance);
+LLDB_API uint32_t SBModuleGetNumCompileUnits(SBModuleRef instance);
 
 LLDB_API SBCompileUnitRef SBModuleGetCompileUnitAtIndex(SBModuleRef instance, uint32_t);
 
-LLDB_API unsigned int SBModuleGetNumSymbols(SBModuleRef instance);
+LLDB_API size_t SBModuleGetNumSymbols(SBModuleRef instance);
 
 LLDB_API SBSymbolRef SBModuleGetSymbolAtIndex(SBModuleRef instance, size_t idx);
 
@@ -72,7 +72,7 @@ LLDB_API SBSymbolRef SBModuleFindSymbol(SBModuleRef instance, const char *name, 
 LLDB_API SBSymbolContextListRef
 SBModuleFindSymbols(SBModuleRef instance, const char *name, ENUM(SymbolType) type);
 
-LLDB_API unsigned int SBModuleGetNumSections(SBModuleRef instance);
+LLDB_API size_t SBModuleGetNumSections(SBModuleRef instance);
 
 LLDB_API SBSectionRef SBModuleGetSectionAtIndex(SBModuleRef instance, size_t idx);
 
@@ -95,7 +95,7 @@ LLDB_API SBTypeRef SBModuleGetBasicType(SBModuleRef instance, ENUM(BasicType) ty
 
 LLDB_API SBTypeListRef SBModuleGetTypes(SBModuleRef instance, uint32_t type_mask);
 
-LLDB_API unsigned int SBModuleGetVersion(SBModuleRef instance, uint32_t *versions, uint32_t num_versions);
+LLDB_API uint32_t SBModuleGetVersion(SBModuleRef instance, uint32_t *versions, uint32_t num_versions);
 
 LLDB_API SBFileSpecRef SBModuleGetSymbolFileSpec(SBModuleRef instance);
 

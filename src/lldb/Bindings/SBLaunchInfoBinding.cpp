@@ -41,14 +41,14 @@ SBLaunchInfoGetProcessID(SBLaunchInfoRef instance)
     return unwrapped->GetProcessID();
 }
 
-lldb_user_id_t
+uint32_t
 SBLaunchInfoGetUserID(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
     return unwrapped->GetUserID();
 }
 
-unsigned int
+uint32_t
 SBLaunchInfoGetGroupID(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
@@ -111,7 +111,7 @@ SBLaunchInfoSetListener(SBLaunchInfoRef instance, SBListenerRef listener)
     unwrapped->SetListener(*reinterpret_cast<SBListener *>(listener));
 }
 
-unsigned int
+uint32_t
 SBLaunchInfoGetNumArguments(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
@@ -132,7 +132,7 @@ SBLaunchInfoSetArguments(SBLaunchInfoRef instance, const char **argv, bool appen
     unwrapped->SetArguments(argv, append);
 }
 
-unsigned int
+uint32_t
 SBLaunchInfoGetNumEnvironmentEntries(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
@@ -174,7 +174,7 @@ SBLaunchInfoSetWorkingDirectory(SBLaunchInfoRef instance, const char *working_di
     unwrapped->SetWorkingDirectory(working_dir);
 }
 
-unsigned int
+uint32_t
 SBLaunchInfoGetLaunchFlags(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
@@ -230,7 +230,7 @@ SBLaunchInfoSetShellExpandArguments(SBLaunchInfoRef instance, bool glob)
     unwrapped->SetShellExpandArguments(glob);
 }
 
-unsigned int
+uint32_t
 SBLaunchInfoGetResumeCount(SBLaunchInfoRef instance)
 {
     SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);

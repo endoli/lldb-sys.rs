@@ -299,7 +299,7 @@ SBDebuggerGetTargetAtIndex(SBDebuggerRef instance, uint32_t idx)
     return reinterpret_cast<SBTargetRef>(new SBTarget(unwrapped->GetTargetAtIndex(idx)));
 }
 
-unsigned int
+uint32_t
 SBDebuggerGetIndexOfTarget(SBDebuggerRef instance, SBTargetRef target)
 {
     SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
@@ -320,7 +320,7 @@ SBDebuggerFindTargetWithFileAndArch(SBDebuggerRef instance, const char *filename
     return reinterpret_cast<SBTargetRef>(new SBTarget(unwrapped->FindTargetWithFileAndArch(filename, arch)));
 }
 
-unsigned int
+uint32_t
 SBDebuggerGetNumTargets(SBDebuggerRef instance)
 {
     SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
@@ -558,7 +558,7 @@ SBDebuggerGetDescription(SBDebuggerRef instance, SBStreamRef description)
     return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
-unsigned int
+uint32_t
 SBDebuggerGetTerminalWidth(SBDebuggerRef instance)
 {
     SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
@@ -642,7 +642,7 @@ SBDebuggerDeleteCategory(SBDebuggerRef instance, const char *category_name)
     return unwrapped->DeleteCategory(category_name);
 }
 
-unsigned int
+uint32_t
 SBDebuggerGetNumCategories(SBDebuggerRef instance)
 {
     SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);

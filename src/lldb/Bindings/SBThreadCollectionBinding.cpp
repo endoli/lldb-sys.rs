@@ -42,7 +42,7 @@ SBThreadCollectionIsValid(SBThreadCollectionRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+size_t
 SBThreadCollectionGetSize(SBThreadCollectionRef instance)
 {
     SBThreadCollection *unwrapped = reinterpret_cast<SBThreadCollection *>(instance);

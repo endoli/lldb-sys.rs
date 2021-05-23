@@ -56,14 +56,14 @@ SBTypeMemberGetType(SBTypeMemberRef instance)
     return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetType()));
 }
 
-unsigned long long
+uint64_t
 SBTypeMemberGetOffsetInBytes(SBTypeMemberRef instance)
 {
     SBTypeMember *unwrapped = reinterpret_cast<SBTypeMember *>(instance);
     return unwrapped->GetOffsetInBytes();
 }
 
-unsigned long long
+uint64_t
 SBTypeMemberGetOffsetInBits(SBTypeMemberRef instance)
 {
     SBTypeMember *unwrapped = reinterpret_cast<SBTypeMember *>(instance);
@@ -77,7 +77,7 @@ SBTypeMemberIsBitfield(SBTypeMemberRef instance)
     return unwrapped->IsBitfield();
 }
 
-unsigned int
+uint32_t
 SBTypeMemberGetBitfieldSizeInBits(SBTypeMemberRef instance)
 {
     SBTypeMember *unwrapped = reinterpret_cast<SBTypeMember *>(instance);
@@ -138,7 +138,7 @@ SBTypeMemberFunctionGetReturnType(SBTypeMemberFunctionRef instance)
     return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetReturnType()));
 }
 
-unsigned int
+uint32_t
 SBTypeMemberFunctionGetNumberOfArguments(SBTypeMemberFunctionRef instance)
 {
     SBTypeMemberFunction *unwrapped = reinterpret_cast<SBTypeMemberFunction *>(instance);
@@ -192,7 +192,7 @@ SBTypeIsValid(SBTypeRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned long long
+uint64_t
 SBTypeGetByteSize(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -325,21 +325,21 @@ SBTypeGetBasicType2(SBTypeRef instance, lldb::BasicType type)
     return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetBasicType(type)));
 }
 
-unsigned int
+uint32_t
 SBTypeGetNumberOfFields(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
     return unwrapped->GetNumberOfFields();
 }
 
-unsigned int
+uint32_t
 SBTypeGetNumberOfDirectBaseClasses(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
     return unwrapped->GetNumberOfDirectBaseClasses();
 }
 
-unsigned int
+uint32_t
 SBTypeGetNumberOfVirtualBaseClasses(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -374,7 +374,7 @@ SBTypeGetEnumMembers(SBTypeRef instance)
     return reinterpret_cast<SBTypeEnumMemberListRef>(new SBTypeEnumMemberList(unwrapped->GetEnumMembers()));
 }
 
-unsigned int
+uint32_t
 SBTypeGetNumberOfTemplateArguments(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -409,7 +409,7 @@ SBTypeGetFunctionArgumentTypes(SBTypeRef instance)
     return reinterpret_cast<SBTypeListRef>(new SBTypeList(unwrapped->GetFunctionArgumentTypes()));
 }
 
-unsigned int
+uint32_t
 SBTypeGetNumberOfMemberFunctions(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -452,7 +452,7 @@ SBTypeIsTypeComplete(SBTypeRef instance)
     return unwrapped->IsTypeComplete();
 }
 
-unsigned int
+uint32_t
 SBTypeGetTypeFlags(SBTypeRef instance)
 {
     SBType *unwrapped = reinterpret_cast<SBType *>(instance);
@@ -505,7 +505,7 @@ SBTypeListGetTypeAtIndex(SBTypeListRef instance, uint32_t index)
     return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetTypeAtIndex(index)));
 }
 
-unsigned int
+uint32_t
 SBTypeListGetSize(SBTypeListRef instance)
 {
     SBTypeList *unwrapped = reinterpret_cast<SBTypeList *>(instance);

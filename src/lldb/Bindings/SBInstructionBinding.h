@@ -34,7 +34,7 @@ LLDB_API const char *SBInstructionGetComment(SBInstructionRef instance, SBTarget
 
 LLDB_API SBDataRef SBInstructionGetData(SBInstructionRef instance, SBTargetRef target);
 
-LLDB_API unsigned int SBInstructionGetByteSize(SBInstructionRef instance);
+LLDB_API size_t SBInstructionGetByteSize(SBInstructionRef instance);
 
 LLDB_API bool SBInstructionDoesBranch(SBInstructionRef instance);
 

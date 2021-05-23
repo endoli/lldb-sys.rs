@@ -68,7 +68,7 @@ SBTypeFormatGetTypeName(SBTypeFormatRef instance)
     return unwrapped->GetTypeName();
 }
 
-unsigned int
+uint32_t
 SBTypeFormatGetOptions(SBTypeFormatRef instance)
 {
     SBTypeFormat *unwrapped = reinterpret_cast<SBTypeFormat *>(instance);

@@ -41,7 +41,7 @@ SBInstructionListIsValid(SBInstructionListRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+size_t
 SBInstructionListGetSize(SBInstructionListRef instance)
 {
     SBInstructionList *unwrapped = reinterpret_cast<SBInstructionList *>(instance);

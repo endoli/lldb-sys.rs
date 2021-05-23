@@ -22,7 +22,7 @@ LLDB_API SBDataRef CloneSBData(SBDataRef instance);
 
 LLDB_API void DisposeSBData(SBDataRef instance);
 
-LLDB_API unsigned char SBDataGetAddressByteSize(SBDataRef instance);
+LLDB_API uint8_t SBDataGetAddressByteSize(SBDataRef instance);
 
 LLDB_API void SBDataSetAddressByteSize(SBDataRef instance, uint8_t addr_byte_size);
 
@@ -30,7 +30,7 @@ LLDB_API void SBDataClear(SBDataRef instance);
 
 LLDB_API bool SBDataIsValid(SBDataRef instance);
 
-LLDB_API unsigned int SBDataGetByteSize(SBDataRef instance);
+LLDB_API size_t SBDataGetByteSize(SBDataRef instance);
 
 LLDB_API ENUM(ByteOrder) SBDataGetByteOrder(SBDataRef instance);
 
@@ -44,26 +44,26 @@ LLDB_API long double SBDataGetLongDouble(SBDataRef instance, SBErrorRef error, l
 
 LLDB_API lldb_addr_t SBDataGetAddress(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned char SBDataGetUnsignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API uint8_t SBDataGetUnsignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned short SBDataGetUnsignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API uint16_t SBDataGetUnsignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned int SBDataGetUnsignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API uint32_t SBDataGetUnsignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned long long SBDataGetUnsignedInt64(SBDataRef instance, SBErrorRef error,
+LLDB_API uint64_t SBDataGetUnsignedInt64(SBDataRef instance, SBErrorRef error,
                                                        lldb_offset_t offset);
 
-LLDB_API signed char SBDataGetSignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API int8_t SBDataGetSignedInt8(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API short SBDataGetSignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API int16_t SBDataGetSignedInt16(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API int SBDataGetSignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API int32_t SBDataGetSignedInt32(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API long long SBDataGetSignedInt64(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
+LLDB_API int64_t SBDataGetSignedInt64(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
 LLDB_API const char *SBDataGetString(SBDataRef instance, SBErrorRef error, lldb_offset_t offset);
 
-LLDB_API unsigned int SBDataReadRawData(SBDataRef instance, SBErrorRef error, lldb_offset_t offset,
+LLDB_API size_t SBDataReadRawData(SBDataRef instance, SBErrorRef error, lldb_offset_t offset,
                                             void *buf, size_t size);
 
 LLDB_API bool SBDataGetDescription(SBDataRef instance, SBStreamRef description, lldb_addr_t base_addr);

@@ -40,7 +40,7 @@ DisposeSBSourceManager(SBSourceManagerRef instance)
     delete reinterpret_cast<SBSourceManager *>(instance);
 }
 
-unsigned int
+size_t
 SBSourceManagerDisplaySourceLinesWithLineNumbers(SBSourceManagerRef instance, SBFileSpecRef file,
                                                      uint32_t line, uint32_t context_before, uint32_t context_after,
                                                      const char *current_line_cstr, SBStreamRef s)

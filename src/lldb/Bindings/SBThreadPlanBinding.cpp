@@ -62,14 +62,14 @@ SBThreadPlanGetStopReason(SBThreadPlanRef instance)
     return unwrapped->GetStopReason();
 }
 
-unsigned int
+size_t
 SBThreadPlanGetStopReasonDataCount(SBThreadPlanRef instance)
 {
     SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
     return unwrapped->GetStopReasonDataCount();
 }
 
-unsigned long long
+uint64_t
 SBThreadPlanGetStopReasonDataAtIndex(SBThreadPlanRef instance, uint32_t idx)
 {
     SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);

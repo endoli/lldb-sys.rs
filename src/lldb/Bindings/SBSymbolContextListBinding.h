@@ -24,7 +24,7 @@ LLDB_API void DisposeSBSymbolContextList(SBSymbolContextListRef instance);
 
 LLDB_API bool SBSymbolContextListIsValid(SBSymbolContextListRef instance);
 
-LLDB_API unsigned int SBSymbolContextListGetSize(SBSymbolContextListRef instance);
+LLDB_API uint32_t SBSymbolContextListGetSize(SBSymbolContextListRef instance);
 
 LLDB_API SBSymbolContextRef
 SBSymbolContextListGetContextAtIndex(SBSymbolContextListRef instance, uint32_t idx);

@@ -33,13 +33,13 @@ LLDB_API const char *SBTypeCategoryGetName(SBTypeCategoryRef instance);
 LLDB_API bool SBTypeCategoryGetDescription(SBTypeCategoryRef instance, SBStreamRef description,
                                            ENUM(DescriptionLevel) description_level);
 
-LLDB_API unsigned int SBTypeCategoryGetNumFormats(SBTypeCategoryRef instance);
+LLDB_API uint32_t SBTypeCategoryGetNumFormats(SBTypeCategoryRef instance);
 
-LLDB_API unsigned int SBTypeCategoryGetNumSummaries(SBTypeCategoryRef instance);
+LLDB_API uint32_t SBTypeCategoryGetNumSummaries(SBTypeCategoryRef instance);
 
-LLDB_API unsigned int SBTypeCategoryGetNumFilters(SBTypeCategoryRef instance);
+LLDB_API uint32_t SBTypeCategoryGetNumFilters(SBTypeCategoryRef instance);
 
-LLDB_API unsigned int SBTypeCategoryGetNumSynthetics(SBTypeCategoryRef instance);
+LLDB_API uint32_t SBTypeCategoryGetNumSynthetics(SBTypeCategoryRef instance);
 
 LLDB_API SBTypeNameSpecifierRef
 SBTypeCategoryGetTypeNameSpecifierForFilterAtIndex(SBTypeCategoryRef instance, uint32_t);

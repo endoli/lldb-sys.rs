@@ -40,7 +40,7 @@ LLDB_API void SBFileSpecSetFilename(SBFileSpecRef instance, const char *filename
 
 LLDB_API void SBFileSpecSetDirectory(SBFileSpecRef instance, const char *directory);
 
-LLDB_API unsigned int SBFileSpecGetPath(SBFileSpecRef instance, char *dst_path, size_t dst_len);
+LLDB_API uint32_t SBFileSpecGetPath(SBFileSpecRef instance, char *dst_path, size_t dst_len);
 
 LLDB_API int SBFileSpecResolvePath(const char *src_path, char *dst_path, size_t dst_len);
 

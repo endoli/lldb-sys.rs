@@ -54,7 +54,7 @@ LLDB_API const char *SBPlatformShellCommandGetWorkingDirectory(SBPlatformShellCo
 
 LLDB_API void SBPlatformShellCommandSetWorkingDirectory(SBPlatformShellCommandRef instance, const char *path);
 
-LLDB_API unsigned int SBPlatformShellCommandGetTimeoutSeconds(SBPlatformShellCommandRef instance);
+LLDB_API uint32_t SBPlatformShellCommandGetTimeoutSeconds(SBPlatformShellCommandRef instance);
 
 LLDB_API void SBPlatformShellCommandSetTimeoutSeconds(SBPlatformShellCommandRef instance, uint32_t sec);
 
@@ -97,11 +97,11 @@ LLDB_API const char *SBPlatformGetOSBuild(SBPlatformRef instance);
 
 LLDB_API const char *SBPlatformGetOSDescription(SBPlatformRef instance);
 
-LLDB_API unsigned int SBPlatformGetOSMajorVersion(SBPlatformRef instance);
+LLDB_API uint32_t SBPlatformGetOSMajorVersion(SBPlatformRef instance);
 
-LLDB_API unsigned int SBPlatformGetOSMinorVersion(SBPlatformRef instance);
+LLDB_API uint32_t SBPlatformGetOSMinorVersion(SBPlatformRef instance);
 
-LLDB_API unsigned int SBPlatformGetOSUpdateVersion(SBPlatformRef instance);
+LLDB_API uint32_t SBPlatformGetOSUpdateVersion(SBPlatformRef instance);
 
 LLDB_API SBErrorRef SBPlatformPut(SBPlatformRef instance, SBFileSpecRef src, SBFileSpecRef dst);
 
@@ -118,7 +118,7 @@ LLDB_API SBErrorRef SBPlatformKill(SBPlatformRef instance, const lldb_pid_t pid)
 LLDB_API SBErrorRef
 SBPlatformMakeDirectory(SBPlatformRef instance, const char *path, uint32_t file_permissions);
 
-LLDB_API unsigned int SBPlatformGetFilePermissions(SBPlatformRef instance, const char *path);
+LLDB_API uint32_t SBPlatformGetFilePermissions(SBPlatformRef instance, const char *path);
 
 LLDB_API SBErrorRef
 SBPlatformSetFilePermissions(SBPlatformRef instance, const char *path, uint32_t file_permissions);

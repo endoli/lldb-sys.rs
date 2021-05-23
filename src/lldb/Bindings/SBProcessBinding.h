@@ -121,7 +121,7 @@ LLDB_API size_t SBProcessWriteMemory(SBProcessRef instance, lldb_addr_t addr, vo
 LLDB_API size_t SBProcessReadCStringFromMemory(SBProcessRef instance, lldb_addr_t addr, void *buf,
                                                          size_t size, SBErrorRef error);
 
-LLDB_API unsigned long long SBProcessReadUnsignedFromMemory(SBProcessRef instance, lldb_addr_t addr,
+LLDB_API uint64_t SBProcessReadUnsignedFromMemory(SBProcessRef instance, lldb_addr_t addr,
                                                                 uint32_t byte_size, SBErrorRef error);
 
 LLDB_API lldb_addr_t SBProcessReadPointerFromMemory(SBProcessRef instance, lldb_addr_t addr,

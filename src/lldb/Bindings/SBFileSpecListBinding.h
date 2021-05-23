@@ -22,7 +22,7 @@ LLDB_API SBFileSpecListRef CloneSBFileSpecList(SBFileSpecListRef instance);
 
 LLDB_API void DisposeSBFileSpecList(SBFileSpecListRef instance);
 
-LLDB_API unsigned int SBFileSpecListGetSize(SBFileSpecListRef instance);
+LLDB_API uint32_t SBFileSpecListGetSize(SBFileSpecListRef instance);
 
 LLDB_API bool SBFileSpecListGetDescription(SBFileSpecListRef instance, SBStreamRef description);
 
@@ -32,7 +32,7 @@ LLDB_API bool SBFileSpecListAppendIfUnique(SBFileSpecListRef instance, SBFileSpe
 
 LLDB_API void SBFileSpecListClear(SBFileSpecListRef instance);
 
-LLDB_API unsigned int SBFileSpecListFindFileIndex(SBFileSpecListRef instance, uint32_t idx,
+LLDB_API uint32_t SBFileSpecListFindFileIndex(SBFileSpecListRef instance, uint32_t idx,
                                                       SBFileSpecRef sb_file, bool full);
 
 LLDB_API SBFileSpecRef SBFileSpecListGetFileSpecAtIndex(SBFileSpecListRef instance, uint32_t idx);

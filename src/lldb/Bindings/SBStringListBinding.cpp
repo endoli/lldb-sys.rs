@@ -62,7 +62,7 @@ SBStringListAppendList2(SBStringListRef instance, SBStringListRef strings)
     unwrapped->AppendList(*reinterpret_cast<SBStringList *>(strings));
 }
 
-unsigned int
+uint32_t
 SBStringListGetSize(SBStringListRef instance)
 {
     SBStringList *unwrapped = reinterpret_cast<SBStringList *>(instance);

@@ -95,7 +95,7 @@ SBFileSpecSetDirectory(SBFileSpecRef instance, const char *directory)
     unwrapped->SetDirectory(directory);
 }
 
-unsigned int
+uint32_t
 SBFileSpecGetPath(SBFileSpecRef instance, char *dst_path, size_t dst_len)
 {
     SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);

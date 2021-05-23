@@ -56,28 +56,28 @@ SBCommandReturnObjectGetError(SBCommandReturnObjectRef instance)
     return unwrapped->GetError();
 }
 
-unsigned int
+size_t
 SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, FILE *fh)
 {
     SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
     return unwrapped->PutOutput(fh);
 }
 
-unsigned int
+size_t
 SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance)
 {
     SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
     return unwrapped->GetOutputSize();
 }
 
-unsigned int
+size_t
 SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance)
 {
     SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
     return unwrapped->GetErrorSize();
 }
 
-unsigned int
+size_t
 SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, FILE *fh)
 {
     SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
@@ -161,13 +161,13 @@ SBCommandReturnObjectPutCString(SBCommandReturnObjectRef instance, const char *s
     unwrapped->PutCString(string, len);
 }
 
-unsigned int
+size_t
 SBCommandReturnObjectPrintf(SBCommandReturnObjectRef instance, const char *format, ...)
 {
     if (!format)
         return 0;
 
-    unsigned int retVal;
+    size_t retVal;
     SBCommandReturnObject *unwrapped = reinterpret_cast<SBCommandReturnObject *>(instance);
 
     va_list args;

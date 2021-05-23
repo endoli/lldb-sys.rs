@@ -30,13 +30,13 @@ LLDB_API void SBListenerClear(SBListenerRef instance);
 
 LLDB_API bool SBListenerIsValid(SBListenerRef instance);
 
-LLDB_API unsigned int SBListenerStartListeningForEventClass(SBListenerRef instance, SBDebuggerRef debugger,
+LLDB_API uint32_t SBListenerStartListeningForEventClass(SBListenerRef instance, SBDebuggerRef debugger,
                                                                 const char *broadcaster_class, uint32_t event_mask);
 
 LLDB_API bool SBListenerStopListeningForEventClass(SBListenerRef instance, SBDebuggerRef debugger,
                                                        const char *broadcaster_class, uint32_t event_mask);
 
-LLDB_API unsigned int SBListenerStartListeningForEvents(SBListenerRef instance,
+LLDB_API uint32_t SBListenerStartListeningForEvents(SBListenerRef instance,
                                                             SBBroadcasterRef broadcaster, uint32_t event_mask);
 
 LLDB_API bool SBListenerStopListeningForEvents(SBListenerRef instance, SBBroadcasterRef broadcaster,

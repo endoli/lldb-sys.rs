@@ -122,28 +122,28 @@ SBValueGetValue(SBValueRef instance)
     return unwrapped->GetValue();
 }
 
-long long
+int64_t
 SBValueGetValueAsSigned(SBValueRef instance, SBErrorRef error, int64_t fail_value)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
     return unwrapped->GetValueAsSigned(*reinterpret_cast<SBError *>(error), fail_value);
 }
 
-unsigned long long
+uint64_t
 SBValueGetValueAsUnsigned(SBValueRef instance, SBErrorRef error, uint64_t fail_value)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
     return unwrapped->GetValueAsUnsigned(*reinterpret_cast<SBError *>(error), fail_value);
 }
 
-long long
+int64_t
 SBValueGetValueAsSigned2(SBValueRef instance, int64_t fail_value)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
     return unwrapped->GetValueAsSigned(fail_value);
 }
 
-unsigned long long
+uint64_t
 SBValueGetValueAsUnsigned2(SBValueRef instance, uint64_t fail_value)
 {
     SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);

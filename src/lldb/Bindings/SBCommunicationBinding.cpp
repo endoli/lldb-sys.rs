@@ -96,7 +96,7 @@ SBCommunicationSetCloseOnEOF(SBCommunicationRef instance, bool b)
     unwrapped->SetCloseOnEOF(b);
 }
 
-unsigned int
+size_t
 SBCommunicationRead(SBCommunicationRef instance, void *dst, size_t dst_len, uint32_t timeout_usec,
                         lldb::ConnectionStatus status)
 {
@@ -104,7 +104,7 @@ SBCommunicationRead(SBCommunicationRef instance, void *dst, size_t dst_len, uint
     return unwrapped->Read(dst, dst_len, timeout_usec, status);
 }
 
-unsigned int
+size_t
 SBCommunicationWrite(SBCommunicationRef instance, void *src, size_t src_len, lldb::ConnectionStatus status)
 {
     SBCommunication *unwrapped = reinterpret_cast<SBCommunication *>(instance);

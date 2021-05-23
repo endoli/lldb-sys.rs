@@ -39,11 +39,11 @@ LLDB_API ENUM(DynamicValueType) SBExpressionOptionsGetFetchDynamicValue(SBExpres
 LLDB_API void SBExpressionOptionsSetFetchDynamicValue(SBExpressionOptionsRef instance,
                                                       ENUM(DynamicValueType) dynamic);
 
-LLDB_API unsigned int SBExpressionOptionsGetTimeoutInMicroSeconds(SBExpressionOptionsRef instance);
+LLDB_API uint32_t SBExpressionOptionsGetTimeoutInMicroSeconds(SBExpressionOptionsRef instance);
 
 LLDB_API void SBExpressionOptionsSetTimeoutInMicroSeconds(SBExpressionOptionsRef instance, uint32_t timeout);
 
-LLDB_API unsigned int SBExpressionOptionsGetOneThreadTimeoutInMicroSeconds(SBExpressionOptionsRef instance);
+LLDB_API uint32_t SBExpressionOptionsGetOneThreadTimeoutInMicroSeconds(SBExpressionOptionsRef instance);
 
 LLDB_API void SBExpressionOptionsSetOneThreadTimeoutInMicroSeconds(SBExpressionOptionsRef instance,
                                                                        uint32_t timeout);

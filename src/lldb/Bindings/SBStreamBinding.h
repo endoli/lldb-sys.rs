@@ -24,7 +24,7 @@ LLDB_API bool SBStreamIsValid(SBStreamRef instance);
 
 LLDB_API const char *SBStreamGetData(SBStreamRef instance);
 
-LLDB_API unsigned int SBStreamGetSize(SBStreamRef instance);
+LLDB_API size_t SBStreamGetSize(SBStreamRef instance);
 
 LLDB_API void SBStreamPrintf(SBStreamRef instance, const char *format, ...);
 

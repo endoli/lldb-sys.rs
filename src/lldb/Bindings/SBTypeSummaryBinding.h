@@ -60,7 +60,7 @@ LLDB_API void SBTypeSummarySetFunctionName(SBTypeSummaryRef instance, const char
 
 LLDB_API void SBTypeSummarySetFunctionCode(SBTypeSummaryRef instance, const char *data);
 
-LLDB_API unsigned int SBTypeSummaryGetOptions(SBTypeSummaryRef instance);
+LLDB_API uint32_t SBTypeSummaryGetOptions(SBTypeSummaryRef instance);
 
 LLDB_API void SBTypeSummarySetOptions(SBTypeSummaryRef instance, uint32_t);
 

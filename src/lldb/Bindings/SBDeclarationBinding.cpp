@@ -48,14 +48,14 @@ SBDeclarationGetFileSpec(SBDeclarationRef instance)
     return reinterpret_cast<SBFileSpecRef>(new SBFileSpec(unwrapped->GetFileSpec()));
 }
 
-unsigned int
+uint32_t
 SBDeclarationGetLine(SBDeclarationRef instance)
 {
     SBDeclaration *unwrapped = reinterpret_cast<SBDeclaration *>(instance);
     return unwrapped->GetLine();
 }
 
-unsigned int
+uint32_t
 SBDeclarationGetColumn(SBDeclarationRef instance)
 {
     SBDeclaration *unwrapped = reinterpret_cast<SBDeclaration *>(instance);

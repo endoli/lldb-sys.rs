@@ -32,19 +32,19 @@ LLDB_API void SBThreadClear(SBThreadRef instance);
 
 LLDB_API ENUM(StopReason) SBThreadGetStopReason(SBThreadRef instance);
 
-LLDB_API unsigned int SBThreadGetStopReasonDataCount(SBThreadRef instance);
+LLDB_API size_t SBThreadGetStopReasonDataCount(SBThreadRef instance);
 
-LLDB_API unsigned long long SBThreadGetStopReasonDataAtIndex(SBThreadRef instance, uint32_t idx);
+LLDB_API uint64_t SBThreadGetStopReasonDataAtIndex(SBThreadRef instance, uint32_t idx);
 
 LLDB_API bool SBThreadGetStopReasonExtendedInfoAsJSON(SBThreadRef instance, SBStreamRef stream);
 
-LLDB_API unsigned int SBThreadGetStopDescription(SBThreadRef instance, char *dst, size_t dst_len);
+LLDB_API size_t SBThreadGetStopDescription(SBThreadRef instance, char *dst, size_t dst_len);
 
 LLDB_API SBValueRef SBThreadGetStopReturnValue(SBThreadRef instance);
 
 LLDB_API lldb_tid_t SBThreadGetThreadID(SBThreadRef instance);
 
-LLDB_API unsigned int SBThreadGetIndexID(SBThreadRef instance);
+LLDB_API uint32_t SBThreadGetIndexID(SBThreadRef instance);
 
 LLDB_API const char *SBThreadGetName(SBThreadRef instance);
 
@@ -94,7 +94,7 @@ LLDB_API bool SBThreadIsSuspended(SBThreadRef instance);
 
 LLDB_API bool SBThreadIsStopped(SBThreadRef instance);
 
-LLDB_API unsigned int SBThreadGetNumFrames(SBThreadRef instance);
+LLDB_API uint32_t SBThreadGetNumFrames(SBThreadRef instance);
 
 LLDB_API SBFrameRef SBThreadGetFrameAtIndex(SBThreadRef instance, uint32_t idx);
 
@@ -116,7 +116,7 @@ LLDB_API bool SBThreadGetStatus(SBThreadRef instance, SBStreamRef status);
 
 LLDB_API SBThreadRef SBThreadGetExtendedBacktraceThread(SBThreadRef instance, const char *type);
 
-LLDB_API unsigned int SBThreadGetExtendedBacktraceOriginatingIndexID(SBThreadRef instance);
+LLDB_API uint32_t SBThreadGetExtendedBacktraceOriginatingIndexID(SBThreadRef instance);
 
 LLDB_API SBValueRef SBThreadGetCurrentException(SBThreadRef instance);
 

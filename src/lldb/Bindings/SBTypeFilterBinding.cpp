@@ -48,7 +48,7 @@ SBTypeFilterIsValid(SBTypeFilterRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+uint32_t
 SBTypeFilterGetNumberOfExpressionPaths(SBTypeFilterRef instance)
 {
     SBTypeFilter *unwrapped = reinterpret_cast<SBTypeFilter *>(instance);
@@ -83,7 +83,7 @@ SBTypeFilterClear(SBTypeFilterRef instance)
     unwrapped->Clear();
 }
 
-unsigned int
+uint32_t
 SBTypeFilterGetOptions(SBTypeFilterRef instance)
 {
     SBTypeFilter *unwrapped = reinterpret_cast<SBTypeFilter *>(instance);

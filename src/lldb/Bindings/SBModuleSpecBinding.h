@@ -48,7 +48,7 @@ LLDB_API void SBModuleSpecSetTriple(SBModuleSpecRef instance, const char *triple
 
 LLDB_API const uint8_t *SBModuleSpecGetUUIDBytes(SBModuleSpecRef instance);
 
-LLDB_API unsigned int SBModuleSpecGetUUIDLength(SBModuleSpecRef instance);
+LLDB_API size_t SBModuleSpecGetUUIDLength(SBModuleSpecRef instance);
 
 LLDB_API bool SBModuleSpecSetUUIDBytes(SBModuleSpecRef instance, const uint8_t *uuid, size_t uuid_len);
 
@@ -72,7 +72,7 @@ SBModuleSpecListFindFirstMatchingSpec(SBModuleSpecListRef instance, SBModuleSpec
 LLDB_API SBModuleSpecListRef
 SBModuleSpecListFindMatchingSpecs(SBModuleSpecListRef instance, SBModuleSpecRef match_spec);
 
-LLDB_API unsigned int SBModuleSpecListGetSize(SBModuleSpecListRef instance);
+LLDB_API size_t SBModuleSpecListGetSize(SBModuleSpecListRef instance);
 
 LLDB_API SBModuleSpecRef SBModuleSpecListGetSpecAtIndex(SBModuleSpecListRef instance, size_t i);
 

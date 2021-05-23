@@ -30,9 +30,9 @@ LLDB_API void SBThreadPlanClear(SBThreadPlanRef instance);
 
 LLDB_API ENUM(StopReason) SBThreadPlanGetStopReason(SBThreadPlanRef instance);
 
-LLDB_API unsigned int SBThreadPlanGetStopReasonDataCount(SBThreadPlanRef instance);
+LLDB_API size_t SBThreadPlanGetStopReasonDataCount(SBThreadPlanRef instance);
 
-LLDB_API unsigned long long SBThreadPlanGetStopReasonDataAtIndex(SBThreadPlanRef instance, uint32_t idx);
+LLDB_API uint64_t SBThreadPlanGetStopReasonDataAtIndex(SBThreadPlanRef instance, uint32_t idx);
 
 LLDB_API SBThreadRef SBThreadPlanGetThread(SBThreadPlanRef instance);
 

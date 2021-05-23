@@ -48,7 +48,7 @@ SBFrameIsValid(SBFrameRef instance)
     return unwrapped->IsValid();
 }
 
-unsigned int
+uint32_t
 SBFrameGetFrameID(SBFrameRef instance)
 {
     SBFrame *unwrapped = reinterpret_cast<SBFrame *>(instance);

@@ -28,13 +28,13 @@ LLDB_API const char *SBCommandReturnObjectGetOutput(SBCommandReturnObjectRef ins
 
 LLDB_API const char *SBCommandReturnObjectGetError(SBCommandReturnObjectRef instance);
 
-LLDB_API unsigned int SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, FILE *fh);
+LLDB_API size_t SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, FILE *fh);
 
-LLDB_API unsigned int SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance);
+LLDB_API size_t SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance);
 
-LLDB_API unsigned int SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance);
+LLDB_API size_t SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance);
 
-LLDB_API unsigned int SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, FILE *fh);
+LLDB_API size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, FILE *fh);
 
 LLDB_API void SBCommandReturnObjectClear(SBCommandReturnObjectRef instance);
 
@@ -59,7 +59,7 @@ LLDB_API void SBCommandReturnObjectSetImmediateErrorFile(SBCommandReturnObjectRe
 
 LLDB_API void SBCommandReturnObjectPutCString(SBCommandReturnObjectRef instance, const char *string, int len);
 
-LLDB_API unsigned int SBCommandReturnObjectPrintf(SBCommandReturnObjectRef instance, const char *format, ...);
+LLDB_API size_t SBCommandReturnObjectPrintf(SBCommandReturnObjectRef instance, const char *format, ...);
 
 LLDB_API const char *SBCommandReturnObjectGetOutput2(SBCommandReturnObjectRef instance,
                                                          bool only_if_no_immediate);

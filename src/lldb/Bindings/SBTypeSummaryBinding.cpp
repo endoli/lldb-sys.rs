@@ -165,7 +165,7 @@ SBTypeSummarySetFunctionCode(SBTypeSummaryRef instance, const char *data)
     unwrapped->SetFunctionCode(data);
 }
 
-unsigned int
+uint32_t
 SBTypeSummaryGetOptions(SBTypeSummaryRef instance)
 {
     SBTypeSummary *unwrapped = reinterpret_cast<SBTypeSummary *>(instance);

@@ -91,7 +91,7 @@ SBTypeSyntheticSetClassCode(SBTypeSyntheticRef instance, const char *data)
     unwrapped->SetClassCode(data);
 }
 
-unsigned int
+uint32_t
 SBTypeSyntheticGetOptions(SBTypeSyntheticRef instance)
 {
     SBTypeSynthetic *unwrapped = reinterpret_cast<SBTypeSynthetic *>(instance);

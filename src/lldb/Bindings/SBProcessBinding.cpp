@@ -356,7 +356,7 @@ SBProcessReadCStringFromMemory(SBProcessRef instance, lldb_addr_t addr, void *bu
     return unwrapped->ReadCStringFromMemory(addr, buf, size, *reinterpret_cast<SBError *>(error));
 }
 
-unsigned long long
+uint64_t
 SBProcessReadUnsignedFromMemory(SBProcessRef instance, lldb_addr_t addr, uint32_t byte_size,
                                     SBErrorRef error)
 {
