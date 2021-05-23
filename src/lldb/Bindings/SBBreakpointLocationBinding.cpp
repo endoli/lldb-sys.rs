@@ -100,6 +100,19 @@ const char *SBBreakpointLocationGetCondition(SBBreakpointLocationRef instance) {
   return unwrapped->GetCondition();
 }
 
+void SBBreakpointLocationSetAutoContinue(SBBreakpointLocationRef instance,
+                                         bool auto_continue) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetAutoContinue(auto_continue);
+}
+
+bool SBBreakpointLocationGetAutoContinue(SBBreakpointLocationRef instance) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetAutoContinue();
+}
+
 void SBBreakpointLocationSetScriptCallbackFunction(
     SBBreakpointLocationRef instance, const char *callback_function_name) {
   SBBreakpointLocation *unwrapped =
@@ -114,6 +127,22 @@ SBBreakpointLocationSetScriptCallbackBody(SBBreakpointLocationRef instance,
       reinterpret_cast<SBBreakpointLocation *>(instance);
   return reinterpret_cast<SBErrorRef>(
       new SBError(unwrapped->SetScriptCallbackBody(script_body_text)));
+}
+
+void SBBreakpointLocationSetCommandLineCommands(
+    SBBreakpointLocationRef instance, SBStringListRef commands) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetCommandLineCommands(
+      *reinterpret_cast<SBStringList *>(commands));
+}
+
+bool SBBreakpointLocationGetCommandLineCommands(
+    SBBreakpointLocationRef instance, SBStringListRef commands) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  return unwrapped->GetCommandLineCommands(
+      *reinterpret_cast<SBStringList *>(commands));
 }
 
 void SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance,

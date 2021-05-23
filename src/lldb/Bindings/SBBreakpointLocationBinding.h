@@ -54,11 +54,26 @@ LLDB_API void SBBreakpointLocationSetCondition(SBBreakpointLocationRef instance,
 LLDB_API const char *
 SBBreakpointLocationGetCondition(SBBreakpointLocationRef instance);
 
+LLDB_API void
+SBBreakpointLocationSetAutoContinue(SBBreakpointLocationRef instance,
+                                    bool auto_continue);
+
+LLDB_API bool
+SBBreakpointLocationGetAutoContinue(SBBreakpointLocationRef instance);
+
 LLDB_API void SBBreakpointLocationSetScriptCallbackFunction(
     SBBreakpointLocationRef instance, const char *callback_function_name);
 
 LLDB_API SBErrorRef SBBreakpointLocationSetScriptCallbackBody(
     SBBreakpointLocationRef instance, const char *script_body_text);
+
+LLDB_API void
+SBBreakpointLocationSetCommandLineCommands(SBBreakpointLocationRef instance,
+                                           SBStringListRef commands);
+
+LLDB_API bool
+SBBreakpointLocationGetCommandLineCommands(SBBreakpointLocationRef instance,
+                                           SBStringListRef commands);
 
 LLDB_API void SBBreakpointLocationSetThreadID(SBBreakpointLocationRef instance,
                                               lldb_tid_t sb_thread_id);

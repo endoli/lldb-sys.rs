@@ -1350,6 +1350,13 @@ extern "C" {
     pub fn SBBreakpointLocationGetCondition(
         instance: SBBreakpointLocationRef,
     ) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointLocationSetAutoContinue(
+        instance: SBBreakpointLocationRef,
+        auto_continue: bool,
+    );
+    pub fn SBBreakpointLocationGetAutoContinue(
+        instance: SBBreakpointLocationRef,
+    ) -> bool;
     pub fn SBBreakpointLocationSetScriptCallbackFunction(
         instance: SBBreakpointLocationRef,
         callback_function_name: *const ::std::os::raw::c_char,
@@ -1358,6 +1365,14 @@ extern "C" {
         instance: SBBreakpointLocationRef,
         script_body_text: *const ::std::os::raw::c_char,
     ) -> SBErrorRef;
+    pub fn SBBreakpointLocationSetCommandLineCommands(
+        instance: SBBreakpointRef,
+        commands: SBStringListRef,
+    );
+    pub fn SBBreakpointLocationGetCommandLineCommands(
+        instance: SBBreakpointRef,
+        commands: SBStringListRef,
+    ) -> bool;
     pub fn SBBreakpointLocationSetThreadID(
         instance: SBBreakpointLocationRef,
         sb_thread_id: lldb_tid_t,
