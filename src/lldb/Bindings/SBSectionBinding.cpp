@@ -133,6 +133,13 @@ SBSectionGetSectionType(SBSectionRef instance)
 }
 
 uint32_t
+SBSectionGetPermissions(SBSectionRef instance)
+{
+    SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
+    return unwrapped->GetPermissions();
+}
+
+uint32_t
 SBSectionGetTargetByteSize(SBSectionRef instance)
 {
     SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);

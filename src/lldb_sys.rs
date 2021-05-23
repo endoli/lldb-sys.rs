@@ -3238,6 +3238,7 @@ extern "C" {
     pub fn SBSectionGetSectionData(instance: SBSectionRef) -> SBDataRef;
     pub fn SBSectionGetSectionData2(instance: SBSectionRef, offset: u64, size: u64) -> SBDataRef;
     pub fn SBSectionGetSectionType(instance: SBSectionRef) -> SectionType;
+    pub fn SBSectionGetPermissions(instance: SBSectionRef) -> u32;
     pub fn SBSectionGetTargetByteSize(instance: SBSectionRef) -> u32;
     pub fn SBSectionGetDescription(instance: SBSectionRef, description: SBStreamRef) -> bool;
     pub fn CreateSBSourceManager(debugger: SBDebuggerRef) -> SBSourceManagerRef;
