@@ -64,6 +64,12 @@ SBLaunchInfoGetEnvironmentEntryAtIndex(SBLaunchInfoRef instance, uint32_t idx);
 LLDB_API void SBLaunchInfoSetEnvironmentEntries(SBLaunchInfoRef instance,
                                                 const char **envp, bool append);
 
+LLDB_API void SBLaunchInfoSetEnvironment(SBLaunchInfoRef instance,
+                                         SBEnvironmentRef environment,
+                                         bool append);
+
+LLDB_API SBEnvironmentRef SBLaunchInfoGetEnvironment(SBLaunchInfoRef instance);
+
 LLDB_API void SBLaunchInfoClear(SBLaunchInfoRef instance);
 
 LLDB_API const char *SBLaunchInfoGetWorkingDirectory(SBLaunchInfoRef instance);

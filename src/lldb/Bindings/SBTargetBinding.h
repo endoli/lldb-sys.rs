@@ -45,6 +45,8 @@ LLDB_API SBStructuredDataRef SBTargetGetStatistics(SBTargetRef instance);
 
 LLDB_API SBPlatformRef SBTargetGetPlatform(SBTargetRef instance);
 
+LLDB_API SBEnvironmentRef SBTargetGetEnvironment(SBTargetRef instance);
+
 LLDB_API SBErrorRef SBTargetInstall(SBTargetRef instance);
 
 LLDB_API SBProcessRef SBTargetLaunch(

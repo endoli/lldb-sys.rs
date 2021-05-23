@@ -325,6 +325,12 @@ SBErrorRef SBPlatformSetFilePermissions(SBPlatformRef instance,
       new SBError(unwrapped->SetFilePermissions(path, file_permissions)));
 }
 
+SBEnvironmentRef SBPlatformGetEnvironment(SBPlatformRef instance) {
+  SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);
+  return reinterpret_cast<SBEnvironmentRef>(
+      new SBEnvironment(unwrapped->GetEnvironment()));
+}
+
 #ifdef __cplusplus
 }
 #endif

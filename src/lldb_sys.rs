@@ -62,6 +62,8 @@ pub enum SBDebuggerOpaque {}
 pub type SBDebuggerRef = *mut SBDebuggerOpaque;
 pub enum SBDeclarationOpaque {}
 pub type SBDeclarationRef = *mut SBDeclarationOpaque;
+pub enum SBEnvironmentOpaque {}
+pub type SBEnvironmentRef = *mut SBEnvironmentOpaque;
 pub enum SBErrorOpaque {}
 pub type SBErrorRef = *mut SBErrorOpaque;
 pub enum SBEventOpaque {}
@@ -1354,9 +1356,7 @@ extern "C" {
         instance: SBBreakpointLocationRef,
         auto_continue: bool,
     );
-    pub fn SBBreakpointLocationGetAutoContinue(
-        instance: SBBreakpointLocationRef,
-    ) -> bool;
+    pub fn SBBreakpointLocationGetAutoContinue(instance: SBBreakpointLocationRef) -> bool;
     pub fn SBBreakpointLocationSetScriptCallbackFunction(
         instance: SBBreakpointLocationRef,
         callback_function_name: *const ::std::os::raw::c_char,
@@ -2233,6 +2233,40 @@ extern "C" {
         instance: SBDeclarationRef,
         description: SBStreamRef,
     ) -> bool;
+    pub fn CreateSBEnvironment() -> SBEnvironmentRef;
+    pub fn CloneSBEnvironment(instance: SBEnvironmentRef) -> SBEnvironmentRef;
+    pub fn DisposeSBEnvironment(instance: SBEnvironmentRef);
+    pub fn SBEnvironmentGet(instance: SBEnvironmentRef) -> *const ::std::os::raw::c_char;
+    pub fn SBEnvironmentGetNumValues(instance: SBEnvironmentRef) -> size_t;
+    pub fn SBEnvironmentGetNameAtIndex(
+        instance: SBEnvironmentRef,
+        index: size_t,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBEnvironmentGetValueAtIndex(
+        instance: SBEnvironmentRef,
+        index: size_t,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBEnvironmentGetEntries(instance: SBEnvironmentRef) -> SBStringListRef;
+    pub fn SBEnvironmentPutEntry(
+        instance: SBEnvironmentRef,
+        name_and_value: *const ::std::os::raw::c_char,
+    );
+    pub fn SBEnvironmentSetEntries(
+        instance: SBEnvironmentRef,
+        entries: SBStringListRef,
+        append: bool,
+    );
+    pub fn SBEnvironmentSet(
+        instance: SBEnvironmentRef,
+        name: *const ::std::os::raw::c_char,
+        value: *const ::std::os::raw::c_char,
+        overwrite: bool,
+    ) -> bool;
+    pub fn SBEnvironmentUnset(
+        instance: SBEnvironmentRef,
+        name: *const ::std::os::raw::c_char,
+    ) -> bool;
+    pub fn SBEnvironmentClear(instance: SBEnvironmentRef);
     pub fn CreateSBError() -> SBErrorRef;
     pub fn CloneSBError(instance: SBErrorRef) -> SBErrorRef;
     pub fn DisposeSBError(instance: SBErrorRef);
@@ -2589,6 +2623,12 @@ extern "C" {
         envp: *mut *const ::std::os::raw::c_char,
         append: bool,
     );
+    pub fn SBLaunchInfoSetEvironment(
+        instance: SBLaunchInfoRef,
+        environment: SBEnvironmentRef,
+        append: bool,
+    );
+    pub fn SBLaunchInfoGetEnvironment(instance: SBLaunchInfoRef) -> SBEnvironmentRef;
     pub fn SBLaunchInfoClear(instance: SBLaunchInfoRef);
     pub fn SBLaunchInfoGetWorkingDirectory(
         instance: SBLaunchInfoRef,
@@ -3017,6 +3057,7 @@ extern "C" {
         path: *const ::std::os::raw::c_char,
         file_permissions: u32,
     ) -> SBErrorRef;
+    pub fn SBPlatformGetEnvironment(instance: SBPlatformRef) -> SBEnvironmentRef;
     pub fn CreateSBProcess() -> SBProcessRef;
     pub fn CloneSBProcess(instance: SBProcessRef) -> SBProcessRef;
     pub fn DisposeSBProcess(instance: SBProcessRef);
@@ -3446,6 +3487,7 @@ extern "C" {
     pub fn SBTargetGetCollectingStats(instance: SBTargetRef) -> bool;
     pub fn SBTargetGetStatistics(instance: SBTargetRef) -> SBStructuredDataRef;
     pub fn SBTargetGetPlatform(instance: SBTargetRef) -> SBPlatformRef;
+    pub fn SBTargetGetEnvironment(instance: SBTargetRef) -> SBEnvironmentRef;
     pub fn SBTargetInstall(instance: SBTargetRef) -> SBErrorRef;
     pub fn SBTargetLaunch(
         instance: SBTargetRef,

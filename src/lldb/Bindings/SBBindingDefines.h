@@ -80,6 +80,7 @@ LLDB_API typedef struct SBCompileUnitOpaque *SBCompileUnitRef;
 LLDB_API typedef struct SBDataOpaque *SBDataRef;
 LLDB_API typedef struct SBDebuggerOpaque *SBDebuggerRef;
 LLDB_API typedef struct SBDeclarationOpaque *SBDeclarationRef;
+LLDB_API typedef struct SBEnvironmentOpaque *SBEnvironmentRef;
 LLDB_API typedef struct SBErrorOpaque *SBErrorRef;
 LLDB_API typedef struct SBEventOpaque *SBEventRef;
 LLDB_API typedef struct SBEventListOpaque *SBEventListRef;

@@ -13,6 +13,7 @@
 #include "Bindings/SBDataBinding.cpp"
 #include "Bindings/SBDebuggerBinding.cpp"
 #include "Bindings/SBDeclarationBinding.cpp"
+#include "Bindings/SBEnvironmentBinding.cpp"
 #include "Bindings/SBErrorBinding.cpp"
 #include "Bindings/SBEventBinding.cpp"
 #include "Bindings/SBExecutionContextBinding.cpp"

@@ -157,6 +157,8 @@ LLDB_API SBErrorRef SBPlatformSetFilePermissions(SBPlatformRef instance,
                                                  const char *path,
                                                  uint32_t file_permissions);
 
+LLDB_API SBEnvironmentRef SBPlatformGetEnvironment(SBPlatformRef instance);
+
 #ifdef __cplusplus
 }
 #endif

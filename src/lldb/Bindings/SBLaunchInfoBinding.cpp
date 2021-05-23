@@ -123,6 +123,19 @@ void SBLaunchInfoSetEnvironmentEntries(SBLaunchInfoRef instance,
   unwrapped->SetEnvironmentEntries(envp, append);
 }
 
+void SBLaunchInfoSetEnvironment(SBLaunchInfoRef instance,
+                                SBEnvironmentRef environment, bool append) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  unwrapped->SetEnvironment(*reinterpret_cast<SBEnvironment *>(environment),
+                            append);
+}
+
+SBEnvironmentRef SBLaunchInfoGetEnvironment(SBLaunchInfoRef instance) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  return reinterpret_cast<SBEnvironmentRef>(
+      new SBEnvironment(unwrapped->GetEnvironment()));
+}
+
 void SBLaunchInfoClear(SBLaunchInfoRef instance) {
   SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
   unwrapped->Clear();

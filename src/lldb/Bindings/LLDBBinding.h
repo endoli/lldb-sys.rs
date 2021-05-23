@@ -28,6 +28,7 @@
 #include "lldb/Bindings/SBDataBinding.h"
 #include "lldb/Bindings/SBDebuggerBinding.h"
 #include "lldb/Bindings/SBDeclarationBinding.h"
+#include "lldb/Bindings/SBEnvironmentBinding.h"
 #include "lldb/Bindings/SBErrorBinding.h"
 #include "lldb/Bindings/SBEventBinding.h"
 #include "lldb/Bindings/SBExecutionContextBinding.h"

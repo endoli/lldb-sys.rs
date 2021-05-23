@@ -87,6 +87,12 @@ SBPlatformRef SBTargetGetPlatform(SBTargetRef instance) {
       new SBPlatform(unwrapped->GetPlatform()));
 }
 
+SBEnvironmentRef SBTargetGetEnvironment(SBTargetRef instance) {
+  SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+  return reinterpret_cast<SBEnvironmentRef>(
+      new SBEnvironment(unwrapped->GetEnvironment()));
+}
+
 SBErrorRef SBTargetInstall(SBTargetRef instance) {
   SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
   return reinterpret_cast<SBErrorRef>(new SBError(unwrapped->Install()));
