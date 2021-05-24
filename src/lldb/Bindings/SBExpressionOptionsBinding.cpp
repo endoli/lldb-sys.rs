@@ -193,6 +193,70 @@ void SBExpressionOptionsSetSuppressPersistentResult(
   unwrapped->SetSuppressPersistentResult(b);
 }
 
+const char *SBExpressionOptionsGetPrefix(SBExpressionOptionsRef instance) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  return unwrapped->GetPrefix();
+}
+
+void SBExpressionOptionsSetPrefix(SBExpressionOptionsRef instance,
+                                  const char *prefix) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  unwrapped->SetPrefix(prefix);
+}
+
+void SBExpressionOptionsSetAutoApplyFixIts(SBExpressionOptionsRef instance,
+                                           bool b) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  unwrapped->SetAutoApplyFixIts(b);
+}
+
+bool SBExpressionOptionsGetAutoApplyFixIts(SBExpressionOptionsRef instance) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  return unwrapped->GetAutoApplyFixIts();
+}
+
+uint64_t
+SBExpressionOptionsGetRetriesWithFixIts(SBExpressionOptionsRef instance) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  return unwrapped->GetRetriesWithFixIts();
+}
+
+void SBExpressionOptionsSetRetriesWithFixIts(SBExpressionOptionsRef instance,
+                                             uint64_t retries) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  unwrapped->SetRetriesWithFixIts(retries);
+}
+
+bool SBExpressionOptionsGetTopLevel(SBExpressionOptionsRef instance) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  return unwrapped->GetTopLevel();
+}
+
+void SBExpressionOptionsSetTopLevel(SBExpressionOptionsRef instance, bool b) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  unwrapped->SetTopLevel(b);
+}
+
+bool SBExpressionOptionsGetAllowJIT(SBExpressionOptionsRef instance) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  return unwrapped->GetAllowJIT();
+}
+
+void SBExpressionOptionsSetAllowJIT(SBExpressionOptionsRef instance, bool b) {
+  SBExpressionOptions *unwrapped =
+      reinterpret_cast<SBExpressionOptions *>(instance);
+  unwrapped->SetAllowJIT(b);
+}
+
 #ifdef __cplusplus
 }
 #endif

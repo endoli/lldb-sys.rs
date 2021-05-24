@@ -2365,6 +2365,21 @@ extern "C" {
         instance: SBExpressionOptionsRef,
         b: bool,
     );
+    pub fn SBExpressionOptionsGetPrefix(
+        instance: SBExpressionOptionsRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBExpressionOptionsSetPrefix(
+        instance: SBExpressionOptionsRef,
+        prefix: *const ::std::os::raw::c_char,
+    );
+    pub fn SBExpressionOptionsSetAutoApplyFixIts(instance: SBExpressionOptionsRef, b: bool);
+    pub fn SBExpressionOptionsGetAutoApplyFixIts(instance: SBExpressionOptionsRef) -> bool;
+    pub fn SBExpressionOptionsGetRetriesWithFixIts(instance: SBExpressionOptionsRef) -> u64;
+    pub fn SBExpressionOptionsSetRetriesWithFixIts(instance: SBExpressionOptionsRef, retries: u64);
+    pub fn SBExpressionOptionsGetTopLevel(instance: SBExpressionOptionsRef) -> bool;
+    pub fn SBExpressionOptionsSetTopLevel(instance: SBExpressionOptionsRef, b: bool);
+    pub fn SBExpressionOptionsGetAllowJIT(instance: SBExpressionOptionsRef) -> bool;
+    pub fn SBExpressionOptionsSetAllowJIT(instance: SBExpressionOptionsRef, b: bool);
     pub fn CreateSBFileSpec() -> SBFileSpecRef;
     pub fn CreateSBFileSpec2(path: *const ::std::os::raw::c_char) -> SBFileSpecRef;
     pub fn CreateSBFileSpec3(path: *const ::std::os::raw::c_char, resolve: bool) -> SBFileSpecRef;

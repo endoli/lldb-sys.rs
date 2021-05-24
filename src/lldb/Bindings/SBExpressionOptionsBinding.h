@@ -107,6 +107,35 @@ LLDB_API void
 SBExpressionOptionsSetSuppressPersistentResult(SBExpressionOptionsRef instance,
                                                bool b);
 
+LLDB_API const char *
+SBExpressionOptionsGetPrefix(SBExpressionOptionsRef instance);
+
+LLDB_API void SBExpressionOptionsSetPrefix(SBExpressionOptionsRef instance,
+                                           const char *prefix);
+
+LLDB_API void
+SBExpressionOptionsSetAutoApplyFixIts(SBExpressionOptionsRef instance, bool b);
+
+LLDB_API bool
+SBExpressionOptionsGetAutoApplyFixIts(SBExpressionOptionsRef instance);
+
+LLDB_API uint64_t
+SBExpressionOptionsGetRetriesWithFixIts(SBExpressionOptionsRef instance);
+
+LLDB_API void
+SBExpressionOptionsSetRetriesWithFixIts(SBExpressionOptionsRef instance,
+                                        uint64_t retries);
+
+LLDB_API bool SBExpressionOptionsGetTopLevel(SBExpressionOptionsRef instance);
+
+LLDB_API void SBExpressionOptionsSetTopLevel(SBExpressionOptionsRef instance,
+                                             bool b);
+
+LLDB_API bool SBExpressionOptionsGetAllowJIT(SBExpressionOptionsRef instance);
+
+LLDB_API void SBExpressionOptionsSetAllowJIT(SBExpressionOptionsRef instance,
+                                             bool b);
+
 #ifdef __cplusplus
 }
 #endif
