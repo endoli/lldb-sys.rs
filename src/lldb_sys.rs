@@ -2134,7 +2134,7 @@ extern "C" {
     pub fn SBDebuggerEnableLog(
         instance: SBDebuggerRef,
         channel: *const ::std::os::raw::c_char,
-        categories: *mut *const ::std::os::raw::c_char,
+        categories: *const *const ::std::os::raw::c_char,
     ) -> bool;
     pub fn SBDebuggerDispatchInput(
         instance: SBDebuggerRef,
@@ -2597,7 +2597,7 @@ extern "C" {
     pub fn SBLanguageRuntimeGetNameForLanguageType(
         language: LanguageType,
     ) -> *const ::std::os::raw::c_char;
-    pub fn CreateSBLaunchInfo(argv: *mut *const ::std::os::raw::c_char) -> SBLaunchInfoRef;
+    pub fn CreateSBLaunchInfo(argv: *const *const ::std::os::raw::c_char) -> SBLaunchInfoRef;
     pub fn CloneSBLaunchInfo(instance: SBLaunchInfoRef) -> SBLaunchInfoRef;
     pub fn DisposeSBLaunchInfo(instance: SBLaunchInfoRef);
     pub fn SBLaunchInfoGetProcessID(instance: SBLaunchInfoRef) -> lldb_pid_t;
@@ -2622,7 +2622,7 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
     pub fn SBLaunchInfoSetArguments(
         instance: SBLaunchInfoRef,
-        argv: *mut *const ::std::os::raw::c_char,
+        argv: *const *const ::std::os::raw::c_char,
         append: bool,
     );
     pub fn SBLaunchInfoGetNumEnvironmentEntries(instance: SBLaunchInfoRef) -> u32;
@@ -2632,7 +2632,7 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
     pub fn SBLaunchInfoSetEnvironmentEntries(
         instance: SBLaunchInfoRef,
-        envp: *mut *const ::std::os::raw::c_char,
+        envp: *const *const ::std::os::raw::c_char,
         append: bool,
     );
     pub fn SBLaunchInfoSetEvironment(
@@ -3113,8 +3113,8 @@ extern "C" {
     ) -> bool;
     pub fn SBProcessRemoteLaunch(
         instance: SBProcessRef,
-        argv: *mut *const ::std::os::raw::c_char,
-        envp: *mut *const ::std::os::raw::c_char,
+        argv: *const *const ::std::os::raw::c_char,
+        envp: *const *const ::std::os::raw::c_char,
         stdin_path: *const ::std::os::raw::c_char,
         stdout_path: *const ::std::os::raw::c_char,
         stderr_path: *const ::std::os::raw::c_char,
@@ -3365,7 +3365,7 @@ extern "C" {
     pub fn SBStringListAppendString(instance: SBStringListRef, str: *const ::std::os::raw::c_char);
     pub fn SBStringListAppendList(
         instance: SBStringListRef,
-        strv: *mut *const ::std::os::raw::c_char,
+        strv: *const *const ::std::os::raw::c_char,
         strc: ::std::os::raw::c_int,
     );
     pub fn SBStringListAppendList2(instance: SBStringListRef, strings: SBStringListRef);
@@ -3504,8 +3504,8 @@ extern "C" {
     pub fn SBTargetLaunch(
         instance: SBTargetRef,
         listener: SBListenerRef,
-        argv: *mut *const ::std::os::raw::c_char,
-        envp: *mut *const ::std::os::raw::c_char,
+        argv: *const *const ::std::os::raw::c_char,
+        envp: *const *const ::std::os::raw::c_char,
         stdin_path: *const ::std::os::raw::c_char,
         stdout_path: *const ::std::os::raw::c_char,
         stderr_path: *const ::std::os::raw::c_char,
@@ -3516,8 +3516,8 @@ extern "C" {
     ) -> SBProcessRef;
     pub fn SBTargetLaunchSimple(
         instance: SBTargetRef,
-        argv: *mut *const ::std::os::raw::c_char,
-        envp: *mut *const ::std::os::raw::c_char,
+        argv: *const *const ::std::os::raw::c_char,
+        envp: *const *const ::std::os::raw::c_char,
         working_directory: *const ::std::os::raw::c_char,
     ) -> SBProcessRef;
     pub fn SBTargetLaunch2(
@@ -3697,7 +3697,7 @@ extern "C" {
     ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByNames(
         instance: SBTargetRef,
-        symbol_name: *mut *const ::std::os::raw::c_char,
+        symbol_name: *const *const ::std::os::raw::c_char,
         num_names: u32,
         name_type_mask: u32,
         module_list: SBFileSpecListRef,
@@ -3705,7 +3705,7 @@ extern "C" {
     ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByNames2(
         instance: SBTargetRef,
-        symbol_name: *mut *const ::std::os::raw::c_char,
+        symbol_name: *const *const ::std::os::raw::c_char,
         num_names: u32,
         name_type_mask: u32,
         symbol_language: LanguageType,
@@ -3714,7 +3714,7 @@ extern "C" {
     ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByNames3(
         instance: SBTargetRef,
-        symbol_name: *mut *const ::std::os::raw::c_char,
+        symbol_name: *const *const ::std::os::raw::c_char,
         num_names: u32,
         name_type_mask: u32,
         symbol_language: LanguageType,
