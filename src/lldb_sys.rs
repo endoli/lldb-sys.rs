@@ -1558,9 +1558,6 @@ extern "C" {
         instance: SBCommandInterpreterRunOptionsRef,
         arg1: bool,
     );
-    pub fn CreateSBCommandInterpreterRunOptions2(
-        arg1: SBCommandInterpreterRunOptionsRef,
-    ) -> SBCommandInterpreterRunOptionsRef;
     pub fn CloneSBCommandInterpreter(instance: SBCommandInterpreterRef) -> SBCommandInterpreterRef;
     pub fn DisposeSBCommandInterpreter(instance: SBCommandInterpreterRef);
     pub fn SBCommandInterpreterGetArgumentTypeAsCString(
@@ -4064,7 +4061,6 @@ extern "C" {
         description_level: DescriptionLevel,
     ) -> bool;
     pub fn CreateSBTypeMemberFunction() -> SBTypeMemberFunctionRef;
-    pub fn CreateSBTypeMemberFunction2(rhs: SBTypeMemberFunctionRef) -> SBTypeMemberFunctionRef;
     pub fn CloneSBTypeMemberFunction(instance: SBTypeMemberFunctionRef) -> SBTypeMemberFunctionRef;
     pub fn DisposeSBTypeMemberFunction(instance: SBTypeMemberFunctionRef);
     pub fn SBTypeMemberFunctionIsValid(instance: SBTypeMemberFunctionRef) -> bool;
@@ -4632,7 +4628,6 @@ extern "C" {
         uid: lldb_user_id_t,
     ) -> SBValueRef;
     pub fn CreateSBVariablesOptions() -> SBVariablesOptionsRef;
-    pub fn CreateSBVariablesOptions2(options: SBVariablesOptionsRef) -> SBVariablesOptionsRef;
     pub fn CloneSBVariablesOptions(instance: SBVariablesOptionsRef) -> SBVariablesOptionsRef;
     pub fn DisposeSBVariablesOptions(instance: SBVariablesOptionsRef);
     pub fn SBVariablesOptionsIsValid(instance: SBVariablesOptionsRef) -> bool;
