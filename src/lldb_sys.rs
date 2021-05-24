@@ -1825,13 +1825,13 @@ extern "C" {
         dst: *mut ::std::os::raw::c_void,
         dst_len: size_t,
         timeout_usec: u32,
-        status: ConnectionStatus,
+        status: *mut ConnectionStatus,
     ) -> size_t;
     pub fn SBCommunicationWrite(
         instance: SBCommunicationRef,
         src: *mut ::std::os::raw::c_void,
         src_len: size_t,
-        status: ConnectionStatus,
+        status: *mut ConnectionStatus,
     ) -> size_t;
     pub fn SBCommunicationReadThreadStart(instance: SBCommunicationRef) -> bool;
     pub fn SBCommunicationReadThreadStop(instance: SBCommunicationRef) -> bool;

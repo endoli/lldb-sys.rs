@@ -80,15 +80,15 @@ void SBCommunicationSetCloseOnEOF(SBCommunicationRef instance, bool b) {
 
 size_t SBCommunicationRead(SBCommunicationRef instance, void *dst,
                            size_t dst_len, uint32_t timeout_usec,
-                           lldb::ConnectionStatus status) {
+                           lldb::ConnectionStatus *status) {
   SBCommunication *unwrapped = reinterpret_cast<SBCommunication *>(instance);
-  return unwrapped->Read(dst, dst_len, timeout_usec, status);
+  return unwrapped->Read(dst, dst_len, timeout_usec, *status);
 }
 
 size_t SBCommunicationWrite(SBCommunicationRef instance, void *src,
-                            size_t src_len, lldb::ConnectionStatus status) {
+                            size_t src_len, lldb::ConnectionStatus *status) {
   SBCommunication *unwrapped = reinterpret_cast<SBCommunication *>(instance);
-  return unwrapped->Write(src, src_len, status);
+  return unwrapped->Write(src, src_len, *status);
 }
 
 bool SBCommunicationReadThreadStart(SBCommunicationRef instance) {

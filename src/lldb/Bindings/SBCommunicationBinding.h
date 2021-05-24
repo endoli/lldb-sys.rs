@@ -51,11 +51,11 @@ LLDB_API void SBCommunicationSetCloseOnEOF(SBCommunicationRef instance, bool b);
 
 LLDB_API size_t SBCommunicationRead(SBCommunicationRef instance, void *dst,
                                     size_t dst_len, uint32_t timeout_usec,
-                                    ENUM(ConnectionStatus) status);
+                                    ENUM(ConnectionStatus) * status);
 
 LLDB_API size_t SBCommunicationWrite(SBCommunicationRef instance, void *src,
                                      size_t src_len,
-                                     ENUM(ConnectionStatus) status);
+                                     ENUM(ConnectionStatus) * status);
 
 LLDB_API bool SBCommunicationReadThreadStart(SBCommunicationRef instance);
 
