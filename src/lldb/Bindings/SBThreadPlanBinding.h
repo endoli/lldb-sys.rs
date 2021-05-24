@@ -52,17 +52,22 @@ LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(
     SBThreadPlanRef instance, SBAddressRef start_address,
-    lldb_addr_t range_size);
+    lldb_addr_t range_size, SBErrorRef error);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepInRange(
     SBThreadPlanRef instance, SBAddressRef start_address,
-    lldb_addr_t range_size);
+    lldb_addr_t range_size, SBErrorRef error);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOut(
-    SBThreadPlanRef instance, uint32_t frame_idx_to_step_to, bool first_insn);
+    SBThreadPlanRef instance, uint32_t frame_idx_to_step_to, bool first_insn,
+    SBErrorRef error);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForRunToAddress(
-    SBThreadPlanRef instance, SBAddressRef address);
+    SBThreadPlanRef instance, SBAddressRef address, SBErrorRef error);
+
+LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepScripted(
+    SBThreadPlanRef instance, const char *script_class_name,
+    SBStructuredDataRef args_data, SBErrorRef error);
 
 #ifdef __cplusplus
 }

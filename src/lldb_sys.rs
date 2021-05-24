@@ -4046,20 +4046,30 @@ extern "C" {
         instance: SBThreadPlanRef,
         start_address: SBAddressRef,
         range_size: lldb_addr_t,
+        error: SBErrorRef,
     ) -> SBThreadPlanRef;
     pub fn SBThreadPlanQueueThreadPlanForStepInRange(
         instance: SBThreadPlanRef,
         start_address: SBAddressRef,
         range_size: lldb_addr_t,
+        error: SBErrorRef,
     ) -> SBThreadPlanRef;
     pub fn SBThreadPlanQueueThreadPlanForStepOut(
         instance: SBThreadPlanRef,
         frame_idx_to_step_to: u32,
         first_insn: bool,
+        error: SBErrorRef,
     ) -> SBThreadPlanRef;
     pub fn SBThreadPlanQueueThreadPlanForRunToAddress(
         instance: SBThreadPlanRef,
         address: SBAddressRef,
+        error: SBErrorRef,
+    ) -> SBThreadPlanRef;
+    pub fn SBThreadPlanQueueThreadPlanForStepScripted(
+        instance: SBThreadPlanRef,
+        script_class_name: *const ::std::os::raw::c_char,
+        args_data: SBStructuredDataRef,
+        error: SBErrorRef,
     ) -> SBThreadPlanRef;
     pub fn CreateSBTypeMember() -> SBTypeMemberRef;
     pub fn CloneSBTypeMember(instance: SBTypeMemberRef) -> SBTypeMemberRef;

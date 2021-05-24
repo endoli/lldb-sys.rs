@@ -88,40 +88,54 @@ bool SBThreadPlanIsPlanStale(SBThreadPlanRef instance) {
   return unwrapped->IsPlanStale();
 }
 
-SBThreadPlanRef
-SBThreadPlanQueueThreadPlanForStepOverRange(SBThreadPlanRef instance,
-                                            SBAddressRef start_address,
-                                            lldb_addr_t range_size) {
+SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(
+    SBThreadPlanRef instance, SBAddressRef start_address,
+    lldb_addr_t range_size, SBErrorRef error) {
   SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
   return reinterpret_cast<SBThreadPlanRef>(
       new SBThreadPlan(unwrapped->QueueThreadPlanForStepOverRange(
-          *reinterpret_cast<SBAddress *>(start_address), range_size)));
+          *reinterpret_cast<SBAddress *>(start_address), range_size,
+          *reinterpret_cast<SBError *>(error))));
 }
 
-SBThreadPlanRef
-SBThreadPlanQueueThreadPlanForStepInRange(SBThreadPlanRef instance,
-                                          SBAddressRef start_address,
-                                          lldb_addr_t range_size) {
+SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepInRange(
+    SBThreadPlanRef instance, SBAddressRef start_address,
+    lldb_addr_t range_size, SBErrorRef error) {
   SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
   return reinterpret_cast<SBThreadPlanRef>(
       new SBThreadPlan(unwrapped->QueueThreadPlanForStepInRange(
-          *reinterpret_cast<SBAddress *>(start_address), range_size)));
-}
-
-SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOut(
-    SBThreadPlanRef instance, uint32_t frame_idx_to_step_to, bool first_insn) {
-  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
-  return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan(
-      unwrapped->QueueThreadPlanForStepOut(frame_idx_to_step_to, first_insn)));
+          *reinterpret_cast<SBAddress *>(start_address), range_size,
+          *reinterpret_cast<SBError *>(error))));
 }
 
 SBThreadPlanRef
-SBThreadPlanQueueThreadPlanForRunToAddress(SBThreadPlanRef instance,
-                                           SBAddressRef address) {
+SBThreadPlanQueueThreadPlanForStepOut(SBThreadPlanRef instance,
+                                      uint32_t frame_idx_to_step_to,
+                                      bool first_insn, SBErrorRef error) {
+  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
+  return reinterpret_cast<SBThreadPlanRef>(
+      new SBThreadPlan(unwrapped->QueueThreadPlanForStepOut(
+          frame_idx_to_step_to, first_insn,
+          *reinterpret_cast<SBError *>(error))));
+}
+
+SBThreadPlanRef SBThreadPlanQueueThreadPlanForRunToAddress(
+    SBThreadPlanRef instance, SBAddressRef address, SBErrorRef error) {
   SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
   return reinterpret_cast<SBThreadPlanRef>(
       new SBThreadPlan(unwrapped->QueueThreadPlanForRunToAddress(
-          *reinterpret_cast<SBAddress *>(address))));
+          *reinterpret_cast<SBAddress *>(address),
+          *reinterpret_cast<SBError *>(error))));
+}
+
+SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepScripted(
+    SBThreadPlanRef instance, const char *script_class_name,
+    SBStructuredDataRef args_data, SBErrorRef error) {
+  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
+  return reinterpret_cast<SBThreadPlanRef>(
+      new SBThreadPlan(unwrapped->QueueThreadPlanForStepScripted(
+          script_class_name, *reinterpret_cast<SBStructuredData *>(args_data),
+          *reinterpret_cast<SBError *>(error))));
 }
 
 #ifdef __cplusplus
