@@ -46,6 +46,8 @@ LLDB_API void SBThreadPlanSetPlanComplete(SBThreadPlanRef instance,
 
 LLDB_API bool SBThreadPlanIsPlanComplete(SBThreadPlanRef instance);
 
+LLDB_API bool SBThreadPlanIsPlanStale(SBThreadPlanRef instance);
+
 LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(

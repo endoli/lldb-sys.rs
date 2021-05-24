@@ -4041,6 +4041,7 @@ extern "C" {
     pub fn SBThreadPlanGetDescription(instance: SBThreadPlanRef, description: SBStreamRef) -> bool;
     pub fn SBThreadPlanSetPlanComplete(instance: SBThreadPlanRef, success: bool);
     pub fn SBThreadPlanIsPlanComplete(instance: SBThreadPlanRef) -> bool;
+    pub fn SBThreadPlanIsPlanStale(instance: SBThreadPlanRef) -> bool;
     pub fn SBThreadPlanQueueThreadPlanForStepOverRange(
         instance: SBThreadPlanRef,
         start_address: SBAddressRef,

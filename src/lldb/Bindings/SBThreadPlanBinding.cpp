@@ -83,6 +83,11 @@ bool SBThreadPlanIsPlanComplete(SBThreadPlanRef instance) {
   return unwrapped->IsPlanComplete();
 }
 
+bool SBThreadPlanIsPlanStale(SBThreadPlanRef instance) {
+  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
+  return unwrapped->IsPlanStale();
+}
+
 SBThreadPlanRef
 SBThreadPlanQueueThreadPlanForStepOverRange(SBThreadPlanRef instance,
                                             SBAddressRef start_address,
