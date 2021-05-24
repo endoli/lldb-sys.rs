@@ -322,7 +322,8 @@ pub enum Format {
     HexFloat = 36,
     Instruction = 37,
     Void = 38,
-    kNumFormats = 39,
+    Unicode8 = 39,
+    kNumFormats = 40,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -338,6 +339,8 @@ pub enum DescriptionLevel {
 pub enum ScriptLanguage {
     None = 0,
     Python = 1,
+    Lua = 2,
+    Unknown = 3,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -390,6 +393,7 @@ pub enum ExpressionResults {
     TimedOut = 6,
     ResultUnavailable = 7,
     StoppedForDebug = 8,
+    ThreadVanished = 9,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -423,6 +427,7 @@ pub enum ValueType {
     Register = 5,
     RegisterSet = 6,
     ConstResult = 7,
+    VariableThreadLocal = 8,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -520,6 +525,7 @@ pub enum BreakpointEventType {
     ConditionChanged = 512,
     IgnoreChanged = 1024,
     ThreadChanged = 2048,
+    AutoContinueChanged = 4096,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -583,7 +589,10 @@ pub enum LanguageType {
 pub enum InstrumentationRuntimeType {
     AddressSanitizer = 0,
     ThreadSanitizer = 1,
-    NumInstrumentationRuntimeTypes = 2,
+    UndefinedBehaviorSanitizer = 2,
+    MainThreadChecker = 3,
+    SwiftRuntimeReporting = 4,
+    NumInstrumentationRuntimeTypes = 5,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -687,7 +696,10 @@ pub enum CommandArgumentType {
     WatchpointID = 80,
     WatchpointIDRange = 81,
     WatchType = 82,
-    LastArg = 83,
+    RawInput = 83,
+    Command = 84,
+    ColumnNum = 85,
+    LastArg = 86,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -768,7 +780,22 @@ pub enum SectionType {
     CompactUnwind = 40,
     GoSymtab = 41,
     AbsoluteAddress = 42,
-    Other = 43,
+    DWARFGNUDebugAltLink = 43,
+    DWARFDebugTypes = 44,
+    DWARFDebugNames = 45,
+    Other = 46,
+    DWARFDebugLineStr = 47,
+    DWARFDebugRngLists = 48,
+    DWARFDebugLocLists = 49,
+    DWARFDebugAbbrevDwo = 50,
+    DWARFDebugInfoDwo = 51,
+    DWARFDebugStrDwo = 52,
+    DWARFDebugStrOffsetsDwo = 53,
+    DWARFDebugTypesDwo = 54,
+    DWARFDebugRngListsDwo = 55,
+    DWARFDebugLocDwo = 56,
+    DWARFDebugLocListsDwo = 57,
+    DWARFDebugTuIndex = 58,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
