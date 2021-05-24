@@ -3961,6 +3961,10 @@ extern "C" {
         instance: SBThreadRef,
         stream: SBStreamRef,
     ) -> bool;
+    pub fn SBThreadGetStopReasonExtendedBacktraces(
+        instance: SBThreadRef,
+        type_: InstrumentationRuntimeType,
+    ) -> SBThreadCollectionRef;
     pub fn SBThreadGetStopDescription(
         instance: SBThreadRef,
         dst: *mut ::std::os::raw::c_char,

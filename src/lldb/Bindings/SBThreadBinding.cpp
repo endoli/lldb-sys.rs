@@ -75,6 +75,14 @@ bool SBThreadGetStopReasonExtendedInfoAsJSON(SBThreadRef instance,
       *reinterpret_cast<SBStream *>(stream));
 }
 
+SBThreadCollectionRef
+SBThreadGetStopReasonExtendedBacktaces(SBThreadRef instance,
+                                       ENUM(InstrumentationRuntimeType) type) {
+  SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+  return reinterpret_cast<SBThreadCollectionRef>(
+      new SBThreadCollection(unwrapped->GetStopReasonExtendedBacktraces(type)));
+}
+
 size_t SBThreadGetStopDescription(SBThreadRef instance, char *dst,
                                   size_t dst_len) {
   SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);

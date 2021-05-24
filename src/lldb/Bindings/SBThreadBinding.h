@@ -40,6 +40,9 @@ LLDB_API uint64_t SBThreadGetStopReasonDataAtIndex(SBThreadRef instance,
 LLDB_API bool SBThreadGetStopReasonExtendedInfoAsJSON(SBThreadRef instance,
                                                       SBStreamRef stream);
 
+LLDB_API SBThreadCollectionRef SBThreadGetStopReasonExtendedBacktaces(
+    SBThreadRef instance, ENUM(InstrumentationRuntimeType) type);
+
 LLDB_API size_t SBThreadGetStopDescription(SBThreadRef instance, char *dst,
                                            size_t dst_len);
 
