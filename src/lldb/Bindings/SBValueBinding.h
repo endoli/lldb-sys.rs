@@ -92,6 +92,10 @@ LLDB_API bool SBValueIsDynamic(SBValueRef instance);
 
 LLDB_API bool SBValueIsSynthetic(SBValueRef instance);
 
+LLDB_API bool SBValueIsSyntheticChildrenGenerated(SBValueRef instance);
+
+LLDB_API void SBValueSetSyntheticChildrenGenerated(SBValueRef instance, bool);
+
 LLDB_API const char *SBValueGetLocation(SBValueRef instance);
 
 LLDB_API bool SBValueSetValueFromCString(SBValueRef instance,
@@ -201,6 +205,11 @@ LLDB_API bool SBValueGetExpressionPath(SBValueRef instance,
 LLDB_API bool SBValueGetExpressionPath2(SBValueRef instance,
                                         SBStreamRef description,
                                         bool qualify_cxx_base_classes);
+
+LLDB_API SBValueRef SBValueEvaluateExpression(SBValueRef instance,
+                                              const char *expr,
+                                              SBExpressionOptionsRef options,
+                                              const char *name);
 
 LLDB_API SBWatchpointRef SBValueWatch(SBValueRef instance,
                                       bool resolve_location, bool read,

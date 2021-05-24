@@ -4495,6 +4495,8 @@ extern "C" {
     pub fn SBValueSetPreferSyntheticValue(instance: SBValueRef, use_synthetic: bool);
     pub fn SBValueIsDynamic(instance: SBValueRef) -> bool;
     pub fn SBValueIsSynthetic(instance: SBValueRef) -> bool;
+    pub fn SBValueIsSyntheticChildrenGenerated(instance: SBValueRef) -> bool;
+    pub fn SBValueSetSyntheticChildrenGenerated(instance: SBValueRef, b: bool);
     pub fn SBValueGetLocation(instance: SBValueRef) -> *const ::std::os::raw::c_char;
     pub fn SBValueSetValueFromCString(
         instance: SBValueRef,
@@ -4590,6 +4592,12 @@ extern "C" {
         description: SBStreamRef,
         qualify_cxx_base_classes: bool,
     ) -> bool;
+    pub fn SBValueEvaluateExpression(
+        instance: SBValueRef,
+        expr: *const ::std::os::raw::c_char,
+        options: SBExpressionOptionsRef,
+        name: *const ::std::os::raw::c_char,
+    ) -> SBValueRef;
     pub fn SBValueWatch(
         instance: SBValueRef,
         resolve_location: bool,

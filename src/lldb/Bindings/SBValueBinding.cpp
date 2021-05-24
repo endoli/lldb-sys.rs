@@ -194,6 +194,16 @@ bool SBValueIsSynthetic(SBValueRef instance) {
   return unwrapped->IsSynthetic();
 }
 
+bool SBValueIsSyntheticChildrenGenerated(SBValueRef instance) {
+  SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
+  return unwrapped->IsSyntheticChildrenGenerated();
+}
+
+void SBValueSetSyntheticChildrenGenerated(SBValueRef instance, bool b) {
+  SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
+  unwrapped->SetSyntheticChildrenGenerated(b);
+}
+
 const char *SBValueGetLocation(SBValueRef instance) {
   SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
   return unwrapped->GetLocation();
@@ -439,6 +449,14 @@ bool SBValueGetExpressionPath2(SBValueRef instance, SBStreamRef description,
   SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
   return unwrapped->GetExpressionPath(
       *reinterpret_cast<SBStream *>(description), qualify_cxx_base_classes);
+}
+
+SBValueRef SBValueEvaluateExpression(SBValueRef instance, const char *expr,
+                                     SBExpressionOptionsRef options,
+                                     const char *name) {
+  SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
+  return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->EvaluateExpression(
+      expr, *reinterpret_cast<SBExpressionOptions *>(options), name)));
 }
 
 SBWatchpointRef SBValueWatch(SBValueRef instance, bool resolve_location,
