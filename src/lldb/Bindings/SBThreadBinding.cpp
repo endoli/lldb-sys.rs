@@ -179,19 +179,14 @@ SBErrorRef SBThreadStepOverUntil(SBThreadRef instance, SBFrameRef frame,
 }
 
 SBErrorRef SBThreadStepUsingScriptedThreadPlan(SBThreadRef instance,
-                                               const char *script_class_name) {
+                                               const char *script_class_name,
+                                               SBStructuredDataRef args_data,
+                                               bool resume_immediately) {
   SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
   return reinterpret_cast<SBErrorRef>(
-      new SBError(unwrapped->StepUsingScriptedThreadPlan(script_class_name)));
-}
-
-SBErrorRef SBThreadStepUsingScriptedThreadPlan2(SBThreadRef instance,
-                                                const char *script_class_name,
-                                                bool resume_immediately) {
-  SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
-  return reinterpret_cast<SBErrorRef>(
-      new SBError(unwrapped->StepUsingScriptedThreadPlan(script_class_name,
-                                                         resume_immediately)));
+      new SBError(unwrapped->StepUsingScriptedThreadPlan(
+          script_class_name, *reinterpret_cast<SBStructuredData *>(args_data),
+          resume_immediately)));
 }
 
 SBErrorRef SBThreadJumpToLine(SBThreadRef instance, SBFileSpecRef file_spec,

@@ -90,11 +90,8 @@ LLDB_API SBErrorRef SBThreadStepOverUntil(SBThreadRef instance,
                                           uint32_t line);
 
 LLDB_API SBErrorRef SBThreadStepUsingScriptedThreadPlan(
-    SBThreadRef instance, const char *script_class_name);
-
-LLDB_API SBErrorRef SBThreadStepUsingScriptedThreadPlan2(
     SBThreadRef instance, const char *script_class_name,
-    bool resume_immediately);
+    SBStructuredDataRef args_data, bool resume_immediately);
 
 LLDB_API SBErrorRef SBThreadJumpToLine(SBThreadRef instance,
                                        SBFileSpecRef file_spec, uint32_t line);

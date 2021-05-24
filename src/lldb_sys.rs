@@ -4007,11 +4007,8 @@ extern "C" {
     pub fn SBThreadStepUsingScriptedThreadPlan(
         instance: SBThreadRef,
         script_class_name: *const ::std::os::raw::c_char,
-    ) -> SBErrorRef;
-    pub fn SBThreadStepUsingScriptedThreadPlan3(
-        instance: SBThreadRef,
-        script_class_name: *const ::std::os::raw::c_char,
-        resume_immediately: RunMode,
+        args_data: SBStructuredDataRef,
+        resume_immediately: bool,
     ) -> SBErrorRef;
     pub fn SBThreadJumpToLine(
         instance: SBThreadRef,
