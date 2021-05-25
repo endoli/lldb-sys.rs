@@ -3373,6 +3373,7 @@ extern "C" {
     pub fn SBStreamGetData(instance: SBStreamRef) -> *const ::std::os::raw::c_char;
     pub fn SBStreamGetSize(instance: SBStreamRef) -> size_t;
     pub fn SBStreamPrintf(instance: SBStreamRef, format: *const ::std::os::raw::c_char, ...);
+    pub fn SBStreamPrint(instance: SBStreamRef, str: *const ::std::os::raw::c_char);
     pub fn SBStreamRedirectToFile(
         instance: SBStreamRef,
         path: *const ::std::os::raw::c_char,

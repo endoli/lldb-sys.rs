@@ -28,6 +28,8 @@ LLDB_API size_t SBStreamGetSize(SBStreamRef instance);
 
 LLDB_API void SBStreamPrintf(SBStreamRef instance, const char *format, ...);
 
+LLDB_API void SBStreamPrint(SBStreamRef instance, const char *str);
+
 LLDB_API void SBStreamRedirectToFile(SBStreamRef instance, const char *path,
                                      bool append);
 

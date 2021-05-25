@@ -51,6 +51,11 @@ void SBStreamPrintf(SBStreamRef instance, const char *format, ...) {
   va_end(args);
 }
 
+void SBStreamPrint(SBStreamRef instance, const char *str) {
+  SBStream *unwrapped = reinterpret_cast<SBStream *>(instance);
+  unwrapped->Print(str);
+}
+
 void SBStreamRedirectToFile(SBStreamRef instance, const char *path,
                             bool append) {
   SBStream *unwrapped = reinterpret_cast<SBStream *>(instance);
