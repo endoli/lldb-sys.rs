@@ -797,22 +797,24 @@ pub enum SectionType {
     DWARFDebugLocListsDwo = 57,
     DWARFDebugTuIndex = 58,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum EmulateInstructionOptions {
-    None = 0,
-    AutoAdvancePC = 1,
-    IgnoreConditions = 2,
+bitflags! {
+    #[repr(C)]
+    pub struct EmulateInstructionOptions: u32 {
+        const NONE = 0;
+        const AUTO_ADVANCE_PC = 1;
+        const IGNORE_CONDITIONS = 2;
+    }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum FunctionNameType {
-    None = 0,
-    Auto = 2,
-    Full = 4,
-    Base = 8,
-    Method = 16,
-    Selector = 32,
+bitflags! {
+    #[repr(C)]
+    pub struct FunctionNameType: u32 {
+        const NONE = 0;
+        const AUTO = 2;
+        const FULL = 4;
+        const BASE = 8;
+        const METHOD = 16;
+        const SELECTOR = 32;
+    }
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -1020,11 +1022,12 @@ pub enum ExpressionEvaluationPhase {
     EvaluationExecution = 2,
     EvaluationComplete = 3,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum WatchpointKind {
-    eWatchpointKindRead = 1,
-    eWatchpointKindWrite = 2,
+bitflags! {
+    #[repr(C)]
+    pub struct WatchpointKind: u32 {
+        const READ = 1;
+        const WRITE = 2;
+    }
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -1065,44 +1068,46 @@ pub enum MatchType {
     Regex = 1,
     StartsWith = 2,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum TypeFlags {
-    HasChildren = 1,
-    HasValue = 2,
-    IsArray = 4,
-    IsBlock = 8,
-    IsBuiltIn = 16,
-    IsClass = 32,
-    IsCPlusPlus = 64,
-    IsEnumeration = 128,
-    IsFuncPrototype = 256,
-    IsMember = 512,
-    IsObjC = 1024,
-    IsPointer = 2048,
-    IsReference = 4096,
-    IsStructUnion = 8192,
-    IsTemplate = 16384,
-    IsTypedef = 32768,
-    IsVector = 65536,
-    IsScalar = 131072,
-    IsInteger = 262144,
-    IsFloat = 524288,
-    IsComplex = 1048576,
-    IsSigned = 2097152,
-    InstanceIsPointer = 4194304,
+bitflags! {
+    #[repr(C)]
+    pub struct TypeFlags: u32 {
+        const HAS_CHILDREN = 1;
+        const HAS_VALUE = 2;
+        const IS_ARRAY = 4;
+        const IS_BLOCK = 8;
+        const IS_BUILTIN = 16;
+        const IS_CLASS = 32;
+        const IS_CPLUSPLUS = 64;
+        const IS_ENUMERATION = 128;
+        const IS_FUNC_PROTOTYPE = 256;
+        const IS_MEMBER = 512;
+        const IS_OBJC = 1024;
+        const IS_POINTER = 2048;
+        const IS_REFERENCE = 4096;
+        const IS_STRUCT_UNION = 8192;
+        const IS_TEMPLATE = 16384;
+        const IS_TYPEDEF = 32768;
+        const IS_VECTOR = 65536;
+        const IS_SCALAR = 131072;
+        const IS_INTEGER = 262144;
+        const IS_FLOAT = 524288;
+        const IS_COMPLEX = 1048576;
+        const IS_SIGNED = 2097152;
+        const INSTANCE_IS_POINTER = 4194304;
+    }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum CommandFlags {
-    RequiresTarget = 1,
-    RequiresProcess = 2,
-    RequiresThread = 4,
-    RequiresFrame = 8,
-    RequiresRegContext = 16,
-    TryTargetAPILock = 32,
-    ProcessMustBeLaunched = 64,
-    ProcessMustBePaused = 128,
+bitflags! {
+    #[repr(C)]
+    pub struct CommandFlags: u32 {
+        const REQUIRES_TARGET = 1;
+        const REQUIRES_PROCESS = 2;
+        const REQUIRES_THREAD = 4;
+        const REQUIRES_FRAME = 8;
+        const REQUIRES_REG_CONTEXT = 16;
+        const TRY_TARGET_API_LOCK = 32;
+        const PROCESS_MUST_BE_LAUNCHED = 64;
+        const PROCESS_MUST_BE_PAUSED = 128;
+    }
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
