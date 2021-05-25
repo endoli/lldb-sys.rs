@@ -4158,6 +4158,7 @@ extern "C" {
     pub fn SBTypeGetDereferencedType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetUnqualifiedType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetArrayElementType(instance: SBTypeRef) -> SBTypeRef;
+    pub fn SBTypeGetArrayType(instance: SBTypeRef, size: u64) -> SBTypeRef;
     pub fn SBTypeGetVectorElementType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetCanonicalType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetBasicType(instance: SBTypeRef) -> BasicType;

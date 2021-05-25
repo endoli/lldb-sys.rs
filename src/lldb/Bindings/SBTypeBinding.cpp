@@ -237,6 +237,11 @@ SBTypeRef SBTypeGetArrayElementType(SBTypeRef instance) {
       new SBType(unwrapped->GetArrayElementType()));
 }
 
+SBTypeRef SBTypeGetArrayType(SBTypeRef instance, uint64_t size) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetArrayType(size)));
+}
+
 SBTypeRef SBTypeGetVectorElementType(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
   return reinterpret_cast<SBTypeRef>(

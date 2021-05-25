@@ -114,6 +114,8 @@ LLDB_API SBTypeRef SBTypeGetUnqualifiedType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetArrayElementType(SBTypeRef instance);
 
+LLDB_API SBTypeRef SBTypeGetArrayType(SBTypeRef instance, uint64_t size);
+
 LLDB_API SBTypeRef SBTypeGetVectorElementType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetCanonicalType(SBTypeRef instance);
