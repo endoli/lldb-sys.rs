@@ -2433,6 +2433,10 @@ extern "C" {
         dst_len: size_t,
     ) -> ::std::os::raw::c_int;
     pub fn SBFileSpecGetDescription(instance: SBFileSpecRef, description: SBStreamRef) -> bool;
+    pub fn SBFileSpecAppendPathComponent(
+        instance: SBFileSpecRef,
+        file_or_directory: *const ::std::os::raw::c_char,
+    );
     pub fn CreateSBFileSpecList() -> SBFileSpecListRef;
     pub fn CloneSBFileSpecList(instance: SBFileSpecListRef) -> SBFileSpecListRef;
     pub fn DisposeSBFileSpecList(instance: SBFileSpecListRef);

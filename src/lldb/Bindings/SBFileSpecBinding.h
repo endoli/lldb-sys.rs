@@ -51,6 +51,8 @@ LLDB_API int SBFileSpecResolvePath(const char *src_path, char *dst_path,
 LLDB_API bool SBFileSpecGetDescription(SBFileSpecRef instance,
                                        SBStreamRef description);
 
+LLDB_API void SBFileSpecAppendPathComponent(SBFileSpecRef instance,
+                                            const char *file_or_directory);
 #ifdef __cplusplus
 }
 #endif

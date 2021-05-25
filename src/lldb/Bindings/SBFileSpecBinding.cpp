@@ -88,6 +88,12 @@ bool SBFileSpecGetDescription(SBFileSpecRef instance, SBStreamRef description) {
   return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
+void SBFileSpecAppendPathComponent(SBFileSpecRef instance,
+                                   const char *file_or_directory) {
+  SBFileSpec *unwrapped = reinterpret_cast<SBFileSpec *>(instance);
+  unwrapped->AppendPathComponent(file_or_directory);
+}
+
 #ifdef __cplusplus
 }
 #endif
