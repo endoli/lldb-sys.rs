@@ -4180,7 +4180,7 @@ extern "C" {
         -> SBTypeMemberFunctionRef;
     pub fn SBTypeGetName(instance: SBTypeRef) -> *const ::std::os::raw::c_char;
     pub fn SBTypeGetDisplayTypeName(instance: SBTypeRef) -> *const ::std::os::raw::c_char;
-    pub fn SBTypeGetTypeClass(instance: SBTypeRef) -> TypeClass;
+    pub fn SBTypeGetTypeClass(instance: SBTypeRef) -> u32;
     pub fn SBTypeIsTypeComplete(instance: SBTypeRef) -> bool;
     pub fn SBTypeGetTypeFlags(instance: SBTypeRef) -> u32;
     pub fn SBTypeGetDescription(
