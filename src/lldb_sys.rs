@@ -1168,7 +1168,7 @@ extern "C" {
     pub fn CreateSBAttachInfo4(
         path: *const ::std::os::raw::c_char,
         wait_for: bool,
-        async: bool,
+        asynchronous: bool,
     ) -> SBAttachInfoRef;
     pub fn CloneSBAttachInfo(instance: SBAttachInfoRef) -> SBAttachInfoRef;
     pub fn DisposeSBAttachInfo(instance: SBAttachInfoRef);
@@ -1181,7 +1181,7 @@ extern "C" {
     pub fn SBAttachInfoSetExecutable2(instance: SBAttachInfoRef, exe_file: SBFileSpecRef);
     pub fn SBAttachInfoGetWaitForLaunch(instance: SBAttachInfoRef) -> bool;
     pub fn SBAttachInfoSetWaitForLaunch(instance: SBAttachInfoRef, b: bool);
-    pub fn SBAttachInfoSetWaitForLaunch2(instance: SBAttachInfoRef, b: bool, async: bool);
+    pub fn SBAttachInfoSetWaitForLaunch2(instance: SBAttachInfoRef, b: bool, asynchronous: bool);
     pub fn SBAttachInfoGetIgnoreExisting(instance: SBAttachInfoRef) -> bool;
     pub fn SBAttachInfoSetIgnoreExisting(instance: SBAttachInfoRef, b: bool);
     pub fn SBAttachInfoGetResumeCount(instance: SBAttachInfoRef) -> u32;
