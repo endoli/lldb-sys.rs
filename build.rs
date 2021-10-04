@@ -1,12 +1,11 @@
 extern crate cc;
 
-#[cfg(not(feature = "docs-rs"))]
 use cc::Build;
 
-#[cfg(all(target_os = "linux", not(feature = "docs-rs")))]
+#[cfg(target_os = "linux")]
 use std::{fs, process::Command};
 
-#[cfg(all(target_os = "linux", not(feature = "docs-rs")))]
+#[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
     let llvm_config = std::env::var("LLVM_CONFIG").unwrap_or("llvm-config".into());
     let res = Command::new(llvm_config).arg(arg).output().unwrap();
@@ -20,7 +19,7 @@ fn get_llvm_output(arg: &str) -> String {
     String::from_utf8(res.stdout).unwrap().trim().to_string()
 }
 
-#[cfg(all(target_os = "linux", not(feature = "docs-rs")))]
+#[cfg(target_os = "linux")]
 fn match_libname(name: &str) -> Option<String> {
     if name.starts_with("liblldb.so") || name.starts_with("liblldb-") {
         if let Some(pos) = name.rfind(".so") {
@@ -38,7 +37,7 @@ fn test_match_libname() {
     assert_eq!(match_libname("liblldbIntelFeatures.so"), None);
 }
 
-#[cfg(all(target_os = "linux", not(feature = "docs-rs")))]
+#[cfg(target_os = "linux")]
 fn get_compiler_config() -> Build {
     // On linux lib directory and headers directory are provided by `llvm-config` utility.
     let llvm_headers_path = get_llvm_output("--includedir");
@@ -55,7 +54,7 @@ fn get_compiler_config() -> Build {
     res
 }
 
-#[cfg(all(target_os = "macos", not(feature = "docs-rs")))]
+#[cfg(target_os = "macos")]
 fn get_compiler_config() -> Build {
     println!("cargo:rerun-if-env-changed=LLVM_ROOT");
     println!("cargo:rerun-if-env-changed=LLVM_BUILD_ROOT");
@@ -73,11 +72,11 @@ fn get_compiler_config() -> Build {
     panic!("Only MacOS and Linux are supported currently");
 }
 
-#[cfg(feature = "docs-rs")]
-fn main() {} // Don't need any of this for documentation.
-
-#[cfg(not(feature = "docs-rs"))]
 fn main() {
+    println!("cargo:rerun-if-env-changed=DOCS_RS");
+    if let Ok(_) = std::env::var("DOCS_RS") {
+        return;
+    }
     get_compiler_config()
         .cpp(true)
         .flag("-std=c++14")
