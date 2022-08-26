@@ -10,7 +10,7 @@ extern crate bitflags;
 
 mod lldb_sys;
 
-pub use lldb_sys::*;
+pub use crate::lldb_sys::*;
 
 #[cfg(test)]
 mod tests {
