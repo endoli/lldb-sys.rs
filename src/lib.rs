@@ -4,6 +4,19 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+//! # lldb-sys
+//!
+//! [LLDB](https://lldb.llvm.org/) is a debugger from the
+//! [LLVM](https://llvm.org/) project. It is usable as both a
+//! standalone program as well as via an API.
+//!
+//! This crate provides a low-level, fairly direct mapping of the
+//! [public C++ API](https://lldb.llvm.org/cpp_reference/namespacelldb.html)
+//! for LLDB into unsafe Rust.
+//!
+//! It is primarily for use by a higher level crate, such as
+//! [lldb.rs](https://crates.io/crates/lldb/).
+
 extern crate libc;
 #[macro_use]
 extern crate bitflags;
