@@ -63,10 +63,10 @@ void SBInstructionListAppendInstruction(SBInstructionListRef instance,
   unwrapped->AppendInstruction(*reinterpret_cast<SBInstruction *>(inst));
 }
 
-void SBInstructionListPrint(SBInstructionListRef instance, FILE *out) {
+void SBInstructionListPrint(SBInstructionListRef instance, SBFileRef out) {
   SBInstructionList *unwrapped =
       reinterpret_cast<SBInstructionList *>(instance);
-  unwrapped->Print(out);
+  unwrapped->Print(*reinterpret_cast<SBFile *>(out));
 }
 
 bool SBInstructionListGetDescription(SBInstructionListRef instance,

@@ -90,6 +90,12 @@ CreateSBPlatformShellCommand(const char *shell_command) {
 }
 
 SBPlatformShellCommandRef
+CreateSBPlatformShellCommand2(const char *shell, const char *shell_command) {
+  return reinterpret_cast<SBPlatformShellCommandRef>(
+      new SBPlatformShellCommand(shell, shell_command));
+}
+
+SBPlatformShellCommandRef
 CloneSBPlatformShellCommand(SBPlatformShellCommandRef instance) {
   return reinterpret_cast<SBPlatformShellCommandRef>(new SBPlatformShellCommand(
       *reinterpret_cast<SBPlatformShellCommand *>(instance)));
@@ -103,6 +109,20 @@ void SBPlatformShellCommandClear(SBPlatformShellCommandRef instance) {
   SBPlatformShellCommand *unwrapped =
       reinterpret_cast<SBPlatformShellCommand *>(instance);
   unwrapped->Clear();
+}
+
+const char *
+SBPlatformShellCommandGetShell(SBPlatformShellCommandRef instance) {
+  SBPlatformShellCommand *unwrapped =
+      reinterpret_cast<SBPlatformShellCommand *>(instance);
+  return unwrapped->GetShell();
+}
+
+void SBPlatformShellCommandSetShell(SBPlatformShellCommandRef instance,
+                                    const char *shell) {
+  SBPlatformShellCommand *unwrapped =
+      reinterpret_cast<SBPlatformShellCommand *>(instance);
+  unwrapped->SetShell(shell);
 }
 
 const char *
@@ -181,6 +201,11 @@ SBPlatformRef CloneSBPlatform(SBPlatformRef instance) {
 
 void DisposeSBPlatform(SBPlatformRef instance) {
   delete reinterpret_cast<SBPlatform *>(instance);
+}
+
+SBPlatformRef SBPlatformGetHostPlatform() {
+  return reinterpret_cast<SBPlatformRef>(
+      new SBPlatform(SBPlatform::GetHostPlatform()));
 }
 
 bool SBPlatformIsValid(SBPlatformRef instance) {

@@ -22,9 +22,12 @@ SBThreadPlanRef CreateSBThreadPlan() {
 }
 
 SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread,
-                                    const char *class_name) {
+                                    const char *class_name,
+                                    SBStructuredDataRef args_data) {
   return reinterpret_cast<SBThreadPlanRef>(
-      new SBThreadPlan(*reinterpret_cast<SBThread *>(thread), class_name));
+      new SBThreadPlan(*reinterpret_cast<SBThread *>(thread),
+                       class_name,
+                       *reinterpret_cast<SBStructuredData *>(args_data)));
 }
 
 SBThreadPlanRef CloneSBThreadPlan(SBThreadPlanRef instance) {
@@ -86,6 +89,16 @@ bool SBThreadPlanIsPlanComplete(SBThreadPlanRef instance) {
 bool SBThreadPlanIsPlanStale(SBThreadPlanRef instance) {
   SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
   return unwrapped->IsPlanStale();
+}
+
+bool SBThreadPlanGetStopOthers(SBThreadPlanRef instance) {
+  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
+  return unwrapped->GetStopOthers();
+}
+
+void SBThreadPlanSetStopOthers(SBThreadPlanRef instance, bool stop_others) {
+  SBThreadPlan *unwrapped = reinterpret_cast<SBThreadPlan *>(instance);
+  unwrapped->SetStopOthers(stop_others);
 }
 
 SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(

@@ -52,11 +52,21 @@ LLDB_API SBPlatformShellCommandRef
 CreateSBPlatformShellCommand(const char *shell_command);
 
 LLDB_API SBPlatformShellCommandRef
+CreateSBPlatformShellCommand2(const char *shell, const char *shell_command);
+
+LLDB_API SBPlatformShellCommandRef
 CloneSBPlatformShellCommand(SBPlatformShellCommandRef instance);
 
 LLDB_API void DisposeSBPlatformShellCommand(SBPlatformShellCommandRef instance);
 
 LLDB_API void SBPlatformShellCommandClear(SBPlatformShellCommandRef instance);
+
+LLDB_API const char *
+SBPlatformShellCommandGetShell(SBPlatformShellCommandRef instance);
+
+LLDB_API void
+SBPlatformShellCommandSetShel(SBPlatformShellCommandRef instance,
+                              const char *shell);
 
 LLDB_API const char *
 SBPlatformShellCommandGetCommand(SBPlatformShellCommandRef instance);
@@ -95,6 +105,8 @@ LLDB_API SBPlatformRef CreateSBPlatform2(const char *platform_name);
 LLDB_API SBPlatformRef CloneSBPlatform(SBPlatformRef instance);
 
 LLDB_API void DisposeSBPlatform(SBPlatformRef instance);
+
+LLDB_API SBPlatformRef SBPlatformGetHostPlatform(void);
 
 LLDB_API bool SBPlatformIsValid(SBPlatformRef instance);
 

@@ -74,6 +74,8 @@ pub enum SBExecutionContextOpaque {}
 pub type SBExecutionContextRef = *mut SBExecutionContextOpaque;
 pub enum SBExpressionOptionsOpaque {}
 pub type SBExpressionOptionsRef = *mut SBExpressionOptionsOpaque;
+pub enum SBFileOpaque {}
+pub type SBFileRef = *mut SBFileOpaque;
 pub enum SBFileSpecOpaque {}
 pub type SBFileSpecRef = *mut SBFileSpecOpaque;
 pub enum SBFileSpecListOpaque {}
@@ -1252,6 +1254,7 @@ extern "C" {
     pub fn SBBreakpointGetID(instance: SBBreakpointRef) -> lldb_break_id_t;
     pub fn SBBreakpointIsValid(instance: SBBreakpointRef) -> bool;
     pub fn SBBreakpointClearAllBreakpointSites(instance: SBBreakpointRef);
+    pub fn SBBreakpointGetTarget(instance: SBBreakpointRef) -> SBTargetRef;
     pub fn SBBreakpointFindLocationByAddress(
         instance: SBBreakpointRef,
         vm_addr: lldb_addr_t,
@@ -1346,6 +1349,7 @@ extern "C" {
     pub fn SBBreakpointGetNumBreakpointLocationsFromEvent(event_sp: SBEventRef) -> u32;
     pub fn SBBreakpointIsHardware(instance: SBBreakpointRef) -> bool;
     pub fn SBBreakpointAddLocation(instance: SBBreakpointRef, address: SBAddressRef) -> SBErrorRef;
+    pub fn SBBreakpointSerializeToStructuredData(instance: SBBreakpointRef) -> SBStructuredDataRef;
     pub fn CreateSBBreakpointList(target: SBTargetRef) -> SBBreakpointListRef;
     pub fn CloneSBBreakpointList(instance: SBBreakpointListRef) -> SBBreakpointListRef;
     pub fn DisposeSBBreakpointList(instance: SBBreakpointListRef);
@@ -1392,7 +1396,8 @@ extern "C" {
     pub fn SBBreakpointLocationSetScriptCallbackFunction(
         instance: SBBreakpointLocationRef,
         callback_function_name: *const ::std::os::raw::c_char,
-    );
+        extra_args: SBStructuredDataRef,
+    ) -> SBErrorRef;
     pub fn SBBreakpointLocationSetScriptCallbackBody(
         instance: SBBreakpointLocationRef,
         script_body_text: *const ::std::os::raw::c_char,
@@ -1487,7 +1492,8 @@ extern "C" {
     pub fn SBBreakpointNameSetScriptCallbackFunction(
         instance: SBBreakpointNameRef,
         callback_function_name: *const ::std::os::raw::c_char,
-    );
+        extra_args: SBStructuredDataRef,
+    ) -> SBErrorRef;
     pub fn SBBreakpointNameSetCommandLineCommands(
         instance: SBBreakpointNameRef,
         commands: SBStringListRef,
@@ -1576,6 +1582,13 @@ extern "C" {
         instance: SBCommandInterpreterRunOptionsRef,
         arg1: bool,
     );
+    pub fn SBCommandInterpreterRunOptionsGetEchoCommentCommands(
+        instance: SBCommandInterpreterRunOptionsRef,
+    ) -> bool;
+    pub fn SBCommandInterpreterRunOptionsSetEchoCommentCommands(
+        instance: SBCommandInterpreterRunOptionsRef,
+        echo: bool,
+    );
     pub fn SBCommandInterpreterRunOptionsGetPrintResults(
         instance: SBCommandInterpreterRunOptionsRef,
     ) -> bool;
@@ -1631,6 +1644,11 @@ extern "C" {
     pub fn SBCommandInterpreterSourceInitFileInHomeDirectory(
         instance: SBCommandInterpreterRef,
         result: SBCommandReturnObjectRef,
+    );
+    pub fn SBCommandInterpreterSourceInitFileInHomeDirectory2(
+        instance: SBCommandInterpreterRef,
+        result: SBCommandReturnObjectRef,
+        is_repl: bool,
     );
     pub fn SBCommandInterpreterSourceInitFileInCurrentWorkingDirectory(
         instance: SBCommandInterpreterRef,
@@ -1744,13 +1762,13 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
     pub fn SBCommandReturnObjectPutOutput(
         instance: SBCommandReturnObjectRef,
-        fh: *mut FILE,
+        file: SBFileRef,
     ) -> size_t;
     pub fn SBCommandReturnObjectGetOutputSize(instance: SBCommandReturnObjectRef) -> size_t;
     pub fn SBCommandReturnObjectGetErrorSize(instance: SBCommandReturnObjectRef) -> size_t;
     pub fn SBCommandReturnObjectPutError(
         instance: SBCommandReturnObjectRef,
-        fh: *mut FILE,
+        file: SBFileRef,
     ) -> size_t;
     pub fn SBCommandReturnObjectClear(instance: SBCommandReturnObjectRef);
     pub fn SBCommandReturnObjectGetStatus(instance: SBCommandReturnObjectRef) -> ReturnStatus;
@@ -1771,11 +1789,11 @@ extern "C" {
     ) -> bool;
     pub fn SBCommandReturnObjectSetImmediateOutputFile(
         instance: SBCommandReturnObjectRef,
-        fh: *mut FILE,
+        file: SBFileRef,
     );
     pub fn SBCommandReturnObjectSetImmediateErrorFile(
         instance: SBCommandReturnObjectRef,
-        fh: *mut FILE,
+        file: SBFileRef,
     );
     pub fn SBCommandReturnObjectPutCString(
         instance: SBCommandReturnObjectRef,
@@ -2061,24 +2079,16 @@ extern "C" {
     pub fn SBDebuggerGetAsync(instance: SBDebuggerRef) -> bool;
     pub fn SBDebuggerSkipLLDBInitFiles(instance: SBDebuggerRef, b: bool);
     pub fn SBDebuggerSkipAppInitFiles(instance: SBDebuggerRef, b: bool);
-    pub fn SBDebuggerSetInputFileHandle(
+    pub fn SBDebuggerSetInputString(
         instance: SBDebuggerRef,
-        f: *mut FILE,
-        transfer_ownership: bool,
-    );
-    pub fn SBDebuggerSetOutputFileHandle(
-        instance: SBDebuggerRef,
-        f: *mut FILE,
-        transfer_ownership: bool,
-    );
-    pub fn SBDebuggerSetErrorFileHandle(
-        instance: SBDebuggerRef,
-        f: *mut FILE,
-        transfer_ownership: bool,
-    );
-    pub fn SBDebuggerGetInputFileHandle(instance: SBDebuggerRef) -> *mut FILE;
-    pub fn SBDebuggerGetOutputFileHandle(instance: SBDebuggerRef) -> *mut FILE;
-    pub fn SBDebuggerGetErrorFileHandle(instance: SBDebuggerRef) -> *mut FILE;
+        data: *const ::std::os::raw::c_char,
+    ) -> SBErrorRef;
+    pub fn SBDebuggerSetInputFile(instance: SBDebuggerRef, file: SBFileRef) -> SBErrorRef;
+    pub fn SBDebuggerSetOutputFile(instance: SBDebuggerRef, file: SBFileRef) -> SBErrorRef;
+    pub fn SBDebuggerSetErrorFile(instance: SBDebuggerRef, file: SBFileRef) -> SBErrorRef;
+    pub fn SBDebuggerGetInputFile(instance: SBDebuggerRef) -> SBFileRef;
+    pub fn SBDebuggerGetOutputFile(instance: SBDebuggerRef) -> SBFileRef;
+    pub fn SBDebuggerGetErrorFile(instance: SBDebuggerRef) -> SBFileRef;
     pub fn SBDebuggerSaveInputTerminalState(instance: SBDebuggerRef);
     pub fn SBDebuggerRestoreInputTerminalState(instance: SBDebuggerRef);
     pub fn SBDebuggerGetCommandInterpreter(instance: SBDebuggerRef) -> SBCommandInterpreterRef;
@@ -2088,8 +2098,8 @@ extern "C" {
         instance: SBDebuggerRef,
         process: SBProcessRef,
         event: SBEventRef,
-        out: *mut FILE,
-        err: *mut FILE,
+        out: SBFileRef,
+        err: SBFileRef,
     );
     pub fn SBDebuggerCreateTarget(
         instance: SBDebuggerRef,
@@ -2150,6 +2160,8 @@ extern "C" {
     pub fn SBDebuggerGetUseExternalEditor(instance: SBDebuggerRef) -> bool;
     pub fn SBDebuggerSetUseColor(instance: SBDebuggerRef, use_color: bool) -> bool;
     pub fn SBDebuggerGetUseColor(instance: SBDebuggerRef) -> bool;
+    pub fn SBDebuggerSetUseSourceCache(instance: SBDebuggerRef, use_source_cache: bool) -> bool;
+    pub fn SBDebuggerGetUseSourceCache(instance: SBDebuggerRef) -> bool;
     pub fn SBDebuggerGetDefaultArchitecture(
         arch_name: *mut ::std::os::raw::c_char,
         arch_name_len: size_t,
@@ -2247,6 +2259,10 @@ extern "C" {
         num_errors: ::std::os::raw::c_int,
         quit_requested: bool,
         stopped_for_crash: bool,
+    );
+    pub fn SBDebuggerRunCommandInterpreter3(
+        instance: SBDebuggerRef,
+        options: SBCommandInterpreterRunOptionsRef,
     );
     pub fn CreateSBDeclaration() -> SBDeclarationRef;
     pub fn CloneSBDeclaration(instance: SBDeclarationRef) -> SBDeclarationRef;
@@ -2412,6 +2428,30 @@ extern "C" {
     pub fn SBExpressionOptionsSetTopLevel(instance: SBExpressionOptionsRef, b: bool);
     pub fn SBExpressionOptionsGetAllowJIT(instance: SBExpressionOptionsRef) -> bool;
     pub fn SBExpressionOptionsSetAllowJIT(instance: SBExpressionOptionsRef, b: bool);
+    pub fn CreateSBFile() -> SBFileRef;
+    pub fn CreateSBFile2(file: *mut FILE, transfer_ownership: bool) -> SBFileRef;
+    pub fn CreateSBFile3(
+        fd: ::std::os::raw::c_int,
+        mode: *const ::std::os::raw::c_char,
+        transfer_ownership: bool,
+    ) -> SBFileRef;
+    pub fn CloneSBFile(instance: SBFileRef) -> SBFileRef;
+    pub fn DisposeSBFile(instance: SBFileRef);
+    pub fn SBFileIsValid(instance: SBFileRef) -> bool;
+    pub fn SBFileRead(
+        instance: SBFileRef,
+        buf: *mut u8,
+        num_bytes: usize,
+        bytes_read: *mut usize,
+    ) -> SBErrorRef;
+    pub fn SBFileWrite(
+        instance: SBFileRef,
+        buf: *const u8,
+        num_bytes: usize,
+        bytes_written: *mut usize,
+    ) -> SBErrorRef;
+    pub fn SBFileFlush(instance: SBFileRef) -> SBErrorRef;
+    pub fn SBFileClose(instance: SBFileRef) -> SBErrorRef;
     pub fn CreateSBFileSpec() -> SBFileSpecRef;
     pub fn CreateSBFileSpec2(path: *const ::std::os::raw::c_char) -> SBFileSpecRef;
     pub fn CreateSBFileSpec3(path: *const ::std::os::raw::c_char, resolve: bool) -> SBFileSpecRef;
@@ -2585,7 +2625,7 @@ extern "C" {
     pub fn SBInstructionGetByteSize(instance: SBInstructionRef) -> size_t;
     pub fn SBInstructionDoesBranch(instance: SBInstructionRef) -> bool;
     pub fn SBInstructionHasDelaySlot(instance: SBInstructionRef) -> bool;
-    pub fn SBInstructionPrint(instance: SBInstructionRef, out: *mut FILE);
+    pub fn SBInstructionPrint(instance: SBInstructionRef, out: SBFileRef);
     pub fn SBInstructionGetDescription(
         instance: SBInstructionRef,
         description: SBStreamRef,
@@ -2618,7 +2658,7 @@ extern "C" {
         instance: SBInstructionListRef,
         inst: SBInstructionRef,
     );
-    pub fn SBInstructionListPrint(instance: SBInstructionListRef, out: *mut FILE);
+    pub fn SBInstructionListPrint(instance: SBInstructionListRef, out: SBFileRef);
     pub fn SBInstructionListGetDescription(
         instance: SBInstructionListRef,
         description: SBStreamRef,
@@ -2929,6 +2969,8 @@ extern "C" {
     pub fn SBModuleGetSymbolFileSpec(instance: SBModuleRef) -> SBFileSpecRef;
     pub fn SBModuleGetObjectFileHeaderAddress(instance: SBModuleRef) -> SBAddressRef;
     pub fn SBModuleGetObjectFileEntryPointAddress(instance: SBModuleRef) -> SBAddressRef;
+    pub fn SBModuleGetNumberAllocatedModules() -> u32;
+    pub fn SBModuleGarbageCollectAllocatedModules();
     pub fn CreateSBModuleSpec() -> SBModuleSpecRef;
     pub fn CloneSBModuleSpec(instance: SBModuleSpecRef) -> SBModuleSpecRef;
     pub fn DisposeSBModuleSpec(instance: SBModuleSpecRef);
@@ -3015,11 +3057,22 @@ extern "C" {
     pub fn CreateSBPlatformShellCommand(
         shell_command: *const ::std::os::raw::c_char,
     ) -> SBPlatformShellCommandRef;
+    pub fn CreateSBPlatformShellCommand2(
+        shell: *const ::std::os::raw::c_char,
+        shell_command: *const ::std::os::raw::c_char,
+    ) -> SBPlatformShellCommandRef;
     pub fn CloneSBPlatformShellCommand(
         instance: SBPlatformShellCommandRef,
     ) -> SBPlatformShellCommandRef;
     pub fn DisposeSBPlatformShellCommand(instance: SBPlatformShellCommandRef);
     pub fn SBPlatformShellCommandClear(instance: SBPlatformShellCommandRef);
+    pub fn SBPlatformShellCommandGetShell(
+        instance: SBPlatformShellCommandRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBPlatformShellCommandSetShell(
+        instance: SBPlatformShellCommandRef,
+        shell: *const ::std::os::raw::c_char,
+    );
     pub fn SBPlatformShellCommandGetCommand(
         instance: SBPlatformShellCommandRef,
     ) -> *const ::std::os::raw::c_char;
@@ -3049,6 +3102,7 @@ extern "C" {
     pub fn CreateSBPlatform2(platform_name: *const ::std::os::raw::c_char) -> SBPlatformRef;
     pub fn CloneSBPlatform(instance: SBPlatformRef) -> SBPlatformRef;
     pub fn DisposeSBPlatform(instance: SBPlatformRef);
+    pub fn SBPlatformGetHostPlatform() -> SBPlatformRef;
     pub fn SBPlatformIsValid(instance: SBPlatformRef) -> bool;
     pub fn SBPlatformClear(instance: SBPlatformRef);
     pub fn SBPlatformGetWorkingDirectory(instance: SBPlatformRef) -> *const ::std::os::raw::c_char;
@@ -3136,7 +3190,7 @@ extern "C" {
         dst: *mut ::std::os::raw::c_char,
         dst_len: size_t,
     ) -> size_t;
-    pub fn SBProcessReportEventState(instance: SBProcessRef, event: SBEventRef, out: *mut FILE);
+    pub fn SBProcessReportEventState(instance: SBProcessRef, event: SBEventRef, out: SBFileRef);
     pub fn SBProcessAppendEventStateReport(
         instance: SBProcessRef,
         event: SBEventRef,
@@ -3237,6 +3291,7 @@ extern "C" {
     pub fn SBProcessGetBroadcaster(instance: SBProcessRef) -> SBBroadcasterRef;
     pub fn SBProcessGetBroadcasterClass() -> *const ::std::os::raw::c_char;
     pub fn SBProcessGetDescription(instance: SBProcessRef, description: SBStreamRef) -> bool;
+    pub fn SBProcessGetExtendedCrashInformation(instance: SBProcessRef) -> SBStructuredDataRef;
     pub fn SBProcessGetNumSupportedHardwareWatchpoints(
         instance: SBProcessRef,
         error: SBErrorRef,
@@ -3384,6 +3439,7 @@ extern "C" {
         path: *const ::std::os::raw::c_char,
         append: bool,
     );
+    pub fn SBStreamRedirectToFile2(instance: SBStreamRef, file: SBFileRef);
     pub fn SBStreamRedirectToFileHandle(
         instance: SBStreamRef,
         fh: *mut FILE,
@@ -3713,6 +3769,15 @@ extern "C" {
         column: u32,
         offset: lldb_addr_t,
         module_list: SBFileSpecListRef,
+    ) -> SBBreakpointRef;
+    pub fn SBTargetBreakpointCreateByLocation6(
+        instance: SBTargetRef,
+        file_spec: SBFileSpecRef,
+        line: u32,
+        column: u32,
+        offset: lldb_addr_t,
+        module_list: SBFileSpecListRef,
+        move_to_nearest_code: bool,
     ) -> SBBreakpointRef;
     pub fn SBTargetBreakpointCreateByName(
         instance: SBTargetRef,
@@ -4067,6 +4132,7 @@ extern "C" {
     pub fn CreateSBThreadPlan2(
         thread: SBThreadRef,
         class_name: *const ::std::os::raw::c_char,
+        args_data: SBStructuredDataRef,
     ) -> SBThreadPlanRef;
     pub fn CloneSBThreadPlan(instance: SBThreadPlanRef) -> SBThreadPlanRef;
     pub fn DisposeSBThreadPlan(instance: SBThreadPlanRef);
@@ -4080,6 +4146,8 @@ extern "C" {
     pub fn SBThreadPlanSetPlanComplete(instance: SBThreadPlanRef, success: bool);
     pub fn SBThreadPlanIsPlanComplete(instance: SBThreadPlanRef) -> bool;
     pub fn SBThreadPlanIsPlanStale(instance: SBThreadPlanRef) -> bool;
+    pub fn SBThreadPlanGetStopOthers(instance: SBThreadPlanRef) -> bool;
+    pub fn SBThreadPlanSetStopOthers(instance: SBThreadPlanRef, stop_others: bool);
     pub fn SBThreadPlanQueueThreadPlanForStepOverRange(
         instance: SBThreadPlanRef,
         start_address: SBAddressRef,
@@ -4156,6 +4224,8 @@ extern "C" {
     pub fn SBTypeIsArrayType(instance: SBTypeRef) -> bool;
     pub fn SBTypeIsVectorType(instance: SBTypeRef) -> bool;
     pub fn SBTypeIsTypedefType(instance: SBTypeRef) -> bool;
+    pub fn SBTypeIsAnonymousType(instance: SBTypeRef) -> bool;
+    pub fn SBTypeIsScopedEnumerationType(instance: SBTypeRef) -> bool;
     pub fn SBTypeGetPointerType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetPointeeType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetReferenceType(instance: SBTypeRef) -> SBTypeRef;
@@ -4166,6 +4236,7 @@ extern "C" {
     pub fn SBTypeGetArrayType(instance: SBTypeRef, size: u64) -> SBTypeRef;
     pub fn SBTypeGetVectorElementType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetCanonicalType(instance: SBTypeRef) -> SBTypeRef;
+    pub fn SBTypeGetEnumerationIntegerType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetBasicType(instance: SBTypeRef) -> BasicType;
     pub fn SBTypeGetBasicType2(instance: SBTypeRef, type_: BasicType) -> SBTypeRef;
     pub fn SBTypeGetNumberOfFields(instance: SBTypeRef) -> u32;
@@ -4183,6 +4254,7 @@ extern "C" {
     pub fn SBTypeGetNumberOfMemberFunctions(instance: SBTypeRef) -> u32;
     pub fn SBTypeGetMemberFunctionAtIndex(instance: SBTypeRef, idx: u32)
         -> SBTypeMemberFunctionRef;
+    pub fn SBTypeGetModule(instance: SBTypeRef) -> SBModuleRef;
     pub fn SBTypeGetName(instance: SBTypeRef) -> *const ::std::os::raw::c_char;
     pub fn SBTypeGetDisplayTypeName(instance: SBTypeRef) -> *const ::std::os::raw::c_char;
     pub fn SBTypeGetTypeClass(instance: SBTypeRef) -> u32;

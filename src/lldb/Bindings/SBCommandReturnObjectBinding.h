@@ -32,7 +32,7 @@ LLDB_API const char *
 SBCommandReturnObjectGetError(SBCommandReturnObjectRef instance);
 
 LLDB_API size_t
-SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, FILE *fh);
+SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, SBFileRef file);
 
 LLDB_API size_t
 SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance);
@@ -40,8 +40,7 @@ SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance);
 LLDB_API size_t
 SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance);
 
-LLDB_API size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance,
-                                              FILE *fh);
+LLDB_API size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, SBFileRef file);
 
 LLDB_API void SBCommandReturnObjectClear(SBCommandReturnObjectRef instance);
 
@@ -68,12 +67,10 @@ SBCommandReturnObjectGetDescription(SBCommandReturnObjectRef instance,
                                     SBStreamRef description);
 
 LLDB_API void
-SBCommandReturnObjectSetImmediateOutputFile(SBCommandReturnObjectRef instance,
-                                            FILE *fh);
+SBCommandReturnObjectSetImmediateOutputFile(SBCommandReturnObjectRef instance, SBFileRef file);
 
 LLDB_API void
-SBCommandReturnObjectSetImmediateErrorFile(SBCommandReturnObjectRef instance,
-                                           FILE *fh);
+SBCommandReturnObjectSetImmediateErrorFile(SBCommandReturnObjectRef instance, SBFileRef file);
 
 LLDB_API void SBCommandReturnObjectPutCString(SBCommandReturnObjectRef instance,
                                               const char *string, int len);

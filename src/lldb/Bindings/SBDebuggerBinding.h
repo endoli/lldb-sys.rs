@@ -79,20 +79,19 @@ LLDB_API void SBDebuggerSkipLLDBInitFiles(SBDebuggerRef instance, bool b);
 
 LLDB_API void SBDebuggerSkipAppInitFiles(SBDebuggerRef instance, bool b);
 
-LLDB_API void SBDebuggerSetInputFileHandle(SBDebuggerRef instance, FILE *f,
-                                           bool transfer_ownership);
+LLDB_API SBErrorRef SBDebuggerSetInputString(SBDebuggerRef instance, const char *data);
 
-LLDB_API void SBDebuggerSetOutputFileHandle(SBDebuggerRef instance, FILE *f,
-                                            bool transfer_ownership);
+LLDB_API SBErrorRef SBDebuggerSetInputFile(SBDebuggerRef instance, SBFileRef file);
 
-LLDB_API void SBDebuggerSetErrorFileHandle(SBDebuggerRef instance, FILE *f,
-                                           bool transfer_ownership);
+LLDB_API SBErrorRef SBDebuggerSetOutputFile(SBDebuggerRef instance, SBFileRef file);
 
-LLDB_API FILE *SBDebuggerGetInputFileHandle(SBDebuggerRef instance);
+LLDB_API SBErrorRef SBDebuggerSetErrorFile(SBDebuggerRef instance, SBFileRef file);
 
-LLDB_API FILE *SBDebuggerGetOutputFileHandle(SBDebuggerRef instance);
+LLDB_API SBFileRef SBDebuggerGetInputFile(SBDebuggerRef instance);
 
-LLDB_API FILE *SBDebuggerGetErrorFileHandle(SBDebuggerRef instance);
+LLDB_API SBFileRef SBDebuggerGetOutputFile(SBDebuggerRef instance);
+
+LLDB_API SBFileRef SBDebuggerGetErrorFile(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSaveInputTerminalState(SBDebuggerRef instance);
 
@@ -108,8 +107,8 @@ LLDB_API SBListenerRef SBDebuggerGetListener(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerHandleProcessEvent(SBDebuggerRef instance,
                                            SBProcessRef process,
-                                           SBEventRef event, FILE *out,
-                                           FILE *err);
+                                           SBEventRef event, SBFileRef out,
+                                           SBFileRef err);
 
 LLDB_API SBTargetRef SBDebuggerCreateTarget(
     SBDebuggerRef instance, const char *filename, const char *target_triple,
@@ -178,6 +177,10 @@ LLDB_API bool SBDebuggerGetUseExternalEditor(SBDebuggerRef instance);
 LLDB_API bool SBDebuggerSetUseColor(SBDebuggerRef instance, bool use_color);
 
 LLDB_API bool SBDebuggerGetUseColor(SBDebuggerRef instance);
+
+LLDB_API bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance, bool use_source_cache);
+
+LLDB_API bool SBDebuggerGetUseSourceCache(SBDebuggerRef instance);
 
 LLDB_API bool SBDebuggerGetDefaultArchitecture(char *arch_name,
                                                size_t arch_name_len);
@@ -289,6 +292,9 @@ LLDB_API void SBDebuggerRunCommandInterpreter2(
     SBDebuggerRef instance, bool auto_handle_events, bool spawn_thread,
     SBCommandInterpreterRunOptionsRef options, int num_errors,
     bool quit_requested, bool stopped_for_crash);
+
+LLDB_API void SBDebuggerRunCommandInterpreter3(
+    SBDebuggerRef instance, SBCommandInterpreterRunOptionsRef options);
 
 #ifdef __cplusplus
 }

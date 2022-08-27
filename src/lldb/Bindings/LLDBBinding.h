@@ -33,6 +33,7 @@
 #include "lldb/Bindings/SBEventBinding.h"
 #include "lldb/Bindings/SBExecutionContextBinding.h"
 #include "lldb/Bindings/SBExpressionOptionsBinding.h"
+#include "lldb/Bindings/SBFileBinding.h"
 #include "lldb/Bindings/SBFileSpecBinding.h"
 #include "lldb/Bindings/SBFileSpecListBinding.h"
 #include "lldb/Bindings/SBFrameBinding.h"

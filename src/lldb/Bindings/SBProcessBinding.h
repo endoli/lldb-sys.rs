@@ -49,7 +49,7 @@ LLDB_API size_t SBProcessGetAsyncProfileData(SBProcessRef instance, char *dst,
                                              size_t dst_len);
 
 LLDB_API void SBProcessReportEventState(SBProcessRef instance, SBEventRef event,
-                                        FILE *out);
+                                        SBFileRef out);
 
 LLDB_API void SBProcessAppendEventStateReport(SBProcessRef instance,
                                               SBEventRef event,
@@ -176,6 +176,8 @@ LLDB_API const char *SBProcessGetBroadcasterClass(void);
 
 LLDB_API bool SBProcessGetDescription(SBProcessRef instance,
                                       SBStreamRef description);
+
+LLDB_API SBStructuredDataRef SBProcessGetExtendedCrashInformation(SBProcessRef instance);
 
 LLDB_API uint32_t SBProcessGetNumSupportedHardwareWatchpoints(
     SBProcessRef instance, SBErrorRef error);

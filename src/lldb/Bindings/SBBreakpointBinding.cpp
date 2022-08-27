@@ -44,6 +44,12 @@ void SBBreakpointClearAllBreakpointSites(SBBreakpointRef instance) {
   unwrapped->ClearAllBreakpointSites();
 }
 
+SBTargetRef SBBreakpointGetTarget(SBBreakpointRef instance) {
+  SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+  return reinterpret_cast<SBTargetRef>(
+      new SBTarget(unwrapped->GetTarget()));
+}
+
 SBBreakpointLocationRef
 SBBreakpointFindLocationByAddress(SBBreakpointRef instance,
                                   lldb_addr_t vm_addr) {
@@ -307,6 +313,13 @@ SBErrorRef SBBreakpointAddLocation(SBBreakpointRef instance,
   SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
   return reinterpret_cast<SBErrorRef>(new SBError(
       unwrapped->AddLocation(*reinterpret_cast<SBAddress *>(address))));
+}
+
+SBStructuredDataRef
+SBBreakpointSerializeToStructuredData(SBBreakpointRef instance) {
+  SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
+  return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(
+      unwrapped->SerializeToStructuredData()));
 }
 
 #ifdef __cplusplus

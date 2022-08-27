@@ -192,6 +192,11 @@ LLDB_API SBBreakpointRef SBTargetBreakpointCreateByLocation5(
     SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line,
     uint32_t column, lldb_addr_t offset, SBFileSpecListRef module_list);
 
+LLDB_API SBBreakpointRef SBTargetBreakpointCreateByLocation6(
+    SBTargetRef instance, SBFileSpecRef file_spec, uint32_t line,
+    uint32_t column, lldb_addr_t offset, SBFileSpecListRef module_list,
+    bool move_to_nearest_code);
+
 LLDB_API SBBreakpointRef SBTargetBreakpointCreateByName(
     SBTargetRef instance, const char *symbol_name, const char *module_name);
 

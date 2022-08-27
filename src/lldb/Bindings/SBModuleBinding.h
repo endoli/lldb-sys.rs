@@ -124,6 +124,10 @@ LLDB_API SBAddressRef SBModuleGetObjectFileHeaderAddress(SBModuleRef instance);
 LLDB_API SBAddressRef
 SBModuleGetObjectFileEntryPointAddress(SBModuleRef instance);
 
+LLDB_API uint32_t SBModuleGetNumberAllocatedModules();
+
+LLDB_API void SBModuleGarbageCollectAllocatedModules();
+
 #ifdef __cplusplus
 }
 #endif

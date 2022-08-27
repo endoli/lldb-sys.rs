@@ -199,6 +199,16 @@ bool SBTypeIsTypedefType(SBTypeRef instance) {
   return unwrapped->IsTypedefType();
 }
 
+bool SBTypeIsAnonymousType(SBTypeRef instance) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return unwrapped->IsAnonymousType();
+}
+
+bool SBTypeIsScopedEnumerationType(SBTypeRef instance) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return unwrapped->IsScopedEnumerationType();
+}
+
 SBTypeRef SBTypeGetPointerType(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
   return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetPointerType()));
@@ -251,6 +261,11 @@ SBTypeRef SBTypeGetVectorElementType(SBTypeRef instance) {
 SBTypeRef SBTypeGetCanonicalType(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
   return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetCanonicalType()));
+}
+
+SBTypeRef SBTypeGetEnumerationIntegerType(SBTypeRef instance) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetEnumerationIntegerType()));
 }
 
 enum lldb::BasicType SBTypeGetBasicType(SBTypeRef instance) {
@@ -343,6 +358,12 @@ SBTypeMemberFunctionRef SBTypeGetMemberFunctionAtIndex(SBTypeRef instance,
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
   return reinterpret_cast<SBTypeMemberFunctionRef>(
       new SBTypeMemberFunction(unwrapped->GetMemberFunctionAtIndex(idx)));
+}
+
+SBModuleRef SBTypeGetModule(SBTypeRef instance) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return reinterpret_cast<SBModuleRef>(
+      new SBModule(unwrapped->GetModule()));
 }
 
 const char *SBTypeGetName(SBTypeRef instance) {

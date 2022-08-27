@@ -31,6 +31,8 @@ LLDB_API bool SBBreakpointIsValid(SBBreakpointRef instance);
 
 LLDB_API void SBBreakpointClearAllBreakpointSites(SBBreakpointRef instance);
 
+LLDB_API SBTargetRef SBBreakpointGetTarget(SBBreakpointRef instance);
+
 LLDB_API SBBreakpointLocationRef SBBreakpointFindLocationByAddress(
     SBBreakpointRef instance, lldb_addr_t vm_addr);
 
@@ -153,6 +155,9 @@ LLDB_API bool SBBreakpointIsHardware(SBBreakpointRef instance);
 
 LLDB_API SBErrorRef SBBreakpointAddLocation(SBBreakpointRef instance,
                                             SBAddressRef address);
+
+LLDB_API SBStructuredDataRef
+SBBreakpointSerializeToStructuredData(SBBreakpointRef instance);
 
 #ifdef __cplusplus
 }

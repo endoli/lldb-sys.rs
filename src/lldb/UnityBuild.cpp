@@ -18,6 +18,7 @@
 #include "Bindings/SBEventBinding.cpp"
 #include "Bindings/SBExecutionContextBinding.cpp"
 #include "Bindings/SBExpressionOptionsBinding.cpp"
+#include "Bindings/SBFileBinding.cpp"
 #include "Bindings/SBFileSpecBinding.cpp"
 #include "Bindings/SBFileSpecListBinding.cpp"
 #include "Bindings/SBFrameBinding.cpp"

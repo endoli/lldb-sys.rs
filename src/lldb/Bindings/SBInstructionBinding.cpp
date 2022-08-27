@@ -78,9 +78,9 @@ bool SBInstructionHasDelaySlot(SBInstructionRef instance) {
   return unwrapped->HasDelaySlot();
 }
 
-void SBInstructionPrint(SBInstructionRef instance, FILE *out) {
+void SBInstructionPrint(SBInstructionRef instance, SBFileRef out) {
   SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);
-  unwrapped->Print(reinterpret_cast<FILE *>(out));
+  unwrapped->Print(*reinterpret_cast<SBFile *>(out));
 }
 
 bool SBInstructionGetDescription(SBInstructionRef instance,

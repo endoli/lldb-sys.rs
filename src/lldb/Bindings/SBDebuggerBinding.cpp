@@ -128,37 +128,46 @@ void SBDebuggerSkipAppInitFiles(SBDebuggerRef instance, bool b) {
   unwrapped->SkipAppInitFiles(b);
 }
 
-void SBDebuggerSetInputFileHandle(SBDebuggerRef instance, FILE *f,
-                                  bool transfer_ownership) {
+SBErrorRef SBDebuggerSetInputString(SBDebuggerRef instance, const char *data) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  unwrapped->SetInputFileHandle(f, transfer_ownership);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetInputString(data)));
 }
 
-void SBDebuggerSetOutputFileHandle(SBDebuggerRef instance, FILE *f,
-                                   bool transfer_ownership) {
+SBErrorRef SBDebuggerSetInputFile(SBDebuggerRef instance, SBFileRef file) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  unwrapped->SetOutputFileHandle(f, transfer_ownership);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetInputFile(*reinterpret_cast<SBFile *>(file))));
 }
 
-void SBDebuggerSetErrorFileHandle(SBDebuggerRef instance, FILE *f,
-                                  bool transfer_ownership) {
+SBErrorRef SBDebuggerSetOutputFile(SBDebuggerRef instance, SBFileRef file) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  unwrapped->SetErrorFileHandle(f, transfer_ownership);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetOutputFile(*reinterpret_cast<SBFile *>(file))));
 }
 
-FILE *SBDebuggerGetInputFileHandle(SBDebuggerRef instance) {
+SBErrorRef SBDebuggerSetErrorFile(SBDebuggerRef instance, SBFileRef file) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return unwrapped->GetInputFileHandle();
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetErrorFile(*reinterpret_cast<SBFile *>(file))));
 }
 
-FILE *SBDebuggerGetOutputFileHandle(SBDebuggerRef instance) {
+SBFileRef SBDebuggerGetInputFile(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return unwrapped->GetOutputFileHandle();
+  return reinterpret_cast<SBFileRef>(
+      new SBFile(unwrapped->GetInputFile()));
 }
 
-FILE *SBDebuggerGetErrorFileHandle(SBDebuggerRef instance) {
+SBFileRef SBDebuggerGetOutputFile(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return unwrapped->GetErrorFileHandle();
+  return reinterpret_cast<SBFileRef>(
+      new SBFile(unwrapped->GetOutputFile()));
+}
+
+SBFileRef SBDebuggerGetErrorFile(SBDebuggerRef instance) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return reinterpret_cast<SBFileRef>(
+      new SBFile(unwrapped->GetErrorFile()));
 }
 
 void SBDebuggerSaveInputTerminalState(SBDebuggerRef instance) {
@@ -190,10 +199,12 @@ SBListenerRef SBDebuggerGetListener(SBDebuggerRef instance) {
 }
 
 void SBDebuggerHandleProcessEvent(SBDebuggerRef instance, SBProcessRef process,
-                                  SBEventRef event, FILE *out, FILE *err) {
+                                  SBEventRef event, SBFileRef out, SBFileRef err) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   unwrapped->HandleProcessEvent(*reinterpret_cast<SBProcess *>(process),
-                                *reinterpret_cast<SBEvent *>(event), out, err);
+                                *reinterpret_cast<SBEvent *>(event),
+                                *reinterpret_cast<SBFile *>(out),
+                                *reinterpret_cast<SBFile *>(err));
 }
 
 SBTargetRef SBDebuggerCreateTarget(SBDebuggerRef instance, const char *filename,
@@ -351,6 +362,16 @@ bool SBDebuggerSetUseColor(SBDebuggerRef instance, bool use_color) {
 bool SBDebuggerGetUseColor(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   return unwrapped->GetUseColor();
+}
+
+bool SBDebuggerSetSourceCache(SBDebuggerRef instance, bool use_source_cache) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return unwrapped->SetUseSourceCache(use_source_cache);
+}
+
+bool SBDebuggerGetUseSourceCache(SBDebuggerRef instance) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return unwrapped->GetUseSourceCache();
 }
 
 bool SBDebuggerGetDefaultArchitecture(char *arch_name, size_t arch_name_len) {
@@ -590,6 +611,13 @@ void SBDebuggerRunCommandInterpreter2(SBDebuggerRef instance,
       auto_handle_events, spawn_thread,
       *reinterpret_cast<SBCommandInterpreterRunOptions *>(options), num_errors,
       quit_requested, stopped_for_crash);
+}
+
+void SBDebuggerRunCommandInterpreter3(SBDebuggerRef instance,
+                                      SBCommandInterpreterRunOptionsRef options) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  unwrapped->RunCommandInterpreter(
+      *reinterpret_cast<SBCommandInterpreterRunOptions *>(options));
 }
 
 #ifdef __cplusplus

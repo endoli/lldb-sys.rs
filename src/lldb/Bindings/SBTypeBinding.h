@@ -100,6 +100,10 @@ LLDB_API bool SBTypeIsVectorType(SBTypeRef instance);
 
 LLDB_API bool SBTypeIsTypedefType(SBTypeRef instance);
 
+LLDB_API bool SBTypeIsAnonymousType(SBTypeRef instance);
+
+LLDB_API bool SBTypeIsScopedEnumerationType(SBTypeRef instance);
+
 LLDB_API SBTypeRef SBTypeGetPointerType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetPointeeType(SBTypeRef instance);
@@ -119,6 +123,8 @@ LLDB_API SBTypeRef SBTypeGetArrayType(SBTypeRef instance, uint64_t size);
 LLDB_API SBTypeRef SBTypeGetVectorElementType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetCanonicalType(SBTypeRef instance);
+
+LLDB_API SBTypeRef SBTypeGetEnumerationIntegerType(SBTypeRef instance);
 
 LLDB_API ENUM(BasicType) SBTypeGetBasicType(SBTypeRef instance);
 
@@ -158,6 +164,8 @@ LLDB_API uint32_t SBTypeGetNumberOfMemberFunctions(SBTypeRef instance);
 
 LLDB_API SBTypeMemberFunctionRef
 SBTypeGetMemberFunctionAtIndex(SBTypeRef instance, uint32_t idx);
+
+LLDB_API SBModuleRef SBTypeGetModule(SBTypeRef instance);
 
 LLDB_API const char *SBTypeGetName(SBTypeRef instance);
 

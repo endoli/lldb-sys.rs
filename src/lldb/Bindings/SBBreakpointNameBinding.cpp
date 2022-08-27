@@ -148,10 +148,15 @@ void SBBreakpointNameSetCallback(SBBreakpointNameRef instance,
   unwrapped->SetCallback(callback, baton);
 }
 
-void SBBreakpointNameSetScriptCallbackFunction(
-    SBBreakpointNameRef instance, const char *callback_function_name) {
+SBErrorRef
+SBBreakpointNameSetScriptCallbackFunction(SBBreakpointNameRef instance,
+                                          const char *callback_function_name,
+                                          SBStructuredDataRef extra_args) {
   SBBreakpointName *unwrapped = reinterpret_cast<SBBreakpointName *>(instance);
-  unwrapped->SetScriptCallbackFunction(callback_function_name);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->SetScriptCallbackFunction(
+          callback_function_name,
+          *reinterpret_cast<SBStructuredData *>(extra_args))));
 }
 
 void SBBreakpointNameSetCommandLineCommands(SBBreakpointNameRef instance,

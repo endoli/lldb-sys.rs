@@ -46,6 +46,12 @@ LLDB_API bool SBCommandInterpreterRunOptionsGetEchoCommands(
 LLDB_API void SBCommandInterpreterRunOptionsSetEchoCommands(
     SBCommandInterpreterRunOptionsRef instance, bool);
 
+LLDB_API bool SBCommandInterpreterRunOptionsGetEchoCommentCommands(
+    SBCommandInterpreterRunOptionsRef instance);
+
+LLDB_API void SBCommandInterpreterRunOptionsSetEchoCommentCommands(
+    SBCommandInterpreterRunOptionsRef instance, bool echo);
+
 LLDB_API bool SBCommandInterpreterRunOptionsGetPrintResults(
     SBCommandInterpreterRunOptionsRef instance);
 
@@ -112,6 +118,9 @@ LLDB_API SBCommandRef SBCommandInterpreterAddCommand(
 
 LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory(
     SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);
+
+LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory2(
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result, bool is_repl);
 
 LLDB_API void SBCommandInterpreterSourceInitFileInCurrentWorkingDirectory(
     SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);

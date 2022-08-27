@@ -83,6 +83,20 @@ void SBCommandInterpreterRunOptionsSetEchoCommands(
   unwrapped->SetEchoCommands(var0);
 }
 
+bool SBCommandInterpreterRunOptionsGetEchoCommentCommands(
+    SBCommandInterpreterRunOptionsRef instance) {
+  SBCommandInterpreterRunOptions *unwrapped =
+      reinterpret_cast<SBCommandInterpreterRunOptions *>(instance);
+  return unwrapped->GetEchoCommentCommands();
+}
+
+void SBCommandInterpreterRunOptionsSetEchoCommentCommands(
+    SBCommandInterpreterRunOptionsRef instance, bool echo) {
+  SBCommandInterpreterRunOptions *unwrapped =
+      reinterpret_cast<SBCommandInterpreterRunOptions *>(instance);
+  unwrapped->SetEchoCommentCommands(echo);
+}
+
 bool SBCommandInterpreterRunOptionsGetPrintResults(
     SBCommandInterpreterRunOptionsRef instance) {
   SBCommandInterpreterRunOptions *unwrapped =
@@ -225,6 +239,14 @@ void SBCommandInterpreterSourceInitFileInHomeDirectory(
       reinterpret_cast<SBCommandInterpreter *>(instance);
   unwrapped->SourceInitFileInHomeDirectory(
       *reinterpret_cast<SBCommandReturnObject *>(result));
+}
+
+void SBCommandInterpreterSourceInitFileInHomeDirectory2(
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result, bool is_repl) {
+  SBCommandInterpreter *unwrapped =
+      reinterpret_cast<SBCommandInterpreter *>(instance);
+  unwrapped->SourceInitFileInHomeDirectory(
+      *reinterpret_cast<SBCommandReturnObject *>(result), is_repl);
 }
 
 void SBCommandInterpreterSourceInitFileInCurrentWorkingDirectory(

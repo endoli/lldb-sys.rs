@@ -87,9 +87,9 @@ LLDB_API void SBBreakpointNameSetCallback(SBBreakpointNameRef instance,
                                           SBBreakpointHitCallback callback,
                                           void *baton);
 
-LLDB_API void
-SBBreakpointNameSetScriptCallbackFunction(SBBreakpointNameRef instance,
-                                          const char *callback_function_name);
+LLDB_API SBErrorRef SBBreakpointNameSetScriptCallbackFunction(
+    SBBreakpointRef instance, const char *callback_function_name,
+    SBStructuredDataRef extra_args);
 
 LLDB_API void
 SBBreakpointNameSetCommandLineCommands(SBBreakpointNameRef instance,

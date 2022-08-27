@@ -62,6 +62,11 @@ void SBStreamRedirectToFile(SBStreamRef instance, const char *path,
   unwrapped->RedirectToFile(path, append);
 }
 
+void SBStreamRedirectToFile2(SBStreamRef instance, SBFileRef file) {
+  SBStream *unwrapped = reinterpret_cast<SBStream *>(instance);
+  unwrapped->RedirectToFile(*reinterpret_cast<SBFile *>(file));
+}
+
 void SBStreamRedirectToFileHandle(SBStreamRef instance, FILE *fh,
                                   bool transfer_fh_ownership) {
   SBStream *unwrapped = reinterpret_cast<SBStream *>(instance);

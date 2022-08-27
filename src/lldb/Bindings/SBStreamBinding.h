@@ -33,6 +33,8 @@ LLDB_API void SBStreamPrint(SBStreamRef instance, const char *str);
 LLDB_API void SBStreamRedirectToFile(SBStreamRef instance, const char *path,
                                      bool append);
 
+LLDB_API void SBStreamRedirectToFile2(SBStreamRef instance, SBFileRef file);
+
 LLDB_API void SBStreamRedirectToFileHandle(SBStreamRef instance, FILE *fh,
                                            bool transfer_fh_ownership);
 

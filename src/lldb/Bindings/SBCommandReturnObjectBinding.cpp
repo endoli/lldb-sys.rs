@@ -50,11 +50,10 @@ const char *SBCommandReturnObjectGetError(SBCommandReturnObjectRef instance) {
   return unwrapped->GetError();
 }
 
-size_t SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance,
-                                      FILE *fh) {
+size_t SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
-  return unwrapped->PutOutput(fh);
+  return unwrapped->PutOutput(*reinterpret_cast<SBFile *>(file));
 }
 
 size_t SBCommandReturnObjectGetOutputSize(SBCommandReturnObjectRef instance) {
@@ -69,11 +68,10 @@ size_t SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance) {
   return unwrapped->GetErrorSize();
 }
 
-size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance,
-                                     FILE *fh) {
+size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
-  return unwrapped->PutError(fh);
+  return unwrapped->PutError(*reinterpret_cast<SBFile *>(file));
 }
 
 void SBCommandReturnObjectClear(SBCommandReturnObjectRef instance) {
@@ -130,17 +128,17 @@ bool SBCommandReturnObjectGetDescription(SBCommandReturnObjectRef instance,
 }
 
 void SBCommandReturnObjectSetImmediateOutputFile(
-    SBCommandReturnObjectRef instance, FILE *fh) {
+    SBCommandReturnObjectRef instance, SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
-  unwrapped->SetImmediateOutputFile(fh);
+  unwrapped->SetImmediateOutputFile(*reinterpret_cast<SBFile *>(file));
 }
 
 void SBCommandReturnObjectSetImmediateErrorFile(
-    SBCommandReturnObjectRef instance, FILE *fh) {
+    SBCommandReturnObjectRef instance, SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
-  unwrapped->SetImmediateErrorFile(fh);
+  unwrapped->SetImmediateErrorFile(*reinterpret_cast<SBFile *>(file));
 }
 
 void SBCommandReturnObjectPutCString(SBCommandReturnObjectRef instance,

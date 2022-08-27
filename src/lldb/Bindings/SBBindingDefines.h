@@ -86,6 +86,7 @@ LLDB_API typedef struct SBEventOpaque *SBEventRef;
 LLDB_API typedef struct SBEventListOpaque *SBEventListRef;
 LLDB_API typedef struct SBExecutionContextOpaque *SBExecutionContextRef;
 LLDB_API typedef struct SBExpressionOptionsOpaque *SBExpressionOptionsRef;
+LLDB_API typedef struct SBFileOpaque *SBFileRef;
 LLDB_API typedef struct SBFileSpecOpaque *SBFileSpecRef;
 LLDB_API typedef struct SBFileSpecListOpaque *SBFileSpecListRef;
 LLDB_API typedef struct SBFrameOpaque *SBFrameRef;

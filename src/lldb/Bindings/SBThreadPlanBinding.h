@@ -19,7 +19,8 @@ extern "C" {
 LLDB_API SBThreadPlanRef CreateSBThreadPlan(void);
 
 LLDB_API SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread,
-                                             const char *class_name);
+                                             const char *class_name,
+                                             SBStructuredDataRef args_data);
 
 LLDB_API SBThreadPlanRef CloneSBThreadPlan(SBThreadPlanRef instance);
 
@@ -49,6 +50,10 @@ LLDB_API bool SBThreadPlanIsPlanComplete(SBThreadPlanRef instance);
 LLDB_API bool SBThreadPlanIsPlanStale(SBThreadPlanRef instance);
 
 LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);
+
+LLDB_API bool SBThreadPlanGetStopOthers(SBThreadPlanRef instance);
+
+LLDB_API void SBThreadPlanSetStopOthers(SBThreadPlanRef instance, bool stop_others);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(
     SBThreadPlanRef instance, SBAddressRef start_address,

@@ -88,10 +88,10 @@ size_t SBProcessGetAsyncProfileData(SBProcessRef instance, char *dst,
 }
 
 void SBProcessReportEventState(SBProcessRef instance, SBEventRef event,
-                               FILE *out) {
+                               SBFileRef out) {
   SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
   unwrapped->ReportEventState(*reinterpret_cast<SBEvent *>(event),
-                              reinterpret_cast<FILE *>(out));
+                              *reinterpret_cast<SBFile *>(out));
 }
 
 void SBProcessAppendEventStateReport(SBProcessRef instance, SBEventRef event,
@@ -366,6 +366,12 @@ const char *SBProcessGetBroadcasterClass() {
 bool SBProcessGetDescription(SBProcessRef instance, SBStreamRef description) {
   SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
   return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
+}
+
+SBStructuredDataRef SBProcessGetExtendedCrashInformation(SBProcessRef instance) {
+  SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+  return reinterpret_cast<SBStructuredDataRef>(
+      new SBStructuredData(unwrapped->GetExtendedCrashInformation()));
 }
 
 uint32_t SBProcessGetNumSupportedHardwareWatchpoints(SBProcessRef instance,

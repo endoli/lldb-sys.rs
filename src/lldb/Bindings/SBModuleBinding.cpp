@@ -260,6 +260,14 @@ SBAddressRef SBModuleGetObjectFileEntryPointAddress(SBModuleRef instance) {
       new SBAddress(unwrapped->GetObjectFileEntryPointAddress()));
 }
 
+uint32_t SBModuleGetNumberAllocatedModules() {
+  return SBModule::GetNumberAllocatedModules();
+}
+
+void SBModuleGarbageCollectAllocatedModules() {
+  SBModule::GarbageCollectAllocatedModules();
+}
+
 #ifdef __cplusplus
 }
 #endif
