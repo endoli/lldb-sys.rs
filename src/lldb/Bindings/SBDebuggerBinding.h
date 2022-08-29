@@ -123,6 +123,8 @@ LLDB_API SBTargetRef SBDebuggerCreateTargetWithFileAndArch(
 LLDB_API SBTargetRef SBDebuggerCreateTarget2(SBDebuggerRef instance,
                                              const char *filename);
 
+LLDB_API SBTargetRef SBDebuggerGetDummyTarget(SBDebuggerRef instance);
+
 LLDB_API bool SBDebuggerDeleteTarget(SBDebuggerRef instance,
                                      SBTargetRef target);
 

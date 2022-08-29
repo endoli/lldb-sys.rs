@@ -240,6 +240,12 @@ SBTargetRef SBDebuggerCreateTarget2(SBDebuggerRef instance,
       new SBTarget(unwrapped->CreateTarget(filename)));
 }
 
+SBTargetRef SBDebuggerGetDummyTarget(SBDebuggerRef instance) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return reinterpret_cast<SBTargetRef>(
+      new SBTarget(unwrapped->GetDummyTarget()));
+}
+
 bool SBDebuggerDeleteTarget(SBDebuggerRef instance, SBTargetRef target) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   return unwrapped->DeleteTarget(*reinterpret_cast<SBTarget *>(target));

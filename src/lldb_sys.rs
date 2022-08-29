@@ -2123,6 +2123,7 @@ extern "C" {
         instance: SBDebuggerRef,
         filename: *const ::std::os::raw::c_char,
     ) -> SBTargetRef;
+    pub fn SBDebuggerGetDummyTarget(instance: SBDebuggerRef) -> SBTargetRef;
     pub fn SBDebuggerDeleteTarget(instance: SBDebuggerRef, target: SBTargetRef) -> bool;
     pub fn SBDebuggerGetTargetAtIndex(instance: SBDebuggerRef, idx: u32) -> SBTargetRef;
     pub fn SBDebuggerGetIndexOfTarget(instance: SBDebuggerRef, target: SBTargetRef) -> u32;
