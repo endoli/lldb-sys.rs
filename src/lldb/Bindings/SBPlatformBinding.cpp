@@ -111,8 +111,7 @@ void SBPlatformShellCommandClear(SBPlatformShellCommandRef instance) {
   unwrapped->Clear();
 }
 
-const char *
-SBPlatformShellCommandGetShell(SBPlatformShellCommandRef instance) {
+const char *SBPlatformShellCommandGetShell(SBPlatformShellCommandRef instance) {
   SBPlatformShellCommand *unwrapped =
       reinterpret_cast<SBPlatformShellCommand *>(instance);
   return unwrapped->GetShell();

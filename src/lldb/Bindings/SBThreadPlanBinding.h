@@ -53,7 +53,8 @@ LLDB_API bool SBThreadPlanIsValid(SBThreadPlanRef instance);
 
 LLDB_API bool SBThreadPlanGetStopOthers(SBThreadPlanRef instance);
 
-LLDB_API void SBThreadPlanSetStopOthers(SBThreadPlanRef instance, bool stop_others);
+LLDB_API void SBThreadPlanSetStopOthers(SBThreadPlanRef instance,
+                                        bool stop_others);
 
 LLDB_API SBThreadPlanRef SBThreadPlanQueueThreadPlanForStepOverRange(
     SBThreadPlanRef instance, SBAddressRef start_address,

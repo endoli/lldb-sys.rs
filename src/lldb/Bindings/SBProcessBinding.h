@@ -177,7 +177,8 @@ LLDB_API const char *SBProcessGetBroadcasterClass(void);
 LLDB_API bool SBProcessGetDescription(SBProcessRef instance,
                                       SBStreamRef description);
 
-LLDB_API SBStructuredDataRef SBProcessGetExtendedCrashInformation(SBProcessRef instance);
+LLDB_API SBStructuredDataRef
+SBProcessGetExtendedCrashInformation(SBProcessRef instance);
 
 LLDB_API uint32_t SBProcessGetNumSupportedHardwareWatchpoints(
     SBProcessRef instance, SBErrorRef error);

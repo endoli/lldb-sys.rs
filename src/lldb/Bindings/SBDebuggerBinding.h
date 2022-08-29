@@ -79,13 +79,17 @@ LLDB_API void SBDebuggerSkipLLDBInitFiles(SBDebuggerRef instance, bool b);
 
 LLDB_API void SBDebuggerSkipAppInitFiles(SBDebuggerRef instance, bool b);
 
-LLDB_API SBErrorRef SBDebuggerSetInputString(SBDebuggerRef instance, const char *data);
+LLDB_API SBErrorRef SBDebuggerSetInputString(SBDebuggerRef instance,
+                                             const char *data);
 
-LLDB_API SBErrorRef SBDebuggerSetInputFile(SBDebuggerRef instance, SBFileRef file);
+LLDB_API SBErrorRef SBDebuggerSetInputFile(SBDebuggerRef instance,
+                                           SBFileRef file);
 
-LLDB_API SBErrorRef SBDebuggerSetOutputFile(SBDebuggerRef instance, SBFileRef file);
+LLDB_API SBErrorRef SBDebuggerSetOutputFile(SBDebuggerRef instance,
+                                            SBFileRef file);
 
-LLDB_API SBErrorRef SBDebuggerSetErrorFile(SBDebuggerRef instance, SBFileRef file);
+LLDB_API SBErrorRef SBDebuggerSetErrorFile(SBDebuggerRef instance,
+                                           SBFileRef file);
 
 LLDB_API SBFileRef SBDebuggerGetInputFile(SBDebuggerRef instance);
 
@@ -180,7 +184,8 @@ LLDB_API bool SBDebuggerSetUseColor(SBDebuggerRef instance, bool use_color);
 
 LLDB_API bool SBDebuggerGetUseColor(SBDebuggerRef instance);
 
-LLDB_API bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance, bool use_source_cache);
+LLDB_API bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance,
+                                          bool use_source_cache);
 
 LLDB_API bool SBDebuggerGetUseSourceCache(SBDebuggerRef instance);
 
@@ -295,8 +300,9 @@ LLDB_API void SBDebuggerRunCommandInterpreter2(
     SBCommandInterpreterRunOptionsRef options, int num_errors,
     bool quit_requested, bool stopped_for_crash);
 
-LLDB_API void SBDebuggerRunCommandInterpreter3(
-    SBDebuggerRef instance, SBCommandInterpreterRunOptionsRef options);
+LLDB_API void
+SBDebuggerRunCommandInterpreter3(SBDebuggerRef instance,
+                                 SBCommandInterpreterRunOptionsRef options);
 
 #ifdef __cplusplus
 }

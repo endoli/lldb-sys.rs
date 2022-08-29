@@ -1,5 +1,5 @@
 //===-- SBStructuredDataBinding.cpp ---------------------------------------*-
-//C++ -*-===//
+// C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure
 //

@@ -64,9 +64,8 @@ LLDB_API void SBPlatformShellCommandClear(SBPlatformShellCommandRef instance);
 LLDB_API const char *
 SBPlatformShellCommandGetShell(SBPlatformShellCommandRef instance);
 
-LLDB_API void
-SBPlatformShellCommandSetShel(SBPlatformShellCommandRef instance,
-                              const char *shell);
+LLDB_API void SBPlatformShellCommandSetShel(SBPlatformShellCommandRef instance,
+                                            const char *shell);
 
 LLDB_API const char *
 SBPlatformShellCommandGetCommand(SBPlatformShellCommandRef instance);

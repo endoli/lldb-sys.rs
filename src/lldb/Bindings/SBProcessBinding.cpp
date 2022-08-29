@@ -368,7 +368,8 @@ bool SBProcessGetDescription(SBProcessRef instance, SBStreamRef description) {
   return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));
 }
 
-SBStructuredDataRef SBProcessGetExtendedCrashInformation(SBProcessRef instance) {
+SBStructuredDataRef
+SBProcessGetExtendedCrashInformation(SBProcessRef instance) {
   SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
   return reinterpret_cast<SBStructuredDataRef>(
       new SBStructuredData(unwrapped->GetExtendedCrashInformation()));

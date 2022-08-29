@@ -120,7 +120,8 @@ LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory(
     SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);
 
 LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory2(
-    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result, bool is_repl);
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result,
+    bool is_repl);
 
 LLDB_API void SBCommandInterpreterSourceInitFileInCurrentWorkingDirectory(
     SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);

@@ -21,12 +21,10 @@ SBThreadPlanRef CreateSBThreadPlan() {
   return reinterpret_cast<SBThreadPlanRef>(new SBThreadPlan());
 }
 
-SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread,
-                                    const char *class_name,
+SBThreadPlanRef CreateSBThreadPlan2(SBThreadRef thread, const char *class_name,
                                     SBStructuredDataRef args_data) {
   return reinterpret_cast<SBThreadPlanRef>(
-      new SBThreadPlan(*reinterpret_cast<SBThread *>(thread),
-                       class_name,
+      new SBThreadPlan(*reinterpret_cast<SBThread *>(thread), class_name,
                        *reinterpret_cast<SBStructuredData *>(args_data)));
 }
 

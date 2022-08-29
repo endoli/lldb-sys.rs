@@ -154,20 +154,17 @@ SBErrorRef SBDebuggerSetErrorFile(SBDebuggerRef instance, SBFileRef file) {
 
 SBFileRef SBDebuggerGetInputFile(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return reinterpret_cast<SBFileRef>(
-      new SBFile(unwrapped->GetInputFile()));
+  return reinterpret_cast<SBFileRef>(new SBFile(unwrapped->GetInputFile()));
 }
 
 SBFileRef SBDebuggerGetOutputFile(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return reinterpret_cast<SBFileRef>(
-      new SBFile(unwrapped->GetOutputFile()));
+  return reinterpret_cast<SBFileRef>(new SBFile(unwrapped->GetOutputFile()));
 }
 
 SBFileRef SBDebuggerGetErrorFile(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
-  return reinterpret_cast<SBFileRef>(
-      new SBFile(unwrapped->GetErrorFile()));
+  return reinterpret_cast<SBFileRef>(new SBFile(unwrapped->GetErrorFile()));
 }
 
 void SBDebuggerSaveInputTerminalState(SBDebuggerRef instance) {
@@ -199,7 +196,8 @@ SBListenerRef SBDebuggerGetListener(SBDebuggerRef instance) {
 }
 
 void SBDebuggerHandleProcessEvent(SBDebuggerRef instance, SBProcessRef process,
-                                  SBEventRef event, SBFileRef out, SBFileRef err) {
+                                  SBEventRef event, SBFileRef out,
+                                  SBFileRef err) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   unwrapped->HandleProcessEvent(*reinterpret_cast<SBProcess *>(process),
                                 *reinterpret_cast<SBEvent *>(event),
@@ -619,8 +617,8 @@ void SBDebuggerRunCommandInterpreter2(SBDebuggerRef instance,
       quit_requested, stopped_for_crash);
 }
 
-void SBDebuggerRunCommandInterpreter3(SBDebuggerRef instance,
-                                      SBCommandInterpreterRunOptionsRef options) {
+void SBDebuggerRunCommandInterpreter3(
+    SBDebuggerRef instance, SBCommandInterpreterRunOptionsRef options) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   unwrapped->RunCommandInterpreter(
       *reinterpret_cast<SBCommandInterpreterRunOptions *>(options));

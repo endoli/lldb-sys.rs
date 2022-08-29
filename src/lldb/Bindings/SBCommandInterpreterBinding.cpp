@@ -242,7 +242,8 @@ void SBCommandInterpreterSourceInitFileInHomeDirectory(
 }
 
 void SBCommandInterpreterSourceInitFileInHomeDirectory2(
-    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result, bool is_repl) {
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result,
+    bool is_repl) {
   SBCommandInterpreter *unwrapped =
       reinterpret_cast<SBCommandInterpreter *>(instance);
   unwrapped->SourceInitFileInHomeDirectory(

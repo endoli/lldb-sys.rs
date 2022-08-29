@@ -35,7 +35,8 @@ LLDB_API void SBInstructionListClear(SBInstructionListRef instance);
 LLDB_API void SBInstructionListAppendInstruction(SBInstructionListRef instance,
                                                  SBInstructionRef inst);
 
-LLDB_API void SBInstructionListPrint(SBInstructionListRef instance, SBFileRef out);
+LLDB_API void SBInstructionListPrint(SBInstructionListRef instance,
+                                     SBFileRef out);
 
 LLDB_API bool SBInstructionListGetDescription(SBInstructionListRef instance,
                                               SBStreamRef description);

@@ -46,8 +46,7 @@ void SBBreakpointClearAllBreakpointSites(SBBreakpointRef instance) {
 
 SBTargetRef SBBreakpointGetTarget(SBBreakpointRef instance) {
   SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
-  return reinterpret_cast<SBTargetRef>(
-      new SBTarget(unwrapped->GetTarget()));
+  return reinterpret_cast<SBTargetRef>(new SBTarget(unwrapped->GetTarget()));
 }
 
 SBBreakpointLocationRef
@@ -318,8 +317,8 @@ SBErrorRef SBBreakpointAddLocation(SBBreakpointRef instance,
 SBStructuredDataRef
 SBBreakpointSerializeToStructuredData(SBBreakpointRef instance) {
   SBBreakpoint *unwrapped = reinterpret_cast<SBBreakpoint *>(instance);
-  return reinterpret_cast<SBStructuredDataRef>(new SBStructuredData(
-      unwrapped->SerializeToStructuredData()));
+  return reinterpret_cast<SBStructuredDataRef>(
+      new SBStructuredData(unwrapped->SerializeToStructuredData()));
 }
 
 #ifdef __cplusplus

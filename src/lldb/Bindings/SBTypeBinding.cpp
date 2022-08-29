@@ -265,7 +265,8 @@ SBTypeRef SBTypeGetCanonicalType(SBTypeRef instance) {
 
 SBTypeRef SBTypeGetEnumerationIntegerType(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
-  return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetEnumerationIntegerType()));
+  return reinterpret_cast<SBTypeRef>(
+      new SBType(unwrapped->GetEnumerationIntegerType()));
 }
 
 enum lldb::BasicType SBTypeGetBasicType(SBTypeRef instance) {
@@ -362,8 +363,7 @@ SBTypeMemberFunctionRef SBTypeGetMemberFunctionAtIndex(SBTypeRef instance,
 
 SBModuleRef SBTypeGetModule(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
-  return reinterpret_cast<SBModuleRef>(
-      new SBModule(unwrapped->GetModule()));
+  return reinterpret_cast<SBModuleRef>(new SBModule(unwrapped->GetModule()));
 }
 
 const char *SBTypeGetName(SBTypeRef instance) {

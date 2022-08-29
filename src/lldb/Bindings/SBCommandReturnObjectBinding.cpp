@@ -50,7 +50,8 @@ const char *SBCommandReturnObjectGetError(SBCommandReturnObjectRef instance) {
   return unwrapped->GetError();
 }
 
-size_t SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance, SBFileRef file) {
+size_t SBCommandReturnObjectPutOutput(SBCommandReturnObjectRef instance,
+                                      SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
   return unwrapped->PutOutput(*reinterpret_cast<SBFile *>(file));
@@ -68,7 +69,8 @@ size_t SBCommandReturnObjectGetErrorSize(SBCommandReturnObjectRef instance) {
   return unwrapped->GetErrorSize();
 }
 
-size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance, SBFileRef file) {
+size_t SBCommandReturnObjectPutError(SBCommandReturnObjectRef instance,
+                                     SBFileRef file) {
   SBCommandReturnObject *unwrapped =
       reinterpret_cast<SBCommandReturnObject *>(instance);
   return unwrapped->PutError(*reinterpret_cast<SBFile *>(file));

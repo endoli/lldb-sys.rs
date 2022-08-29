@@ -20,7 +20,8 @@ LLDB_API SBFileRef CreateSBFile(void);
 
 LLDB_API SBFileRef CreateSBFile2(FILE *file, bool transfer_ownership);
 
-LLDB_API SBFileRef CreateSBFile3(int fd, const char *mode, bool transfer_ownership);
+LLDB_API SBFileRef CreateSBFile3(int fd, const char *mode,
+                                 bool transfer_ownership);
 
 LLDB_API SBFileRef CloneSBFile(SBFileRef instance);
 
@@ -28,9 +29,11 @@ LLDB_API void DisposeSBFile(SBFileRef instance);
 
 LLDB_API bool SBFileIsValid(SBFileRef instance);
 
-LLDB_API SBErrorRef SBFileRead(SBFileRef instance, uint8_t *buf, size_t num_bytes, size_t *bytes_read);
+LLDB_API SBErrorRef SBFileRead(SBFileRef instance, uint8_t *buf,
+                               size_t num_bytes, size_t *bytes_read);
 
-LLDB_API SBErrorRef SBFileWrite(SBFileRef instance, const uint8_t *buf, size_t num_bytes, size_t *bytes_written);
+LLDB_API SBErrorRef SBFileWrite(SBFileRef instance, const uint8_t *buf,
+                                size_t num_bytes, size_t *bytes_written);
 
 LLDB_API SBErrorRef SBFileFlush(SBFileRef instance);
 
