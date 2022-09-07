@@ -40,6 +40,7 @@ fn test_match_libname() {
 #[cfg(target_os = "linux")]
 fn get_compiler_config() -> Build {
     // On linux lib directory and headers directory are provided by `llvm-config` utility.
+    println!("cargo:rerun-if-env-changed=LLVM_CONFIG");
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
     let lib_name = fs::read_dir(&llvm_lib_path)
