@@ -368,7 +368,7 @@ bool SBDebuggerGetUseColor(SBDebuggerRef instance) {
   return unwrapped->GetUseColor();
 }
 
-bool SBDebuggerSetSourceCache(SBDebuggerRef instance, bool use_source_cache) {
+bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance, bool use_source_cache) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   return unwrapped->SetUseSourceCache(use_source_cache);
 }
