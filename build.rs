@@ -7,7 +7,7 @@ use std::{fs, process::Command};
 
 #[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
-    let llvm_config = std::env::var("LLVM_CONFIG").unwrap_or("llvm-config".into());
+    let llvm_config = std::env::var("LLVM_CONFIG").unwrap_or_else(|_| "llvm-config".into());
     let res = Command::new(llvm_config).arg(arg).output().unwrap();
     if !res.status.success() {
         panic!(
@@ -46,7 +46,7 @@ fn get_compiler_config() -> Build {
     let lib_name = fs::read_dir(&llvm_lib_path)
         .expect("failed to stat libdir from llvm-config")
         .filter_map(|entry| match_libname(entry.unwrap().file_name().to_str().unwrap()))
-        .nth(0)
+        .next()
         .expect("unable to locate shared library of liblldb");
     println!("cargo:rustc-link-search={}", llvm_lib_path);
     println!("cargo:rustc-link-lib={}", lib_name);
@@ -75,7 +75,7 @@ fn get_compiler_config() -> Build {
 
 fn main() {
     println!("cargo:rerun-if-env-changed=DOCS_RS");
-    if let Ok(_) = std::env::var("DOCS_RS") {
+    if std::env::var("DOCS_RS").is_ok() {
         return;
     }
     get_compiler_config()
