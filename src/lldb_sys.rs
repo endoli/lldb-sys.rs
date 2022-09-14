@@ -370,6 +370,10 @@ pub enum StopReason {
     PlanComplete = 8,
     ThreadExiting = 9,
     Instrumentation = 10,
+    ProcessorTrace = 11,
+    Fork = 12,
+    VFork = 13,
+    VForkDone = 14,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -702,6 +706,16 @@ pub enum CommandArgumentType {
     Command = 84,
     ColumnNum = 85,
     LastArg = 86,
+    ModuleUUID = 87,
+    SaveCoreStyle = 88,
+    LogHandler = 89,
+    SEDStylePair = 90,
+    RecognizerID = 91,
+    ConnectURL = 92,
+    TargetID = 93,
+    StopHookID = 94,
+    ReproducerProvider = 95,
+    ReproducerSignal = 96,
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -907,20 +921,23 @@ pub enum TemplateArgumentKind {
     TemplateExpansion = 5,
     Expression = 6,
     Pack = 7,
+    NullPtr = 8,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-#[repr(u32)]
-pub enum TypeOptions {
-    None = 0,
-    Cascade = 1,
-    SkipPointers = 2,
-    SkipReferences = 4,
-    HideChildren = 8,
-    HideValue = 16,
-    ShowOneLiner = 32,
-    HideNames = 64,
-    NonCacheable = 128,
-    HideEmptyAggregates = 256,
+bitflags! {
+    #[repr(C)]
+    pub struct TypeOptions: u32 {
+        const NONE = 0;
+        const CASCADE = 1;
+        const SKIP_POINTERS = 2;
+        const SKIP_REFERENCES = 4;
+        const HIDE_CHILDREN = 8;
+        const HIDE_VALUE = 16;
+        const SHOW_ONE_LINER = 32;
+        const HIDE_NAMES = 64;
+        const NONCACHEABLE = 128;
+        const HIDE_EMPTY_AGGREGATES = 256;
+        const FRONT_END_WANTS_DEREFERENCE = 512;
+    }
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 #[repr(u32)]
@@ -1109,6 +1126,7 @@ bitflags! {
         const TRY_TARGET_API_LOCK = 32;
         const PROCESS_MUST_BE_LAUNCHED = 64;
         const PROCESS_MUST_BE_PAUSED = 128;
+        const PROCESS_MUST_BE_TRACED = 256;
     }
 }
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
