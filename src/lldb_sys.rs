@@ -183,7 +183,7 @@ pub type SBWatchpointRef = *mut SBWatchpointOpaque;
 pub enum SBUnixSignalsOpaque {}
 pub type SBUnixSignalsRef = *mut SBUnixSignalsOpaque;
 /// Process and thread states.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum StateType {
     Invalid = 0,
@@ -248,7 +248,7 @@ bitflags! {
 }
 
 /// Thread run modes.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum RunMode {
     OnlyThisThread = 0,
@@ -257,7 +257,7 @@ pub enum RunMode {
 }
 
 /// Byte order definitions.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ByteOrder {
     Invalid = 0,
@@ -267,7 +267,7 @@ pub enum ByteOrder {
 }
 
 /// Register encoding definitions.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum Encoding {
     Invalid = 0,
@@ -282,7 +282,7 @@ pub enum Encoding {
 }
 
 /// Display format definitions.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum Format {
     Default = 0,
@@ -327,7 +327,7 @@ pub enum Format {
     Unicode8 = 39,
     kNumFormats = 40,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum DescriptionLevel {
     Brief = 0,
@@ -336,7 +336,7 @@ pub enum DescriptionLevel {
     Initial = 3,
     kNumDescriptionLevels = 4,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ScriptLanguage {
     None = 0,
@@ -344,7 +344,7 @@ pub enum ScriptLanguage {
     Lua = 2,
     Unknown = 3,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum RegisterKind {
     EHFrame = 0,
@@ -356,7 +356,7 @@ pub enum RegisterKind {
 }
 
 /// Thread stop reasons.
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum StopReason {
     Invalid = 0,
@@ -375,7 +375,7 @@ pub enum StopReason {
     VFork = 13,
     VForkDone = 14,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ReturnStatus {
     Invalid = 0,
@@ -387,7 +387,7 @@ pub enum ReturnStatus {
     Failed = 6,
     Quit = 7,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ExpressionResults {
     Completed = 0,
@@ -401,7 +401,7 @@ pub enum ExpressionResults {
     StoppedForDebug = 8,
     ThreadVanished = 9,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ConnectionStatus {
     ConnectionStatusSuccess = 0,
@@ -412,7 +412,7 @@ pub enum ConnectionStatus {
     ConnectionStatusLostConnection = 5,
     ConnectionStatusInterrupted = 6,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ErrorType {
     Invalid = 0,
@@ -422,7 +422,7 @@ pub enum ErrorType {
     Expression = 4,
     Win32 = 5,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ValueType {
     Invalid = 0,
@@ -435,7 +435,7 @@ pub enum ValueType {
     ConstResult = 7,
     VariableThreadLocal = 8,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum InputReaderGranularity {
     Invalid = 0,
@@ -504,7 +504,7 @@ bitflags! {
         const EXECUTABLE = 4;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum InputReaderAction {
     Activate = 0,
@@ -516,7 +516,7 @@ pub enum InputReaderAction {
     EndOfFile = 6,
     Done = 7,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum BreakpointEventType {
     InvalidType = 1,
@@ -533,7 +533,7 @@ pub enum BreakpointEventType {
     ThreadChanged = 2048,
     AutoContinueChanged = 4096,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum WatchpointEventType {
     InvalidType = 1,
@@ -547,7 +547,7 @@ pub enum WatchpointEventType {
     ThreadChanged = 2048,
     TypeChanged = 4096,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum LanguageType {
     Unknown = 0,
@@ -590,7 +590,7 @@ pub enum LanguageType {
     ExtRenderScript = 37,
     NumLanguageTypes = 38,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum InstrumentationRuntimeType {
     AddressSanitizer = 0,
@@ -600,14 +600,14 @@ pub enum InstrumentationRuntimeType {
     SwiftRuntimeReporting = 4,
     NumInstrumentationRuntimeTypes = 5,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum DynamicValueType {
     NoDynamicValues = 0,
     DynamicCanRunTarget = 1,
     DynamicDontRunTarget = 2,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum AccessType {
     None = 0,
@@ -616,7 +616,7 @@ pub enum AccessType {
     Protected = 3,
     Package = 4,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum CommandArgumentType {
     Address = 0,
@@ -717,7 +717,7 @@ pub enum CommandArgumentType {
     ReproducerProvider = 95,
     ReproducerSignal = 96,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum SymbolType {
     Any = 0,
@@ -750,7 +750,7 @@ pub enum SymbolType {
     ObjCIVar = 27,
     ReExported = 28,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum SectionType {
     Invalid = 0,
@@ -832,7 +832,7 @@ bitflags! {
         const SELECTOR = 32;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum BasicType {
     Invalid = 0,
@@ -870,7 +870,7 @@ pub enum BasicType {
     Other = 32,
 }
 
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(i32)]
 pub enum StructuredDataType {
     Invalid = -1,
@@ -910,7 +910,7 @@ bitflags! {
         const ANY = 4294967295;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum TemplateArgumentKind {
     Null = 0,
@@ -939,7 +939,7 @@ bitflags! {
         const FRONT_END_WANTS_DEREFERENCE = 512;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum FrameComparison {
     Invalid = 0,
@@ -1019,21 +1019,21 @@ bitflags! {
             = Self::USER_RWX.bits;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum QueueItemKind {
     Unknown = 0,
     Function = 1,
     Block = 2,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum QueueKind {
     Unknown = 0,
     Serial = 1,
     Concurrent = 2,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum ExpressionEvaluationPhase {
     EvaluationParse = 0,
@@ -1048,7 +1048,7 @@ bitflags! {
         const WRITE = 2;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum GdbSignal {
     BadAccess = 145,
@@ -1058,7 +1058,7 @@ pub enum GdbSignal {
     Software = 149,
     Breakpoint = 150,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum PathType {
     LLDBShlibDir = 0,
@@ -1071,7 +1071,7 @@ pub enum PathType {
     GlobalLLDBTempSystemDir = 7,
     ClangDir = 8,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum MemberFunctionKind {
     Unknown = 0,
@@ -1080,7 +1080,7 @@ pub enum MemberFunctionKind {
     InstanceMethod = 3,
     StaticMethod = 4,
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum MatchType {
     Normal = 0,
@@ -1129,7 +1129,7 @@ bitflags! {
         const PROCESS_MUST_BE_TRACED = 256;
     }
 }
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
 #[repr(u32)]
 pub enum TypeSummaryCapping {
     SummaryCapped = 1,
