@@ -43,6 +43,16 @@ LLDB_API void SBInputReaderSetIsDone(SBInputReaderRef instance, bool);
 
 LLDB_API bool SBInputReaderIsActive(SBInputReaderRef instance);
 
+LLDB_API const char *SBDebuggerGetBroadcasterClass(void);
+
+LLDB_API SBBroadcasterRef SBDebuggerGetBroadcaster(SBDebuggerRef instance);
+
+LLDB_API const char *SBDebuggerGetProgressFromEvent(SBEventRef event,
+                                                    uint64_t *progress_id,
+                                                    uint64_t *completed,
+                                                    uint64_t *total,
+                                                    bool *is_debugger_specific);
+
 LLDB_API void SBDebuggerInitialize(void);
 
 LLDB_API void SBDebuggerTerminate(void);

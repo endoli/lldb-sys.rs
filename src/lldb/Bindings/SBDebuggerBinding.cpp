@@ -57,6 +57,25 @@ bool SBInputReaderIsActive(SBInputReaderRef instance) {
   return unwrapped->IsActive();
 }
 
+const char *SBDebuggerGetBroadcasterClass() {
+  return lldb::SBProcess::GetBroadcasterClass();
+}
+
+SBBroadcasterRef SBDebuggerGetBroadcaster(SBDebuggerRef instance) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return reinterpret_cast<SBBroadcasterRef>(
+      new SBBroadcaster(unwrapped->GetBroadcaster()));
+}
+
+const char *SBDebuggerGetProgressFromEvent(SBEventRef event,
+                                           uint64_t *progress_id,
+                                           uint64_t *completed,
+                                           uint64_t *total,
+                                           bool *is_debugger_specific) {
+    return SBDebugger::GetProgressFromEvent(*reinterpret_cast<SBEvent *>(event),
+                                            *progress_id, *completed, *total, *is_debugger_specific);
+}
+
 void SBDebuggerInitialize() { lldb::SBDebugger::Initialize(); }
 
 void SBDebuggerTerminate() { lldb::SBDebugger::Terminate(); }

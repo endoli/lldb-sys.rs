@@ -2064,6 +2064,15 @@ extern "C" {
     pub fn DisposeSBInputReader(instance: SBInputReaderRef);
     pub fn SBInputReaderSetIsDone(instance: SBInputReaderRef, arg1: bool);
     pub fn SBInputReaderIsActive(instance: SBInputReaderRef) -> bool;
+    pub fn SBDebuggerGetBroadcasterClass() -> *const ::std::os::raw::c_char;
+    pub fn SBDebuggerGetBroadcaster(instance: SBDebuggerRef) -> SBBroadcasterRef;
+    pub fn SBDebuggerGetProgressFromEvent(
+        instance: SBEventRef,
+        progress_id: *mut u64,
+        completed: *mut u64,
+        total: *mut u64,
+        is_debugger_specific: *mut bool,
+    ) -> *const ::std::os::raw::c_char;
     pub fn SBDebuggerInitialize();
     pub fn SBDebuggerTerminate();
     pub fn CloneSBDebugger(instance: SBDebuggerRef) -> SBDebuggerRef;
