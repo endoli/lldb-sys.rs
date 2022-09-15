@@ -49,6 +49,8 @@ LLDB_API bool SBProcessInfoEffectiveGroupIDIsValid(SBProcessInfoRef instance);
 
 LLDB_API lldb_pid_t SBProcessInfoGetParentProcessID(SBProcessInfoRef instance);
 
+LLDB_API const char *SBProcessInfoGetTriple(SBProcessInfoRef instance);
+
 #ifdef __cplusplus
 }
 #endif

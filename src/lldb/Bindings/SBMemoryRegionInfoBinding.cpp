@@ -77,6 +77,32 @@ const char *SBMemoryRegionInfoGetName(SBMemoryRegionInfoRef instance) {
   return unwrapped->GetName();
 }
 
+bool SBMemoryRegionInfoHasDirtyMemoryPageList(SBMemoryRegionInfoRef instance) {
+  SBMemoryRegionInfo *unwrapped =
+      reinterpret_cast<SBMemoryRegionInfo *>(instance);
+  return unwrapped->HasDirtyMemoryPageList();
+}
+
+uint32_t SBMemoryRegionInfoGetNumDirtyPages(SBMemoryRegionInfoRef instance) {
+  SBMemoryRegionInfo *unwrapped =
+      reinterpret_cast<SBMemoryRegionInfo *>(instance);
+  return unwrapped->GetNumDirtyPages();
+}
+
+lldb_addr_t
+SBMemoryRegionInfoGetDirtyPageAddressAtIndex(SBMemoryRegionInfoRef instance,
+                                             uint32_t idx) {
+  SBMemoryRegionInfo *unwrapped =
+      reinterpret_cast<SBMemoryRegionInfo *>(instance);
+  return unwrapped->GetDirtyPageAddressAtIndex(idx);
+}
+
+int SBMemoryRegionInfoGetPageSize(SBMemoryRegionInfoRef instance) {
+  SBMemoryRegionInfo *unwrapped =
+      reinterpret_cast<SBMemoryRegionInfo *>(instance);
+  return unwrapped->GetPageSize();
+}
+
 bool SBMemoryRegionInfoGetDescription(SBMemoryRegionInfoRef instance,
                                       SBStreamRef description) {
   SBMemoryRegionInfo *unwrapped =

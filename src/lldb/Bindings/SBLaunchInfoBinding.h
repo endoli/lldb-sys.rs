@@ -122,6 +122,19 @@ LLDB_API bool SBLaunchInfoGetDetachOnError(SBLaunchInfoRef instance);
 LLDB_API void SBLaunchInfoSetDetachOnError(SBLaunchInfoRef instance,
                                            bool enable);
 
+LLDB_API const char *
+SBLaunchInfoGetScriptedProcessClassName(SBLaunchInfoRef instance);
+
+LLDB_API void SBLaunchInfoSetScriptedProcessClassName(SBLaunchInfoRef instance,
+                                                      const char *class_name);
+
+LLDB_API SBStructuredDataRef
+SBLaunchInfoGetScriptedProcessDictionary(SBLaunchInfoRef instance);
+
+LLDB_API void
+SBLaunchInfoSetScriptedProcessDictionary(SBLaunchInfoRef instance,
+                                         SBStructuredDataRef dict);
+
 #ifdef __cplusplus
 }
 #endif

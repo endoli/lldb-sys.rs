@@ -2799,6 +2799,20 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
     pub fn SBLaunchInfoGetDetachOnError(instance: SBLaunchInfoRef) -> bool;
     pub fn SBLaunchInfoSetDetachOnError(instance: SBLaunchInfoRef, enable: bool);
+    pub fn SBLaunchInfoGetScriptedProcessClassName(
+        instance: SBLaunchInfoRef,
+    ) -> *const ::std::os::raw::c_char;
+    pub fn SBLaunchInfoSetScriptedProcessClassName(
+        instance: SBLaunchInfoRef,
+        class_name: *const ::std::os::raw::c_char,
+    );
+    pub fn SBLaunchInfoGetScriptedProcessDictionary(
+        instance: SBLaunchInfoRef,
+    ) -> SBStructuredDataRef;
+    pub fn SBLaunchInfoSetScriptedProcessDictionary(
+        instance: SBLaunchInfoRef,
+        dict: SBStructuredDataRef,
+    );
     pub fn CreateSBLineEntry() -> SBLineEntryRef;
     pub fn CloneSBLineEntry(instance: SBLineEntryRef) -> SBLineEntryRef;
     pub fn DisposeSBLineEntry(instance: SBLineEntryRef);
@@ -2897,6 +2911,13 @@ extern "C" {
     pub fn SBMemoryRegionInfoGetName(
         instance: SBMemoryRegionInfoRef,
     ) -> *const ::std::os::raw::c_char;
+    pub fn SBMemoryRegionInfoHasDirtyMemoryPageList(instance: SBMemoryRegionInfoRef) -> bool;
+    pub fn SBMemoryRegionInfoGetNumDirtyPages(instance: SBMemoryRegionInfoRef) -> u32;
+    pub fn SBMemoryRegionInfoGetDirtyPageAddressAtIndex(
+        instance: SBMemoryRegionInfoRef,
+        idx: u32,
+    ) -> lldb_addr_t;
+    pub fn SBMemoryRegionInfoGetPageSize(instance: SBMemoryRegionInfoRef) -> i32;
     pub fn SBMemoryRegionInfoGetDescription(
         instance: SBMemoryRegionInfoRef,
         description: SBStreamRef,
@@ -3365,6 +3386,13 @@ extern "C" {
     ) -> SBErrorRef;
     pub fn SBProcessGetMemoryRegions(instance: SBProcessRef) -> SBMemoryRegionInfoListRef;
     pub fn SBProcessGetProcessInfo(instance: SBProcessRef) -> SBProcessInfoRef;
+    pub fn SBProcessAllocateMemory(
+        instance: SBProcessRef,
+        size: size_t,
+        permissions: u32,
+        error: SBErrorRef,
+    ) -> lldb_addr_t;
+    pub fn SBProcessDeallocateMemory(instance: SBProcessRef, ptr: lldb_addr_t) -> SBErrorRef;
     pub fn CreateSBProcessInfo() -> SBProcessInfoRef;
     pub fn CloneSBProcessInfo(instance: SBProcessInfoRef) -> SBProcessInfoRef;
     pub fn DisposeSBProcessInfo(instance: SBProcessInfoRef);
@@ -3381,6 +3409,7 @@ extern "C" {
     pub fn SBProcessInfoEffectiveUserIDIsValid(instance: SBProcessInfoRef) -> bool;
     pub fn SBProcessInfoEffectiveGroupIDIsValid(instance: SBProcessInfoRef) -> bool;
     pub fn SBProcessInfoGetParentProcessID(instance: SBProcessInfoRef) -> lldb_pid_t;
+    pub fn SBProcessInfoGetTriple(instance: SBProcessInfoRef) -> *const ::std::os::raw::c_char;
     pub fn CreateSBQueue() -> SBQueueRef;
     pub fn CloneSBQueue(instance: SBQueueRef) -> SBQueueRef;
     pub fn DisposeSBQueue(instance: SBQueueRef);
@@ -3504,6 +3533,10 @@ extern "C" {
     pub fn SBStructuredDataSetFromJSON(
         instance: SBStructuredDataRef,
         stream: SBStreamRef,
+    ) -> SBErrorRef;
+    pub fn SBStructuredDataSetFromJSON2(
+        instance: SBStructuredDataRef,
+        json: *const ::std::os::raw::c_char,
     ) -> SBErrorRef;
     pub fn SBStructuredDataGetAsJSON(
         instance: SBStructuredDataRef,
@@ -4048,6 +4081,7 @@ extern "C" {
         options: SBExpressionOptionsRef,
     ) -> SBValueRef;
     pub fn SBTargetGetStackRedZoneSize(instance: SBTargetRef) -> lldb_addr_t;
+    pub fn SBTargetIsLoaded(instance: SBTargetRef, module: SBModuleRef) -> bool;
     pub fn SBTargetGetLaunchInfo(instance: SBTargetRef) -> SBLaunchInfoRef;
     pub fn SBTargetSetLaunchInfo(instance: SBTargetRef, launch_info: SBLaunchInfoRef);
     pub fn SBThreadGetBroadcasterClassName() -> *const ::std::os::raw::c_char;

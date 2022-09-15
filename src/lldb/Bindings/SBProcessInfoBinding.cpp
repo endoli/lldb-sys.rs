@@ -97,6 +97,11 @@ lldb_pid_t SBProcessInfoGetParentProcessID(SBProcessInfoRef instance) {
   return unwrapped->GetParentProcessID();
 }
 
+const char *SBProcessInfoGetTriple(SBProcessInfoRef instance) {
+  SBProcessInfo *unwrapped = reinterpret_cast<SBProcessInfo *>(instance);
+  return unwrapped->GetTriple();
+}
+
 #ifdef __cplusplus
 }
 #endif

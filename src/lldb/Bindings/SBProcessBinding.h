@@ -223,6 +223,13 @@ SBProcessGetMemoryRegions(SBProcessRef instance);
 
 LLDB_API SBProcessInfoRef SBProcessGetProcessInfo(SBProcessRef instance);
 
+LLDB_API lldb_addr_t SBProcessAllocateMemory(SBProcessRef instance, size_t size,
+                                             uint32_t permissions,
+                                             SBErrorRef error);
+
+LLDB_API SBErrorRef SBProcessDeallocateMemory(SBProcessRef instance,
+                                              lldb_addr_t ptr);
+
 #ifdef __cplusplus
 }
 #endif

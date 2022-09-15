@@ -69,11 +69,11 @@ SBBroadcasterRef SBDebuggerGetBroadcaster(SBDebuggerRef instance) {
 
 const char *SBDebuggerGetProgressFromEvent(SBEventRef event,
                                            uint64_t *progress_id,
-                                           uint64_t *completed,
-                                           uint64_t *total,
+                                           uint64_t *completed, uint64_t *total,
                                            bool *is_debugger_specific) {
-    return SBDebugger::GetProgressFromEvent(*reinterpret_cast<SBEvent *>(event),
-                                            *progress_id, *completed, *total, *is_debugger_specific);
+  return SBDebugger::GetProgressFromEvent(*reinterpret_cast<SBEvent *>(event),
+                                          *progress_id, *completed, *total,
+                                          *is_debugger_specific);
 }
 
 void SBDebuggerInitialize() { lldb::SBDebugger::Initialize(); }
@@ -387,7 +387,8 @@ bool SBDebuggerGetUseColor(SBDebuggerRef instance) {
   return unwrapped->GetUseColor();
 }
 
-bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance, bool use_source_cache) {
+bool SBDebuggerSetUseSourceCache(SBDebuggerRef instance,
+                                 bool use_source_cache) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   return unwrapped->SetUseSourceCache(use_source_cache);
 }

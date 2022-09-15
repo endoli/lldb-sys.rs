@@ -247,6 +247,31 @@ void SBLaunchInfoSetDetachOnError(SBLaunchInfoRef instance, bool enable) {
   unwrapped->SetDetachOnError(enable);
 }
 
+const char *SBLaunchInfoGetScriptedProcessClassName(SBLaunchInfoRef instance) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  return unwrapped->GetScriptedProcessClassName();
+}
+
+void SBLaunchInfoSetScriptedProcessClassName(SBLaunchInfoRef instance,
+                                             const char *class_name) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  unwrapped->SetScriptedProcessClassName(class_name);
+}
+
+SBStructuredDataRef
+SBLaunchInfoGetScriptedProcessDictionary(SBLaunchInfoRef instance) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  return reinterpret_cast<SBStructuredDataRef>(
+      new SBStructuredData(unwrapped->GetScriptedProcessDictionary()));
+}
+
+void SBLaunchInfoSetScriptedProcessDictionary(SBLaunchInfoRef instance,
+                                              SBStructuredDataRef dict) {
+  SBLaunchInfo *unwrapped = reinterpret_cast<SBLaunchInfo *>(instance);
+  unwrapped->SetScriptedProcessDictionary(
+      *reinterpret_cast<SBStructuredData *>(dict));
+}
+
 #ifdef __cplusplus
 }
 #endif

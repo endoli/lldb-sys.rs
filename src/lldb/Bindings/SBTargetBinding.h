@@ -392,6 +392,8 @@ LLDB_API SBValueRef SBTargetEvaluateExpression(SBTargetRef instance,
 
 LLDB_API lldb_addr_t SBTargetGetStackRedZoneSize(SBTargetRef instance);
 
+LLDB_API bool SBTargetIsLoaded(SBTargetRef instance, SBModuleRef module);
+
 LLDB_API SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance);
 
 LLDB_API void SBTargetSetLaunchInfo(SBTargetRef instance,

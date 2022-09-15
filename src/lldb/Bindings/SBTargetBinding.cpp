@@ -886,6 +886,11 @@ lldb::addr_t SBTargetGetStackRedZoneSize(SBTargetRef instance) {
   return unwrapped->GetStackRedZoneSize();
 }
 
+bool SBTargetIsLoaded(SBTargetRef instance, SBModuleRef module) {
+  SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+  return unwrapped->IsLoaded(*reinterpret_cast<SBModule *>(module));
+}
+
 SBLaunchInfoRef SBTargetGetLaunchInfo(SBTargetRef instance) {
   SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
   return reinterpret_cast<SBLaunchInfoRef>(

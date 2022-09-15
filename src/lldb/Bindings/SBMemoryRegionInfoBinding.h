@@ -41,6 +41,17 @@ LLDB_API bool SBMemoryRegionInfoIsMapped(SBMemoryRegionInfoRef instance);
 
 LLDB_API const char *SBMemoryRegionInfoGetName(SBMemoryRegionInfoRef instance);
 
+LLDB_API bool
+SBMemoryRegionInfoHasDirtyMemoryPageList(SBMemoryRegionInfoRef instance);
+
+LLDB_API uint32_t
+SBMemoryRegionInfoGetNumDirtyPages(SBMemoryRegionInfoRef instance);
+
+LLDB_API lldb_addr_t SBMemoryRegionInfoGetDirtyPageAddressAtIndex(
+    SBMemoryRegionInfoRef instance, uint32_t idx);
+
+LLDB_API int SBMemoryRegionInfoGetPageSize(SBMemoryRegionInfoRef instance);
+
 LLDB_API bool SBMemoryRegionInfoGetDescription(SBMemoryRegionInfoRef instance,
                                                SBStreamRef description);
 

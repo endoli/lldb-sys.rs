@@ -465,6 +465,19 @@ SBProcessInfoRef SBProcessGetProcessInfo(SBProcessRef instance) {
       new SBProcessInfo(unwrapped->GetProcessInfo()));
 }
 
+lldb_addr_t SBProcessAllocateMemory(SBProcessRef instance, size_t size,
+                                    uint32_t permissions, SBErrorRef error) {
+  SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+  return unwrapped->AllocateMemory(size, permissions,
+                                   *reinterpret_cast<SBError *>(error));
+}
+
+SBErrorRef SBProcessDeallocateMemory(SBProcessRef instance, lldb_addr_t ptr) {
+  SBProcess *unwrapped = reinterpret_cast<SBProcess *>(instance);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->DeallocateMemory(ptr)));
+}
+
 #ifdef __cplusplus
 }
 #endif
