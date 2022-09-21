@@ -755,10 +755,14 @@ pub enum SymbolType {
 pub enum SectionType {
     Invalid = 0,
     Code = 1,
+    /// The section contains child sections.
     Container = 2,
     Data = 3,
+    /// Inlined C string data.
     DataCString = 4,
+    /// Pointers to C string data.
     DataCStringPointers = 5,
+    /// Address of a symbol in the symbol table.
     DataSymbolAddress = 6,
     Data4 = 7,
     Data8 = 8,
@@ -766,7 +770,9 @@ pub enum SectionType {
     DataPointers = 10,
     Debug = 11,
     ZeroFill = 12,
+    /// Pointer to function pointer + selector.
     DataObjCMessageRefs = 13,
+    /// Objective-C const CFString/NSString objects.
     DataObjCCFStrings = 14,
     DWARFDebugAbbrev = 15,
     DWARFDebugAddr = 16,
@@ -786,22 +792,33 @@ pub enum SectionType {
     DWARFAppleTypes = 30,
     DWARFAppleNamespaces = 31,
     DWARFAppleObjC = 32,
+    /// ELF `SHT_SYMTAB` section.
     ELFSymbolTable = 33,
+    /// ELF `SHT_DYNSYM1 section.
     ELFDynamicSymbols = 34,
+    /// ELF `SHT_REL` or `SHT_RELA` section.
     ELFRelocationEntries = 35,
+    /// ELF `SHT_DYNAMIC` section.
     ELFDynamicLinkInfo = 36,
     EHFrame = 37,
     ARMexidx = 38,
     ARMextab = 39,
+    /// Compact unwind section in Mach-O, `__TEXT,__unwind_info`.
     CompactUnwind = 40,
     GoSymtab = 41,
+    /// Dummy section for symbols with an absolute address.
     AbsoluteAddress = 42,
     DWARFGNUDebugAltLink = 43,
+    /// DWARF `.debug_types` section.
     DWARFDebugTypes = 44,
+    /// DWARF v5 `.debug_names` section.
     DWARFDebugNames = 45,
     Other = 46,
+    /// DWARF v5 `.debug_line_str` section.
     DWARFDebugLineStr = 47,
+    /// DWARF v5 `.debug_rnglists` section.
     DWARFDebugRngLists = 48,
+    /// DWARF v5 `.debug_loclists` section.
     DWARFDebugLocLists = 49,
     DWARFDebugAbbrevDwo = 50,
     DWARFDebugInfoDwo = 51,
