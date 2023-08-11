@@ -1,6 +1,7 @@
 # lldb-sys
 
 [![](https://img.shields.io/crates/v/lldb-sys.svg)](https://crates.io/crates/lldb-sys)
+[![docs.rs](https://img.shields.io/docsrs/lldb-sys)](https://docs.rs/lldb-sys)
 
 Dual licensed under the MIT and Apache 2 licenses. The C bindings for LLDB are
 licensed under the same license as LLVM.
