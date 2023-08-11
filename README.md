@@ -24,24 +24,16 @@ other support files required.
 
 ### macOS:
 
-You will need to have 2 environment variables set to do the build:
-
-* `LLVM_ROOT` - This points to the root of the LLVM source tree.
-* `LLVM_BUILD_ROOT` - This points to the root of an LLVM build directory. This may be the same as the LLVM source tree, especially if you're working from a binary install.
-
-For now, you will have to set an `@rpath` manually on your executables so
-that they can find the `LLDB.framework` at runtime. This can be done with
-`install_name_tool`:
+Install `llvm` via homebrew:
 
 ```shell
-install_name_tool -add_rpath /Applications/Xcode.app/Contents/SharedFrameworks target/debug/examples/barebones
+brew install llvm
 ```
 
-Alternatively, for testing and local work, you can set the
-`DYLD_FRAMEWORK_PATH`:
+Then, tell this crate how to find `llvm-config`:
 
 ```shell
-export DYLD_FRAMEWORK_PATH=/Applications/Xcode.app/Contents/SharedFrameworks
+export LLVM_CONFIG="`brew --prefix llvm`/bin/llvm-config"
 ```
 
 ## Contribution

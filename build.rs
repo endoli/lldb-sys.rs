@@ -1,9 +1,7 @@
 use cc::Build;
 
-#[cfg(target_os = "linux")]
 use std::{fs, process::Command};
 
-#[cfg(target_os = "linux")]
 fn get_llvm_output(arg: &str) -> String {
     let llvm_config = std::env::var("LLVM_CONFIG").unwrap_or_else(|_| "llvm-config".into());
     let res = Command::new(llvm_config).arg(arg).output().unwrap();
@@ -17,12 +15,15 @@ fn get_llvm_output(arg: &str) -> String {
     String::from_utf8(res.stdout).unwrap().trim().to_string()
 }
 
-#[cfg(target_os = "linux")]
 fn match_libname(name: &str) -> Option<String> {
     if name.starts_with("liblldb.so") || name.starts_with("liblldb-") {
         if let Some(pos) = name.rfind(".so") {
             return Some(name["lib".len()..pos].into());
         }
+    }
+    if name.starts_with("liblldb") && name.ends_with(".dylib") {
+        // Trim the leading "lib" and trailing ".dylib"
+        return Some(name[3..name.len() - 6].into());
     }
     None
 }
@@ -35,9 +36,9 @@ fn test_match_libname() {
     assert_eq!(match_libname("liblldbIntelFeatures.so"), None);
 }
 
-#[cfg(target_os = "linux")]
 fn get_compiler_config() -> Build {
-    // On linux lib directory and headers directory are provided by `llvm-config` utility.
+    // We use the `llvm-config` utility to get the include and library paths
+    // as well as the name of the shared library.
     println!("cargo:rerun-if-env-changed=LLVM_CONFIG");
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
@@ -51,24 +52,6 @@ fn get_compiler_config() -> Build {
     let mut res = cc::Build::new();
     res.include(llvm_headers_path);
     res
-}
-
-#[cfg(target_os = "macos")]
-fn get_compiler_config() -> Build {
-    println!("cargo:rerun-if-env-changed=LLVM_ROOT");
-    println!("cargo:rerun-if-env-changed=LLVM_BUILD_ROOT");
-    println!("cargo:rustc-link-lib=framework=LLDB");
-    println!("cargo:rustc-link-search=framework=/Applications/Xcode.app/Contents/SharedFrameworks");
-    let mut res = cc::Build::new();
-    res.include(env!("LLVM_ROOT").to_owned() + "/tools/lldb/include")
-        .include(env!("LLVM_ROOT").to_owned() + "/include")
-        .include(env!("LLVM_BUILD_ROOT").to_owned() + "/include");
-    res
-}
-
-#[cfg(not(any(target_os = "macos", target_os = "linux")))]
-fn get_compiler_config() -> Build {
-    panic!("Only MacOS and Linux are supported currently");
 }
 
 fn main() {
