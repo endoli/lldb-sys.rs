@@ -215,6 +215,7 @@ pub enum StateType {
     Suspended = 11,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct LaunchFlags: u32 {
         /// Exec when launching and turn the calling process into a new process.
@@ -455,6 +456,7 @@ bitflags! {
     /// Each definition corresponds to a one of the member variables
     /// in this class, and requests that that item be resolved, or
     /// indicates that the member did get resolved.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct SymbolContextItem: u32 {
         /// Set when a target is requested from a query or was located
@@ -481,13 +483,13 @@ bitflags! {
         /// Indicates to try and look everything up during a routine symbol
         /// context query. This doesn't actually include looking up a variable.
         const EVERYTHING
-            = Self::TARGET.bits |
-              Self::MODULE.bits |
-              Self::COMPUNIT.bits |
-              Self::FUNCTION.bits |
-              Self::BLOCK.bits |
-              Self::LINE_ENTRY.bits |
-              Self::SYMBOL.bits;
+            = Self::TARGET.bits() |
+              Self::MODULE.bits() |
+              Self::COMPUNIT.bits() |
+              Self::FUNCTION.bits() |
+              Self::BLOCK.bits() |
+              Self::LINE_ENTRY.bits() |
+              Self::SYMBOL.bits();
         /// Set when a global or static variable is requested from a query,
         /// or was located in the query results.
         ///
@@ -498,6 +500,7 @@ bitflags! {
     }
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct Permissions: u32 {
         const WRITABLE = 1;
@@ -832,6 +835,7 @@ pub enum SectionType {
     DWARFDebugTuIndex = 58,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct EmulateInstructionOptions: u32 {
         const NONE = 0;
@@ -840,6 +844,7 @@ bitflags! {
     }
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct FunctionNameType: u32 {
         const NONE = 0;
@@ -903,6 +908,7 @@ pub enum StructuredDataType {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct TypeClass: u32 {
         const INVALID = 0;
@@ -942,6 +948,7 @@ pub enum TemplateArgumentKind {
     NullPtr = 8,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct TypeOptions: u32 {
         const NONE = 0;
@@ -968,6 +975,7 @@ pub enum FrameComparison {
     Older = 5,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct FilePermissions: u32 {
         const WORLD_EXECUTE = 1;
@@ -980,61 +988,61 @@ bitflags! {
         const USER_WRITE = 128;
         const USER_READ = 256;
         const WORLD_RX
-            = Self::WORLD_READ.bits |
-              Self::WORLD_EXECUTE.bits;
+            = Self::WORLD_READ.bits() |
+              Self::WORLD_EXECUTE.bits();
         const WORLD_RW
-            = Self::WORLD_READ.bits |
-              Self::WORLD_WRITE.bits;
+            = Self::WORLD_READ.bits() |
+              Self::WORLD_WRITE.bits();
         const WORLD_RWX
-            = Self::WORLD_READ.bits |
-              Self::WORLD_WRITE.bits |
-              Self::WORLD_EXECUTE.bits;
+            = Self::WORLD_READ.bits() |
+              Self::WORLD_WRITE.bits() |
+              Self::WORLD_EXECUTE.bits();
         const GROUP_RX
-            = Self::GROUP_READ.bits |
-              Self::GROUP_EXECUTE.bits;
+            = Self::GROUP_READ.bits() |
+              Self::GROUP_EXECUTE.bits();
         const GROUP_RW
-            = Self::GROUP_READ.bits |
-              Self::GROUP_WRITE.bits;
+            = Self::GROUP_READ.bits() |
+              Self::GROUP_WRITE.bits();
         const GROUP_RWX
-            = Self::GROUP_READ.bits |
-              Self::GROUP_WRITE.bits |
-              Self::GROUP_EXECUTE.bits;
+            = Self::GROUP_READ.bits() |
+              Self::GROUP_WRITE.bits() |
+              Self::GROUP_EXECUTE.bits();
         const USER_RX
-            = Self::USER_READ.bits |
-              Self::USER_EXECUTE.bits;
+            = Self::USER_READ.bits() |
+              Self::USER_EXECUTE.bits();
         const USER_RW
-            = Self::USER_READ.bits |
-              Self::USER_WRITE.bits;
+            = Self::USER_READ.bits() |
+              Self::USER_WRITE.bits();
         const USER_RWX
-            = Self::USER_READ.bits |
-              Self::USER_WRITE.bits |
-              Self::USER_EXECUTE.bits;
+            = Self::USER_READ.bits() |
+              Self::USER_WRITE.bits() |
+              Self::USER_EXECUTE.bits();
         const EVERYONE_R
-            = Self::WORLD_READ.bits |
-              Self::GROUP_READ.bits |
-              Self::USER_READ.bits;
+            = Self::WORLD_READ.bits() |
+              Self::GROUP_READ.bits() |
+              Self::USER_READ.bits();
         const EVERYONE_W
-            = Self::WORLD_WRITE.bits |
-              Self::GROUP_WRITE.bits |
-              Self::USER_WRITE.bits;
+            = Self::WORLD_WRITE.bits() |
+              Self::GROUP_WRITE.bits() |
+              Self::USER_WRITE.bits();
         const EVERYONE_X
-            = Self::WORLD_EXECUTE.bits |
-              Self::GROUP_EXECUTE.bits |
-              Self::USER_EXECUTE.bits;
+            = Self::WORLD_EXECUTE.bits() |
+              Self::GROUP_EXECUTE.bits() |
+              Self::USER_EXECUTE.bits();
         const EVERYONE_RW
-            = Self::EVERYONE_R.bits |
-              Self::EVERYONE_W.bits;
+            = Self::EVERYONE_R.bits() |
+              Self::EVERYONE_W.bits();
         const EVERYONE_RX
-            = Self::EVERYONE_R.bits |
-              Self::EVERYONE_X.bits;
+            = Self::EVERYONE_R.bits() |
+              Self::EVERYONE_X.bits();
         const EVERYONE_RWX
-            = Self::EVERYONE_R.bits |
-              Self::EVERYONE_W.bits |
-              Self::EVERYONE_X.bits;
+            = Self::EVERYONE_R.bits() |
+              Self::EVERYONE_W.bits() |
+              Self::EVERYONE_X.bits();
         const FILE_DEFAULT
-            = Self::USER_RW.bits;
+            = Self::USER_RW.bits();
         const DIRECTORY_DEFAULT
-            = Self::USER_RWX.bits;
+            = Self::USER_RWX.bits();
     }
 }
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
@@ -1060,6 +1068,7 @@ pub enum ExpressionEvaluationPhase {
     EvaluationComplete = 3,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct WatchpointKind: u32 {
         const READ = 1;
@@ -1106,6 +1115,7 @@ pub enum MatchType {
     StartsWith = 2,
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct TypeFlags: u32 {
         const HAS_CHILDREN = 1;
@@ -1134,6 +1144,7 @@ bitflags! {
     }
 }
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
     pub struct CommandFlags: u32 {
         const REQUIRES_TARGET = 1;

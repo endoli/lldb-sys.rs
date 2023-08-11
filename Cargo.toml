@@ -20,7 +20,7 @@ path = "examples/barebones/main.rs"
 
 [dependencies]
 libc = "0.2"
-bitflags = "1"
+bitflags = "2"
 
 [build-dependencies]
 cc = "1"
