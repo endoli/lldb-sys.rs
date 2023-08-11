@@ -1,5 +1,3 @@
-extern crate cc;
-
 use cc::Build;
 
 #[cfg(target_os = "linux")]

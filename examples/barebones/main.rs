@@ -1,4 +1,4 @@
-extern crate lldb_sys as lldb;
+use lldb_sys as lldb;
 
 fn main() {
     unsafe {

@@ -17,10 +17,6 @@
 //! It is primarily for use by a higher level crate, such as
 //! [lldb.rs](https://crates.io/crates/lldb/).
 
-extern crate libc;
-#[macro_use]
-extern crate bitflags;
-
 mod lldb_sys;
 
 pub use crate::lldb_sys::*;

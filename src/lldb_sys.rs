@@ -8,6 +8,7 @@
 )]
 #![allow(clippy::unreadable_literal)]
 
+use bitflags::bitflags;
 use libc::{size_t, FILE};
 
 /// Storage for the value of an address.
