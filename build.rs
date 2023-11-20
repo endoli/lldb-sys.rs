@@ -47,8 +47,8 @@ fn get_compiler_config() -> Build {
         .filter_map(|entry| match_libname(entry.unwrap().file_name().to_str().unwrap()))
         .next()
         .expect("unable to locate shared library of liblldb");
-    println!("cargo:rustc-link-search={}", llvm_lib_path);
-    println!("cargo:rustc-link-lib={}", lib_name);
+    println!("cargo:rustc-link-search={llvm_lib_path}");
+    println!("cargo:rustc-link-lib={lib_name}");
     let mut res = cc::Build::new();
     res.include(llvm_headers_path);
     res
