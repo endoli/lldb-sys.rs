@@ -413,6 +413,14 @@ SBDebuggerGetScriptingLanguage(SBDebuggerRef instance,
   return unwrapped->GetScriptingLanguage(script_language_name);
 }
 
+SBStructuredDataRef
+SBDebuggerGetScriptInterpreterInfo(SBDebuggerRef instance,
+                                   lldb::ScriptLanguage language) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return reinterpret_cast<SBStructuredDataRef>(
+      new SBStructuredData(unwrapped->GetScriptInterpreterInfo(language)));
+}
+
 const char *SBDebuggerGetVersionString() {
   return lldb::SBDebugger::GetVersionString();
 }
@@ -537,6 +545,17 @@ void SBDebuggerSetScriptLanguage(SBDebuggerRef instance,
   unwrapped->SetScriptLanguage(script_lang);
 }
 
+lldb::LanguageType SBDebuggerGetREPLLanguage(SBDebuggerRef instance) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return unwrapped->GetREPLLanguage();
+}
+
+void SBDebuggerSetREPLLanguage(SBDebuggerRef instance,
+                               lldb::LanguageType repl_lang) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  unwrapped->SetREPLLanguage(repl_lang);
+}
+
 bool SBDebuggerGetCloseInputOnEOF(SBDebuggerRef instance) {
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   return unwrapped->GetCloseInputOnEOF();
@@ -642,6 +661,14 @@ void SBDebuggerRunCommandInterpreter3(
   SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
   unwrapped->RunCommandInterpreter(
       *reinterpret_cast<SBCommandInterpreterRunOptions *>(options));
+}
+
+SBErrorRef SBDebuggerRunREPL(SBDebuggerRef instance,
+                             lldb::LanguageType language,
+                             const char *repl_options) {
+  SBDebugger *unwrapped = reinterpret_cast<SBDebugger *>(instance);
+  return reinterpret_cast<SBErrorRef>(
+      new SBError(unwrapped->RunREPL(language, repl_options)));
 }
 
 #ifdef __cplusplus

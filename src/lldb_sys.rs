@@ -2041,6 +2041,14 @@ extern "C" {
         endian: ByteOrder,
         addr_size: u8,
     );
+    pub fn SBDataSetDataWithOwnership(
+        instance: SBDataRef,
+        error: SBErrorRef,
+        buf: *mut ::std::os::raw::c_void,
+        size: usize,
+        endian: ByteOrder,
+        addr_size: u8,
+    );
     pub fn SBDataAppend(instance: SBDataRef, rhs: SBDataRef) -> bool;
     pub fn SBDataCreateDataFromCString(
         endian: ByteOrder,
@@ -2228,6 +2236,10 @@ extern "C" {
         instance: SBDebuggerRef,
         script_language_name: *const ::std::os::raw::c_char,
     ) -> ScriptLanguage;
+    pub fn SBDebuggerGetScriptInterpreterInfo(
+        instance: SBDebuggerRef,
+        language: ScriptLanguage,
+    ) -> SBStructuredDataRef;
     pub fn SBDebuggerGetVersionString() -> *const ::std::os::raw::c_char;
     pub fn SBDebuggerStateAsCString(state: StateType) -> *const ::std::os::raw::c_char;
     pub fn SBDebuggerStateIsRunningState(state: StateType) -> bool;
@@ -2270,6 +2282,8 @@ extern "C" {
     pub fn SBDebuggerSetPrompt(instance: SBDebuggerRef, prompt: *const ::std::os::raw::c_char);
     pub fn SBDebuggerGetScriptLanguage(instance: SBDebuggerRef) -> ScriptLanguage;
     pub fn SBDebuggerSetScriptLanguage(instance: SBDebuggerRef, script_lang: ScriptLanguage);
+    pub fn SBDebuggerGetREPLLanguage(instance: SBDebuggerRef) -> LanguageType;
+    pub fn SBDebuggerSetREPLLanguage(instance: SBDebuggerRef, repl_lang: LanguageType);
     pub fn SBDebuggerGetCloseInputOnEOF(instance: SBDebuggerRef) -> bool;
     pub fn SBDebuggerSetCloseInputOnEOF(instance: SBDebuggerRef, b: bool);
     pub fn SBDebuggerGetCategory(
@@ -2321,6 +2335,11 @@ extern "C" {
         instance: SBDebuggerRef,
         options: SBCommandInterpreterRunOptionsRef,
     );
+    pub fn SBDebuggerRunREPL(
+        instance: SBDebuggerRef,
+        language: LanguageType,
+        repl_options: *const ::std::os::raw::c_char,
+    ) -> SBErrorRef;
     pub fn CreateSBDeclaration() -> SBDeclarationRef;
     pub fn CloneSBDeclaration(instance: SBDeclarationRef) -> SBDeclarationRef;
     pub fn DisposeSBDeclaration(instance: SBDeclarationRef);
@@ -2928,6 +2947,14 @@ extern "C" {
     ) -> bool;
     pub fn SBListenerHandleBroadcastEvent(instance: SBListenerRef, event: SBEventRef) -> bool;
     pub fn CreateSBMemoryRegionInfo() -> SBMemoryRegionInfoRef;
+    pub fn CreateSBMemoryRegionInfo2(
+        name: *const ::std::os::raw::c_char,
+        begin: lldb_addr_t,
+        end: lldb_addr_t,
+        permissions: u32,
+        mapped: bool,
+        stack_memory: bool,
+    ) -> SBMemoryRegionInfoRef;
     pub fn CloneSBMemoryRegionInfo(instance: SBMemoryRegionInfoRef) -> SBMemoryRegionInfoRef;
     pub fn DisposeSBMemoryRegionInfo(instance: SBMemoryRegionInfoRef);
     pub fn SBMemoryRegionInfoClear(instance: SBMemoryRegionInfoRef);
@@ -2957,6 +2984,11 @@ extern "C" {
     ) -> SBMemoryRegionInfoListRef;
     pub fn DisposeSBMemoryRegionInfoList(instance: SBMemoryRegionInfoListRef);
     pub fn SBMemoryRegionInfoListGetSize(instance: SBMemoryRegionInfoListRef) -> u32;
+    pub fn SBMemoryRegionInfoListGetMemoryRegionContainingAddress(
+        instance: SBMemoryRegionInfoListRef,
+        addr: lldb_addr_t,
+        region: SBMemoryRegionInfoRef,
+    ) -> bool;
     pub fn SBMemoryRegionInfoListGetMemoryRegionAtIndex(
         instance: SBMemoryRegionInfoListRef,
         idx: u32,
@@ -2978,6 +3010,7 @@ extern "C" {
     pub fn DisposeSBModule(instance: SBModuleRef);
     pub fn SBModuleIsValid(instance: SBModuleRef) -> bool;
     pub fn SBModuleClear(instance: SBModuleRef);
+    pub fn SBModuleIsFileBacked(instance: SBModuleRef) -> bool;
     pub fn SBModuleGetFileSpec(instance: SBModuleRef) -> SBFileSpecRef;
     pub fn SBModuleGetPlatformFileSpec(instance: SBModuleRef) -> SBFileSpecRef;
     pub fn SBModuleSetPlatformFileSpec(instance: SBModuleRef, platform_file: SBFileSpecRef)
@@ -3202,6 +3235,7 @@ extern "C" {
     pub fn SBPlatformGetOSMajorVersion(instance: SBPlatformRef) -> u32;
     pub fn SBPlatformGetOSMinorVersion(instance: SBPlatformRef) -> u32;
     pub fn SBPlatformGetOSUpdateVersion(instance: SBPlatformRef) -> u32;
+    pub fn SBPlatformSetSDKRoot(instance: SBPlatformRef, sysroot: *const ::std::os::raw::c_char);
     pub fn SBPlatformPut(
         instance: SBPlatformRef,
         src: SBFileSpecRef,
@@ -3764,6 +3798,7 @@ extern "C" {
     pub fn SBTargetGetTriple(instance: SBTargetRef) -> *const ::std::os::raw::c_char;
     pub fn SBTargetGetDataByteSize(instance: SBTargetRef) -> u32;
     pub fn SBTargetGetCodeByteSize(instance: SBTargetRef) -> u32;
+    pub fn SBTargetGetMaximumNumberOfChildrenToDisplay(instance: SBTargetRef) -> u32;
     pub fn SBTargetSetSectionLoadAddress(
         instance: SBTargetRef,
         section: SBSectionRef,
@@ -4210,6 +4245,7 @@ extern "C" {
     pub fn SBThreadGetCurrentException(instance: SBThreadRef) -> SBValueRef;
     pub fn SBThreadGetCurrentExceptionBacktrace(instance: SBThreadRef) -> SBThreadRef;
     pub fn SBThreadSafeToCallFunctions(instance: SBThreadRef) -> bool;
+    pub fn SBThreadGetSiginfo(instance: SBThreadRef) -> SBValueRef;
     pub fn CreateSBThreadCollection() -> SBThreadCollectionRef;
     pub fn CloneSBThreadCollection(instance: SBThreadCollectionRef) -> SBThreadCollectionRef;
     pub fn DisposeSBThreadCollection(instance: SBThreadCollectionRef);
@@ -4800,6 +4836,10 @@ extern "C" {
         -> SBDataRef;
     pub fn SBValueGetData(instance: SBValueRef) -> SBDataRef;
     pub fn SBValueSetData(instance: SBValueRef, data: SBDataRef, error: SBErrorRef) -> bool;
+    pub fn SBValueClone(
+        instance: SBValueRef,
+        new_name: *const ::std::os::raw::c_char,
+    ) -> SBValueRef;
     pub fn SBValueGetDeclaration(instance: SBValueRef) -> SBDeclarationRef;
     pub fn SBValueMightHaveChildren(instance: SBValueRef) -> bool;
     pub fn SBValueIsRuntimeSupportValue(instance: SBValueRef) -> bool;

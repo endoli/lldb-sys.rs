@@ -285,6 +285,11 @@ uint32_t SBPlatformGetOSUpdateVersion(SBPlatformRef instance) {
   return unwrapped->GetOSUpdateVersion();
 }
 
+void SBPlatformSetSDKRoot(SBPlatformRef instance, const char *sysroot) {
+  SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);
+  unwrapped->SetSDKRoot(sysroot);
+}
+
 SBErrorRef SBPlatformPut(SBPlatformRef instance, SBFileSpecRef src,
                          SBFileSpecRef dst) {
   SBPlatform *unwrapped = reinterpret_cast<SBPlatform *>(instance);

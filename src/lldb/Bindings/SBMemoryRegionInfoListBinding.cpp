@@ -37,6 +37,15 @@ uint32_t SBMemoryRegionInfoListGetSize(SBMemoryRegionInfoListRef instance) {
   return unwrapped->GetSize();
 }
 
+bool SBMemoryRegionInfoListGetMemoryRegionContainingAddress(
+    SBMemoryRegionInfoListRef instance, lldb_addr_t addr,
+    SBMemoryRegionInfoRef region) {
+  SBMemoryRegionInfoList *unwrapped =
+      reinterpret_cast<SBMemoryRegionInfoList *>(instance);
+  return unwrapped->GetMemoryRegionContainingAddress(
+      addr, *reinterpret_cast<SBMemoryRegionInfo *>(region));
+}
+
 bool SBMemoryRegionInfoListGetMemoryRegionAtIndex(
     SBMemoryRegionInfoListRef instance, uint32_t idx,
     SBMemoryRegionInfoRef region) {

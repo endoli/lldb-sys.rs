@@ -367,6 +367,11 @@ bool SBValueSetData(SBValueRef instance, SBDataRef data, SBErrorRef error) {
                             *reinterpret_cast<SBError *>(error));
 }
 
+SBValueRef SBValueClone(SBValueRef instance, const char *new_name) {
+  SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
+  return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->Clone(new_name)));
+}
+
 SBDeclarationRef SBValueGetDeclaration(SBValueRef instance) {
   SBValue *unwrapped = reinterpret_cast<SBValue *>(instance);
   return reinterpret_cast<SBDeclarationRef>(

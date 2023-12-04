@@ -147,6 +147,8 @@ LLDB_API SBThreadRef SBThreadGetCurrentExceptionBacktrace(SBThreadRef instance);
 
 LLDB_API bool SBThreadSafeToCallFunctions(SBThreadRef instance);
 
+LLDB_API SBValueRef SBThreadGetSiginfo(SBThreadRef instance);
+
 #ifdef __cplusplus
 }
 #endif

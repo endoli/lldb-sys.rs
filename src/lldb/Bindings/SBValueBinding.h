@@ -170,6 +170,8 @@ LLDB_API SBDataRef SBValueGetData(SBValueRef instance);
 LLDB_API bool SBValueSetData(SBValueRef instance, SBDataRef data,
                              SBErrorRef error);
 
+LLDB_API SBValueRef SBValueClone(SBValueRef instance, const char *new_name);
+
 LLDB_API SBDeclarationRef SBValueGetDeclaration(SBValueRef instance);
 
 LLDB_API bool SBValueMightHaveChildren(SBValueRef instance);

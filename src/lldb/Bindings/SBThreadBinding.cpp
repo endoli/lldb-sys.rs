@@ -319,6 +319,11 @@ bool SBThreadSafeToCallFunctions(SBThreadRef instance) {
   return unwrapped->SafeToCallFunctions();
 }
 
+SBValueRef SBThreadGetSiginfo(SBThreadRef instance) {
+  SBThread *unwrapped = reinterpret_cast<SBThread *>(instance);
+  return reinterpret_cast<SBValueRef>(new SBValue(unwrapped->GetSiginfo()));
+}
+
 #ifdef __cplusplus
 }
 #endif

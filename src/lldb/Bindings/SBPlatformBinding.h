@@ -139,6 +139,8 @@ LLDB_API uint32_t SBPlatformGetOSMinorVersion(SBPlatformRef instance);
 
 LLDB_API uint32_t SBPlatformGetOSUpdateVersion(SBPlatformRef instance);
 
+LLDB_API void SBPlatformSetSDKRoot(SBPlatformRef instance, const char *sysroot);
+
 LLDB_API SBErrorRef SBPlatformPut(SBPlatformRef instance, SBFileSpecRef src,
                                   SBFileSpecRef dst);
 

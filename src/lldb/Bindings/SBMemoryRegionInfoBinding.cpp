@@ -20,6 +20,14 @@ SBMemoryRegionInfoRef CreateSBMemoryRegionInfo() {
   return reinterpret_cast<SBMemoryRegionInfoRef>(new SBMemoryRegionInfo());
 }
 
+SBMemoryRegionInfoRef
+CreateSBMemoryRegionInfo2(const char *name, lldb_addr_t begin, lldb_addr_t end,
+                          uint32_t permissions, bool mapped,
+                          bool stack_memory) {
+  return reinterpret_cast<SBMemoryRegionInfoRef>(new SBMemoryRegionInfo(
+      name, begin, end, permissions, mapped, stack_memory));
+}
+
 SBMemoryRegionInfoRef CloneSBMemoryRegionInfo(SBMemoryRegionInfoRef instance) {
   return reinterpret_cast<SBMemoryRegionInfoRef>(new SBMemoryRegionInfo(
       *reinterpret_cast<SBMemoryRegionInfo *>(instance)));

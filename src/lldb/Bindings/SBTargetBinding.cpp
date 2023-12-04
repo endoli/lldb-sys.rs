@@ -258,6 +258,11 @@ uint32_t SBTargetGetCodeByteSize(SBTargetRef instance) {
   return unwrapped->GetCodeByteSize();
 }
 
+uint32_t SBTargetGetMaximumNumberOfChildrenToDisplay(SBTargetRef instance) {
+  SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+  return unwrapped->GetMaximumNumberOfChildrenToDisplay();
+}
+
 SBErrorRef SBTargetSetSectionLoadAddress(SBTargetRef instance,
                                          SBSectionRef section,
                                          lldb_addr_t section_base_addr) {

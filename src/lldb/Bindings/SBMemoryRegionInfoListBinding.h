@@ -26,6 +26,10 @@ LLDB_API void DisposeSBMemoryRegionInfoList(SBMemoryRegionInfoListRef instance);
 LLDB_API uint32_t
 SBMemoryRegionInfoListGetSize(SBMemoryRegionInfoListRef instance);
 
+LLDB_API bool SBMemoryRegionInfoListGetMemoryRegionContainingAddress(
+    SBMemoryRegionInfoListRef instance, lldb_addr_t addr,
+    SBMemoryRegionInfoRef region);
+
 LLDB_API bool
 SBMemoryRegionInfoListGetMemoryRegionAtIndex(SBMemoryRegionInfoListRef instance,
                                              uint32_t idx,

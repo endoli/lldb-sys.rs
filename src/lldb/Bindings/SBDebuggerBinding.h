@@ -208,6 +208,9 @@ LLDB_API ENUM(ScriptLanguage)
     SBDebuggerGetScriptingLanguage(SBDebuggerRef instance,
                                    const char *script_language_name);
 
+LLDB_API SBStructuredDataRef SBDebuggerGetScriptInterpreterInfo(
+    SBDebuggerRef instance, lldb::ScriptLanguage language);
+
 LLDB_API const char *SBDebuggerGetVersionString(void);
 
 LLDB_API const char *SBDebuggerStateAsCString(ENUM(StateType) state);
@@ -269,6 +272,11 @@ LLDB_API ENUM(ScriptLanguage)
 LLDB_API void SBDebuggerSetScriptLanguage(SBDebuggerRef instance,
                                           ENUM(ScriptLanguage) script_lang);
 
+LLDB_API lldb::LanguageType SBDebuggerGetREPLLanguage(SBDebuggerRef instance);
+
+LLDB_API void SBDebuggerSetREPLLanguage(SBDebuggerRef instance,
+                                        lldb::LanguageType repl_lang);
+
 LLDB_API bool SBDebuggerGetCloseInputOnEOF(SBDebuggerRef instance);
 
 LLDB_API void SBDebuggerSetCloseInputOnEOF(SBDebuggerRef instance, bool b);
@@ -313,6 +321,10 @@ LLDB_API void SBDebuggerRunCommandInterpreter2(
 LLDB_API void
 SBDebuggerRunCommandInterpreter3(SBDebuggerRef instance,
                                  SBCommandInterpreterRunOptionsRef options);
+
+LLDB_API SBErrorRef SBDebuggerRunREPL(SBDebuggerRef instance,
+                                      lldb::LanguageType language,
+                                      const char *repl_options);
 
 #ifdef __cplusplus
 }

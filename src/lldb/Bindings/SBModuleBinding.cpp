@@ -49,6 +49,11 @@ void SBModuleClear(SBModuleRef instance) {
   unwrapped->Clear();
 }
 
+bool SBModuleIsFileBacked(SBModuleRef instance) {
+  SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
+  return unwrapped->IsFileBacked();
+}
+
 SBFileSpecRef SBModuleGetFileSpec(SBModuleRef instance) {
   SBModule *unwrapped = reinterpret_cast<SBModule *>(instance);
   return reinterpret_cast<SBFileSpecRef>(

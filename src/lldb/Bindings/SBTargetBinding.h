@@ -123,6 +123,9 @@ LLDB_API uint32_t SBTargetGetDataByteSize(SBTargetRef instance);
 
 LLDB_API uint32_t SBTargetGetCodeByteSize(SBTargetRef instance);
 
+LLDB_API uint32_t
+SBTargetGetMaximumNumberOfChildrenToDisplay(SBTargetRef instance);
+
 LLDB_API SBErrorRef SBTargetSetSectionLoadAddress(
     SBTargetRef instance, SBSectionRef section, lldb_addr_t section_base_addr);
 

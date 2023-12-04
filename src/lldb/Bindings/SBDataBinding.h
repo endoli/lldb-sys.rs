@@ -86,6 +86,11 @@ LLDB_API void SBDataSetData(SBDataRef instance, SBErrorRef error, void *buf,
                             size_t size, ENUM(ByteOrder) endian,
                             uint8_t addr_size);
 
+LLDB_API void SBDataSetDataWithOwnership(SBDataRef instance, SBErrorRef error,
+                                         void *buf, size_t size,
+                                         ENUM(ByteOrder) endian,
+                                         uint8_t addr_size);
+
 LLDB_API bool SBDataAppend(SBDataRef instance, SBDataRef rhs);
 
 LLDB_API SBDataRef SBDataCreateDataFromCString(ENUM(ByteOrder) endian,

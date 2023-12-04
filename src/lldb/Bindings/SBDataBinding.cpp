@@ -165,6 +165,14 @@ void SBDataSetData(SBDataRef instance, SBErrorRef error, void *buf, size_t size,
                      addr_size);
 }
 
+void SBDataSetDataWithOwnership(SBDataRef instance, SBErrorRef error, void *buf,
+                                size_t size, lldb::ByteOrder endian,
+                                uint8_t addr_size) {
+  SBData *unwrapped = reinterpret_cast<SBData *>(instance);
+  unwrapped->SetDataWithOwnership(*reinterpret_cast<SBError *>(error), buf,
+                                  size, endian, addr_size);
+}
+
 bool SBDataAppend(SBDataRef instance, SBDataRef rhs) {
   SBData *unwrapped = reinterpret_cast<SBData *>(instance);
   return unwrapped->Append(*reinterpret_cast<SBData *>(rhs));

@@ -31,6 +31,8 @@ LLDB_API bool SBModuleIsValid(SBModuleRef instance);
 
 LLDB_API void SBModuleClear(SBModuleRef instance);
 
+LLDB_API bool SBModuleIsFileBacked(SBModuleRef instance);
+
 LLDB_API SBFileSpecRef SBModuleGetFileSpec(SBModuleRef instance);
 
 LLDB_API SBFileSpecRef SBModuleGetPlatformFileSpec(SBModuleRef instance);
