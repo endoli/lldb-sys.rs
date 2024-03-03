@@ -84,7 +84,7 @@ FLAGS_ENUM(LaunchFlags){
                    ///< race to set its exit status.
     eLaunchFlagDetachOnError =
         (1u << 9), ///< If set, then the client stub should detach rather than
-                   ///< killing the debugee if it loses connection with lldb.
+                   ///< killing the debuggee if it loses connection with lldb.
     eLaunchFlagShellExpandArguments =
         (1u << 10), ///< Perform shell-style argument expansion
     eLaunchFlagCloseTTYOnExit = (1u << 11), ///< Close the open TTY on exit
@@ -765,9 +765,9 @@ FLAGS_ENUM(TypeOptions){eTypeOptionNone = (0u),
 // B (or if frame A is on the stack but B is not) A is Younger than B 3) When
 // frame A and frame B have the same StackID, they are Equal. 4) When frame A
 // and frame B have the same immediate parent frame, but are not equal, the
-// comparision yields
+// comparison yields
 //    SameParent.
-// 5) If the two frames are on different threads or processes the comparision is
+// 5) If the two frames are on different threads or processes the comparison is
 // Invalid 6) If for some reason we can't figure out what went on, we return
 // Unknown.
 //----------------------------------------------------------------------

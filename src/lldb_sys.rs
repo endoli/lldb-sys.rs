@@ -240,8 +240,8 @@ bitflags! {
         /// exit status.
         const DONT_SET_EXIT_STATUS = 256;
         /// If set, then the client stub should detach rather than
-        /// killing the debugee.
-        const DETACH_ON_ERRROR = 512;
+        /// killing the debuggee.
+        const DETACH_ON_ERROR = 512;
         /// Perform shell-style argument expansion.
         const SHELL_EXPAND_ARGUMENTS = 1024;
         /// Close the open TTY on exit.
@@ -2787,7 +2787,7 @@ extern "C" {
         envp: *const *const ::std::os::raw::c_char,
         append: bool,
     );
-    pub fn SBLaunchInfoSetEvironment(
+    pub fn SBLaunchInfoSetEnvironment(
         instance: SBLaunchInfoRef,
         environment: SBEnvironmentRef,
         append: bool,
