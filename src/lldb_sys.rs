@@ -798,7 +798,7 @@ pub enum SectionType {
     DWARFAppleObjC = 32,
     /// ELF `SHT_SYMTAB` section.
     ELFSymbolTable = 33,
-    /// ELF `SHT_DYNSYM1 section.
+    /// ELF `SHT_DYNSYM1` section.
     ELFDynamicSymbols = 34,
     /// ELF `SHT_REL` or `SHT_RELA` section.
     ELFRelocationEntries = 35,
