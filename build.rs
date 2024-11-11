@@ -25,6 +25,11 @@ fn match_libname(name: &str) -> Option<String> {
         // Trim the leading "lib" and trailing ".dylib"
         return Some(name[3..name.len() - 6].into());
     }
+    if name.starts_with("liblldb") && name.ends_with(".lib") {
+        // windows will have liblldb.lib
+        // Trim the trailing ".lib"
+        return Some(name[0..name.len() - 4].into());
+    }
     None
 }
 
@@ -34,6 +39,7 @@ fn test_match_libname() {
     assert_eq!(match_libname("liblldb.so"), Some("lldb"));
     assert_eq!(match_libname("liblldb-3.8.so"), Some("lldb-3.8"));
     assert_eq!(match_libname("liblldbIntelFeatures.so"), None);
+    assert_eq!(match_libname("liblldb.lib"), Some("liblldb"));
 }
 
 fn get_compiler_config() -> Build {
