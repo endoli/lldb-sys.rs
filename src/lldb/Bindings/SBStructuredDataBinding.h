@@ -30,7 +30,7 @@ LLDB_API void SBStructuredDataClear(SBStructuredDataRef instance);
 LLDB_API SBErrorRef SBStructuredDataSetFromJSON(SBStructuredDataRef instance,
                                                 SBStreamRef stream);
 
-LLDB_API SBErrorRef SBStructureDataSetFromJSON2(SBStructuredDataRef instance,
+LLDB_API SBErrorRef SBStructuredDataSetFromJSON2(SBStructuredDataRef instance,
                                                 const char *json);
 
 LLDB_API SBErrorRef SBStructuredDataGetAsJSON(SBStructuredDataRef instance,
