@@ -47,7 +47,7 @@ SBErrorRef SBStructuredDataSetFromJSON(SBStructuredDataRef instance,
       unwrapped->SetFromJSON(*reinterpret_cast<SBStream *>(stream))));
 }
 
-SBErrorRef SBStructureDataSetFromJSON2(SBStructuredDataRef instance,
+SBErrorRef SBStructuredDataSetFromJSON2(SBStructuredDataRef instance,
                                        const char *json) {
   SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
   return reinterpret_cast<SBErrorRef>(
