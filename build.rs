@@ -40,6 +40,7 @@ fn get_compiler_config() -> Build {
     // We use the `llvm-config` utility to get the include and library paths
     // as well as the name of the shared library.
     println!("cargo:rerun-if-env-changed=LLVM_CONFIG");
+    println!("cargo:rerun-if-env-changed=LLDB_ADDITIONAL_INCLUDE_DIRS");
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
     let lib_name = fs::read_dir(&llvm_lib_path)
@@ -51,6 +52,15 @@ fn get_compiler_config() -> Build {
     println!("cargo:rustc-link-lib={lib_name}");
     let mut res = cc::Build::new();
     res.include(llvm_headers_path);
+    // if llvm is in the development tree, (in other words, just after build)
+    // we may need to add several other directories to include lldb
+    // those directories are not constant (might depend on build system) so
+    // we allow user to specify with PATH
+    if let Some(dirs) = std::env::var_os("LLDB_ADDITIONAL_INCLUDE_DIRS") {
+        for path in std::env::split_paths(&dirs) {
+            res.include(path);
+        }
+    }
     res
 }
 
