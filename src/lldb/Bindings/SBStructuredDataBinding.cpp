@@ -40,7 +40,7 @@ void SBStructuredDataClear(SBStructuredDataRef instance) {
   unwrapped->Clear();
 }
 
-SBErrorRef SBStructureDataSetFromJSON(SBStructuredDataRef instance,
+SBErrorRef SBStructuredDataSetFromJSON(SBStructuredDataRef instance,
                                       SBStreamRef stream) {
   SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
   return reinterpret_cast<SBErrorRef>(new SBError(
