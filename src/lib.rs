@@ -17,12 +17,11 @@
 //! It is primarily for use by a higher level crate, such as
 //! [lldb.rs](https://crates.io/crates/lldb/).
 
-mod lldb_sys;
+#![allow(non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
+#![allow(dead_code)]
+#![allow(improper_ctypes)]
 
-pub use crate::lldb_sys::*;
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {}
-}
+mod bindings;
+pub use bindings::root::lldb::*;
