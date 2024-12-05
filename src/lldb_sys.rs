@@ -1877,7 +1877,7 @@ extern "C" {
     pub fn SBCommunicationIsValid(instance: SBCommunicationRef) -> bool;
     pub fn SBCommunicationGetBroadcaster(instance: SBCommunicationRef) -> SBBroadcasterRef;
     pub fn SBCommunicationGetBroadcasterClass() -> *const ::std::os::raw::c_char;
-    pub fn SBCommunicationAdoptFileDesriptor(
+    pub fn SBCommunicationAdoptFileDescriptor(
         instance: SBCommunicationRef,
         fd: ::std::os::raw::c_int,
         owns_fd: bool,

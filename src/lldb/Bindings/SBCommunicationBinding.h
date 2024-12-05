@@ -34,8 +34,8 @@ SBCommunicationGetBroadcaster(SBCommunicationRef instance);
 LLDB_API const char *SBCommunicationGetBroadcasterClass(void);
 
 LLDB_API ENUM(ConnectionStatus)
-    SBCommunicationAdoptFileDesriptor(SBCommunicationRef instance, int fd,
-                                      bool owns_fd);
+    SBCommunicationAdoptFileDescriptor(SBCommunicationRef instance, int fd,
+                                       bool owns_fd);
 
 LLDB_API ENUM(ConnectionStatus)
     SBCommunicationConnect(SBCommunicationRef instance, const char *url);

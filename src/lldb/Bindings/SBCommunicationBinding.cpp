@@ -45,8 +45,8 @@ const char *SBCommunicationGetBroadcasterClass() {
 }
 
 enum lldb::ConnectionStatus
-SBCommunicationAdoptFileDesriptor(SBCommunicationRef instance, int fd,
-                                  bool owns_fd) {
+SBCommunicationAdoptFileDescriptor(SBCommunicationRef instance, int fd,
+                                   bool owns_fd) {
   SBCommunication *unwrapped = reinterpret_cast<SBCommunication *>(instance);
   return unwrapped->AdoptFileDesriptor(fd, owns_fd);
 }
