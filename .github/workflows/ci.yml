@@ -27,7 +27,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14, macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-24.04]
     name: cargo clippy + test
     steps:
       - uses: actions/checkout@v4
