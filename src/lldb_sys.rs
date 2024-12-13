@@ -1347,6 +1347,11 @@ extern "C" {
         queue_name: *const ::std::os::raw::c_char,
     );
     pub fn SBBreakpointGetQueueName(instance: SBBreakpointRef) -> *const ::std::os::raw::c_char;
+    pub fn SBBreakpointSetCallback(
+        instance: SBBreakpointRef,
+        callback: SBBreakpointHitCallback,
+        baton: *mut ::std::os::raw::c_void,
+    );
     pub fn SBBreakpointSetScriptCallbackFunction(
         instance: SBBreakpointRef,
         callback_function_name: *const ::std::os::raw::c_char,
