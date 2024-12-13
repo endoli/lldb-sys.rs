@@ -1067,6 +1067,32 @@ pub enum ExpressionEvaluationPhase {
     EvaluationExecution = 2,
     EvaluationComplete = 3,
 }
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd)]
+#[repr(u32)]
+pub enum InstructionControlFlowKind {
+    /// The instruction could not be classified.
+    Unknown = 0,
+    /// The instruction is something not listed below, i.e. it's a sequential
+    /// instruction that doesn't affect the control flow of the program.
+    Other,
+    /// The instruction is a near (function) call.
+    Call,
+    /// The instruction is a near (function) return.
+    Return,
+    /// The instruction is a near unconditional jump.
+    Jump,
+    /// The instruction is a near conditional jump.
+    CondJump,
+    /// The instruction is a call-like far transfer.
+    /// E.g. SYSCALL, SYSENTER, or FAR CALL.
+    FarCall,
+    /// The instruction is a return-like far transfer.
+    /// E.g. SYSRET, SYSEXIT, IRET, or FAR RET.
+    FarReturn,
+    /// The instruction is a jump-like far transfer.
+    /// E.g. FAR JMP.
+    FarJump,
+}
 bitflags! {
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[repr(C)]
@@ -1445,6 +1471,11 @@ extern "C" {
         auto_continue: bool,
     );
     pub fn SBBreakpointLocationGetAutoContinue(instance: SBBreakpointLocationRef) -> bool;
+    pub fn SBBreakpointLocationSetCallback(
+        instance: SBBreakpointLocationRef,
+        callback: SBBreakpointHitCallback,
+        baton: *mut ::std::os::raw::c_void,
+    );
     pub fn SBBreakpointLocationSetScriptCallbackFunction(
         instance: SBBreakpointLocationRef,
         callback_function_name: *const ::std::os::raw::c_char,
@@ -1680,6 +1711,7 @@ extern "C" {
     pub fn SBCommandInterpreterHasCommands(instance: SBCommandInterpreterRef) -> bool;
     pub fn SBCommandInterpreterHasAliases(instance: SBCommandInterpreterRef) -> bool;
     pub fn SBCommandInterpreterHasAliasOptions(instance: SBCommandInterpreterRef) -> bool;
+    pub fn SBCommandInterpreterIsInteractive(instance: SBCommandInterpreterRef) -> bool;
     pub fn SBCommandInterpreterGetProcess(instance: SBCommandInterpreterRef) -> SBProcessRef;
     pub fn SBCommandInterpreterGetDebugger(instance: SBCommandInterpreterRef) -> SBDebuggerRef;
     pub fn SBCommandInterpreterAddMultiwordCommand(
@@ -1693,6 +1725,10 @@ extern "C" {
         impl_: SBCommandPluginInterfaceRef,
         help: *const ::std::os::raw::c_char,
     ) -> SBCommandRef;
+    pub fn SBCommandInterpreterSourceInitFileInGlobalDirectory(
+        instance: SBCommandInterpreterRef,
+        result: SBCommandReturnObjectRef,
+    );
     pub fn SBCommandInterpreterSourceInitFileInHomeDirectory(
         instance: SBCommandInterpreterRef,
         result: SBCommandReturnObjectRef,
@@ -2702,6 +2738,10 @@ extern "C" {
         instance: SBInstructionRef,
         target: SBTargetRef,
     ) -> *const ::std::os::raw::c_char;
+    pub fn SBInstructionGetControlFlowKind(
+        instance: SBInstructionRef,
+        target: SBTargetRef,
+    ) -> InstructionControlFlowKind;
     pub fn SBInstructionGetData(instance: SBInstructionRef, target: SBTargetRef) -> SBDataRef;
     pub fn SBInstructionGetByteSize(instance: SBInstructionRef) -> usize;
     pub fn SBInstructionDoesBranch(instance: SBInstructionRef) -> bool;
@@ -3528,6 +3568,7 @@ extern "C" {
     pub fn SBSectionGetSectionType(instance: SBSectionRef) -> SectionType;
     pub fn SBSectionGetPermissions(instance: SBSectionRef) -> u32;
     pub fn SBSectionGetTargetByteSize(instance: SBSectionRef) -> u32;
+    pub fn SBSectionGetAlignment(instance: SBSectionRef) -> u32;
     pub fn SBSectionGetDescription(instance: SBSectionRef, description: SBStreamRef) -> bool;
     pub fn CreateSBSourceManager(debugger: SBDebuggerRef) -> SBSourceManagerRef;
     pub fn CreateSBSourceManager2(target: SBTargetRef) -> SBSourceManagerRef;
@@ -3801,6 +3842,7 @@ extern "C" {
     pub fn SBTargetGetByteOrder(instance: SBTargetRef) -> ByteOrder;
     pub fn SBTargetGetAddressByteSize(instance: SBTargetRef) -> u32;
     pub fn SBTargetGetTriple(instance: SBTargetRef) -> *const ::std::os::raw::c_char;
+    pub fn SBTargetGetABIName(instance: SBTargetRef) -> *const ::std::os::raw::c_char;
     pub fn SBTargetGetDataByteSize(instance: SBTargetRef) -> u32;
     pub fn SBTargetGetCodeByteSize(instance: SBTargetRef) -> u32;
     pub fn SBTargetGetMaximumNumberOfChildrenToDisplay(instance: SBTargetRef) -> u32;
@@ -4358,6 +4400,7 @@ extern "C" {
     pub fn SBTypeIsTypedefType(instance: SBTypeRef) -> bool;
     pub fn SBTypeIsAnonymousType(instance: SBTypeRef) -> bool;
     pub fn SBTypeIsScopedEnumerationType(instance: SBTypeRef) -> bool;
+    pub fn SBTypeIsAggregateType(instance: SBTypeRef) -> bool;
     pub fn SBTypeGetPointerType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetPointeeType(instance: SBTypeRef) -> SBTypeRef;
     pub fn SBTypeGetReferenceType(instance: SBTypeRef) -> SBTypeRef;

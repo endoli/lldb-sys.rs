@@ -114,6 +114,11 @@ uint32_t SBSectionGetTargetByteSize(SBSectionRef instance) {
   return unwrapped->GetTargetByteSize();
 }
 
+uint32_t SBSectionGetAlignment(SBSectionRef instance) {
+  SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
+  return unwrapped->GetAlignment();
+}
+
 bool SBSectionGetDescription(SBSectionRef instance, SBStreamRef description) {
   SBSection *unwrapped = reinterpret_cast<SBSection *>(instance);
   return unwrapped->GetDescription(*reinterpret_cast<SBStream *>(description));

@@ -57,6 +57,12 @@ const char *SBInstructionGetComment(SBInstructionRef instance,
   return unwrapped->GetComment(*reinterpret_cast<SBTarget *>(target));
 }
 
+lldb::InstructionControlFlowKind
+SBInstructionGetControlFlowKind(SBInstructionRef instance, SBTargetRef target) {
+  SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);
+  return unwrapped->GetControlFlowKind(*reinterpret_cast<SBTarget *>(target));
+}
+
 SBDataRef SBInstructionGetData(SBInstructionRef instance, SBTargetRef target) {
   SBInstruction *unwrapped = reinterpret_cast<SBInstruction *>(instance);
   return reinterpret_cast<SBDataRef>(

@@ -200,6 +200,12 @@ bool SBCommandInterpreterHasAliasOptions(SBCommandInterpreterRef instance) {
   return unwrapped->HasAliasOptions();
 }
 
+bool SBCommandInterpreterIsInteractive(SBCommandInterpreterRef instance) {
+  SBCommandInterpreter *unwrapped =
+      reinterpret_cast<SBCommandInterpreter *>(instance);
+  return unwrapped->IsInteractive();
+}
+
 SBProcessRef SBCommandInterpreterGetProcess(SBCommandInterpreterRef instance) {
   SBCommandInterpreter *unwrapped =
       reinterpret_cast<SBCommandInterpreter *>(instance);
@@ -231,6 +237,14 @@ SBCommandRef SBCommandInterpreterAddCommand(SBCommandInterpreterRef instance,
       reinterpret_cast<SBCommandInterpreter *>(instance);
   return reinterpret_cast<SBCommandRef>(new SBCommand(unwrapped->AddCommand(
       name, reinterpret_cast<SBCommandPluginInterface *>(impl), help)));
+}
+
+void SBCommandInterpreterSourceInitFileInGlobalDirectory(
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result) {
+  SBCommandInterpreter *unwrapped =
+      reinterpret_cast<SBCommandInterpreter *>(instance);
+  unwrapped->SourceInitFileInGlobalDirectory(
+      *reinterpret_cast<SBCommandReturnObject *>(result));
 }
 
 void SBCommandInterpreterSourceInitFileInHomeDirectory(

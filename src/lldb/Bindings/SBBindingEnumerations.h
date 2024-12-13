@@ -879,6 +879,33 @@ enum ExpressionEvaluationPhase {
   eExpressionEvaluationComplete
 };
 
+/// Architecture-agnostic categorization of instructions for traversing the
+/// control flow of a trace.
+enum InstructionControlFlowKind {
+  /// The instruction could not be classified.
+  eInstructionControlFlowKindUnknown = 0,
+  /// The instruction is something not listed below, i.e. it's a sequential
+  /// instruction that doesn't affect the control flow of the program.
+  eInstructionControlFlowKindOther,
+  /// The instruction is a near (function) call.
+  eInstructionControlFlowKindCall,
+  /// The instruction is a near (function) return.
+  eInstructionControlFlowKindReturn,
+  /// The instruction is a near unconditional jump.
+  eInstructionControlFlowKindJump,
+  /// The instruction is a near conditional jump.
+  eInstructionControlFlowKindCondJump,
+  /// The instruction is a call-like far transfer.
+  /// E.g. SYSCALL, SYSENTER, or FAR CALL.
+  eInstructionControlFlowKindFarCall,
+  /// The instruction is a return-like far transfer.
+  /// E.g. SYSRET, SYSEXIT, IRET, or FAR RET.
+  eInstructionControlFlowKindFarReturn,
+  /// The instruction is a jump-like far transfer.
+  /// E.g. FAR JMP.
+  eInstructionControlFlowKindFarJump
+};
+
 //----------------------------------------------------------------------
 // Watchpoint Kind
 // Indicates what types of events cause the watchpoint to fire.

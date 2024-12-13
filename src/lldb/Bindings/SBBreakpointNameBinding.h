@@ -83,9 +83,10 @@ LLDB_API void SBBreakpointNameSetQueueName(SBBreakpointNameRef instance,
 LLDB_API const char *
 SBBreakpointNameGetQueueName(SBBreakpointNameRef instance) const;
 
-LLDB_API void SBBreakpointNameSetCallback(SBBreakpointNameRef instance,
-                                          SBBreakpointHitCallback callback,
-                                          void *baton);
+LLDB_API void
+SBBreakpointNameSetCallback(SBBreakpointNameRef instance,
+                            lldb::SBBreakpointHitCallback callback,
+                            void *baton);
 
 LLDB_API SBErrorRef SBBreakpointNameSetScriptCallbackFunction(
     SBBreakpointRef instance, const char *callback_function_name,

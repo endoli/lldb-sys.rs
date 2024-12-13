@@ -61,6 +61,11 @@ SBBreakpointLocationSetAutoContinue(SBBreakpointLocationRef instance,
 LLDB_API bool
 SBBreakpointLocationGetAutoContinue(SBBreakpointLocationRef instance);
 
+LLDB_API void
+SBBreakpointLocationSetCallback(SBBreakpointLocationRef instance,
+                                lldb::SBBreakpointHitCallback callback,
+                                void *baton);
+
 LLDB_API SBErrorRef SBBreakpointLocationSetScriptCallbackFunction(
     SBBreakpointLocationRef instance, const char *callback_function_name,
     SBStructuredDataRef extra_args);

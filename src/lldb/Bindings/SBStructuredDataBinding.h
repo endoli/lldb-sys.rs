@@ -31,7 +31,7 @@ LLDB_API SBErrorRef SBStructuredDataSetFromJSON(SBStructuredDataRef instance,
                                                 SBStreamRef stream);
 
 LLDB_API SBErrorRef SBStructuredDataSetFromJSON2(SBStructuredDataRef instance,
-                                                const char *json);
+                                                 const char *json);
 
 LLDB_API SBErrorRef SBStructuredDataGetAsJSON(SBStructuredDataRef instance,
                                               SBStreamRef stream);

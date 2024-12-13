@@ -41,14 +41,14 @@ void SBStructuredDataClear(SBStructuredDataRef instance) {
 }
 
 SBErrorRef SBStructuredDataSetFromJSON(SBStructuredDataRef instance,
-                                      SBStreamRef stream) {
+                                       SBStreamRef stream) {
   SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
   return reinterpret_cast<SBErrorRef>(new SBError(
       unwrapped->SetFromJSON(*reinterpret_cast<SBStream *>(stream))));
 }
 
 SBErrorRef SBStructuredDataSetFromJSON2(SBStructuredDataRef instance,
-                                       const char *json) {
+                                        const char *json) {
   SBStructuredData *unwrapped = reinterpret_cast<SBStructuredData *>(instance);
   return reinterpret_cast<SBErrorRef>(
       new SBError(unwrapped->SetFromJSON(json)));

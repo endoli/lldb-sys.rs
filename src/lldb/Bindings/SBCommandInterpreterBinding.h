@@ -103,6 +103,9 @@ LLDB_API bool SBCommandInterpreterHasAliases(SBCommandInterpreterRef instance);
 LLDB_API bool
 SBCommandInterpreterHasAliasOptions(SBCommandInterpreterRef instance);
 
+LLDB_API bool
+SBCommandInterpreterIsInteractive(SBCommandInterpreterRef instance);
+
 LLDB_API SBProcessRef
 SBCommandInterpreterGetProcess(SBCommandInterpreterRef instance);
 
@@ -115,6 +118,9 @@ LLDB_API SBCommandRef SBCommandInterpreterAddMultiwordCommand(
 LLDB_API SBCommandRef SBCommandInterpreterAddCommand(
     SBCommandInterpreterRef instance, const char *name,
     SBCommandPluginInterfaceRef impl, const char *help);
+
+LLDB_API void SBCommandInterpreterSourceInitFileInGlobalDirectory(
+    SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);
 
 LLDB_API void SBCommandInterpreterSourceInitFileInHomeDirectory(
     SBCommandInterpreterRef instance, SBCommandReturnObjectRef result);

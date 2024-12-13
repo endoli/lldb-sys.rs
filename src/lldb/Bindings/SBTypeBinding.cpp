@@ -209,6 +209,11 @@ bool SBTypeIsScopedEnumerationType(SBTypeRef instance) {
   return unwrapped->IsScopedEnumerationType();
 }
 
+bool SBTypeIsAggregateType(SBTypeRef instance) {
+  SBType *unwrapped = reinterpret_cast<SBType *>(instance);
+  return unwrapped->IsAggregateType();
+}
+
 SBTypeRef SBTypeGetPointerType(SBTypeRef instance) {
   SBType *unwrapped = reinterpret_cast<SBType *>(instance);
   return reinterpret_cast<SBTypeRef>(new SBType(unwrapped->GetPointerType()));

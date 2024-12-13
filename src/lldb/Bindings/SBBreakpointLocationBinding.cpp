@@ -113,6 +113,14 @@ bool SBBreakpointLocationGetAutoContinue(SBBreakpointLocationRef instance) {
   return unwrapped->GetAutoContinue();
 }
 
+void SBBreakpointLocationSetCallback(SBBreakpointLocationRef instance,
+                                     lldb::SBBreakpointHitCallback callback,
+                                     void *baton) {
+  SBBreakpointLocation *unwrapped =
+      reinterpret_cast<SBBreakpointLocation *>(instance);
+  unwrapped->SetCallback(callback, baton);
+}
+
 SBErrorRef SBBreakpointLocationSetScriptCallbackFunction(
     SBBreakpointLocationRef instance, const char *callback_function_name,
     SBStructuredDataRef extra_args) {

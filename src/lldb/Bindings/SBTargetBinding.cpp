@@ -248,6 +248,11 @@ const char *SBTargetGetTriple(SBTargetRef instance) {
   return unwrapped->GetTriple();
 }
 
+const char *SBTargetGetABIName(SBTargetRef instance) {
+  SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
+  return unwrapped->GetABIName();
+}
+
 uint32_t SBTargetGetDataByteSize(SBTargetRef instance) {
   SBTarget *unwrapped = reinterpret_cast<SBTarget *>(instance);
   return unwrapped->GetDataByteSize();

@@ -35,6 +35,9 @@ LLDB_API const char *SBInstructionGetOperands(SBInstructionRef instance,
 LLDB_API const char *SBInstructionGetComment(SBInstructionRef instance,
                                              SBTargetRef target);
 
+LLDB_API lldb::InstructionControlFlowKind
+SBInstructionGetControlFlowKind(SBInstructionRef instance, SBTargetRef target);
+
 LLDB_API SBDataRef SBInstructionGetData(SBInstructionRef instance,
                                         SBTargetRef target);
 

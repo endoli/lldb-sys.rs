@@ -104,6 +104,8 @@ LLDB_API bool SBTypeIsAnonymousType(SBTypeRef instance);
 
 LLDB_API bool SBTypeIsScopedEnumerationType(SBTypeRef instance);
 
+LLDB_API bool SBTypeIsAggregateType(SBTypeRef instance);
+
 LLDB_API SBTypeRef SBTypeGetPointerType(SBTypeRef instance);
 
 LLDB_API SBTypeRef SBTypeGetPointeeType(SBTypeRef instance);

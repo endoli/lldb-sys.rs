@@ -58,6 +58,8 @@ LLDB_API uint32_t SBSectionGetPermissions(SBSectionRef instance);
 
 LLDB_API uint32_t SBSectionGetTargetByteSize(SBSectionRef instance);
 
+LLDB_API uint32_t SBSectionGetAlignment(SBSectionRef instance);
+
 LLDB_API bool SBSectionGetDescription(SBSectionRef instance,
                                       SBStreamRef description);
 

@@ -119,6 +119,8 @@ LLDB_API uint32_t SBTargetGetAddressByteSize(SBTargetRef instance);
 
 LLDB_API const char *SBTargetGetTriple(SBTargetRef instance);
 
+LLDB_API const char *SBTargetGetABIName(SBTargetRef instance);
+
 LLDB_API uint32_t SBTargetGetDataByteSize(SBTargetRef instance);
 
 LLDB_API uint32_t SBTargetGetCodeByteSize(SBTargetRef instance);
