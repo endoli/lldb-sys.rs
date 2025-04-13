@@ -77,7 +77,7 @@ fn main() {
     }
     get_compiler_config()
         .cpp(true)
-        .flag("-std=c++14")
+        .std("c++14")
         .warnings(false)
         .include("src")
         .file("src/lldb/UnityBuild.cpp")
