@@ -46,10 +46,22 @@ fn get_compiler_config() -> Build {
     // We use the `llvm-config` utility to get the include and library paths
     // as well as the name of the shared library.
     println!("cargo:rerun-if-env-changed=LLVM_CONFIG");
+    println!("cargo:rerun-if-env-changed=LLDB_LIB_PATH");
     println!("cargo:rerun-if-env-changed=LLDB_ADDITIONAL_INCLUDE_DIRS");
     let llvm_headers_path = get_llvm_output("--includedir");
     let llvm_lib_path = get_llvm_output("--libdir");
-    let lib_name = fs::read_dir(&llvm_lib_path)
+
+    // Some systems (ex. NixOS) do not have liblldb.so in llvm-config's libdir.
+    // As a workaround, allow users to specifiy path to search
+    // for the aforementioned library.
+    let lldb_lib_path = match std::env::var_os("LLDB_LIB_PATH") {
+        Some(path) => &path
+            .into_string()
+            .expect("LLDB_LIB_PATH contains invalid Unicode data"),
+        None => &llvm_lib_path,
+    };
+
+    let lib_name = fs::read_dir(lldb_lib_path)
         .expect("failed to stat libdir from llvm-config")
         .filter_map(|entry| match_libname(entry.unwrap().file_name().to_str().unwrap()))
         .next()
